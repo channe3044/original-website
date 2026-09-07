@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Detail - Blox Fruits Wiki</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .detail-container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 24px;
+      background: rgba(20, 20, 20, 0.95);
+      border: 2px solid #e2a227;
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .back-btn-detail {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #555;
+      font-weight: bold;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .back-btn-detail:hover {
+      background: #555;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 2px solid #444;
+      padding-bottom: 20px;
+    }
+
+    .detail-img-wrapper {
+      width: 120px;
+      height: 120px;
+      background: #111;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #666;
+      flex-shrink: 0;
+    }
+
+    .detail-img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .detail-title-info h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+    }
+
+    .meta-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1f1f1f;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 4px 8px 4px 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .meta-label {
+      color: #ccc;
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-value-normal {
+      font-weight: 900;
+      font-size: 0.95rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      color: #eee;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid #555;
+    }
+
+    .price-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .price-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .currency-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+    .inline-currency-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      vertical-align: -2px;
+      margin-right: 2px;
+      margin-left: 2px;
+    }
+
+    .wiki-link {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .wiki-link:hover {
+      text-decoration: underline;
+    }
+
+    .detail-section {
+      margin-top: 30px;
+    }
+
+    .detail-section h2 {
+      border-left: 4px solid #e2a227;
+      padding-left: 10px;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .detail-section p {
+      line-height: 1.7;
+      color: #ddd;
+    }
+
+    .moves-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .move-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .move-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #222222;
+      border: 2px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 12px 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .move-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .move-key {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      min-width: 30px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .move-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .move-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .move-mastery {
+      font-size: 0.85rem;
+      color: #aaaaaa;
+      margin-top: 2px;
+    }
+
+    .move-view-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+      border: 2.5px solid #4d3202;
+      border-bottom: 5.5px solid #362201;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      padding: 6px 18px;
+      text-shadow: 
+        -2px -2px 0 #000,  
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+         2px  3px 0px #000;
+      cursor: pointer;
+      transition: filter 0.1s ease, transform 0.1s ease, background 0.1s ease;
+    }
+
+    .move-view-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .move-view-btn:active {
+      border-bottom: 1.5px solid #362201;
+      transform: translateY(4px);
+    }
+
+    .move-view-btn.active {
+      background: linear-gradient(to bottom, #ff7171 0%, #ff4f4f 45%, #e03232 50%, #b81d1d 100%) !important;
+      border-color: #520b0b !important;
+      border-bottom-color: #380505 !important;
+      animation: pressClick 0.15s ease-out;
+    }
+
+    @keyframes pressClick {
+      0% { transform: translateY(0); border-bottom-width: 5.5px; }
+      50% { transform: translateY(4px); border-bottom-width: 1.5px; }
+      100% { transform: translateY(0); border-bottom-width: 5.5px; }
+    }
+
+    .move-details-content {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeInSlide 0.25s ease-out;
+    }
+
+    .move-details-content.open {
+      display: flex;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-box {
+      background: #181818;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    .detail-box h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+      color: #fff;
+      font-weight: 900;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .details-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .highlight-yellow { color: #ffcc00; font-weight: bold; }
+    .highlight-green { color: #2ECC71; font-weight: bold; }
+    .highlight-red { color: #FF4D4D; font-weight: bold; }
+
+    .details-bullet-list {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .showcase-container {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .showcase-img {
+      width: 220px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid #444;
+      flex-shrink: 0;
+    }
+
+    .showcase-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin: 0;
+    }
+
+    .pro-con-btn-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .pro-btn, .con-btn {
+      padding: 6px 20px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid #555;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2b2b2b;
+      color: #ccc;
+      border-color: #444;
+      min-width: 100px;
+    }
+
+    .pro-btn.active {
+      background: linear-gradient(to bottom, #fff464, #f6ab12);
+      color: #000;
+      border: 2px solid #ffe600;
+      box-shadow: 0 0 8px rgba(255, 230, 0, 0.4);
+    }
+
+    .con-btn.active {
+      background: linear-gradient(to bottom, #d4d4d4, #888888);
+      color: #000;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .procon-box {
+      background: #151515;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .procon-category {
+      margin-bottom: 20px;
+    }
+    .procon-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .procon-category-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      border-bottom: 1px solid #333;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .procon-list {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.7;
+    }
+
+    .procon-list li {
+      margin-bottom: 8px;
+      color: #ddd;
+    }
+
+    .procon-list li strong {
+      color: #fff;
+    }
+
+    .combo-box {
+      background: #151515;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .combo-card {
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .combo-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .combo-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 6px;
+    }
+
+    .combo-sequence {
+      font-family: monospace;
+      background: #111;
+      padding: 6px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      color: #fff;
+      font-size: 1rem;
+      border: 1px solid #333;
+      margin-bottom: 8px;
+    }
+
+    .combo-desc {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .showcase-container {
+        flex-direction: column;
+      }
+      .showcase-img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔝 ヘッダー -->
+  <header>
+    <button id="back-btn" class="back-btn" style="display: none;">⬅</button>
+
+    <div class="logo">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <h1>BLOX FRUITS <span>WIKI</span></h1>
+      </a>
+    </div>
+    
+    <div class="header-controls">
+      <div class="search-container">
+        <input type="search" placeholder="Search" class="search-input">
+      </div>
+
+      <button id="lang-toggle-btn" class="lang-btn">
+        <div class="arrow-circle">
+          <span class="lang-text en">英</span>
+          <span class="lang-text ja">日</span>
+        </div>
+      </button>
+
+      <button id="member-btn" class="member-btn">
+        <img src="images/flame fruit.png" alt="Members" class="flame-icon">
+      </button>
+    </div>
+  </header>
+
+ <!-- 📄 メインコンテンツ -->
+<div class="detail-container">
+    <a href="#" onclick="history.back(); return false;" class="back-btn-detail translatable" data-en="← Back" data-ja="← 戻る">← Back</a>
+
+    <div class="detail-header">
+      <div class="detail-img-wrapper">
+        <img id="detail-img" src="" alt="" class="detail-img">
+      </div>
+      
+      <div class="detail-title-info">
+        <h1 id="detail-name">Loading...</h1>
+
+        <div class="meta-container">
+          <div class="meta-badge">
+            <span class="meta-label translatable" data-en="Type:" data-ja="タイプ:">Type:</span>
+            <span id="meta-type" class="meta-value-normal">-</span>
+          </div>
+
+          <div class="meta-badge">
+            <span class="meta-label translatable" data-en="Rarity:" data-ja="レア度:">Rarity:</span>
+            <span id="meta-rarity" class="meta-value-normal">-</span>
+          </div>
+
+          <div class="meta-badge">
+            <span class="meta-label translatable" data-en="Can M1:" data-ja="タップ技:">Can M1:</span>
+            <span id="meta-m1" class="meta-value-normal">-</span>
+          </div>
+        </div>
+
+        <div class="price-container">
+          <div class="price-item" id="price-money-box">
+            <img src="images/currency/Money.webp" alt="Money" class="currency-icon">
+            <span id="price-money">-</span>
+          </div>
+          <div class="price-item" id="price-robux-box">
+            <img src="images/currency/Robux.webp" alt="Robux" class="currency-icon">
+            <span id="price-robux">-</span>
+          </div>
+          <div class="price-item" id="price-frag-box" style="display: none;">
+            <img src="images/currency/Fragment.webp" alt="Fragment" class="currency-icon">
+            <span id="price-frag">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📄 1. 概要 (Overview) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Overview" data-ja="概要">Overview</h2>
+      <p id="detail-description">
+        Loading details...
+      </p>
+    </div>
+
+    <!-- 📄 2. 追記 (Notes) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Notes" data-ja="追記">Notes</h2>
+      <p id="detail-notes">
+        Loading notes...
+      </p>
+    </div>
+
+    <!-- 📄 3. 技一覧 (Movesets) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Movesets" data-ja="技一覧">Movesets</h2>
+      <div id="moves-container" class="moves-container"></div>
+    </div>
+
+    <!-- 📄 4. 長所と短所 (Pros & Cons) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Pros & Cons" data-ja="長所と短所">Pros & Cons</h2>
+      
+      <div class="pro-con-btn-group">
+        <button id="pros-btn" class="pro-btn active translatable" data-en="Pros" data-ja="長所" onclick="switchProConTab('pros')">
+          Pros
+        </button>
+        <button id="cons-btn" class="con-btn translatable" data-en="Cons" data-ja="短所" onclick="switchProConTab('cons')">
+          Cons
+        </button>
+      </div>
+
+      <div id="procon-box" class="procon-box"></div>
+    </div>
+
+    <!-- 📄 5. 私のお気に入りコンボ！ (My Favorite Combos!) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="My Favorite Combos!" data-ja="私のお気に入りコンボ！">My Favorite Combos!</h2>
+      <div id="combo-box" class="combo-box"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // 📖 概要・メタデータ定義
+    const itemOverviewData = {
+      "Rocket": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "None", ja: "不可" },
+          money: "5,000",
+          robux: "50"
+        },
+        description: {
+          en: "Using the Rocket fruit allows the user to fire rocket missiles that deal explosive damage. Although not exceptional, Rocket also provides a basic flight ability.<br><br>Rocket can be purchased for <img src='images/currency/Robux.webp' class='inline-currency-icon'>97 from <a href='#' class='wiki-link'>Wenlock</a>, who appears at the <a href='#' class='wiki-link'>???(Doghouse)</a> in sea2 as well as near the mansion at <a href='#' class='wiki-link'>Floating Turtle</a> in sea3. However, these methods only grant the physical fruit. Because the <a href='#' class='wiki-link'>Blox Fruit Dealer</a> sells the Permanent version for <img src='images/currency/Robux.webp' class='inline-currency-icon'>50, purchasing it from the dealer is recommended.<br><br>Rocket is the cheapest fruit in the entire game. Despite its low cost, it has surprisingly strong damage and a wide area of effect, making it effective for PvP. Thanks to its affordability, players unsure which fruit to use in PvP may find Rocket worth trying at least once.",
+          ja: "ロケットを使うと、ユーザーはロケットミサイルを発射してダメージを与えることができます。また、優秀とは言えませんがロケットは飛行能力も兼ね備えています。<br><br>ロケットは、第二世界の<a href='#' class='wiki-link'>???(ドッグハウス)</a>にいる<a href='#' class='wiki-link'>レンロック</a>からも<img src='images/currency/Robux.webp' class='inline-currency-icon'>97で手に入れることができます。第三世界は<a href='#' class='wiki-link'>浮きカメ</a>のマンション付近にレンロックが居ます。ただし、手に入れられるのはフルーツ本体であり、<a href='#' class='wiki-link'>ブロックスフルーツディーラー</a>からは<img src='images/currency/Robux.webp' class='inline-currency-icon'>50で永久版を購入できるため、こちらでの購入をお勧めします。<br><br>ロケットは、ゲーム内で最も安価なフルーツです。この低価格にもかかわらず、ロケットの攻撃力は高く、そして高価なフルーツと比べても攻撃範囲も優れています。そのため、PvPに適しています。手頃な価格なので、pvpにフルーツで迷った時一度だけでも使ってみてはいかがでしょうか？"
+        },
+        notes: {
+          en: "This fruit was previously the <a href='#' class='wiki-link'>Kilo</a> fruit, but it was changed to Rocket in <a href='#' class='wiki-link'>Update 20</a>. Kilo shared the same price as Rocket.",
+          ja: "以前このフルーツは<a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>キロ</a>フルーツでしたが<a href='#' class='wiki-link'>アップデート20(Update 20)</a>でロケットに変更されました。キロはロケットと同じ価格でした。"
+        }
+      },
+      "Spin": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "None", ja: "不可" },
+          money: "7,500",
+          robux: "75"
+        },
+        description: {
+          en: "The Spin fruit allows the user to spin their body parts like helicopter blades to attack and fly. It is a low-cost Common fruit suitable for beginners.",
+          ja: "スピンの日は、体をヘリコプターのプロペラのように回転させて攻撃したり飛行したりできる悪魔の実です。初心者向けの安価なコモンフルーツです。"
+        },
+        notes: {
+          en: "Spin received a visual rework in Update 17 Part 3.",
+          ja: "スピンはアップデート17 パート3で見た目のリワークが行われました。"
+        }
+      }
+    };
+
+    // 🥑 技データベース
+    const fruitMovesDatabase = {
+      "Rocket": {
+        z: {
+          title: { en: "Missile Fist", ja: "ミサイル・フィスト" },
+          mastery: 1,
+          cooldown: { en: "7.5 seconds", ja: "7.5秒" },
+          energy: 15,
+          instinctBreak: true,
+          instinctText: {
+            en: "If the target is hit directly or is within the explosion radius, their Instinct will be broken. It can be avoided at the edge of the blast.",
+            ja: "直撃または爆発の範囲内にいると、見聞色が破壊される。爆発の端では、回避することができる"
+          },
+          showcaseVideo: "images/videos/Rocket_Z.mp4",
+          showcaseText: {
+            en: "A small rocket is created on the user’s right arm and fired in the direction of the cursor. The rocket explodes when it hits an enemy or an obstacle, or when it reaches its maximum range, dealing damage and knockback to any target it hits.",
+            ja: "右腕に小さなロケットを作り出し、カーソルの向いている方向にロケットを発射します。ロケットは敵や障害物に当たった時、または最大射程距離に達した時に爆発し、当たった敵にダメージとノックバックを与えます。"
+          }
+        },
+        x: {
+          title: { en: "Air Strike", ja: "エア・ストライク" },
+          mastery: 20,
+          cooldown: { en: "10.5 seconds", ja: "10.5秒" },
+          energy: 25,
+          instinctBreak: true,
+          instinctText: {
+            en: "Instinct is broken if you are close to the explosion. It can be avoided if you stay near the edge of the blast.",
+            ja: "爆発に近いと見聞色が破壊されてしまう。端の方にいれば、回避ができる。"
+          },
+          showcaseVideo: "images/videos/Rocket_X.mp4",
+          showcaseText: {
+            en: "The user raises their right arm and creates five targets on the ground. Five rockets are then fired toward these targets. Each rocket explodes when it touches the ground or reaches its maximum range, dealing damage to any enemy caught in the blast.",
+            ja: "右腕を上げて、地面に5つの標的を作り出します。その後それらの標的に向けて5 発のロケットを発射します。ロケットは地面に触れるか最大射程距離に達した時爆発し、当たった敵にダメージを与えます。"
+          }
+        },
+        c: {
+          title: { en: "Rocket Crash", ja: "ロケット・クラッシュ" },
+          mastery: 50,
+          cooldown: { en: "14.25 seconds", ja: "14.25秒" },
+          energy: 35,
+          instinctBreak: true,
+          instinctText: {
+            en: "It can be avoided if you stay near the edge of the blast.",
+            ja: "端の部分なら避けることができる"
+          },
+          showcaseVideo: "images/videos/Rocket_C.mp4",
+          showcaseText: {
+            en: "The user quickly leaps into the air and then drops down to the location indicated by the cursor. Upon landing, a large area-of-effect blast is created, dealing damage to nearby enemies.",
+            ja: "素早く空中に跳び上がり、カーソルが指している場所に落下します。地面に着地すると周りに大きな範囲ダメージが与えられます。"
+          }
+        },
+        v: null,
+        f: {
+          title: { en: "Blast Off", ja: "ブラスト・オフ" },
+          mastery: 75,
+          cooldown: { en: "7.5 seconds", ja: "7.5秒" },
+          energy: 35,
+          instinctBreak: false,
+          instinctText: {
+            en: "Blast Off has no offensive capabilities.",
+            ja: "ブラスト・オフに攻撃性能はありません"
+          },
+          showcaseVideo: "images/videos/Rocket_F.mp4",
+          showcaseText: {
+            en: "The user propels themselves into the air using a rocket boost and flies forward at a slow pace.",
+            ja: "ロケットの噴射で空へ飛び立ち、ゆっくりと飛行します。"
+          }
+        }
+      },
+      "Spin": {
+        z: {
+          title: { en: "Razor Slash", ja: "レイザー・スラッシュ" },
+          mastery: 1,
+          cooldown: { en: "6 seconds", ja: "6秒" },
+          energy: 10,
+          instinctBreak: false,
+          instinctText: {
+            en: "Does not break Instinct.",
+            ja: "見聞色を破壊しません。"
+          },
+          showcaseVideo: "videos/spin_z.mp4",
+          showcaseText: {
+            en: "Spins rapidly and slashes forward dealing multiple hits.",
+            ja: "高速回転しながら前方へ斬撃を繰り出し、多段ヒットダメージを与えます。"
+          }
+        },
+        x: {
+          title: { en: "Tornado Assault", ja: "トルネード・アサルト" },
+          mastery: 25,
+          cooldown: { en: "9 seconds", ja: "9秒" },
+          energy: 20,
+          instinctBreak: true,
+          instinctText: {
+            en: "Breaks Instinct on full contact.",
+            ja: "全弾ヒットで見聞色を破壊します。"
+          },
+          showcaseVideo: "videos/spin_x.mp4",
+          showcaseText: {
+            en: "Creates a spinning tornado to pull in enemies.",
+            ja: "回転する竜巻を発生させ、周囲の敵を引き寄せて攻撃します。"
+          }
+        },
+        c: {
+          title: { en: "Spinning Bomb", ja: "スプニング・ボム" },
+          mastery: 50,
+          cooldown: { en: "12 seconds", ja: "12秒" },
+          energy: 30,
+          instinctBreak: true,
+          instinctText: {
+            en: "Breaks Instinct.",
+            ja: "見聞色を破壊します。"
+          },
+          showcaseVideo: "videos/spin_c.mp4",
+          showcaseText: {
+            en: "Charges forward spinning violently and triggers an explosion on impact.",
+            ja: "激しく回転しながら突撃し、着弾時に爆発を引き起こします。"
+          }
+        },
+        v: null,
+        f: {
+          title: { en: "Helicopter Flight", ja: "ヘリコプター・フライト" },
+          mastery: 75,
+          cooldown: { en: "5 seconds", ja: "5秒" },
+          energy: 20,
+          instinctBreak: false,
+          instinctText: {
+            en: "No offensive capability.",
+            ja: "攻撃性能はありません。"
+          },
+          showcaseVideo: "videos/spin_f.mp4",
+          showcaseText: {
+            en: "Spins like a helicopter blade to fly in the air.",
+            ja: "プロペラのように回転して空を飛行します。"
+          }
+        }
+      }
+    };
+
+    // ⚖️ 長所（Pros）と短所（Cons）データ
+    const proConDatabase = {
+      "Rocket": {
+        pros: {
+          general: {
+            en: [
+              "This fruit is always in stock, making it very easy to obtain.",
+              "This fruit is the cheapest in the game.",
+              "Low mastery requirements.",
+              "For a low‑rarity fruit, it offers surprisingly good mobility.",
+              "Across all devices, the game rarely becomes heavy or experiences noticeable lag.",
+              "Its quick movement and strong area coverage make it well‑suited for PvP.",
+              "All of its offensive moves break Instinct."
+            ],
+            ja: [
+              "このフルーツは常に在庫があるため、手に入れるのが非常に簡単です",
+              "このフルーツは、ゲーム内で最も安価なものです",
+              "必要マスタリーが低い",
+              "低レアリティのフルーツとしては、なかなか優れた移動性を持っています",
+              "すべてのデバイスの操作において、ゲームが重くなる、ラグが発生することはほとんどありません",
+              "素早い動きや範囲が優れているので、PvPには適しています",
+              "すべての攻撃技は見聞色を破壊します"
+            ]
+          },
+          z: { en: ["Fast start-up."], ja: ["技の発動が早い"] },
+          x: { en: ["Long range.", "Short stun."], ja: ["射程が長い", "低時間のスタン"] },
+          c: { en: ["Deals high area damage upon landing."], ja: ["着地時に強力な範囲ダメージを与える。"] },
+          v: null, 
+          f: { en: ["Can be used as an instant-cancel jump into the air."], ja: ["技を一瞬で終了すると空中へジャンプする技として使える"] }
+        },
+        cons: {
+          general: {
+            en: ["Overall low damage.", "Very weak in the air."],
+            ja: ["全体的に火力が低い", "空中にめっぽう弱い"]
+          },
+          z: { en: ["Slow projectile speed."], ja: ["ロケットはゆっくり飛んでいく"] },
+          x: { en: ["No hitbox on the rocket itself; only the explosion has a hitbox, making ground‑bound rockets useless in the air."], ja: ["ロケット自身に当たり判定はなく、爆発に当たり判定があるので地面に飛んでいくロケットは空中では無意味"] },
+          c: { en: ["Explosion occurs only when the rocket dives from a slight height above the ground; using the move high in the air makes the rocket drop straight down without triggering an explosion."], ja: ["地面から少し上なら爆発は発生するが、上空で使うとただ地面に急降下するだけになる"] },
+          v: null,
+          f: { en: ["Very slow movement speed."], ja: ["移動速度がとても遅い"] }
+        }
+      },
+      "Spin": {
+        pros: {
+          general: {
+            en: ["Cheap and easy to get.", "Good for early flight ability."],
+            ja: ["安価で手に入りやすい", "序盤の飛行手段として便利"]
+          },
+          z: { en: ["Fast execution."], ja: ["発動が早い"] },
+          x: { en: ["Pull-in effect."], ja: ["敵を吸い寄せる効果あり"] },
+          c: { en: ["Decent knockback."], ja: ["適度なノックバック"] },
+          v: null,
+          f: { en: ["Allows flight at low mastery."], ja: ["低い熟練度で飛行可能"] }
+        },
+        cons: {
+          general: {
+            en: ["Low overall damage.", "Short range."],
+            ja: ["全体的に威力が低い", "射程が短い"]
+          },
+          z: { en: ["Very close range."], ja: ["射程が非常に短い"] },
+          x: { en: ["Easily dodged."], ja: ["回避されやすい"] },
+          c: { en: ["Predictable path."], ja: ["軌道が読まれやすい"] },
+          v: null,
+          f: { en: ["Slow flight speed."], ja: ["飛行速度が遅い"] }
+        }
+      }
+    };
+
+    // 🔥 コンボデータベース
+    const comboDatabase = {
+      "Rocket": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>, Rocket, <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>", 
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>、ロケット、<a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>" 
+          },
+          sequence: {
+            en: "RocketC → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>C → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>X → RocketX → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>Z → RocketZ",
+            ja: "ロケットC → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>X → ロケットX → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z → ロケットZ" 
+          },
+          desc: {
+            en: "Can catch enemies with Rocket C and extend into a high‑damage combo; very easy to use on the ground",
+            ja: "ロケットCで敵を捕まえて即死コンボに繋げます。地上ならとても使いやすい構成です"
+          }
+        }
+      ],
+      "Spin": [
+        {
+          name: { en: "Spin Basic Combo", ja: "スピン 基本コンボ" },
+          sequence: {
+            en: "Z → X → C",
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>X → スピンZ → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z → スピンC → スピンX"
+          },
+          desc: {
+            en: "Stun with Z, pull them in with X, and finish with C.",
+            ja: "Zで近接ヒットさせ、Xで吸い寄せてCでフィニッシュします。"
+          }
+        }
+      ]
+    };
+
+    const itemTranslations = {
+      "Rocket": { en: "Rocket", ja: "ロケット" },
+      "Spin": { en: "Spin", ja: "スピン" },
+      "Cursed_Dual_Katana": { en: "Cursed Dual Katana", ja: "おでん二刀流" },
+      "Godhuman": { en: "Godhuman", ja: "ゴッドヒューマン" }
+    };
+
+    let currentProConMode = 'pros';
+
+    function getItemFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        name: params.get('name') || '',
+        type: params.get('type') || 'fruit'
+      };
+    }
+
+    function switchProConTab(type) {
+      currentProConMode = type;
+      const prosBtn = document.getElementById('pros-btn');
+      const consBtn = document.getElementById('cons-btn');
+      if (prosBtn) prosBtn.classList.toggle('active', type === 'pros');
+      if (consBtn) consBtn.classList.toggle('active', type === 'cons');
+
+      const lang = localStorage.getItem('selectedLang') || 'en';
+      const itemInfo = getItemFromUrl();
+
+      renderProConSection(itemInfo.name, lang, currentProConMode);
+    }
+
+    function renderProConSection(itemName, lang, mode) {
+      const container = document.getElementById('procon-box');
+      if (!container) return;
+
+      const data = proConDatabase[itemName];
+      if (!data || !data[mode]) {
+        container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
+        return;
+      }
+
+      const currentData = data[mode];
+      const categories = [
+        { key: 'general', title: { en: 'General', ja: '全般' } },
+        { key: 'z', title: { en: 'Z Move', ja: 'Z 技' } },
+        { key: 'x', title: { en: 'X Move', ja: 'X 技' } },
+        { key: 'c', title: { en: 'C Move', ja: 'C 技' } },
+        { key: 'v', title: { en: 'V Move', ja: 'V 技' } },
+        { key: 'f', title: { en: 'F Move', ja: 'F 技' } }
+      ];
+
+      let html = '';
+
+      categories.forEach(cat => {
+        const titleText = cat.title[lang] || cat.title['en'];
+        const items = currentData[cat.key];
+
+        html += `<div class="procon-category">`;
+        html += `<div class="procon-category-title">${titleText}</div>`;
+
+        if (items && items[lang] && items[lang].length > 0) {
+          html += `<ul class="procon-list">`;
+          items[lang].forEach(item => {
+            html += `<li>${item}</li>`;
+          });
+          html += `</ul>`;
+        } else {
+          html += `<p style="color: #777; margin: 4px 0 0 10px;">-</p>`;
+        }
+
+        html += `</div>`;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function renderCombos(itemName, lang) {
+      const container = document.getElementById('combo-box');
+      if (!container) return;
+
+      const combos = comboDatabase[itemName];
+      if (!combos || combos.length === 0) {
+        container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '登録されているコンボはありません' : 'No combos registered'}</p>`;
+        return;
+      }
+
+      let html = '';
+      combos.forEach(c => {
+        const title = c.name[lang] || c.name['en'];
+        const desc = c.desc[lang] || c.desc['en'];
+        
+        const seqText = (typeof c.sequence === 'object')
+          ? (c.sequence[lang] || c.sequence['en'])
+          : c.sequence;
+
+        html += `
+          <div class="combo-card">
+            <div class="combo-title">${title}</div>
+            <div class="combo-sequence">${seqText}</div>
+            <p class="combo-desc">${desc}</p>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function toggleMoveDetails(btn) {
+      const wrapper = btn.closest('.move-wrapper');
+      const detailsContent = wrapper.querySelector('.move-details-content');
+      const isOpen = detailsContent.classList.contains('open');
+      const currentLang = localStorage.getItem('selectedLang') || 'en';
+
+      if (isOpen) {
+        detailsContent.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('data-en', 'View');
+        btn.setAttribute('data-ja', '詳細');
+        btn.textContent = currentLang === 'ja' ? '詳細' : 'View';
+      } else {
+        detailsContent.classList.add('open');
+        btn.classList.add('active');
+        btn.setAttribute('data-en', 'Close');
+        btn.setAttribute('data-ja', '閉じる');
+        btn.textContent = currentLang === 'ja' ? '閉じる' : 'Close';
+      }
+    }
+
+    // 🎬 スタイル調整＆読み込みエラー対策を施した renderMovesets
+    function renderMovesets(itemName, lang) {
+      const container = document.getElementById('moves-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const itemData = fruitMovesDatabase[itemName];
+
+      if (!itemData) {
+        container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '技データが登録されていません' : 'No moves registered'}</p>`;
+        return;
+      }
+
+      const keys = ['z', 'x', 'c', 'v', 'f'];
+
+      const labels = {
+        cooldown: lang === 'ja' ? 'クールダウン' : 'Cooldown',
+        energy: lang === 'ja' ? 'エネルギー' : 'Energy',
+        breaksInstinct: lang === 'ja' ? '見聞色破壊' : 'Breaks enemy Instinct',
+        instinctLabel: lang === 'ja' ? '見聞色' : 'Breaks Instinct',
+        detailsTitle: lang === 'ja' ? '詳細' : 'Details',
+        showcaseTitle: lang === 'ja' ? '技のお披露目' : 'Showcase'
+      };
+
+      keys.forEach(key => {
+        const move = itemData[key];
+        const keyUpper = key.toUpperCase();
+        const moveWrapper = document.createElement('div');
+        moveWrapper.className = 'move-wrapper';
+
+        if (move) {
+          const title = (move.title && move.title[lang]) ? move.title[lang] : (move.title ? move.title['en'] : keyUpper);
+          const masteryText = lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`;
+          const viewBtnText = lang === 'ja' ? '詳細' : 'View';
+          const cooldownVal = (typeof move.cooldown === 'object') ? (move.cooldown[lang] || move.cooldown['en']) : (move.cooldown || '-');
+          const showcaseDesc = move.showcaseText ? (move.showcaseText[lang] || move.showcaseText['en']) : '';
+          const instinctText = move.instinctText ? (move.instinctText[lang] || move.instinctText['en']) : '';
+          const videoSrc = move.showcaseVideo || '';
+
+          moveWrapper.innerHTML = `
+            <div class="move-card">
+              <div class="move-left">
+                <div class="move-key">${keyUpper}</div>
+                <div class="move-info">
+                  <div class="move-title">${title}</div>
+                  <div class="move-mastery">${masteryText}</div>
+                </div>
+              </div>
+              <button class="move-view-btn" data-en="View" data-ja="詳細" onclick="toggleMoveDetails(this)">${viewBtnText}</button>
+            </div>
+
+            <div class="move-details-content">
+              <div class="detail-box">
+                <h3>${labels.detailsTitle}</h3>
+                <div class="details-info-list">
+                  <div>${labels.cooldown}: ${cooldownVal}</div>
+                  <div><span class="highlight-yellow">${labels.energy}:</span> ${move.energy || '-'}</div>
+                  ${move.instinctBreak !== undefined ? `
+                    <div><span class="highlight-yellow">${labels.breaksInstinct}:</span> 
+                      <span class="${move.instinctBreak ? 'highlight-green' : 'highlight-red'}">${move.instinctBreak ? '✔' : '✖'}</span>
+                    </div>` : ''}
+                  ${instinctText ? `
+                    <ul class="details-bullet-list">
+                      <li><span class="highlight-yellow">${labels.instinctLabel}:</span> ${instinctText}</li>
+                    </ul>` : ''}
+                </div>
+              </div>
+
+              <div class="detail-box">
+                <h3>${labels.showcaseTitle}</h3>
+                <div class="showcase-container" style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap;">
+                  <video src="${videoSrc}" autoplay loop muted playsinline class="showcase-video" 
+                         style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
+                  <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
+                    動画が見つかりません
+                  </div>
+                  <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0;">${showcaseDesc}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          const noneTitle = lang === 'ja' ? 'なし' : 'None';
+          
+          moveWrapper.innerHTML = `
+            <div class="move-card" style="opacity: 0.6;">
+              <div class="move-left">
+                <div class="move-key" style="color: #888;">${keyUpper}</div>
+                <div class="move-info">
+                  <div class="move-title" style="color: #aaa;">${noneTitle}</div>
+                  <div class="move-mastery" style="color: #666;">-</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        container.appendChild(moveWrapper);
+      });
+    }
+
+    // 🌟 タイトル・概要更新処理
+    function updateItemDetails(lang) {
+      const itemInfo = getItemFromUrl();
+      const itemName = itemInfo.name;
+      const itemType = itemInfo.type;
+
+      // 1. タイトルの設定
+      const nameEl = document.getElementById('detail-name');
+      if (nameEl) {
+        if (itemTranslations[itemName] && itemTranslations[itemName][lang]) {
+          nameEl.textContent = itemTranslations[itemName][lang];
+        } else if (itemName) {
+          nameEl.textContent = itemName.replace(/_/g, ' ');
+        } else {
+          nameEl.textContent = 'Unknown';
+        }
+      }
+
+      // 2. メタ情報と説明テキストの処理
+      const data = itemOverviewData[itemName];
+      
+      const metaTypeEl = document.getElementById('meta-type');
+      const metaRarityEl = document.getElementById('meta-rarity');
+      const metaM1El = document.getElementById('meta-m1');
+      const priceMoneyEl = document.getElementById('price-money');
+      const priceRobuxEl = document.getElementById('price-robux');
+      const descEl = document.getElementById('detail-description');
+      const notesEl = document.getElementById('detail-notes');
+
+      if (data && data.meta) {
+        if (metaTypeEl) metaTypeEl.textContent = (data.meta.type && data.meta.type[lang]) ? data.meta.type[lang] : (data.meta.type ? data.meta.type['en'] : '-');
+        if (metaRarityEl) metaRarityEl.textContent = (data.meta.rarity && data.meta.rarity[lang]) ? data.meta.rarity[lang] : (data.meta.rarity ? data.meta.rarity['en'] : '-');
+        if (metaM1El) metaM1El.textContent = (data.meta.m1 && data.meta.m1[lang]) ? data.meta.m1[lang] : (data.meta.m1 ? data.meta.m1['en'] : '-');
+        if (priceMoneyEl) priceMoneyEl.textContent = data.meta.money || '-';
+        if (priceRobuxEl) priceRobuxEl.textContent = data.meta.robux || '-';
+
+        if (descEl) descEl.innerHTML = (data.description && data.description[lang]) ? data.description[lang] : (data.description ? data.description['en'] : '-');
+        if (notesEl) notesEl.innerHTML = (data.notes && data.notes[lang]) ? data.notes[lang] : (data.notes ? data.notes['en'] : '-');
+      } else {
+        if (metaTypeEl) metaTypeEl.textContent = itemType ? itemType.toUpperCase() : '-';
+        if (metaRarityEl) metaRarityEl.textContent = '-';
+        if (metaM1El) metaM1El.textContent = '-';
+        if (priceMoneyEl) priceMoneyEl.textContent = '-';
+        if (priceRobuxEl) priceRobuxEl.textContent = '-';
+
+        if (descEl) descEl.innerHTML = lang === 'ja' ? '詳細情報は準備中です。' : 'Details coming soon.';
+        if (notesEl) notesEl.innerHTML = '-';
+      }
+
+      // 3. 画像参照先の設定
+      const imgEl = document.getElementById('detail-img');
+      if (imgEl && itemName) {
+        let folder = 'fruits';
+        let suffix = '_Fruit.webp';
+
+        if (itemType === 'style') { folder = 'styles'; suffix = '.webp'; }
+        else if (itemType === 'sword') { folder = 'swords'; suffix = '.webp'; }
+        else if (itemType === 'gun') { folder = 'guns'; suffix = '.webp'; }
+        else if (itemType === 'gear') { folder = 'gears'; suffix = '.webp'; }
+        else if (itemType === 'rod') { folder = 'rods'; suffix = '.webp'; }
+
+        imgEl.src = `images/${folder}/${itemName}${suffix}`;
+        imgEl.onerror = () => {
+          if (imgEl.src.endsWith('.webp')) {
+            imgEl.src = imgEl.src.replace('.webp', '.png');
+          } else {
+            imgEl.src = 'images/ItemPlaceHolder.webp';
+          }
+        };
+      }
+    }
+
+    function updateDetailPageLanguage(lang) {
+      localStorage.setItem('selectedLang', lang);
+
+      const translatableElements = document.querySelectorAll('.translatable');
+      translatableElements.forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) {
+          el.innerHTML = text;
+        }
+      });
+
+      updateItemDetails(lang);
+
+      const itemInfo = getItemFromUrl();
+      renderMovesets(itemInfo.name, lang);
+      renderProConSection(itemInfo.name, lang, currentProConMode);
+      renderCombos(itemInfo.name, lang);
+    }
+
+    function initDetailPage() {
+      try {
+        const initialLang = localStorage.getItem('selectedLang') || 'en';
+
+        window.applyLanguage = function(lang) {
+          updateDetailPageLanguage(lang);
+        };
+
+        updateDetailPageLanguage(initialLang);
+
+        const langBtn = document.getElementById('lang-toggle-btn');
+        if (langBtn) {
+          langBtn.onclick = (e) => {
+            e.stopPropagation();
+            const current = localStorage.getItem('selectedLang') || 'en';
+            const nextLang = current === 'en' ? 'ja' : 'en';
+            updateDetailPageLanguage(nextLang);
+          };
+        }
+      } catch (err) {
+        console.error("Detail page init error:", err);
+      }
+    }
+
+    // ⚡️ 安全な実行制御
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDetailPage);
+    } else {
+      initDetailPage();
+    }
+
+    window.addEventListener('pageshow', initDetailPage);
+  </script>
+</body>
+</html>

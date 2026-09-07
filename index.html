@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blox Fruits Guide & Clan Wiki</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+        <button id="back-btn" class="back-btn" style="display: none;">⬅</button>
+
+        <div class="logo">
+            <h1>BLOX FRUITS <span>WIKI</span></h1>
+        </div>
+        
+        <div class="header-controls">
+            <div class="search-container">
+                <input type="search" placeholder="Search" class="search-input">
+            </div>
+
+            <button id="lang-toggle-btn" class="lang-btn">
+                <div class="arrow-circle">
+                    <span class="lang-text en">英</span>
+                    <span class="lang-text ja">日</span>
+                </div>
+            </button>
+
+            <button id="member-btn" class="member-btn">
+                <img src="images/flame fruit.png" alt="Members" class="flame-icon">
+            </button>
+        </div>
+    </header>
+
+    <!-- 🌟 メニューボタンエリア -->
+    <div class="wiki-btn-container">
+        <a href="#" id="btn-fruits" class="wiki-btn active">Blox Fruits</a>
+        <a href="#" id="btn-styles" class="wiki-btn">Fighting Styles</a>
+        <a href="#" id="btn-swords" class="wiki-btn">Swords</a>
+        <a href="#" id="btn-guns" class="wiki-btn">Guns</a>
+        <a href="#" id="btn-gears" class="wiki-btn">Gears</a>
+        <a href="#" id="btn-rods" class="wiki-btn">Rods</a>
+        <a href="#" id="world-btn" class="wiki-btn">World</a>
+    </div>
+
+    <!-- 🌊 Sea選択ボタン -->
+    <div id="sea-menu-container" class="sea-menu-container" style="display: none;">
+        <a href="#" class="wiki-btn sea-btn active" data-sea="1">Sea 1</a>
+        <a href="#" class="wiki-btn sea-btn" data-sea="2">Sea 2</a>
+        <a href="#" class="wiki-btn sea-btn" data-sea="3">Sea 3</a>
+    </div>
+
+    <div id="main-content-wrapper">
+        <section class="hero">
+            <div class="hero-text">
+                <h2 class="translatable" data-ja="身内専用！ブロフル攻略メモ" data-en="Private! Blox Fruits Guide Memo">Private! Blox Fruits Guide Memo</h2>
+                <p class="translatable" data-ja="みんなのレベル管理や、余っている悪魔の実のトレード、レイド攻略用のWikiです。" data-en="A private Wiki for level management, fruit trading, and raid guides.">A private Wiki for level management, fruit trading, and raid guides.</p>
+            </div>
+        </section>
+
+        <section id="update-news" class="section-container">
+            <h2 class="translatable section-title" data-ja="📢 最新の大型アップデート,リワーク情報" data-en="📢 Latest Major Update & Rework Info">📢 Latest Major Update & Rework Info</h2>
+            
+            <div class="update-panel">
+                <div class="update-img-box">
+                    <img src="images/fruits/rocket_Fruit.webp" alt="Update Image" class="update-img">
+                </div>
+                <div class="update-info-box">
+                    <h3 class="translatable" data-ja="サンプルwikiがついに配信！" data-en="The sample wiki has finally been released!">Update 21 (Sample) is finally here!</h3>
+                    <p class="translatable" data-ja="ロケットのページを作成中！" data-en="I'm currently working on the Rocket page!">The new '21st Sea' is live! New fruits and level cap increase are here. Let's gather materials and prepare for the new raid!</p>
+                    <span class="translatable update-date" data-ja="配信日: 2026/09/2" data-en="Release Date: 2026/09/2">Release Date: 2026/07/15</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🍍⚔️🔫⚙️🎣🏝️ リスト表示セクション -->
+        <section id="list-section" class="section-container">
+            <div id="wiki-title-bar" class="wiki-title-bar">Blox Fruit List</div>
+            <div id="style-grid" class="fruit-grid" style="display: none;"></div>
+            <div id="fruit-grid" class="fruit-grid"></div>
+            <div id="sword-grid" class="fruit-grid" style="display: none;"></div>
+            <div id="gun-grid" class="fruit-grid" style="display: none;"></div>
+            <div id="gear-grid" class="fruit-grid" style="display: none;"></div>
+            <div id="rod-grid" class="fruit-grid" style="display: none;"></div>
+            <div id="island-grid" class="fruit-grid" style="display: none;"></div> <!-- 👈 🏝️ 島用グリッドを追加！ -->
+        </section>
+
+    </div> 
+    
+    <div id="member-content-wrapper" style="display: none;">
+        <section class="section-container">
+            <h2 class="translatable section-title" data-ja="👤 マイプロフィール" data-en="👤 My Profile">👤 My Profile</h2>
+            
+            <div class="card-grid">
+                <div class="fruit-card">
+                    <div class="card-badge">Captain</div>
+                    <h3 class="translatable" data-ja="あなたのプレイヤー名" data-en="Your Name">Your Name</h3>
+                    <p class="translatable description" data-ja="【レベル】2550 (MAX)<br>【愛用の武器】おでん二刀流 (Cursed Dual Katana)<br>【メッセージ】よろしく！気軽にレイド誘ってね！" data-en="[Level] 2550 (MAX)<br>[Fav Sword] Cursed Dual Katana<br>[Message] Nice to meet you! Feel free to invite me to raids!">【レベル】2550 (MAX)<br>【愛用の武器】おでん二刀流 (Cursed Dual Katana)<br>【メッセージ】よろしく！気軽にレイド誘ってね！</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Created by VS Code Crew</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

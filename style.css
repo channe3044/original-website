@@ -1,0 +1,749 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Impact', 'Arial Black', 'Segoe UI', sans-serif; /* ブロフルっぽい太めポップなフォントに対応 */
+  background-color: #12131a; /* ダークな背景 */
+  color: #f1f1f1;
+  scroll-behavior: smooth; /* スムーズスクロール */
+}
+
+/* ─── ヘッダー ─── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #1a1c24;
+  border-bottom: 3px solid #ffaa00; /* ブロフルっぽいイエローゴールド */
+  position: relative;
+}
+
+/* ⬅ 戻るボタンのスタイル */
+.back-btn {
+  background: none;
+  border: none;
+  color: #ffaa00;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 15px;
+  transition: transform 0.1s ease, color 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.back-btn:active {
+  transform: scale(0.9);
+}
+
+.logo h1 {
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.logo h1 span {
+  color: #ffaa00;
+}
+
+/* 🔍 コントロールエリア（ボタンと検索窓を横に並べる） */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* ボタンと入力欄の間のスキマ */
+}
+
+/* 🌟 日/英 切り替え立体ボタン */
+.lang-btn {
+  display: inline-block;
+  /* 画像の鮮やかな光沢グラデーションを再現 */
+  background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+  border: 2px solid #4d3202; /* 濃いブラウンの太めフチ */
+  border-bottom: 5px solid #362201; /* 押し出し立体感の深いシャドウ */
+  border-radius: 6px;        
+  padding: 6px;              
+  cursor: pointer;
+  transition: all 0.1s ease;
+  width: 54px;               
+  height: 54px;
+  position: relative;
+}
+
+.lang-btn:hover {
+  filter: brightness(1.1); /* ホバーした時に少し明るく */
+}
+
+.lang-btn:active {
+  border-bottom-width: 1px;  
+  transform: translateY(4px); /* 押し込まれる動きを強化 */
+}
+
+/* 🔄 ぐるっと丸い矢印の土台 */
+.arrow-circle {
+  width: 38px;
+  height: 38px;
+  border: 2.5px solid #000;         /* 黒い矢印の丸線 */
+  border-radius: 50%;             
+  border-top-color: transparent;  
+  border-bottom-color: transparent;
+  position: relative;
+  margin: 0 auto;
+  transform: rotate(-15deg);      
+}
+
+.arrow-circle::before,
+.arrow-circle::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* 左上の矢印の先端 */
+.arrow-circle::before {
+  border-width: 5px 4px 0 4px; 
+  border-color: #000 transparent transparent transparent;
+  top: 1px;
+  left: 2px;
+  transform: rotate(-30deg);
+}
+
+/* 右下の矢印の先端 */
+.arrow-circle::after {
+  border-width: 0 4px 5px 4px; 
+  border-color: transparent transparent #000 transparent;
+  bottom: 1px;
+  right: 2px;
+  transform: rotate(-30deg);
+}
+
+/* 🔤 「英」と「日」の文字の配置 */
+.lang-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+}
+
+/* 左上の「英」 */
+.lang-text.en {
+  top: 6px;
+  left: 6px;
+}
+
+/* 右下の「日」 */
+.lang-text.ja {
+  bottom: 6px;
+  right: 6px;
+}
+
+/* 🌟 メラメラの実 自己紹介立体ボタン */
+.member-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+  border: 2px solid #4d3202; 
+  border-bottom: 5px solid #362201; 
+  border-radius: 6px;        
+  cursor: pointer;
+  transition: all 0.1s ease;
+  width: 54px;               
+  height: 54px;
+  padding: 2px;
+}
+
+.member-btn:hover {
+  filter: brightness(1.1);
+}
+
+.member-btn:active {
+  border-bottom-width: 1px;  
+  transform: translateY(4px); 
+}
+
+/* 🍎 メラメラの実アイコン */
+.flame-icon {
+  width: 150%;                
+  height: 150%;               
+  object-fit: contain;       
+  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); 
+}
+
+/* 🔍 Spotlight風 検索窓のスタイル */
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background-color: #1a1c24;  
+  border: 1px solid #2d303f;  
+  border-radius: 8px;        
+  padding: 8px 12px 8px 36px; 
+  color: #fff;
+  font-size: 15px;
+  width: 250px;               
+  outline: none;              
+  transition: all 0.2s ease;
+
+  /* 虫眼鏡アイコンを背景に入れる */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 10px center; 
+  background-size: 18px;            
+}
+
+.search-input::placeholder {
+  color: #8e8e93;             
+  opacity: 1;
+}
+
+.search-input:focus {
+  background-color: #232631;  
+  border-color: #ffaa00;      
+  box-shadow: 0 0 8px rgba(255, 170, 0, 0.4); 
+}
+
+/* ─── ヒーローエリア ─── */
+.hero {
+  background: linear-gradient(135deg, #1e1035, #12131a);
+  padding: 60px 40px;
+  text-align: center;
+  border-bottom: 1px solid #2d303f;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.hero p {
+  color: #aaa;
+  font-size: 16px;
+}
+
+/* ─── コンテンツセクションの共通設定 ─── */
+.section-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 25px;
+  border-left: 5px solid #ffaa00;
+  padding-left: 10px;
+}
+
+/* ─── 🌟最新アップデート情報パネル ─── */
+.update-panel {
+  display: flex !important; 
+  flex-direction: row;   
+  background-color: #1a1c24;
+  border: 1px solid #2d303f;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  width: 100%;
+}
+
+.update-img-box {
+  width: 300px;          
+  min-width: 300px;      
+  height: 200px;         
+  background-color: #2a2d3d; 
+  border-right: 1px solid #2d303f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.update-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     
+}
+
+.update-info-box {
+  flex: 1;               
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+
+.update-info-box h3 {
+  font-size: 20px;
+  color: #ffaa00;
+  margin-bottom: 10px;
+}
+
+.update-info-box p {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.update-date {
+  font-size: 12px;
+  color: #666;
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* ─── 悪魔の実カード（汎用） ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.fruit-card {
+  background-color: #1a1c24;
+  border: 1px solid #2d303f;
+  border-radius: 8px;
+  padding: 25px;
+  position: relative;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.fruit-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffaa00;
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #ff3b30;
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.card-badge.speed { background-color: #34c759; }
+.card-badge.pvp { background-color: #5856d6; }
+
+.fruit-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.fruit-card .description {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ─── フッター ─── */
+footer {
+  text-align: center;
+  padding: 40px;
+  background-color: #0b0c10;
+  color: #666;
+  font-size: 12px;
+}
+
+/* ─── 🌟公式Wiki風 黄色ボタン全体のエリア ─── */
+.wiki-btn-container, 
+.sea-menu-container,
+#sea-menu-container,
+#sea-buttons-container {
+  display: flex;
+  justify-content: center; /* ボタン全体を画面の真ん中に寄せる */
+  flex-wrap: wrap;         /* 画面が狭いときは改行する */
+  gap: 12px;              
+  padding: 20px;
+  background-color: #12131a; 
+}
+
+/* 🌊 Seaメニュー専用の隙間調整 */
+.sea-menu-container,
+#sea-menu-container {
+  padding-top: 0px; 
+  padding-bottom: 20px;
+}
+
+/* 🌟個々の黄色ボタンのスタイル（Seaボタンも共通） */
+.wiki-btn,
+.sea-btn {
+  display: inline-block;
+  text-decoration: none;  
+  /* 輝くツートン黄色グラデーション */
+  background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+  
+  /* 縁取りと立体感 */
+  border: 2.5px solid #4d3202;         
+  border-bottom: 5.5px solid #362201;  
+  border-radius: 6px;     
+
+  /* テキスト（白文字 ＋ 黒縁取り ＋ 影） */
+  color: #ffffff;            
+  font-weight: 900;      
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  padding: 8px 18px;
+  text-shadow: 
+    -2px -2px 0 #000,  
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+     2px  3px 0px #000;
+
+  cursor: pointer;
+  transition: filter 0.1s ease, transform 0.1s ease, background 0.1s ease; 
+}
+
+/* 🌊 Seaボタン専用の小ぶり調整 */
+.sea-btn {
+  font-size: 13px;
+  padding: 6px 14px;
+}
+
+.wiki-btn:hover,
+.sea-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 🔘 ボタンを押した（または選択されている：active）時：グレー化＆押し込み固定 */
+.wiki-btn:active,
+.wiki-btn.active,
+.sea-btn:active,
+.sea-btn.active {
+  background: linear-gradient(to bottom, #cfcfcf 0%, #b5b5b5 45%, #8c8c8c 50%, #757575 100%) !important;
+  border-color: #3a3a3a !important;
+  border-bottom: 1.5px solid #2b2b2b !important; /* 押し込まれてシャドウが減る */
+  transform: translateY(4px) !important;
+}
+
+/* フワッと表示させるアニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ────────────────────────────────────────────────────────
+   🍍 Blox Fruit / Sword / Island List（公式Wiki風デザイン・横5列固定）
+──────────────────────────────────────────────────────── */
+
+/* 🎗️ 黄色いタイトル枠（中央寄せ） */
+.wiki-title-bar {
+  background: #f1c40f; /* Wiki公式の鮮やかなイエロー */
+  color: #000;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;         /* 文字を中央寄せ */
+  padding: 10px 0;
+  border: 4px solid #000;     /* 太めの黒いフチ */
+  border-radius: 6px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 0px #000; /* 立体感を出す黒い影 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 🗺️ 実・刀・島カードを横5列に並べるグリッド */
+.fruit-grid,
+#island-grid,
+#islands-grid {
+  display: grid;
+  /* 💡 横にぴったり「5列（5等分）」で並ぶように固定 */
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 12px;
+  padding: 18px;
+  background-color: #333333;  /* Wiki風のダークグレー背景 */
+  border: 4px solid #000;     /* 太めの外枠 */
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+/* 📦 各アイテムのカード枠 */
+.fruit-item {
+  background-color: #5a5d64;  /* バックアップ用の標準背景 */
+  border: 3px solid #a0a0a0;  /* バックアップ用の標準枠線 */
+  border-radius: 12px;        /* 丸みのある角 */
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  height: 125px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+/* ────────────────────────────────────────────────────────
+   💎 レア度別グラデーション背景 ＆ 枠線
+──────────────────────────────────────────────────────── */
+
+/* ⚪ コモン（Common） */
+.rarity-common {
+  background: radial-gradient(circle, #7e8082 0%, #515356 100%) !important;
+  border: 3px solid #8c8d90 !important;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 🔵 アンコモン（Uncommon） */
+.rarity-uncommon {
+  background: radial-gradient(circle, #388ba8 0%, #1e5873 100%) !important;
+  border: 3px solid #3f92be !important;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 🟣 レア（Rare） */
+.rarity-rare {
+  background: radial-gradient(circle, #5b3fa3 0%, #2f1d6b 100%) !important;
+  border: 3px solid #794bb7 !important;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 💗 レジェンダリー（Legendary） */
+.rarity-legendary {
+  background: radial-gradient(circle, #b93796 0%, #76185d 100%) !important;
+  border: 3px solid #cb46ad !important;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* 🔴 ミシカル（Mythical） */
+.rarity-mythical {
+  background: radial-gradient(circle, #ba2b2b 0%, #731212 100%) !important;
+  border: 3px solid #bd1f1f !important;
+  box-shadow: 
+    inset 0 0 12px rgba(255, 255, 255, 0.3),
+    0 0 12px rgba(189, 31, 31, 0.5) !important;
+}
+
+/* 🥊 Celestial Art（黄色枠）用の設定 */
+.rarity-style-yellow {
+  border-color: #f1c40f !important;
+  background: radial-gradient(circle, rgba(241, 196, 15, 0.3) 0%, rgba(20, 20, 20, 0.8) 100%) !important;
+  box-shadow: 0 0 12px rgba(241, 196, 15, 0.4) !important;
+}
+
+/* 🖼️ 画像の入れ物 */
+.fruit-img-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 🍎 実・刀・島の画像 */
+.fruit-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* 🔤 名前ラベル */
+.fruit-name {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  pointer-events: none;
+}
+
+/* ─── 🌟 カーソルを合わせたときの光るエフェクト ─── */
+.fruit-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: #ffe552 !important;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.4), 
+    0 0 10px rgba(255, 229, 82, 0.5) !important; 
+}
+
+.fruit-item:hover .fruit-icon {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+/* 🏝️ 島カード専用の枠組み設定（背景なし・画像全画面表示） */
+.island-item {
+  position: relative;
+  height: 125px;
+  border-radius: 12px;
+  border: 3px solid #ffaa00; /* 枠線 */
+  overflow: hidden;         /* 枠からはみ出た部分をカット */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* 🖼️ 島画像（縦横比を保ったまま枠いっぱいに引き伸ばして表示） */
+.island-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* ⭐ 大きさが違っても枠いっぱいにフィット */
+  display: block;
+}
+
+/* 🔤 島名ラベル（画像の右下に重なって表示） */
+.island-item .fruit-name {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ✨ ホバーした時のエフェクト */
+.island-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: #ffe552;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 229, 82, 0.5);
+}
+
+.island-item:hover .island-img {
+  transform: scale(1.05); /* 少しズームアップ */
+  transition: transform 0.2s ease;
+}
+
+/* 📱 スマホなどの横幅が狭い画面での対策 */
+@media (max-width: 600px) {
+  .fruit-grid,
+  #island-grid,
+  #islands-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 言語切り替えボタンがON（日本語）のときのスタイル */
+#lang-toggle-btn.active,
+#lang-btn.active,
+.lang-btn.active {
+  background: linear-gradient(to bottom, #cfcfcf 0%, #999999 50%, #686868 100%) !important;
+  border-color: #333333 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  filter: none !important;
+}
+/* 📱 スマホ表示のヘッダー＆全体修正（画面幅768px以下） */
+@media (max-width: 768px) {
+
+  /* 🔝 ヘッダーを縦2段に変更 */
+  header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 10px 14px !important;
+  }
+
+  /* 1段目: ロゴと右上ボタンエリアを横並びに */
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem !important;
+    margin: 0;
+  }
+
+  /* 2段目: 検索バーや操作ボタン群 */
+  .header-controls {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .search-container {
+    flex: 1 !important; /* 検索バーを画面幅に合わせて伸ばす */
+    max-width: none !important;
+  }
+
+  .search-input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 🌟 Wikiメニューボタンの折り返し設定 */
+  .wiki-btn-container {
+    display: flex !important;
+    flex-wrap: wrap !important; /* ボタンが多くても綺麗に折り返す */
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 8px !important;
+  }
+
+  .wiki-btn {
+    font-size: 0.85rem !important;
+    padding: 6px 10px !important;
+  }
+
+  /* 📢 アップデートパネルの縦並び */
+  .update-panel {
+    flex-direction: column !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .update-img-box {
+    width: 100% !important;
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  .update-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  .update-info-box {
+    width: 100% !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 全体の横スクロール（はみ出し）防止 */
+  body, html {
+    overflow-x: hidden !important;
+  }
+}
