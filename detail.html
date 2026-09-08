@@ -457,6 +457,38 @@
       margin: 0;
       line-height: 1.5;
     }
+.quote-box {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+.quote-text-en {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-align: center;
+  margin: 10px 0 20px 0;
+  line-height: 1.5;
+}
+
+.quote-label-wrapper {
+  text-align: right;
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.highlight-yellow {
+  color: #ffcc00;
+}
 
     @media (max-width: 600px) {
       .showcase-container {
@@ -499,8 +531,8 @@
     </div>
   </header>
 
- <!-- 📄 メインコンテンツ -->
-<div class="detail-container">
+<!-- 📄 メインコンテンツ -->
+  <div class="detail-container">
     <a href="#" onclick="history.back(); return false;" class="back-btn-detail translatable" data-en="← Back" data-ja="← 戻る">← Back</a>
 
     <div class="detail-header">
@@ -545,6 +577,18 @@
       </div>
     </div>
 
+ <!-- 📄 店頭での公式説明 (引用ボックス) -->
+    <div class="detail-section" id="ingame-desc-section" style="display: none;">
+      <div class="quote-box">
+        <p class="quote-text-en" id="ingame-desc"></p>
+        <div class="quote-label-wrapper translatable" 
+             data-en='In-game Description' 
+             data-ja='ゲーム内説明'>
+          Description in the <span class="highlight-yellow">shop</span>
+        </div>
+      </div>
+    </div>
+
     <!-- 📄 1. 概要 (Overview) -->
     <div class="detail-section">
       <h2 class="translatable" data-en="Overview" data-ja="概要">Overview</h2>
@@ -553,21 +597,13 @@
       </p>
     </div>
 
-    <!-- 📄 2. 追記 (Notes) -->
-    <div class="detail-section">
-      <h2 class="translatable" data-en="Notes" data-ja="追記">Notes</h2>
-      <p id="detail-notes">
-        Loading notes...
-      </p>
-    </div>
-
-    <!-- 📄 3. 技一覧 (Movesets) -->
+    <!-- 📄 2. 技一覧 (Movesets) -->
     <div class="detail-section">
       <h2 class="translatable" data-en="Movesets" data-ja="技一覧">Movesets</h2>
       <div id="moves-container" class="moves-container"></div>
     </div>
 
-    <!-- 📄 4. 長所と短所 (Pros & Cons) -->
+    <!-- 📄 3. 長所と短所 (Pros & Cons) -->
     <div class="detail-section">
       <h2 class="translatable" data-en="Pros & Cons" data-ja="長所と短所">Pros & Cons</h2>
       
@@ -583,19 +619,38 @@
       <div id="procon-box" class="procon-box"></div>
     </div>
 
-    <!-- 📄 5. 私のお気に入りコンボ！ (My Favorite Combos!) -->
+    <!-- 📄 4. 変更履歴 (Change History) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Change History" data-ja="変更履歴">Change History</h2>
+      <p id="detail-history">
+        Loading history...
+      </p>
+    </div>
+
+    <!-- 📄 5. 追記 (Notes) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Notes" data-ja="追記">Notes</h2>
+      <p id="detail-notes">
+        Loading notes...
+      </p>
+    </div>
+
+    <!-- 📄 6. 私のお気に入りコンボ！ (My Favorite Combos!) -->
     <div class="detail-section">
       <h2 class="translatable" data-en="My Favorite Combos!" data-ja="私のお気に入りコンボ！">My Favorite Combos!</h2>
       <div id="combo-box" class="combo-box"></div>
     </div>
 
-  </div>
-
   <script src="script.js"></script>
   <script>
     // 📖 概要・メタデータ定義
     const itemOverviewData = {
+      //ロケット
       "Rocket": {
+        ingameDesc: {
+          en: "Grants explosive movement abilities, allowing quick travel and attacks.",
+          ja: "爆発的な移動能力を付与し、素早い移動と攻撃を可能にする。"
+        },
         meta: {
           type: { en: "Natural", ja: "通常系" },
           rarity: { en: "Common", ja: "コモン" },
@@ -607,12 +662,21 @@
           en: "Using the Rocket fruit allows the user to fire rocket missiles that deal explosive damage. Although not exceptional, Rocket also provides a basic flight ability.<br><br>Rocket can be purchased for <img src='images/currency/Robux.webp' class='inline-currency-icon'>97 from <a href='#' class='wiki-link'>Wenlock</a>, who appears at the <a href='#' class='wiki-link'>???(Doghouse)</a> in sea2 as well as near the mansion at <a href='#' class='wiki-link'>Floating Turtle</a> in sea3. However, these methods only grant the physical fruit. Because the <a href='#' class='wiki-link'>Blox Fruit Dealer</a> sells the Permanent version for <img src='images/currency/Robux.webp' class='inline-currency-icon'>50, purchasing it from the dealer is recommended.<br><br>Rocket is the cheapest fruit in the entire game. Despite its low cost, it has surprisingly strong damage and a wide area of effect, making it effective for PvP. Thanks to its affordability, players unsure which fruit to use in PvP may find Rocket worth trying at least once.",
           ja: "ロケットを使うと、ユーザーはロケットミサイルを発射してダメージを与えることができます。また、優秀とは言えませんがロケットは飛行能力も兼ね備えています。<br><br>ロケットは、第二世界の<a href='#' class='wiki-link'>???(ドッグハウス)</a>にいる<a href='#' class='wiki-link'>レンロック</a>からも<img src='images/currency/Robux.webp' class='inline-currency-icon'>97で手に入れることができます。第三世界は<a href='#' class='wiki-link'>浮きカメ</a>のマンション付近にレンロックが居ます。ただし、手に入れられるのはフルーツ本体であり、<a href='#' class='wiki-link'>ブロックスフルーツディーラー</a>からは<img src='images/currency/Robux.webp' class='inline-currency-icon'>50で永久版を購入できるため、こちらでの購入をお勧めします。<br><br>ロケットは、ゲーム内で最も安価なフルーツです。この低価格にもかかわらず、ロケットの攻撃力は高く、そして高価なフルーツと比べても攻撃範囲も優れています。そのため、PvPに適しています。手頃な価格なので、pvpにフルーツで迷った時一度だけでも使ってみてはいかがでしょうか？"
         },
+        history: {
+          en: "It was implemented in <a href='#' class='wiki-link'>Update 20</a>, replacing the <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> fruit. <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> had the same price as Rocket.",
+          ja: "<a href='#' class='wiki-link'>アップデート20</a>で<a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>キロ</a>フルーツがロケットに置き換わる形で実装されました。キロはロケットと同じ価格でした。"
+        },
         notes: {
-          en: "This fruit was previously the <a href='#' class='wiki-link'>Kilo</a> fruit, but it was changed to Rocket in <a href='#' class='wiki-link'>Update 20</a>. Kilo shared the same price as Rocket.",
-          ja: "以前このフルーツは<a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>キロ</a>フルーツでしたが<a href='#' class='wiki-link'>アップデート20(Update 20)</a>でロケットに変更されました。キロはロケットと同じ価格でした。"
+          en: "The range and AOE of Rocket C are very wide, making it extremely easy to use in PvP. Honestly, I found the Kilo Fruit more fun and liked it better.",
+          ja: "ロケットCの射程と範囲がかなり広くpvpでとても使いやすいです。正直キロフルーツの方が楽しくて好きでした。"
         }
       },
+      //スピン
       "Spin": {
+        ingameDesc: {
+          en: "Provides spinning attacks which will injure enemies with razor sharp wind slashes.",
+          ja: "回転攻撃を繰り出し、鋭い風の刃で敵にダメージを与える。"
+        },
         meta: {
           type: { en: "Natural", ja: "通常系" },
           rarity: { en: "Common", ja: "コモン" },
@@ -621,8 +685,12 @@
           robux: "75"
         },
         description: {
-          en: "The Spin fruit allows the user to spin their body parts like helicopter blades to attack and fly. It is a low-cost Common fruit suitable for beginners.",
-          ja: "スピンの日は、体をヘリコプターのプロペラのように回転させて攻撃したり飛行したりできる悪魔の実です。初心者向けの安価なコモンフルーツです。"
+          en: "Using Spin allows rapid rotation, creating intense air movement that deals damage.<br><br>Spin is the second cheapest fruit in the game and is considered one of the weakest by players.<br><br>This fruit has only three offensive moves, with just one offering ranged capability. As a result, other fruits like Rocket or Smoke perform far better for both leveling and PvP.",
+          ja: "スピンを使うと素早く回転することができ、その動きによって空気が激しく動き、ダメージを与えることができる。<br><br>スピンは、このゲーム内で2 番目に安価なフルーツです。また、プレイヤーたちの間では、最も弱いフルーツの一つと見なされています。<br><br>このフルーツには、攻撃手段が3つしかありません。そのうち、遠距離攻撃が可能なのは1つだけでなので、ロケットやスモークといった他のフルーツの方が、レベル上げやPvPの両方の面ではるかに優れています。"
+        },
+         history: {
+          en: "It was implemented in <a href='#' class='wiki-link'>Update 20</a>, replacing the <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> fruit. <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> had the same price as Rocket.",
+          ja: "<a href='#' class='wiki-link'>アップデート20</a>で<a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>キロ</a>フルーツがロケットに置き換わる形で実装されました。キロはロケットと同じ価格でした。"
         },
         notes: {
           en: "Spin received a visual rework in Update 17 Part 3.",
@@ -635,14 +703,14 @@
     const fruitMovesDatabase = {
       "Rocket": {
         z: {
-          title: { en: "Missile Fist", ja: "ミサイル・フィスト" },
+          title: { en: "Missile Fist", ja: "ミサイルフィスト" },
           mastery: 1,
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 15,
           instinctBreak: true,
           instinctText: {
             en: "If the target is hit directly or is within the explosion radius, their Instinct will be broken. It can be avoided at the edge of the blast.",
-            ja: "直撃または爆発の範囲内にいると、見聞色が破壊される。爆発の端では、回避することができる"
+            ja: "直撃または爆発の範囲内にいると、見聞色が破壊されます。爆発の端では、回避することがでます。"
           },
           showcaseVideo: "images/videos/Rocket_Z.mp4",
           showcaseText: {
@@ -651,14 +719,14 @@
           }
         },
         x: {
-          title: { en: "Air Strike", ja: "エア・ストライク" },
+          title: { en: "Air Strike", ja: "エアストライク" },
           mastery: 20,
           cooldown: { en: "10.5 seconds", ja: "10.5秒" },
           energy: 25,
           instinctBreak: true,
           instinctText: {
             en: "Instinct is broken if you are close to the explosion. It can be avoided if you stay near the edge of the blast.",
-            ja: "爆発に近いと見聞色が破壊されてしまう。端の方にいれば、回避ができる。"
+            ja: "爆発に近いと見聞色が破壊されてしまう。端の方にいれば回避できます。"
           },
           showcaseVideo: "images/videos/Rocket_X.mp4",
           showcaseText: {
@@ -667,7 +735,7 @@
           }
         },
         c: {
-          title: { en: "Rocket Crash", ja: "ロケット・クラッシュ" },
+          title: { en: "Rocket Crash", ja: "ロケットクラッシュ" },
           mastery: 50,
           cooldown: { en: "14.25 seconds", ja: "14.25秒" },
           energy: 35,
@@ -684,14 +752,14 @@
         },
         v: null,
         f: {
-          title: { en: "Blast Off", ja: "ブラスト・オフ" },
+          title: { en: "Blast Off", ja: "ブラストオフ" },
           mastery: 75,
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 35,
           instinctBreak: false,
           instinctText: {
-            en: "Blast Off has no offensive capabilities.",
-            ja: "ブラスト・オフに攻撃性能はありません"
+            en: "No offensive capability.",
+            ja: "攻撃性能はありません"
           },
           showcaseVideo: "images/videos/Rocket_F.mp4",
           showcaseText: {
@@ -702,68 +770,68 @@
       },
       "Spin": {
         z: {
-          title: { en: "Razor Slash", ja: "レイザー・スラッシュ" },
+          title: { en: "Razor Wind", ja: "レイザーウィンド" },
           mastery: 1,
-          cooldown: { en: "6 seconds", ja: "6秒" },
-          energy: 10,
-          instinctBreak: false,
+          cooldown: { en: "7.5 seconds", ja: "7.5秒" },
+          energy: 15,
+          instinctBreak: true,
           instinctText: {
-            en: "Does not break Instinct.",
-            ja: "見聞色を破壊しません。"
+            en: "Can be dodged on the edge.",
+            ja: "端の部分なら避けることができます。"
           },
-          showcaseVideo: "videos/spin_z.mp4",
+          showcaseVideo: "images/videos/Spin_Z.mp4",
           showcaseText: {
-            en: "Spins rapidly and slashes forward dealing multiple hits.",
-            ja: "高速回転しながら前方へ斬撃を繰り出し、多段ヒットダメージを与えます。"
+            en: "Unleashes continuous wind slashes forward by rapidly spinning both arms, dealing multi-hit damage. Stuns the target until the skill ends or the button is released.",
+            ja: "両腕を高速回転しながら前方へ斬撃を繰り出し、多段ヒットダメージを与えます。技が終了するか長押しをやめるまで相手をスタンさせます。"
           }
         },
         x: {
-          title: { en: "Tornado Assault", ja: "トルネード・アサルト" },
-          mastery: 25,
-          cooldown: { en: "9 seconds", ja: "9秒" },
-          energy: 20,
+          title: { en: "Tornado Assault", ja: "トルネードアサルト" },
+          mastery: 50,
+          cooldown: { en: "11 seconds", ja: "11秒" },
+          energy: 25,
           instinctBreak: true,
           instinctText: {
-            en: "Breaks Instinct on full contact.",
-            ja: "全弾ヒットで見聞色を破壊します。"
+            en: "can be dodged on the edge.",
+            ja: "端の部分なら避けることができます。"
           },
-          showcaseVideo: "videos/spin_x.mp4",
+          showcaseVideo: "images/videos/Spin_X.mp4",
           showcaseText: {
-            en: "Creates a spinning tornado to pull in enemies.",
-            ja: "回転する竜巻を発生させ、周囲の敵を引き寄せて攻撃します。"
+            en: "Summons a spinning tornado toward the cursor, slicing through all enemies in its path.",
+            ja: "カーソルに向かって回転する竜巻を発生させ、その進路上にいるすべての敵を切り裂いていきます。"
           }
         },
         c: {
-          title: { en: "Spinning Bomb", ja: "スプニング・ボム" },
-          mastery: 50,
-          cooldown: { en: "12 seconds", ja: "12秒" },
-          energy: 30,
+          title: { en: "Air Slasher", ja: "エアスラッシャー" },
+          mastery: 90,
+          cooldown: { en: "14.25 seconds", ja: "14.25秒" },
+          energy: 35,
           instinctBreak: true,
           instinctText: {
-            en: "Breaks Instinct.",
-            ja: "見聞色を破壊します。"
+            en: "Can be dodged on the edge of the explosions.",
+            ja: "爆発の端であれば回避できます。"
           },
-          showcaseVideo: "videos/spin_c.mp4",
+          showcaseVideo: "images/videos/Spin_C.mp4",
           showcaseText: {
-            en: "Charges forward spinning violently and triggers an explosion on impact.",
-            ja: "激しく回転しながら突撃し、着弾時に爆発を引き起こします。"
+            en: "Rapidly spins to launch a barrage of sharp air slashes, triggering an explosion on impact that deals slight knockback to the target.",
+            ja: "激しく回転しながら鋭い空気の斬撃を連続で放ち、着弾時に爆発を引き起こして相手を少し吹き飛ばします。"
           }
         },
         v: null,
         f: {
-          title: { en: "Helicopter Flight", ja: "ヘリコプター・フライト" },
-          mastery: 75,
-          cooldown: { en: "5 seconds", ja: "5秒" },
-          energy: 20,
+          title: { en: "Helicopter Flight", ja: "ヘリコプターフライト" },
+          mastery: 25,
+          cooldown: { en: "7.5 seconds", ja: "7.5秒" },
+          energy: 50,
           instinctBreak: false,
           instinctText: {
             en: "No offensive capability.",
             ja: "攻撃性能はありません。"
           },
-          showcaseVideo: "videos/spin_f.mp4",
+          showcaseVideo: "images/videos/Spin_F.mp4",
           showcaseText: {
-            en: "Spins like a helicopter blade to fly in the air.",
-            ja: "プロペラのように回転して空を飛行します。"
+            en: "Rapidly spins their arms like a propeller to fly through the air.",
+            ja: "手を素早く回し、プロペラのように回転して空を飛行します。"
           }
         }
       }
@@ -795,7 +863,7 @@
           },
           z: { en: ["Fast start-up."], ja: ["技の発動が早い"] },
           x: { en: ["Long range.", "Short stun."], ja: ["射程が長い", "低時間のスタン"] },
-          c: { en: ["Deals high area damage upon landing."], ja: ["着地時に強力な範囲ダメージを与える。"] },
+          c: { en: ["Has a very long range.","Deals high area damage upon landing."], ja: ["射程がかなり長い", "着地時に強力な範囲ダメージを与える。"] },
           v: null, 
           f: { en: ["Can be used as an instant-cancel jump into the air."], ja: ["技を一瞬で終了すると空中へジャンプする技として使える"] }
         },
@@ -997,7 +1065,6 @@
       }
     }
 
-    // 🎬 スタイル調整＆読み込みエラー対策を施した renderMovesets
     function renderMovesets(itemName, lang) {
       const container = document.getElementById('moves-container');
       if (!container) return;
@@ -1072,7 +1139,7 @@
                          style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
                   <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
-                    動画が見つかりません
+                    ${lang === 'ja' ? '動画が見つかりません' : 'Video not found'}
                   </div>
                   <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0;">${showcaseDesc}</p>
                 </div>
@@ -1099,13 +1166,11 @@
       });
     }
 
-    // 🌟 タイトル・概要更新処理
     function updateItemDetails(lang) {
       const itemInfo = getItemFromUrl();
       const itemName = itemInfo.name;
       const itemType = itemInfo.type;
 
-      // 1. タイトルの設定
       const nameEl = document.getElementById('detail-name');
       if (nameEl) {
         if (itemTranslations[itemName] && itemTranslations[itemName][lang]) {
@@ -1116,16 +1181,26 @@
           nameEl.textContent = 'Unknown';
         }
       }
-
-      // 2. メタ情報と説明テキストの処理
+const ingameSec = document.getElementById('ingame-desc-section');
+      const ingameText = document.getElementById('ingame-desc');
       const data = itemOverviewData[itemName];
-      
+
+      if (data && data.ingameDesc && ingameSec) {
+        ingameSec.style.display = 'block';
+        if (ingameText) {
+          ingameText.textContent = (data.ingameDesc[lang]) ? data.ingameDesc[lang] : (data.ingameDesc.en || '');
+        }
+      } else if (ingameSec) {
+        ingameSec.style.display = 'none';
+      }
+
       const metaTypeEl = document.getElementById('meta-type');
       const metaRarityEl = document.getElementById('meta-rarity');
       const metaM1El = document.getElementById('meta-m1');
       const priceMoneyEl = document.getElementById('price-money');
       const priceRobuxEl = document.getElementById('price-robux');
       const descEl = document.getElementById('detail-description');
+      const historyEl = document.getElementById('detail-history');
       const notesEl = document.getElementById('detail-notes');
 
       if (data && data.meta) {
@@ -1136,6 +1211,7 @@
         if (priceRobuxEl) priceRobuxEl.textContent = data.meta.robux || '-';
 
         if (descEl) descEl.innerHTML = (data.description && data.description[lang]) ? data.description[lang] : (data.description ? data.description['en'] : '-');
+        if (historyEl) historyEl.innerHTML = (data.history && data.history[lang]) ? data.history[lang] : (data.history ? data.history['en'] : '-');
         if (notesEl) notesEl.innerHTML = (data.notes && data.notes[lang]) ? data.notes[lang] : (data.notes ? data.notes['en'] : '-');
       } else {
         if (metaTypeEl) metaTypeEl.textContent = itemType ? itemType.toUpperCase() : '-';
@@ -1145,10 +1221,10 @@
         if (priceRobuxEl) priceRobuxEl.textContent = '-';
 
         if (descEl) descEl.innerHTML = lang === 'ja' ? '詳細情報は準備中です。' : 'Details coming soon.';
+        if (historyEl) historyEl.innerHTML = '-';
         if (notesEl) notesEl.innerHTML = '-';
       }
 
-      // 3. 画像参照先の設定
       const imgEl = document.getElementById('detail-img');
       if (imgEl && itemName) {
         let folder = 'fruits';
@@ -1190,8 +1266,9 @@
       renderCombos(itemInfo.name, lang);
     }
 
-    function initDetailPage() {
+   function initDetailPage() {
       try {
+        // 常に英語 ('en') からスタートするように変更
         const initialLang = 'en';
 
         window.applyLanguage = function(lang) {
@@ -1214,7 +1291,6 @@
       }
     }
 
-    // ⚡️ 安全な実行制御
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initDetailPage);
     } else {

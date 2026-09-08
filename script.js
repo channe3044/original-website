@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Spirit", rarity: "mythical" },
     { name: "Tiger", rarity: "mythical" },
     { name: "Yeti", rarity: "mythical" },
+    { name: "Magnet", rarity: "mythical" },
     { name: "Kitsune", rarity: "mythical" },
     { name: "Control", rarity: "mythical" },
     { name: "Dragon", rarity: "mythical" },
