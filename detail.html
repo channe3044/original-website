@@ -696,11 +696,38 @@
           en: "Spin received a visual rework in Update 17 Part 3.",
           ja: "スピンはアップデート17 パート3で見た目のリワークが行われました。"
         }
+      }, 
+      //ブレード
+      "Blade": {
+        ingameDesc: {
+          en: "Allows the user to sliced enemies with sharp blades and perform fast dash attacks.",
+          ja: "鋭い刃で敵を切り刻み、<br>素早い突進攻撃を可能にする。"
+        },
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Uncommon", ja: "アンコモン" },
+          m1: { en: "None", ja: "不可" },
+          money: "30,000",
+          robux: "120"
+        },
+        description: {
+          en: "The Blade Fruit focuses on fast, slicing attacks and high mobility. It allows users to quickly close distances with dash-based slashes, making it effective for aggressive melee combat.",
+          ja: "ブレードフルーツは素早い斬撃と高い移動性能に特化しています。斬撃を伴う突進によって一気にの間合いを詰めることができるため、近接での攻撃的な立ち回りに適しています。"
+        },
+        history: {
+          en: "<b>Update 20:</b> Replaced the Chop fruit.",
+          ja: "<b>アップデート20 (Update 20):</b> チョップ(Chop)フルーツと置き換わる形で実装されました。"
+        },
+        notes: {
+          en: "This fruit was previously the Chop fruit before being reworked into Blade.",
+          ja: "このフルーツは以前チョップ(Chop)フルーツでしたが、リメイクに伴いブレードに変更されました。"
+        }
       }
     };
 
     // 🥑 技データベース
     const fruitMovesDatabase = {
+      //ロケット
       "Rocket": {
         z: {
           title: { en: "Missile Fist", ja: "ミサイルフィスト" },
@@ -768,6 +795,7 @@
           }
         }
       },
+      //スピン
       "Spin": {
         z: {
           title: { en: "Razor Wind", ja: "レイザーウィンド" },
@@ -834,11 +862,68 @@
             ja: "手を素早く回し、プロペラのように回転して空を飛行します。"
           }
         }
+      }, // ★ここにカンマを追加
+      //ブレード
+      "Blade": {
+        z: {
+          title: { en: "Single Slash", ja: "シングルスラッシュ" },
+          mastery: 1,
+          cooldown: { en: "3 seconds", ja: "3秒" },
+          energy: 10,
+          instinctBreak: false,
+          instinctText: { en: "Cannot break Instinct.", ja: "見聞色は破壊できません。" },
+          showcaseVideo: "images/videos/Blade_Z.mp4",
+          showcaseText: {
+            en: "Dashes forward rapidly and performs a horizontal slash across the target.",
+            ja: "前方へ素早く突進し、ターゲットを横一文字に切り裂きます。"
+          }
+        },
+        x: {
+          title: { en: "Blade Whirlwind", ja: "ブレード旋風" },
+          mastery: 20,
+          cooldown: { en: "7 seconds", ja: "7秒" },
+          energy: 20,
+          instinctBreak: true,
+          instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+          showcaseVideo: "images/videos/Blade_X.mp4",
+          showcaseText: {
+            en: "Spins around creating a whirlwind of blades that knocks surrounding enemies into the air.",
+            ja: "周囲に刃の旋風を巻き起こしながら回転し、周囲の敵を打ち上げます。"
+          }
+        },
+        c: {
+          title: { en: "Multi Slash", ja: "マルチスラッシュ" },
+          mastery: 50,
+          cooldown: { en: "12 seconds", ja: "12秒" },
+          energy: 30,
+          instinctBreak: true,
+          instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+          showcaseVideo: "images/videos/Blade_C.mp4",
+          showcaseText: {
+            en: "Unleashes a barrage of high-speed slashes in front of the user.",
+            ja: "前方の敵に向かって高速の連続斬撃を繰り出します。"
+          }
+        },
+        v: null,
+        f: {
+          title: { en: "Blade Dash", ja: "ブレードダッシュ" },
+          mastery: 1,
+          cooldown: { en: "5 seconds", ja: "5秒" },
+          energy: 15,
+          instinctBreak: false,
+          instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
+          showcaseVideo: "images/videos/Blade_F.mp4",
+          showcaseText: {
+            en: "Performs a quick dash forward, granting temporary movement speed.",
+            ja: "前方へ素早くダッシュし、一時的に移動速度が上昇します。"
+          }
+        }
       }
     };
 
     // ⚖️ 長所（Pros）と短所（Cons）データ
     const proConDatabase = {
+      //ロケット
       "Rocket": {
         pros: {
           general: {
@@ -879,6 +964,7 @@
           f: { en: ["Very slow movement speed."], ja: ["移動速度がとても遅い"] }
         }
       },
+      //スピン
       "Spin": {
         pros: {
           general: {
@@ -902,11 +988,41 @@
           v: null,
           f: { en: ["Slow flight speed."], ja: ["飛行速度が遅い"] }
         }
+      }, // ★ここにカンマを追加
+      //ブレード
+      "Blade": {
+        pros: {
+          general: {
+            en: [
+              "High mobility with quick dash moves.",
+              "Low mastery requirements, making it beginner-friendly.",
+              "Great for fast-paced melee combos."
+            ],
+            ja: [
+              "突進技が多く機動力が高い。",
+              "必要熟練度が低く初心者でも扱いやすい。",
+              "近接コンボに組み込みやすい。"
+            ]
+          }
+        },
+        cons: {
+          general: {
+            en: [
+              "Short effective range compared to ranged fruits.",
+              "Lacks strong area-of-effect (AoE) damage."
+            ],
+            ja: [
+              "遠距離攻撃に乏しく射程が短い。",
+              "広範囲への攻撃（AoE）が得意ではない。"
+            ]
+          }
+        }
       }
     };
 
     // 🔥 コンボデータベース
     const comboDatabase = {
+      //ロケット
       "Rocket": [
         {
           name: {
@@ -923,6 +1039,7 @@
           }
         }
       ],
+      //スピン
       "Spin": [
         {
           name: { en: "Spin Basic Combo", ja: "スピン 基本コンボ" },
@@ -933,6 +1050,23 @@
           desc: {
             en: "Stun with Z, pull them in with X, and finish with C.",
             ja: "Zで近接ヒットさせ、Xで吸い寄せてCでフィニッシュします。"
+          }
+        }
+      ], // ★ここにカンマを追加
+      //ブレード
+      "Blade": [
+        {
+          name: {
+            en: "Godhuman, Blade, Cursed Dual Katana",
+            ja: "ゴッドヒューマン、ブレード、おでん"
+          },
+          sequence: {
+            en: "Blade X → Godhuman C → Blade C → Cursed Dual Katana Z → Godhuman Z",
+            ja: "ブレードX → ゴッドヒューマンC → ブレードC → おでんZ → ゴッドヒューマンZ"
+          },
+          desc: {
+            en: "Uses Blade X to knock up the opponent, followed by Godhuman and Cursed Dual Katana to deal massive burst damage.",
+            ja: "ブレードXで敵を打ち上げた後、ゴッドヒューマンと二管刀を挟んで一気に高火力を出すコンボ。"
           }
         }
       ]
