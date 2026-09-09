@@ -685,8 +685,8 @@
           robux: "75"
         },
         description: {
-          en: "Using Spin allows rapid rotation, creating intense air movement that deals damage.<br><br>Spin is the second cheapest fruit in the game and is considered one of the weakest by players.<br><br>This fruit has only three offensive moves, with just one offering ranged capability. As a result, other fruits like Rocket or Smoke perform far better for both leveling and PvP.",
-          ja: "スピンを使うと素早く回転することができ、その動きによって空気が激しく動き、ダメージを与えることができる。<br><br>スピンは、このゲーム内で2 番目に安価なフルーツです。また、プレイヤーたちの間では、最も弱いフルーツの一つと見なされています。<br><br>このフルーツには、攻撃手段が3つしかありません。そのうち、遠距離攻撃が可能なのは1つだけでなので、ロケットやスモークといった他のフルーツの方が、レベル上げやPvPの両方の面ではるかに優れています。"
+          en: "Using Spin allows rapid rotation, creating intense air movement that deals damage.<br><br>Spin is the second cheapest fruit in the game and is considered one of the weakest by players.<br><br>This fruit has only three offensive moves, with just one offering ranged capability. As a result, other fruits like <a href='detail.html?name=Rocket&type=fruit' class='wiki-link'>Rocket</a> or <a href='detail.html?name=Smoke&type=fruit' class='wiki-link'>Smoke</a> perform far better for both leveling and PvP.",
+          ja: "スピンを使うと素早く回転することができ、その動きによって空気が激しく動き、ダメージを与えることができる。<br><br>スピンは、このゲーム内で2 番目に安価なフルーツです。また、プレイヤーたちの間では、最も弱いフルーツの一つと見なされています。<br><br>このフルーツには、攻撃手段が3つしかありません。そのうち、遠距離攻撃が可能なのは1つだけでなので、<a href='detail.html?name=Rocket&type=fruit' class='wiki-link'>ロケット</a>や<a href='detail.html?name=Smoke&type=fruit' class='wiki-link'>スモーク</a>といった他のフルーツの方が、レベル上げやPvPの両方の面ではるかに優れています。"
         },
          history: {
           en: "It was implemented in <a href='#' class='wiki-link'>Update 20</a>, replacing the <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> fruit. <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> had the same price as Rocket.",
@@ -862,7 +862,7 @@
             ja: "手を素早く回し、プロペラのように回転して空を飛行します。"
           }
         }
-      }, // ★ここにカンマを追加
+      },
       //ブレード
       "Blade": {
         z: {
@@ -918,7 +918,9 @@
             ja: "前方へ素早くダッシュし、一時的に移動速度が上昇します。"
           }
         }
-      }
+      },
+      //バネ
+
     };
 
     // ⚖️ 長所（Pros）と短所（Cons）データ
@@ -928,22 +930,18 @@
         pros: {
           general: {
             en: [
-              "This fruit is always in stock, making it very easy to obtain.",
-              "This fruit is the cheapest in the game.",
+              "Always in stock in the shop.",
+              "Cheapest in the game.",
               "Low mastery requirements.",
-              "For a low‑rarity fruit, it offers surprisingly good mobility.",
-              "Across all devices, the game rarely becomes heavy or experiences noticeable lag.",
-              "Its quick movement and strong area coverage make it well‑suited for PvP.",
-              "All of its offensive moves break Instinct."
+              "Has excellent mobility and wide AOE, making it great for PvP.",
+              "Every move breaks Instinct."
             ],
             ja: [
-              "このフルーツは常に在庫があるため、手に入れるのが非常に簡単です",
-              "このフルーツは、ゲーム内で最も安価なものです",
+              "常にショップに在庫がある",
+              "ゲーム内で最も安価",
               "必要マスタリーが低い",
-              "低レアリティのフルーツとしては、なかなか優れた移動性を持っています",
-              "すべてのデバイスの操作において、ゲームが重くなる、ラグが発生することはほとんどありません",
-              "素早い動きや範囲が優れているので、PvPには適しています",
-              "すべての攻撃技は見聞色を破壊します"
+              "素早い動きや範囲が優れていて、PvPに適している",
+              "全ての攻撃技が見聞色を破壊する"
             ]
           },
           z: { en: ["Fast start-up."], ja: ["技の発動が早い"] },
@@ -968,27 +966,27 @@
       "Spin": {
         pros: {
           general: {
-            en: ["Cheap and easy to get.", "Good for early flight ability."],
-            ja: ["安価で手に入りやすい", "序盤の飛行手段として便利"]
+            en: ["Always in stock in the shop.","Cheap and easy to get.", "Has wide AOE.","Every move breaks Instinct."],
+            ja: ["常にショップに在庫がある","安価で手に入りやすい", "攻撃範囲が広い","全ての攻撃技が見聞色を破壊する"]
           },
-          z: { en: ["Fast execution."], ja: ["発動が早い"] },
-          x: { en: ["Pull-in effect."], ja: ["敵を吸い寄せる効果あり"] },
-          c: { en: ["Decent knockback."], ja: ["適度なノックバック"] },
+          z: { en: ["Fast execution.","Strong stun attack."], ja: ["発動が早い","強力なスタン攻撃" ] },
+          x: { en: ["Wide AOE attack"], ja: ["広い攻撃範囲"] },
+          c: { en: ["Decent knockback.","Capable of dealing heavy damage provided every slash connects."], ja: ["適度なノックバック","全ての斬撃攻撃が当たればかなりの攻撃力が出る"] },
           v: null,
-          f: { en: ["Allows flight at low mastery."], ja: ["低い熟練度で飛行可能"] }
+          f: { en: ["Decent flight ability considering its Common rarity."], ja: ["コモンフルーツの飛行能力としてはいいと思います"] }
         },
         cons: {
           general: {
             en: ["Low overall damage.", "Short range."],
             ja: ["全体的に威力が低い", "射程が短い"]
           },
-          z: { en: ["Very close range."], ja: ["射程が非常に短い"] },
-          x: { en: ["Easily dodged."], ja: ["回避されやすい"] },
-          c: { en: ["Predictable path."], ja: ["軌道が読まれやすい"] },
+          z: { en: ["Since this is a held move, getting hit during startup or casting will interrupt the skill."], ja: ["長押し技なので発動中に攻撃を喰らうと中断される"] },
+          x: { en: ["Knocks target upward irregularly.","Can easily overshoot the target if used incorrectly, leaving them behind."], ja: ["不規則に上へ吹き飛ばす","うまく使わないと相手を置き去りにし自分だけ前に進んでしまう"] },
+          c: { en: ["Missing any of the slashes will noticeably reduce the overall damage output."], ja: ["斬撃攻撃が外れると火力が下がる"] },
           v: null,
           f: { en: ["Slow flight speed."], ja: ["飛行速度が遅い"] }
         }
-      }, // ★ここにカンマを追加
+      }, 
       //ブレード
       "Blade": {
         pros: {
@@ -1071,7 +1069,6 @@
         }
       ]
     };
-
     const itemTranslations = {
       "Rocket": { en: "Rocket", ja: "ロケット" },
       "Spin": { en: "Spin", ja: "スピン" },
@@ -1315,7 +1312,7 @@
           nameEl.textContent = 'Unknown';
         }
       }
-const ingameSec = document.getElementById('ingame-desc-section');
+      const ingameSec = document.getElementById('ingame-desc-section');
       const ingameText = document.getElementById('ingame-desc');
       const data = itemOverviewData[itemName];
 
@@ -1400,7 +1397,7 @@ const ingameSec = document.getElementById('ingame-desc-section');
       renderCombos(itemInfo.name, lang);
     }
 
-   function initDetailPage() {
+    function initDetailPage() {
       try {
         // 常に英語 ('en') からスタートするように変更
         const initialLang = 'en';
@@ -1425,6 +1422,28 @@ const ingameSec = document.getElementById('ingame-desc-section');
       }
     }
 
+    // --- ここから追加：リンククリック時にリロードなしで画面を切り替える処理 ---
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('.wiki-link');
+      if (link) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href) {
+          history.pushState(null, '', href);
+          const currentLang = localStorage.getItem('selectedLang') || 'en';
+          updateDetailPageLanguage(currentLang);
+          window.scrollTo(0, 0);
+        }
+      }
+    });
+
+    // ブラウザの「戻る」「進む」ボタンに対応
+    window.addEventListener('popstate', function() {
+      const currentLang = localStorage.getItem('selectedLang') || 'en';
+      updateDetailPageLanguage(currentLang);
+    });
+    // --- ここまで ---
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initDetailPage);
     } else {
@@ -1432,6 +1451,4 @@ const ingameSec = document.getElementById('ingame-desc-section');
     }
 
     window.addEventListener('pageshow', initDetailPage);
-  </script>
-</body>
-</html>
+</script>
