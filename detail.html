@@ -1244,7 +1244,7 @@
 
         if (move) {
           const title = (move.title && move.title[lang]) ? move.title[lang] : (move.title ? move.title['en'] : keyUpper);
-          const masteryText = key === 'm1' ? (lang === 'ja' ? '通常攻撃' : 'Left Click') : (lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`);
+          const masteryText = key === 'm1' ? (lang === 'ja' ? 'タップ技' : 'Left Click') : (lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`);
           const viewBtnText = lang === 'ja' ? '詳細' : 'View';
           const cooldownVal = (typeof move.cooldown === 'object') ? (move.cooldown[lang] || move.cooldown['en']) : (move.cooldown || '-');
           const showcaseDesc = move.showcaseText ? (move.showcaseText[lang] || move.showcaseText['en']) : '';
