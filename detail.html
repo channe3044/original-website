@@ -1036,17 +1036,18 @@
       "Rocket": [
         {
           name: {
-            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>, Rocket, <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>", 
-            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>、ロケット、<a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>" 
+            en: "<a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>Sharkman karate</a>, Rocket, <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>", 
+            ja: "<a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>、ロケット、<a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>" 
           },
           sequence: {
-            en: "RocketC → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>C → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>X → RocketX → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>Z → RocketZ",
-            ja: "ロケットC → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>X → ロケットX → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z → ロケットZ" 
+            en: "RocketC → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>Z → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>Sharkman Karate</a>Z → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>Sharkman Karate</a>C → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>Cursed Dual Katana</a>X → RocketX → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>Sharkman Karate</a>X → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>Sharkman Karate</a>Z→ RocketZ",
+            ja: "ロケットC → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>Z → → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>Z → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>C → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>X → ロケットX → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>X → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>Z→ ロケットZ" 
           },
           desc: {
             en: "Traps enemies with Rocket C to lead into a one-shot combo. Very easy to use on the ground.",
             ja: "ロケットCで敵を捕まえて即死コンボに繋げます。地上ならとても使いやすい構成です"
-          }
+          },
+          video: "images/videos/Rocket_combo.mp4"
         }
       ],
       //スピン
@@ -1081,6 +1082,7 @@
         }
       ]
     };
+
     const itemTranslations = {
       "Rocket": { en: "Rocket", ja: "ロケット" },
       "Spin": { en: "Spin", ja: "スピン" },
@@ -1115,7 +1117,9 @@
       const container = document.getElementById('procon-box');
       if (!container) return;
 
-      const data = proConDatabase[itemName];
+      const db = (typeof proConDatabase !== 'undefined') ? proConDatabase : {};
+      const data = db[itemName];
+
       if (!data || !data[mode]) {
         container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
         return;
@@ -1155,8 +1159,7 @@
 
       container.innerHTML = html;
     }
-
-    function renderCombos(itemName, lang) {
+function renderCombos(itemName, lang) {
       const container = document.getElementById('combo-box');
       if (!container) return;
 
@@ -1168,18 +1171,26 @@
 
       let html = '';
       combos.forEach(c => {
-        const title = c.name[lang] || c.name['en'];
-        const desc = c.desc[lang] || c.desc['en'];
+        const title = (c.name && c.name[lang]) ? c.name[lang] : (c.name ? c.name['en'] : '');
+        const desc = (c.desc && c.desc[lang]) ? c.desc[lang] : (c.desc ? c.desc['en'] : '');
         
         const seqText = (typeof c.sequence === 'object')
           ? (c.sequence[lang] || c.sequence['en'])
           : c.sequence;
+
+        // 🎥 preload="none" を追加して通信を高速化
+        const videoHTML = c.video ? `
+          <div style="margin-top: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #333;">
+            <video src="${c.video}" controls autoplay loop muted playsinline preload="none" style="width: 100%; max-height: 360px; display: block; background: #000; object-fit: cover;" onerror="this.parentElement.style.display='none';"></video>
+          </div>
+        ` : '';
 
         html += `
           <div class="combo-card">
             <div class="combo-title">${title}</div>
             <div class="combo-sequence">${seqText}</div>
             <p class="combo-desc">${desc}</p>
+            ${videoHTML}
           </div>
         `;
       });
@@ -1189,7 +1200,10 @@
 
     function toggleMoveDetails(btn) {
       const wrapper = btn.closest('.move-wrapper');
+      if (!wrapper) return;
       const detailsContent = wrapper.querySelector('.move-details-content');
+      if (!detailsContent) return;
+      
       const isOpen = detailsContent.classList.contains('open');
       const currentLang = localStorage.getItem('selectedLang') || 'en';
 
@@ -1213,7 +1227,8 @@
       if (!container) return;
       container.innerHTML = '';
 
-      const itemData = fruitMovesDatabase[itemName];
+      const movesDb = (typeof fruitMovesDatabase !== 'undefined') ? fruitMovesDatabase : {};
+      const itemData = movesDb[itemName];
 
       if (!itemData) {
         container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '技データが登録されていません' : 'No moves registered'}</p>`;
@@ -1229,7 +1244,6 @@
         showcaseTitle: lang === 'ja' ? '技のお披露目' : 'Showcase'
       };
 
-      // M1が存在する場合のみ配列の先頭に追加（存在しない場合はZ,X,C,V,Fのみ）
       const keys = [];
       if (itemData.m1) {
         keys.push('m1');
@@ -1251,6 +1265,7 @@
           const instinctText = move.instinctText ? (move.instinctText[lang] || move.instinctText['en']) : '';
           const videoSrc = move.showcaseVideo || '';
 
+          // 🎥 ここにも preload="none" を追加
           moveWrapper.innerHTML = `
             <div class="move-card">
               <div class="move-left">
@@ -1283,7 +1298,7 @@
               <div class="detail-box">
                 <h3>${labels.showcaseTitle}</h3>
                 <div class="showcase-container" style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap;">
-                  <video src="${videoSrc}" autoplay loop muted playsinline class="showcase-video" 
+                  <video src="${videoSrc}" autoplay loop muted playsinline preload="none" class="showcase-video" 
                          style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
                   <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
@@ -1321,7 +1336,7 @@
 
       const nameEl = document.getElementById('detail-name');
       if (nameEl) {
-        if (itemTranslations[itemName] && itemTranslations[itemName][lang]) {
+        if (typeof itemTranslations !== 'undefined' && itemTranslations[itemName] && itemTranslations[itemName][lang]) {
           nameEl.textContent = itemTranslations[itemName][lang];
         } else if (itemName) {
           nameEl.textContent = itemName.replace(/_/g, ' ');
@@ -1329,9 +1344,11 @@
           nameEl.textContent = 'Unknown';
         }
       }
+
       const ingameSec = document.getElementById('ingame-desc-section');
       const ingameText = document.getElementById('ingame-desc');
-      const data = itemOverviewData[itemName];
+      const overviewDb = (typeof itemOverviewData !== 'undefined') ? itemOverviewData : {};
+      const data = overviewDb[itemName];
 
       if (data && data.ingameDesc && ingameSec) {
         ingameSec.style.display = 'block';
@@ -1410,14 +1427,15 @@
 
       const itemInfo = getItemFromUrl();
       renderMovesets(itemInfo.name, lang);
-      renderProConSection(itemInfo.name, lang, currentProConMode);
+      if (typeof renderProConSection === 'function') {
+        renderProConSection(itemInfo.name, lang, typeof currentProConMode !== 'undefined' ? currentProConMode : 'pros');
+      }
       renderCombos(itemInfo.name, lang);
     }
 
     function initDetailPage() {
       try {
-        // 常に英語 ('en') からスタートするように変更
-        const initialLang = 'en';
+        const initialLang = localStorage.getItem('selectedLang') || 'en';
 
         window.applyLanguage = function(lang) {
           updateDetailPageLanguage(lang);
@@ -1439,7 +1457,6 @@
       }
     }
 
-    // --- ここから追加：リンククリック時にリロードなしで画面を切り替える処理 ---
     document.addEventListener('click', function(e) {
       const link = e.target.closest('.wiki-link');
       if (link) {
@@ -1454,17 +1471,16 @@
       }
     });
 
-    // ブラウザの「戻る」「進む」ボタンに対応
     window.addEventListener('popstate', function() {
       const currentLang = localStorage.getItem('selectedLang') || 'en';
       updateDetailPageLanguage(currentLang);
     });
-    // --- ここまで ---
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDetailPage);
-    } else {
+    // 🚀 ロード待ちを待たずに爆速で言語反映・初期化を行うイベント処理
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
       initDetailPage();
+    } else {
+      document.addEventListener('DOMContentLoaded', initDetailPage);
     }
 
     window.addEventListener('pageshow', initDetailPage);
