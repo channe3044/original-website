@@ -361,6 +361,30 @@
       border-color: #444;
       min-width: 100px;
     }
+    /* 通常 / スキンボタン（灰色スタイル） */
+.skin-btn {
+  background: #2a2a2a;
+  color: #ccc;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skin-btn:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+/* 選択中の状態 */
+.skin-btn.active {
+  background: #444;
+  color: #fff;
+  border-color: #777;
+}
 
     .pro-btn.active {
       background: linear-gradient(to bottom, #fff464, #f6ab12);
@@ -520,8 +544,8 @@
 
       <button id="lang-toggle-btn" class="lang-btn">
         <div class="arrow-circle">
-          <span class="lang-text en">英</span>
-          <span class="lang-text ja">日</span>
+          <span class="lang-text en">EN</span>
+          <span class="lang-text ja">JA</span>
         </div>
       </button>
 
@@ -596,6 +620,15 @@
         Loading details...
       </p>
     </div>
+
+    <div id="immunity-section" style="display: none; margin-top: 30px;">
+    <h2 class="section-title translatable" data-en="Immunity Animation" data-ja="攻撃無効化モーション">攻撃無効化モーション</h2>
+    <div class="immunity-container" style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; margin-top: 15px;">
+      <video id="immunity-video" autoplay loop muted playsinline
+             style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; border: 1px solid #333; object-fit: cover;"></video>
+      <p id="immunity-desc" style="flex: 1; min-width: 200px; margin: 0; color: #ddd; line-height: 1.6;"></p>
+    </div>
+  </div>
 
     <!-- 📄 2. 技一覧 (Movesets) -->
     <div class="detail-section">
@@ -705,10 +738,43 @@
         },
         meta: {
           type: { en: "Natural", ja: "通常系" },
-          rarity: { en: "Uncommon", ja: "アンコモン" },
+          rarity: { en: "Common", ja: "コモン" },
           m1: { en: "Yes", ja: "あり" },
           money: "30,000",
-          robux: "100"
+          robux: "100",
+          hasImmunity: true
+        },
+        immunity: {
+          video: "images/videos/Blade_immunity.mp4",
+          desc: {
+            en: "Completely negates all sword damage, even when the opponent is using Aura.",
+            ja: "相手がオーラ（武装色）を使用している場合でも、剣によるすべてのダメージを完全に無効化します。"
+          }
+        },
+        description: {
+          en: "Blade provides the user with sharp edges that can be attached to their limbs. Using these blades allows the user to negate sword damage, even if the enemy is using Aura. Additionally, it offers a variety of applications, such as attacks utilizing spinning blades or flying by rotating them.<br><br>Blade is highly suited for PvP thanks to its stun attacks, Instinct break capabilities, and high damage output. Above all, its primary strength lies in completely negating all sword damage. As a result, it is extremely effective against sword-heavy playstyles like Portal, sword-main Ice, and Buddha—instantly driving your opponents insane! 😂<br><br>Blade is suitable for grinding across all seas and serves as an ideal fruit for beginners, especially in the First Sea. This is because Blade completely negates sword damage and possesses a ranged M1 tap attack. Similar to the tap attacks of T-Rex, Gas, Kitsune, and Dragon, Blade's M1 can inflict damage on Sea Beasts. However, unlike those fruits, using Blade's tap attack does not dash the user forward, allowing for smooth horizontal positioning. Furthermore, the startup of Blade's tap attack is extremely fast. With its low cost, high drop rate, and ease of acquisition, it is the best fruit for the First Sea. However, in later stages like the Second and Third Seas, enemies have significantly higher health, making Blade's lower damage output and the fewer sword-wielding NPCs noticeable, which reduces its overall effectiveness.",
+          ja: "ブレードは、使用者の手足に取り付けることができる鋭い刃を提供します。これにより敵が武装色を付けていても、刃を使って剣によるダメージを無効化します。また、回転する刃を使った攻撃や、刃を回転させて飛行するといった、様々な使い方ができるでしょう。<br><br>ブレードは、スタン攻撃や見聞破壊、高いダメージ力を持っているため、PvPに適しています。何よりも、あらゆる剣攻撃に対してのダメージを完全に無効化するのが強みです。なので、ポータルや剣振りアイス、大仏といった剣を主武器とする相手に対して非常に効果的です。たちまち相手はブチギレるでしょう😂<br><br>ブレードは、あらゆる海域でのレベル上げに適しています。特にファーストシーでは、初心者にとって最適なフルーツです。その理由は、ブレードが剣ダメージが無効であり、遠距離のタップ技を持っているからです。ブレードのタップ技はT-Rexやガス、キツネやドラゴンのものと似ており海王類に対してダメージが入ります。ただし、これらのフルーツとは異なり、ブレードのタップ技を使用してもユーザーは前に移動しないため、水平方向の移動がスムーズに行えます。さらにブレードのタップ技は発動がとても早いです。コストが低く、入手しやすく、入手確率も高いため、ファーストシーでの は最適な果実です。ただし、レベル上げ後半のセカンドシー、サードシーなどの海域では敵の体力が高くなりダメージが低く感じやすくなったり剣を使う敵が減ってくるので使いづらくなっていきます。"
+        },
+              history: { 
+              en: `<p>Chop was added in <a href='#' class='wiki-link'>Update 1</a>.</p><p>The fruit model for Chop was revamped in <a href='#' class='wiki-link'>Update 20</a>.</p><p>In <a href='#' class='wiki-link'>Update 24</a>, Chop Fruit was renamed to Blade Fruit.<br>An M1 attack was added.<br>The Z move, Tackle, was renamed to Razor Cyclone.<br>The X move, Dance, was renamed to Blade Dance.<br>The C move, Party, was renamed to Saw Shredder.<br>The F move, Helicopter, was renamed to Turbine Flight.</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Chop_icon.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_icon.png';"><img src='images/changelog/Old_Chop_fruit.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_fruit.png';"></div>`, 
+              ja: `<p><a href='#' class='wiki-link'>アップデート1</a>でチョップが追加されました。</p><p><a href='#' class='wiki-link'>アップデート20</a>でチョップのフルーツモデルが変更されました。</p><p><a href='#' class='wiki-link'>アップデート24</a>でチョップフルーツの名前がブレードフルーツに変更されました。<br>タップ技が追加されました。<br>Z技のタックルの名前がレーザーサイクロンに変更されました。<br>X技のダンスの名前がブレードダンスに変更されました。<br>C技のパーティーの名前がソーシュレッダーに変更されました。<br>F技のヘリコプターの名前がタービンフライトに変更されました。</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Chop_icon.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_icon.png';"><img src='images/changelog/Old_Chop_fruit.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_fruit.png';"></div>` },
+        notes: {
+          en: "M1s feel so satisfying to use!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*≧ω≦)ﾉ</span>",
+          ja: "M1が楽しい!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*≧ω≦)ﾉ</span>"
+        }
+      },
+      //バネ
+      "Spring": {
+        ingameDesc: {
+          en: "Offers spring like movement and bouncing attacks.",
+          ja: "バネのような軽やかな動きと、跳ねるような攻撃を繰り出す。"
+        },
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "60,000",
+          robux: "180"
         },
         description: {
           en: "Details coming soon.",
@@ -719,10 +785,10 @@
           ja: "詳細は近日公開予定です。"
         },
         notes: {
-          en: "M1s feel so satisfying to use!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*≧ω≦)ﾉ</span>",
-          ja: "M1が楽しい!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*≧ω≦)ﾉ</span>"
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
         }
-      }
+      },
     };
 
     // 🥑 技データベース
@@ -780,6 +846,7 @@
         v: null,
         f: {
           title: { en: "Blast Off", ja: "ブラストオフ" },
+          isHold: true,
           mastery: 75,
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 35,
@@ -799,6 +866,7 @@
       "Spin": {
         z: {
           title: { en: "Razor Wind", ja: "レイザーウィンド" },
+          isHold: true,
           mastery: 1,
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 15,
@@ -848,6 +916,7 @@
         v: null,
         f: {
           title: { en: "Helicopter Flight", ja: "ヘリコプターフライト" },
+          isHold: true,
           mastery: 25,
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 50,
@@ -865,73 +934,173 @@
       },
      //ブレード
       "Blade": {
-        m1: {
-          title: { en: "Blade's Edge", ja: "ブレードエッジ" },
-          cooldown: { en: "0.3 seconds", ja: "0.3秒" },
-          energy: 0,
-          instinctBreak: false,
-          instinctText: { en: "Cannot break Instinct.", ja: "見聞色は破壊できません。" },
-          showcaseVideo: "images/videos/Blade_M1.mp4",
-          showcaseText: {
-            en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。"
-          }
-        },
-        z: {
-          title: { en: "Razor Cyclone", ja: "レイザーサイクロン" },
-          mastery: 1,
-          cooldown: { en: "3.75 seconds", ja: "3.75秒" },
-          energy: 15,
-          instinctBreak: true,
-          instinctText: { en: "Cannot break Instinct.", ja: "見聞色は破壊できません。" },
-          showcaseVideo: "images/videos/Blade_Z.mp4",
-          showcaseText: {
-            en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。"
-          }
-        },
-        x: {
-          title: { en: "Blade Dance", ja: "ブレードダンス" },
-          mastery: 20,
-          cooldown: { en: "9 seconds", ja: "9秒" },
-          energy: 25,
-          instinctBreak: true,
-          instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
-          showcaseVideo: "images/videos/Blade_X.mp4",
-          showcaseText: {
-            en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。"
-          }
-        },
-        c: {
-          title: { en: "Saw Shredder", ja: "ソーシュレッダー" },
-          mastery: 50,
-          cooldown: { en: "12 seconds", ja: "12秒" },
-          energy: 35,
-          instinctBreak: true,
-          instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
-          showcaseVideo: "images/videos/Blade_C.mp4",
-          showcaseText: {
-            en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。"
-          }
-        },
-        v: null,
-        f: {
-          title: { en: "Blade Dash", ja: "ブレードダッシュ" },
-          mastery: 80,
-          cooldown: { en: "4.5 seconds", ja: "4.5秒" },
-          energy: 35,
-          instinctBreak: false,
-          instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
-          showcaseVideo: "images/videos/Blade_F.mp4",
-          showcaseText: {
-            en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。"
-          }
-        }
-      },
+    m1: {
+      title: { en: "Blade's Edge", ja: "ブレードエッジ" },
+      cooldown: { en: "0.3 seconds", ja: "0.3秒" },
+      energy: 0,
+      instinctBreak: false,
+      instinctText: { en: "Cannot break Instinct.", ja: "見聞色は破壊できません。" },
+      showcaseVideo: "images/videos/Blade_M1.mp4",
+      hasSkin: true,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_M1.mp4",
+      showcaseText: {
+        en: "Transforms the user's arms into sharp blades and swings them to launch slash attacks. The slashes dissipate after reaching a certain distance. Enemies hit are knocked back slightly.",
+        ja: "自分の腕に鋭い刃を作り出し、振り回すことで斬撃を放ちます。斬撃は一定の距離まで届くと消滅します。当たった敵はわずかに後ろにに吹き飛ばされます。"
+      }
+    },
+    z: {
+      title: { en: "Razor Cyclone", ja: "レイザーサイクロン" },
+      mastery: 1,
+      cooldown: { en: "3.75 seconds", ja: "3.75秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "A direct hit will break the target's Instinct, but it can be dodged if hit by the outer edges.", ja: "技が直撃すると見聞色が破壊されます。端の部分なら回避できます。" },
+      showcaseVideo: "images/videos/Blade_Z.mp4",
+      hasSkin: true,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_Z.mp4",
+      showcaseText: {
+        en: "Forms blades on the user's arms, then spins and dashes toward the cursor to slash enemies.",
+        ja: "自分の腕に刃を形成し、カーソルの方向に向かって回転しながら突進して切りつけます。"
+      }
+    },
+    x: {
+      title: { en: "Blade Dance", ja: "ブレードダンス" },
+      isHold: true,
+      mastery: 20,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged at the outer edge.", ja: "端の部分なら避けることができます。" },
+      showcaseVideo: "images/videos/Blade_X.mp4",
+      hasSkin: true,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_X.mp4",
+      showcaseText: {
+        en: "Forms blades on the user's arms and spins them rapidly to release a swirling slash. When the animation ends, hit enemies are launched slightly into the air. Holding down the key allows the skill to be channelled for a longer duration.",
+        ja: "自分の腕に刃を形成し、素早く回転させることで渦巻きのような斬撃を放つ。アニメーションが終了すると、当たった敵は空中に少し吹き飛ばされます。長押しすることでより長く技を使用できます。"
+      }
+    },
+    c: {
+      title: { en: "Saw Shredder", ja: "ソーシュレッダー" },
+      mastery: 50,
+      cooldown: { en: "12 seconds", ja: "12秒" },
+      energy: 35,
+      instinctBreak: true,
+      instinctText: { en: "The initial hit breaks Instinct. The X-shaped slashes can be dodged by activating Instinct after the initial hit.", ja: "最初の直撃で見聞色が破壊。X 字型の斬撃は、最初の直撃後に見聞色を発動することで回避できます。" },
+      showcaseVideo: "images/videos/Blade_C.mp4",
+      hasSkin: true,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_C.mp4",
+      showcaseText: {
+        en: "Rapidly spins the blades on both arms and dashes forward to catch the enemy. Upon contact, inflicts an X-shaped slash on the opponent, briefly immobilizing them.",
+        ja: "両腕の刃を素早く回転させ、敵を捕まえて突進します。接触した瞬間、X 字型の切り傷を相手に負わせ、一瞬動けなくする。"
+      }
+    },
+    v: null,
+    f: {
+      title: { en: "Turbine Flight", ja: "タービンフライト" },
+      isHold: true,
+      mastery: 80,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 35,
+      instinctBreak: false,
+      instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
+      showcaseVideo: "images/videos/Blade_F.mp4",
+      hasSkin: true,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_F.mp4",
+      showcaseText: {
+        en: "Raises the right arm to create a spinning blade, granting upward momentum to fly. As the user's health decreases, flight speed increases.",
+        ja: "右腕を上にあげて回転する刃を作り出し、上向きの推進力を得て飛行します。自身の体力が減少するにつれて、飛行速度が上がります。"
+      }
+    }
+  },
       //バネ
+      "Spring": {
+    z: {
+      title: { en: "Knock", ja: "ノック" },
+      mastery: 1,
+      cooldown: { en: "6 seconds", ja: "6秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct at close range, but can be dodged from a distance or near the edge.", ja: "距離が近いと見聞色を破壊します。少し離れた時や端の部分なら回避できます" },
+      showcaseVideo: "images/videos/Spring_Z.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Spring_Z.mp4",
+      showcaseText: {
+        en: "Launches a spring-loaded punch with the right arm toward the cursor, dealing damage and inflicting knockback.",
+        ja: "右腕をバネのように使って、カーソルの位置に向かってパンチを放ちます。これにより、敵にダメージを与えて敵を吹き飛ばします。"
+      }
+    },
+    x: {
+      title: { en: "Spring Snipe", ja: "スプリングスナイプ" },
+      mastery: 20,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct on a direct hit. When attacking from directly above, it breaks Instinct reliably, but it is difficult to trigger when landing a straight hit. It can be dodged by keeping your distance or staying around the edge of the attack.", ja: "直撃時は見聞色を破壊します。敵の真上から攻撃した時はうまく見聞色が破壊されますが、まっすぐ当てて破壊することは難しいです。距離を置くか端の部分なら回避できます。" },
+      showcaseVideo: "images/videos/Spring_X.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Spring_X.mp4",
+      showcaseText: {
+        en: "Uses the knees like springs to leap toward the cursor, dealing damage and knocking enemies back. Aiming directly at an enemy sends them flying forward, while aiming behind them launches them backward relative to the user.",
+        ja: "膝をバネのように使い、カーソルの方向に飛んでいきます。そうすることで、敵にダメージを与えて敵を吹き飛ばすことができます。敵にカーソルを合わせると自分より前に、敵より後ろにカーソルを合わせると自分の後ろに敵は飛びます"
+      }
+    },
+    c: {
+      title: { en: "Spring Cannon", ja: "スプリングキャノン" },
+      mastery: 50,
+      cooldown: { en: "13.5 seconds", ja: "13.5秒" },
+      energy: 35,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged at the outer edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Spring_C.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Spring_C.mp4",
+      showcaseText: {
+        en: "Uses the legs like springs to leap exceptionally high into the air before crashing back down. Upon impact, it leaves a small crater, dealing damage and launching enemies into the air.",
+        ja: "脚をバネのように使い、かなり高く跳び上がった後に再び下に降ります。落下後は小さなクレーターができ、敵にダメージを与えて敵を空中に吹き飛ばします。"
+      }
+    },
+    v: {
+      title: { en: "Spring Emperor", ja: "スプリングエンペラー" },
+      mastery: 125,
+      cooldown: { en: "19.5 seconds", ja: "19.5秒" },
+      energy: 65,
+      instinctBreak: true,
+      instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/videos/Spring_V.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Spring_V.mp4",
+      showcaseText: {
+        en: "Uses the legs like springs to bounce around randomly within a square area, dealing continuous damage to enemies inside.",
+        ja: "脚をバネのように使い、正方形の範囲内をランダムに跳ね回りながらダメージを与えます。"
+      }
+    },
+    f: {
+      title: { en: "Spring Leap ", ja: "スプリングリープ" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "6 seconds", ja: "6秒" },
+      energy: 35,
+      instinctBreak: false,
+      instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
+      showcaseVideo: "images/videos/Spring_F.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Spring_F.mp4",
+      showcaseText: {
+        en: "Uses the legs like springs to leap forward, bouncing off any walls or obstacles hit.",
+        ja: "脚をバネのように使って前方に跳びます。壁にぶつかると跳ね返ります。"
+      }
+    }
+  },
 
     };
 
@@ -958,7 +1127,7 @@
           },
           z: { en: ["Fast start-up."], ja: ["技の発動が早い"] },
           x: { en: ["Long range.", "Short stun."], ja: ["射程が長い", "低時間のスタン"] },
-          c: { en: ["Has a very long range.","Deals high area damage upon landing."], ja: ["射程がかなり長い", "着地時に強力な範囲ダメージを与える。"] },
+          c: { en: ["Has a very long range.","Deals high area damage upon landing."], ja: ["射程がかなり長い", "着地時に強力な範囲ダメージを与える"] },
           v: null, 
           f: { en: ["Can be used as an instant-cancel jump into the air."], ja: ["技を一瞬で終了すると空中へジャンプする技として使える"] }
         },
@@ -1001,32 +1170,47 @@
       }, 
       //ブレード
       "Blade": {
-        pros: {
+              pros: {
           general: {
-            en: [
-              "Details coming soon.",
-              "Details coming soon.",
-              "Details coming soon."
+             en: [
+              "Takes no damage from Sword attacks.",
+              "Low mastery requirements.",
+              "Very cheap and easy to obtain."
             ],
             ja: [
-              "詳細は近日公開予定です。",
-              "詳細は近日公開予定です。",
-              "詳細は近日公開予定です。"
+              "剣ダメージを喰らわない",
+              "必要マスタリーが低い",
+              "非常に安価で手に入れやすい"
             ]
-          }
+          },
+          m1:{ en: ["Fast attacks.","Easy to aim. ","Great for hitting enemies due to its range.","Can hit Sea Beasts","Long range.","Capable of dealing damage to multiple enemies."], ja: ["素早い攻撃","当てやすい","空中で使用すると一時的に浮かぶことができる","海王類を攻撃することができる","射程が長い","複数の敵にダメージを与えることができる"] },
+          z: { en: ["Good range.","Low cooldown. "], ja: ["範囲が広い","クールダウンが短い"] },
+          x: { en: ["Good AoE.","High stun."], ja: ["優れた範囲攻撃","高いスタン力"] },
+          c: { en: ["Decent range."], ja: ["そこそこの射程"] },
+          v: null,
+          f: { en: ["Decent flight capability."], ja: ["そこそこの飛行能力"] }
         },
         cons: {
           general: {
             en: [
-              "Details coming soon.",
-              "Details coming soon."
+              "Blade Edge, Ice Trident, and Light Spear deal damage as Fruit abilities, allowing them to bypass Blade's immunity.",
+              "Some swords can still stun the user, even though the damage is negated.",
             ],
             ja: [
-              "詳細は近日公開予定です。",
-              "詳細は近日公開予定です。"
-            ]
-          }
-        }
+              "ブレードエッジ、アイストライデント、ライトスピアはフルーツの能力のため攻撃を喰らう",
+              "一部の剣は剣のスタンを喰らう場合がある(ダメージは無効)",
+            ],
+            videos: ["images/videos/Rocket_Z.mp4","images/videos/Blade_Z.mp4"],
+          },
+          m1:{ en: ["Very low damage.","Cannot aim up or down."], ja: ["ダメージが非常に低い","上下に狙えない"] },
+          z: { en: ["Requires precise aim to hit.","Has a brief startup delay before activation."], ja: ["正確に狙わないと当たりません","技の発動までにほんの少しのモーションがある"] },
+          x: { en: ["Requires precise aim to hit."], ja: ["正確に狙わないと当たりません","技の発動までにほんの少しのモーションがある"] },
+          c: { en: ["Surprisingly short."], ja: ["意外と短い"] },
+          v: null,
+          f: { en: ["Extremely slow."], ja: ["非常に遅い"] }
+        },
+      //バネ
+        
       }
     };
 
@@ -1083,6 +1267,7 @@
           video: "images/videos/Blade_combo.mp4"
         }
       ]
+      //バネ
     };
 
     const itemTranslations = {
@@ -1092,401 +1277,515 @@
       "Godhuman": { en: "Godhuman", ja: "ゴッドヒューマン" }
     };
 
-    let currentProConMode = 'pros';
+ let currentProConMode = 'pros';
 
-    function getItemFromUrl() {
-      const params = new URLSearchParams(window.location.search);
-      return {
-        name: params.get('name') || '',
-        type: params.get('type') || 'fruit'
-      };
-    }
+function getItemFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    name: params.get('name') || '',
+    type: params.get('type') || 'fruit'
+  };
+}
 
-    function switchProConTab(type) {
-      currentProConMode = type;
-      const prosBtn = document.getElementById('pros-btn');
-      const consBtn = document.getElementById('cons-btn');
-      if (prosBtn) prosBtn.classList.toggle('active', type === 'pros');
-      if (consBtn) consBtn.classList.toggle('active', type === 'cons');
+function switchProConTab(type) {
+  currentProConMode = type;
+  const prosBtn = document.getElementById('pros-btn');
+  const consBtn = document.getElementById('cons-btn');
+  if (prosBtn) prosBtn.classList.toggle('active', type === 'pros');
+  if (consBtn) consBtn.classList.toggle('active', type === 'cons');
 
-      const lang = localStorage.getItem('selectedLang') || 'en';
-      const itemInfo = getItemFromUrl();
+  const lang = localStorage.getItem('selectedLang') || 'en';
+  const itemInfo = getItemFromUrl();
 
-      renderProConSection(itemInfo.name, lang, currentProConMode);
-    }
+  renderProConSection(itemInfo.name, lang, currentProConMode);
+}
 
-    function renderProConSection(itemName, lang, mode) {
-      const container = document.getElementById('procon-box');
-      if (!container) return;
+// 🎬 コントローラー非表示＆レスポンシブ横並び対応版 renderProConSection
+function renderProConSection(itemName, lang, mode) {
+  const container = document.getElementById('procon-box');
+  if (!container) return;
 
-      const db = (typeof proConDatabase !== 'undefined') ? proConDatabase : {};
-      const data = db[itemName];
+  const db = (typeof proConDatabase !== 'undefined') ? proConDatabase : {};
+  const data = db[itemName];
 
-      if (!data || !data[mode]) {
-        container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
-        return;
-      }
+  if (!data || !data[mode]) {
+    container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
+    return;
+  }
 
-      const currentData = data[mode];
-      const categories = [
-        { key: 'general', title: { en: 'General', ja: '全般' } },
-        { key: 'z', title: { en: 'Z Move', ja: 'Z 技' } },
-        { key: 'x', title: { en: 'X Move', ja: 'X 技' } },
-        { key: 'c', title: { en: 'C Move', ja: 'C 技' } },
-        { key: 'v', title: { en: 'V Move', ja: 'V 技' } },
-        { key: 'f', title: { en: 'F Move', ja: 'F 技' } }
-      ];
+  const currentData = data[mode];
+  const categories = [
+    { key: 'general', title: { en: 'General', ja: '全般' } },
+    { key: 'm1', title: { en: 'M1', ja: 'M1' } },
+    { key: 'z', title: { en: 'Z Move', ja: 'Z 技' } },
+    { key: 'x', title: { en: 'X Move', ja: 'X 技' } },
+    { key: 'c', title: { en: 'C Move', ja: 'C 技' } },
+    { key: 'v', title: { en: 'V Move', ja: 'V 技' } },
+    { key: 'f', title: { en: 'F Move', ja: 'F 技' } }
+  ];
 
-      let html = '';
+  let html = '';
 
-      categories.forEach(cat => {
-        const titleText = cat.title[lang] || cat.title['en'];
-        const items = currentData[cat.key];
+  categories.forEach(cat => {
+    const catData = currentData[cat.key];
+    if (!catData) return;
 
-        html += `<div class="procon-category">`;
-        html += `<div class="procon-category-title">${titleText}</div>`;
+    const titleText = cat.title[lang] || cat.title['en'];
+    const items = catData[lang] || catData.en || [];
+    const videos = catData.videos || [];
 
-        if (items && items[lang] && items[lang].length > 0) {
-          html += `<ul class="procon-list">`;
-          items[lang].forEach(item => {
-            html += `<li>${item}</li>`;
-          });
-          html += `</ul>`;
-        } else {
-          html += `<p style="color: #777; margin: 4px 0 0 10px;">-</p>`;
-        }
+    // テキストも動画もない場合は表示をスキップ
+    if (items.length === 0 && videos.length === 0) return;
 
-        html += `</div>`;
+    html += `<div class="procon-category" style="margin-bottom: 20px;">`;
+    html += `<div class="procon-category-title">${titleText}</div>`;
+
+    // テキストリストの描画
+    if (items.length > 0) {
+      html += `<ul class="procon-list">`;
+      items.forEach(item => {
+        html += `<li>${item}</li>`;
       });
-
-      container.innerHTML = html;
+      html += `</ul>`;
     }
 
-    function renderCombos(itemName, lang) {
-      const container = document.getElementById('combo-box');
-      if (!container) return;
-
-      const combos = comboDatabase[itemName];
-      if (!combos || combos.length === 0) {
-        container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '登録されているコンボはありません' : 'No combos registered'}</p>`;
-        return;
-      }
-
-      let html = '';
-      combos.forEach(c => {
-        const title = (c.name && c.name[lang]) ? c.name[lang] : (c.name ? c.name['en'] : '');
-        const desc = (c.desc && c.desc[lang]) ? c.desc[lang] : (c.desc ? c.desc['en'] : '');
-        
-        const seqText = (typeof c.sequence === 'object')
-          ? (c.sequence[lang] || c.sequence['en'])
-          : c.sequence;
-
-        const videoHTML = c.video ? `
-          <div style="margin-top: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #333;">
-            <video src="${c.video}" controls autoplay loop muted playsinline style="width: 100%; max-height: 360px; display: block; background: #000; object-fit: cover;" onerror="this.parentElement.style.display='none';"></video>
-          </div>
-        ` : '';
-
+    // 動画の描画（controls削除 / 複数動画の自動横並びレイアウト）
+    if (videos.length > 0) {
+      html += `<div class="procon-videos" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; width: 100%;">`;
+      videos.forEach(src => {
         html += `
-          <div class="combo-card">
-            <div class="combo-title">${title}</div>
-            <div class="combo-sequence">${seqText}</div>
-            <p class="combo-desc">${desc}</p>
-            ${videoHTML}
-          </div>
+          <video src="${src}" autoplay loop muted playsinline 
+                 style="flex: 1 1 280px; max-width: 320px; width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid #444; background: #000; object-fit: cover;"
+                 onerror="this.style.display='none';">
+          </video>
         `;
       });
-
-      container.innerHTML = html;
+      html += `</div>`;
     }
 
-    function toggleMoveDetails(btn) {
-      const wrapper = btn.closest('.move-wrapper');
-      const detailsContent = wrapper.querySelector('.move-details-content');
-      const isOpen = detailsContent.classList.contains('open');
-      const currentLang = localStorage.getItem('selectedLang') || 'en';
+    html += `</div>`;
+  });
 
-      if (isOpen) {
-        detailsContent.classList.remove('open');
-        btn.classList.remove('active');
-        btn.setAttribute('data-en', 'View');
-        btn.setAttribute('data-ja', '詳細');
-        btn.textContent = currentLang === 'ja' ? '詳細' : 'View';
+  container.innerHTML = html || `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
+}
+
+function renderCombos(itemName, lang) {
+  const container = document.getElementById('combo-box');
+  if (!container) return;
+
+  const combos = (typeof comboDatabase !== 'undefined') ? comboDatabase[itemName] : null;
+  if (!combos || combos.length === 0) {
+    container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '登録されているコンボはありません' : 'No combos registered'}</p>`;
+    return;
+  }
+
+  let html = '';
+  combos.forEach(c => {
+    const title = (c.name && c.name[lang]) ? c.name[lang] : (c.name ? c.name['en'] : '');
+    const desc = (c.desc && c.desc[lang]) ? c.desc[lang] : (c.desc ? c.desc['en'] : '');
+    
+    const seqText = (typeof c.sequence === 'object')
+      ? (c.sequence[lang] || c.sequence['en'])
+      : c.sequence;
+
+    const videoHTML = c.video ? `
+      <div style="margin-top: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #333;">
+        <video src="${c.video}" controls autoplay loop muted playsinline style="width: 100%; max-height: 360px; display: block; background: #000; object-fit: cover;" onerror="this.parentElement.style.display='none';"></video>
+      </div>
+    ` : '';
+
+    html += `
+      <div class="combo-card">
+        <div class="combo-title">${title}</div>
+        <div class="combo-sequence">${seqText}</div>
+        <p class="combo-desc">${desc}</p>
+        ${videoHTML}
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+function switchShowcaseVideo(btn, videoSrc) {
+  const container = btn.closest('.showcase-container');
+  const video = container.querySelector('video.showcase-video');
+  const fallback = container.querySelector('.video-error-fallback');
+  
+  const buttons = container.querySelectorAll('.skin-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  if (video) {
+    video.setAttribute('data-src', videoSrc);
+    video.src = videoSrc;
+    if (fallback) fallback.style.display = 'none';
+    video.style.display = 'block';
+    video.load();
+    video.play().catch(() => {});
+  }
+}
+
+function toggleMoveDetails(btn) {
+  const wrapper = btn.closest('.move-wrapper');
+  const detailsContent = wrapper.querySelector('.move-details-content');
+  const isOpen = detailsContent.classList.contains('open');
+  const currentLang = localStorage.getItem('selectedLang') || 'en';
+
+  if (isOpen) {
+    detailsContent.classList.remove('open');
+    btn.classList.remove('active');
+    btn.setAttribute('data-en', 'View');
+    btn.setAttribute('data-ja', '詳細');
+    btn.textContent = currentLang === 'ja' ? '詳細' : 'View';
+
+    const video = wrapper.querySelector('video.showcase-video');
+    if (video) {
+      video.pause();
+    }
+  } else {
+    detailsContent.classList.add('open');
+    btn.classList.add('active');
+    btn.setAttribute('data-en', 'Close');
+    btn.setAttribute('data-ja', '閉じる');
+    btn.textContent = currentLang === 'ja' ? '閉じる' : 'Close';
+
+    const video = wrapper.querySelector('video.showcase-video');
+    if (video) {
+      const dataSrc = video.getAttribute('data-src');
+      if (dataSrc && !video.src) {
+        video.src = dataSrc;
+      }
+      if (video.src) {
+        video.play().catch(() => {});
+      }
+    }
+  }
+}
+
+function renderMovesets(itemName, lang) {
+  const container = document.getElementById('moves-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const movesDb = (typeof fruitMovesDatabase !== 'undefined') ? fruitMovesDatabase : {};
+  const itemData = movesDb[itemName];
+
+  if (!itemData) {
+    container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '技データが登録されていません' : 'No moves registered'}</p>`;
+    return;
+  }
+
+  const labels = {
+    cooldown: lang === 'ja' ? 'クールダウン' : 'Cooldown',
+    energy: lang === 'ja' ? 'エネルギー' : 'Energy',
+    breaksInstinct: lang === 'ja' ? '見聞色破壊' : 'Breaks enemy Instinct',
+    instinctLabel: lang === 'ja' ? '見聞色' : 'Breaks Instinct',
+    detailsTitle: lang === 'ja' ? '詳細' : 'Details',
+    showcaseTitle: lang === 'ja' ? '技のお披露目' : 'Showcase'
+  };
+
+  const keys = [];
+  if (itemData.m1) {
+    keys.push('m1');
+  }
+  keys.push('z', 'x', 'c', 'v', 'f');
+
+  keys.forEach(key => {
+    const move = itemData[key];
+    const keyUpper = key === 'm1' ? 'M1' : key.toUpperCase();
+    const moveWrapper = document.createElement('div');
+    moveWrapper.className = 'move-wrapper';
+
+    if (move) {
+      const isHold = move.isHold || false;
+      const holdBadgeText = lang === 'ja' ? '長押し' : 'HOLD';
+      const holdBadgeHTML = isHold ? `
+        <span style="
+          background: linear-gradient(135deg, #ff9d00, #ff4500);
+          color: #fff;
+          font-size: 11px;
+          font-weight: bold;
+          padding: 2px 6px;
+          border-radius: 4px;
+          margin-left: 8px;
+          letter-spacing: 0.5px;
+          box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
+          display: inline-block;
+          vertical-align: middle;
+        ">${holdBadgeText}</span>
+      ` : '';
+
+      const title = (move.title && move.title[lang]) ? move.title[lang] : (move.title ? move.title['en'] : keyUpper);
+      const masteryText = key === 'm1' ? (lang === 'ja' ? 'タップ技' : 'Left Click') : (lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`);
+      const viewBtnText = lang === 'ja' ? '詳細' : 'View';
+      const cooldownVal = (typeof move.cooldown === 'object') ? (move.cooldown[lang] || move.cooldown['en']) : (move.cooldown || '-');
+      const showcaseDesc = move.showcaseText ? (move.showcaseText[lang] || move.showcaseText['en']) : '';
+      const instinctText = move.instinctText ? (move.instinctText[lang] || move.instinctText['en']) : '';
+      const videoSrc = move.showcaseVideo || '';
+
+      // 【修正点】厳密に true のときのみボタンを生成するように変更
+      const hasSkin = move.hasSkin === true;
+      const defaultLabel = lang === 'ja' ? '通常' : 'Default';
+      const skinLabel = move.skinName ? (move.skinName[lang] || move.skinName['en']) : (lang === 'ja' ? 'スキン' : 'Skin');
+
+      const skinButtonsHTML = hasSkin ? `
+        <div class="skin-toggle-group" style="display: flex; gap: 8px; margin-bottom: 10px;">
+          <button type="button" class="skin-btn active" onclick="switchShowcaseVideo(this, '${videoSrc}')">${defaultLabel}</button>
+          <button type="button" class="skin-btn" onclick="switchShowcaseVideo(this, '${move.skinVideo || ''}')">${skinLabel}</button>
+        </div>
+      ` : '';
+
+      moveWrapper.innerHTML = `
+        <div class="move-card">
+          <div class="move-left">
+            <div class="move-key">${keyUpper}</div>
+            <div class="move-info">
+              <div class="move-title" style="display: flex; align-items: center;">
+                ${title} ${holdBadgeHTML}
+              </div>
+              <div class="move-mastery">${masteryText}</div>
+            </div>
+          </div>
+          <button class="move-view-btn" data-en="View" data-ja="詳細" onclick="toggleMoveDetails(this)">${viewBtnText}</button>
+        </div>
+
+        <div class="move-details-content">
+          <div class="detail-box">
+            <h3>${labels.detailsTitle}</h3>
+            <div class="details-info-list">
+              <div>${labels.cooldown}: ${cooldownVal}</div>
+              <div><span class="highlight-yellow">${labels.energy}:</span> ${move.energy || '-'}</div>
+              ${move.instinctBreak !== undefined ? `
+                <div><span class="highlight-yellow">${labels.breaksInstinct}:</span> 
+                  <span class="${move.instinctBreak ? 'highlight-green' : 'highlight-red'}">${move.instinctBreak ? '✔' : '✖'}</span>
+                </div>` : ''}
+              ${instinctText ? `
+                <ul class="details-bullet-list">
+                  <li><span class="highlight-yellow">${labels.instinctLabel}:</span>${instinctText}</li>
+                </ul>` : ''}
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>${labels.showcaseTitle}</h3>
+            <div class="showcase-container" style="display: flex; flex-direction: column; gap: 8px;">
+              ${skinButtonsHTML}
+              <div style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; width: 100%;">
+                <video data-src="${videoSrc}" preload="none" loop muted playsinline class="showcase-video" 
+                       style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
+                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
+                <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
+                  ${lang === 'ja' ? '動画が見つかりません' : 'Video not found'}
+                </div>
+                <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0;">${showcaseDesc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      const noneTitle = lang === 'ja' ? 'なし' : 'None';
+      
+      moveWrapper.innerHTML = `
+        <div class="move-card" style="opacity: 0.6;">
+          <div class="move-left">
+            <div class="move-key" style="color: #888;">${keyUpper}</div>
+            <div class="move-info">
+              <div class="move-title" style="color: #aaa;">${noneTitle}</div>
+              <div class="move-mastery" style="color: #666;">-</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    container.appendChild(moveWrapper);
+  });
+}
+
+function updateItemDetails(lang) {
+  try {
+    const itemInfo = typeof getItemFromUrl === 'function' ? getItemFromUrl() : { name: '', type: '' };
+    const itemName = itemInfo.name || '';
+    const itemType = itemInfo.type || '';
+
+    const nameEl = document.getElementById('detail-name');
+    if (nameEl) {
+      if (typeof itemTranslations !== 'undefined' && itemTranslations[itemName] && itemTranslations[itemName][lang]) {
+        nameEl.textContent = itemTranslations[itemName][lang];
+      } else if (itemName) {
+        nameEl.textContent = itemName.replace(/_/g, ' ');
       } else {
-        detailsContent.classList.add('open');
-        btn.classList.add('active');
-        btn.setAttribute('data-en', 'Close');
-        btn.setAttribute('data-ja', '閉じる');
-        btn.textContent = currentLang === 'ja' ? '閉じる' : 'Close';
+        nameEl.textContent = 'Unknown';
       }
     }
 
-    function renderMovesets(itemName, lang) {
-      const container = document.getElementById('moves-container');
-      if (!container) return;
-      container.innerHTML = '';
+    const ingameSec = document.getElementById('ingame-desc-section');
+    const ingameText = document.getElementById('ingame-desc');
+    const overviewDb = (typeof itemOverviewData !== 'undefined') ? itemOverviewData : {};
+    const data = overviewDb[itemName];
 
-      const movesDb = (typeof fruitMovesDatabase !== 'undefined') ? fruitMovesDatabase : {};
-      const itemData = movesDb[itemName];
-
-      if (!itemData) {
-        container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '技データが登録されていません' : 'No moves registered'}</p>`;
-        return;
+    if (data && data.ingameDesc && ingameSec) {
+      ingameSec.style.display = 'block';
+      if (ingameText) {
+        ingameText.textContent = (data.ingameDesc[lang]) ? data.ingameDesc[lang] : (data.ingameDesc.en || '');
       }
+    } else if (ingameSec) {
+      ingameSec.style.display = 'none';
+    }
 
-      const labels = {
-        cooldown: lang === 'ja' ? 'クールダウン' : 'Cooldown',
-        energy: lang === 'ja' ? 'エネルギー' : 'Energy',
-        breaksInstinct: lang === 'ja' ? '見聞色破壊' : 'Breaks enemy Instinct',
-        instinctLabel: lang === 'ja' ? '見聞色' : 'Breaks Instinct',
-        detailsTitle: lang === 'ja' ? '詳細' : 'Details',
-        showcaseTitle: lang === 'ja' ? '技のお披露目' : 'Showcase'
+    const metaTypeEl = document.getElementById('meta-type');
+    const metaRarityEl = document.getElementById('meta-rarity');
+    const metaM1El = document.getElementById('meta-m1');
+    const priceMoneyEl = document.getElementById('price-money');
+    const priceRobuxEl = document.getElementById('price-robux');
+    const descEl = document.getElementById('detail-description');
+    const historyEl = document.getElementById('detail-history');
+    const notesEl = document.getElementById('detail-notes');
+
+    if (data && data.meta) {
+      if (metaTypeEl) metaTypeEl.textContent = (data.meta.type && data.meta.type[lang]) ? data.meta.type[lang] : (data.meta.type ? data.meta.type['en'] : '-');
+      if (metaRarityEl) metaRarityEl.textContent = (data.meta.rarity && data.meta.rarity[lang]) ? data.meta.rarity[lang] : (data.meta.rarity ? data.meta.rarity['en'] : '-');
+      if (metaM1El) metaM1El.textContent = (data.meta.m1 && data.meta.m1[lang]) ? data.meta.m1[lang] : (data.meta.m1 ? data.meta.m1['en'] : '-');
+      if (priceMoneyEl) priceMoneyEl.textContent = data.meta.money || '-';
+      if (priceRobuxEl) priceRobuxEl.textContent = data.meta.robux || '-';
+
+      if (descEl) descEl.innerHTML = (data.description && data.description[lang]) ? data.description[lang] : (data.description ? data.description['en'] : '-');
+      if (historyEl) historyEl.innerHTML = (data.history && data.history[lang]) ? data.history[lang] : (data.history ? data.history['en'] : '-');
+      if (notesEl) notesEl.innerHTML = (data.notes && data.notes[lang]) ? data.notes[lang] : (data.notes ? data.notes['en'] : '-');
+
+      const immunitySec = document.getElementById('immunity-section');
+      const immunityVideo = document.getElementById('immunity-video');
+      const immunityDesc = document.getElementById('immunity-desc');
+
+      if (data.meta.hasImmunity && data.immunity && immunitySec) {
+        immunitySec.style.display = 'block';
+        if (immunityVideo) immunityVideo.src = data.immunity.video || '';
+        if (immunityDesc) {
+          immunityDesc.textContent = (data.immunity.desc && data.immunity.desc[lang]) 
+            ? data.immunity.desc[lang] 
+            : (data.immunity.desc ? data.immunity.desc.en : '');
+        }
+      } else if (immunitySec) {
+        immunitySec.style.display = 'none';
+      }
+    } else {
+      if (metaTypeEl) metaTypeEl.textContent = itemType ? itemType.toUpperCase() : '-';
+      if (metaRarityEl) metaRarityEl.textContent = '-';
+      if (metaM1El) metaM1El.textContent = '-';
+      if (priceMoneyEl) priceMoneyEl.textContent = '-';
+      if (priceRobuxEl) priceRobuxEl.textContent = '-';
+
+      if (descEl) descEl.innerHTML = lang === 'ja' ? '詳細情報は準備中です。' : 'Details coming soon.';
+      if (historyEl) historyEl.innerHTML = '-';
+      if (notesEl) notesEl.innerHTML = '-';
+
+      const immunitySec = document.getElementById('immunity-section');
+      if (immunitySec) immunitySec.style.display = 'none';
+    }
+
+    const imgEl = document.getElementById('detail-img');
+    if (imgEl && itemName) {
+      let folder = 'fruits';
+      let suffix = '_Fruit.webp';
+
+      if (itemType === 'style') { folder = 'styles'; suffix = '.webp'; }
+      else if (itemType === 'sword') { folder = 'swords'; suffix = '.webp'; }
+      else if (itemType === 'gun') { folder = 'guns'; suffix = '.webp'; }
+      else if (itemType === 'gear') { folder = 'gears'; suffix = '.webp'; }
+      else if (itemType === 'rod') { folder = 'rods'; suffix = '.webp'; }
+
+      imgEl.src = `images/${folder}/${itemName}${suffix}`;
+      imgEl.onerror = () => {
+        if (imgEl.src.endsWith('.webp')) {
+          imgEl.src = imgEl.src.replace('.webp', '.png');
+        } else {
+          imgEl.src = 'images/ItemPlaceHolder.webp';
+        }
       };
-
-      const keys = [];
-      if (itemData.m1) {
-        keys.push('m1');
-      }
-      keys.push('z', 'x', 'c', 'v', 'f');
-
-      keys.forEach(key => {
-        const move = itemData[key];
-        const keyUpper = key === 'm1' ? 'M1' : key.toUpperCase();
-        const moveWrapper = document.createElement('div');
-        moveWrapper.className = 'move-wrapper';
-
-        if (move) {
-          const title = (move.title && move.title[lang]) ? move.title[lang] : (move.title ? move.title['en'] : keyUpper);
-          const masteryText = key === 'm1' ? (lang === 'ja' ? 'タップ技' : 'Left Click') : (lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`);
-          const viewBtnText = lang === 'ja' ? '詳細' : 'View';
-          const cooldownVal = (typeof move.cooldown === 'object') ? (move.cooldown[lang] || move.cooldown['en']) : (move.cooldown || '-');
-          const showcaseDesc = move.showcaseText ? (move.showcaseText[lang] || move.showcaseText['en']) : '';
-          const instinctText = move.instinctText ? (move.instinctText[lang] || move.instinctText['en']) : '';
-          const videoSrc = move.showcaseVideo || '';
-
-          moveWrapper.innerHTML = `
-            <div class="move-card">
-              <div class="move-left">
-                <div class="move-key">${keyUpper}</div>
-                <div class="move-info">
-                  <div class="move-title">${title}</div>
-                  <div class="move-mastery">${masteryText}</div>
-                </div>
-              </div>
-              <button class="move-view-btn" data-en="View" data-ja="詳細" onclick="toggleMoveDetails(this)">${viewBtnText}</button>
-            </div>
-
-            <div class="move-details-content">
-              <div class="detail-box">
-                <h3>${labels.detailsTitle}</h3>
-                <div class="details-info-list">
-                  <div>${labels.cooldown}: ${cooldownVal}</div>
-                  <div><span class="highlight-yellow">${labels.energy}:</span> ${move.energy || '-'}</div>
-                  ${move.instinctBreak !== undefined ? `
-                    <div><span class="highlight-yellow">${labels.breaksInstinct}:</span> 
-                      <span class="${move.instinctBreak ? 'highlight-green' : 'highlight-red'}">${move.instinctBreak ? '✔' : '✖'}</span>
-                    </div>` : ''}
-                  ${instinctText ? `
-                    <ul class="details-bullet-list">
-                      <li><span class="highlight-yellow">${labels.instinctLabel}:</span> ${instinctText}</li>
-                    </ul>` : ''}
-                </div>
-              </div>
-
-              <div class="detail-box">
-                <h3>${labels.showcaseTitle}</h3>
-                <div class="showcase-container" style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap;">
-                  <video src="${videoSrc}" autoplay loop muted playsinline class="showcase-video" 
-                         style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
-                  <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
-                    ${lang === 'ja' ? '動画が見つかりません' : 'Video not found'}
-                  </div>
-                  <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0;">${showcaseDesc}</p>
-                </div>
-              </div>
-            </div>
-          `;
-        } else {
-          const noneTitle = lang === 'ja' ? 'なし' : 'None';
-          
-          moveWrapper.innerHTML = `
-            <div class="move-card" style="opacity: 0.6;">
-              <div class="move-left">
-                <div class="move-key" style="color: #888;">${keyUpper}</div>
-                <div class="move-info">
-                  <div class="move-title" style="color: #aaa;">${noneTitle}</div>
-                  <div class="move-mastery" style="color: #666;">-</div>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-
-        container.appendChild(moveWrapper);
-      });
     }
+  } catch (err) {
+    console.error("updateItemDetails error:", err);
+  }
+}
 
-    function updateItemDetails(lang) {
-      const itemInfo = getItemFromUrl();
-      const itemName = itemInfo.name;
-      const itemType = itemInfo.type;
+function updateDetailPageLanguage(lang) {
+  try {
+    localStorage.setItem('selectedLang', lang);
 
-      const nameEl = document.getElementById('detail-name');
-      if (nameEl) {
-        if (itemTranslations[itemName] && itemTranslations[itemName][lang]) {
-          nameEl.textContent = itemTranslations[itemName][lang];
-        } else if (itemName) {
-          nameEl.textContent = itemName.replace(/_/g, ' ');
-        } else {
-          nameEl.textContent = 'Unknown';
-        }
-      }
-
-      const ingameSec = document.getElementById('ingame-desc-section');
-      const ingameText = document.getElementById('ingame-desc');
-      const overviewDb = (typeof itemOverviewData !== 'undefined') ? itemOverviewData : {};
-      const data = overviewDb[itemName];
-
-      if (data && data.ingameDesc && ingameSec) {
-        ingameSec.style.display = 'block';
-        if (ingameText) {
-          ingameText.textContent = (data.ingameDesc[lang]) ? data.ingameDesc[lang] : (data.ingameDesc.en || '');
-        }
-      } else if (ingameSec) {
-        ingameSec.style.display = 'none';
-      }
-
-      const metaTypeEl = document.getElementById('meta-type');
-      const metaRarityEl = document.getElementById('meta-rarity');
-      const metaM1El = document.getElementById('meta-m1');
-      const priceMoneyEl = document.getElementById('price-money');
-      const priceRobuxEl = document.getElementById('price-robux');
-      const descEl = document.getElementById('detail-description');
-      const historyEl = document.getElementById('detail-history');
-      const notesEl = document.getElementById('detail-notes');
-
-      if (data && data.meta) {
-        if (metaTypeEl) metaTypeEl.textContent = (data.meta.type && data.meta.type[lang]) ? data.meta.type[lang] : (data.meta.type ? data.meta.type['en'] : '-');
-        if (metaRarityEl) metaRarityEl.textContent = (data.meta.rarity && data.meta.rarity[lang]) ? data.meta.rarity[lang] : (data.meta.rarity ? data.meta.rarity['en'] : '-');
-        if (metaM1El) metaM1El.textContent = (data.meta.m1 && data.meta.m1[lang]) ? data.meta.m1[lang] : (data.meta.m1 ? data.meta.m1['en'] : '-');
-        if (priceMoneyEl) priceMoneyEl.textContent = data.meta.money || '-';
-        if (priceRobuxEl) priceRobuxEl.textContent = data.meta.robux || '-';
-
-        if (descEl) descEl.innerHTML = (data.description && data.description[lang]) ? data.description[lang] : (data.description ? data.description['en'] : '-');
-        if (historyEl) historyEl.innerHTML = (data.history && data.history[lang]) ? data.history[lang] : (data.history ? data.history['en'] : '-');
-        if (notesEl) notesEl.innerHTML = (data.notes && data.notes[lang]) ? data.notes[lang] : (data.notes ? data.notes['en'] : '-');
-      } else {
-        if (metaTypeEl) metaTypeEl.textContent = itemType ? itemType.toUpperCase() : '-';
-        if (metaRarityEl) metaRarityEl.textContent = '-';
-        if (metaM1El) metaM1El.textContent = '-';
-        if (priceMoneyEl) priceMoneyEl.textContent = '-';
-        if (priceRobuxEl) priceRobuxEl.textContent = '-';
-
-        if (descEl) descEl.innerHTML = lang === 'ja' ? '詳細情報は準備中です。' : 'Details coming soon.';
-        if (historyEl) historyEl.innerHTML = '-';
-        if (notesEl) notesEl.innerHTML = '-';
-      }
-
-      const imgEl = document.getElementById('detail-img');
-      if (imgEl && itemName) {
-        let folder = 'fruits';
-        let suffix = '_Fruit.webp';
-
-        if (itemType === 'style') { folder = 'styles'; suffix = '.webp'; }
-        else if (itemType === 'sword') { folder = 'swords'; suffix = '.webp'; }
-        else if (itemType === 'gun') { folder = 'guns'; suffix = '.webp'; }
-        else if (itemType === 'gear') { folder = 'gears'; suffix = '.webp'; }
-        else if (itemType === 'rod') { folder = 'rods'; suffix = '.webp'; }
-
-        imgEl.src = `images/${folder}/${itemName}${suffix}`;
-        imgEl.onerror = () => {
-          if (imgEl.src.endsWith('.webp')) {
-            imgEl.src = imgEl.src.replace('.webp', '.png');
-          } else {
-            imgEl.src = 'images/ItemPlaceHolder.webp';
-          }
-        };
-      }
-    }
-
-    function updateDetailPageLanguage(lang) {
-      localStorage.setItem('selectedLang', lang);
-
-      const translatableElements = document.querySelectorAll('.translatable');
-      translatableElements.forEach(el => {
-        const text = el.getAttribute(`data-${lang}`);
-        if (text) {
-          el.innerHTML = text;
-        }
-      });
-
-      updateItemDetails(lang);
-
-      const itemInfo = getItemFromUrl();
-      renderMovesets(itemInfo.name, lang);
-      renderProConSection(itemInfo.name, lang, currentProConMode);
-      renderCombos(itemInfo.name, lang);
-    }
-
-   function initDetailPage() {
-      try {
-        const initialLang = localStorage.getItem('selectedLang') || 'en';
-
-        window.applyLanguage = function(lang) {
-          updateDetailPageLanguage(lang);
-        };
-
-        // 保存されている言語をページ全体に反映
-        updateDetailPageLanguage(initialLang);
-
-        const langBtn = document.getElementById('lang-toggle-btn');
-        if (langBtn) {
-          // イベントの二重登録を防ぐため、onclick でシンプルに指定
-          langBtn.onclick = (e) => {
-            e.stopPropagation();
-            const current = localStorage.getItem('selectedLang') || 'en';
-            const nextLang = current === 'en' ? 'ja' : 'en';
-            updateDetailPageLanguage(nextLang);
-          };
-        }
-      } catch (err) {
-        console.error("Detail page init error:", err);
-      }
-    }
-
-    document.addEventListener('click', function(e) {
-      const link = e.target.closest('.wiki-link');
-      if (link) {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        if (href) {
-          history.pushState(null, '', href);
-          const currentLang = localStorage.getItem('selectedLang') || 'en';
-          updateDetailPageLanguage(currentLang);
-          window.scrollTo(0, 0);
-        }
+    const translatableElements = document.querySelectorAll('.translatable');
+    translatableElements.forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) {
+        el.innerHTML = text;
       }
     });
 
-    // ブラウザの「戻る」「進む」ボタン時の言語復元
-    window.addEventListener('popstate', function() {
+    updateItemDetails(lang);
+
+    const itemInfo = typeof getItemFromUrl === 'function' ? getItemFromUrl() : { name: '', type: '' };
+    if (typeof renderMovesets === 'function') renderMovesets(itemInfo.name, lang);
+    if (typeof renderProConSection === 'function') renderProConSection(itemInfo.name, lang, typeof currentProConMode !== 'undefined' ? currentProConMode : 'pros');
+    if (typeof renderCombos === 'function') renderCombos(itemInfo.name, lang);
+  } catch (err) {
+    console.error("updateDetailPageLanguage error:", err);
+  }
+}
+
+function initDetailPage() {
+  try {
+    const initialLang = localStorage.getItem('selectedLang') || 'en';
+
+    window.applyLanguage = function(lang) {
+      updateDetailPageLanguage(lang);
+    };
+
+    updateDetailPageLanguage(initialLang);
+
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) {
+      langBtn.onclick = (e) => {
+        e.stopPropagation();
+        const current = localStorage.getItem('selectedLang') || 'en';
+        const nextLang = current === 'en' ? 'ja' : 'en';
+        updateDetailPageLanguage(nextLang);
+      };
+    }
+  } catch (err) {
+    console.error("Detail page init error:", err);
+  }
+}
+
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('.wiki-link');
+  if (link) {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+    if (href) {
+      history.pushState(null, '', href);
       const currentLang = localStorage.getItem('selectedLang') || 'en';
       updateDetailPageLanguage(currentLang);
-    });
-
-    // 初期化の実行制御
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDetailPage);
-    } else {
-      initDetailPage();
+      window.scrollTo(0, 0);
     }
+  }
+});
 
-    // キャッシュからの復元時（戻るボタンなど）にも言語を確実につじつま合わせする
-    window.addEventListener('pageshow', function(e) {
-      if (e.persisted) {
-        const currentLang = localStorage.getItem('selectedLang') || 'en';
-        updateDetailPageLanguage(currentLang);
-      }
-    });
+window.addEventListener('popstate', function() {
+  const currentLang = localStorage.getItem('selectedLang') || 'en';
+  updateDetailPageLanguage(currentLang);
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDetailPage);
+} else {
+  initDetailPage();
+}
+
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) {
+    const currentLang = localStorage.getItem('selectedLang') || 'en';
+    updateDetailPageLanguage(currentLang);
+  }
+});
 </script>

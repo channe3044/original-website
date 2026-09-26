@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "rubber", rarity: "rare" },
     { name: "Ghost", rarity: "rare" },
     { name: "Magma", rarity: "rare" },
+    { name: "Lime_Blade", rarity: "rare" },
     { name: "Quake", rarity: "legendary" },
     { name: "Buddha", rarity: "legendary" },
     { name: "Love", rarity: "legendary" },
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Dark_Step", rarity: "uncommon" },
     { name: "Electric", rarity: "uncommon" },
     { name: "Water_Kung_Fu", rarity: "uncommon" },
+    { name: "Advanced_Combat", rarity: "uncommon" },
     { name: "Dragon_Breath", rarity: "rare" },
     { name: "Superhuman", rarity: "rare" },
     { name: "Death_Step", rarity: "rare" },
@@ -252,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Zebra_Cap", rarity: "legendary" },
     { name: "50b_Party_Hat", rarity: "mythical" },
     { name: "Celestial_Helmet", rarity: "mythical" },
+    { name: "Coral_Crown", rarity: "mythical" },
     { name: "Coven_Witch_Hat", rarity: "mythical" },
     { name: "Cracked_Egg_Helmet", rarity: "mythical" },
     { name: "Cupids_Top_Hat", rarity: "mythical" },
@@ -267,7 +270,9 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Pumpkin_Mask", rarity: "mythical" },
     { name: "Red_Ribbon", rarity: "mythical" },
     { name: "Romantic_Bouquet", rarity: "mythical" },
+    { name: "Royal_Nimbus", rarity: "mythical" },
     { name: "Sanguine_Cloak", rarity: "mythical" },
+    { name: "Shark_Cape", rarity: "mythical" },
     { name: "Uzoths_Cloak", rarity: "mythical" },
   ];
 
