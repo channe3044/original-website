@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("lang-btn") ||
     document.querySelector(".lang-btn");
 
+  // ★ プロフィールボタン（右上のフレイムアイコン）の取得
+  const profileBtn =
+    document.getElementById("profile-btn") ||
+    document.querySelector(".flame-icon") ||
+    document.querySelector(".header-right img[src*='Flame']") ||
+    document.querySelectorAll(".header-right button")[1];
+
   const translatableElements = document.querySelectorAll(".translatable");
 
   const worldBtn = document.getElementById("world-btn");
@@ -59,6 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ─── 🔥 プロフィールボタンの処理（profile.html へ移動） ───
+  if (profileBtn) {
+    profileBtn.style.cursor = "pointer";
+
+    profileBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      // プロフィール用の別ページへ遷移
+      window.location.href = "profile.html";
+    });
+  }
+
   // ─── 🍍 悪魔の実リスト ───
   const fruitsList = [
     { name: "Rocket", rarity: "common" },
@@ -75,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Eagle", rarity: "uncommon" },
     { name: "Diamond", rarity: "uncommon" },
     { name: "Light", rarity: "rare" },
-    { name: "Rubber", rarity: "rare" }, 
+    { name: "Rubber", rarity: "rare" },
     { name: "Ghost", rarity: "rare" },
     { name: "Magma", rarity: "rare" },
     { name: "Lime_Blade", rarity: "rare" },
@@ -90,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Blizzard", rarity: "legendary" },
     { name: "Gravity", rarity: "mythical" },
     { name: "Mammoth", rarity: "mythical" },
-    { name: "T-Rex", rarity: "mythical" }, 
+    { name: "T-Rex", rarity: "mythical" },
     { name: "Dough", rarity: "mythical" },
     { name: "Shadow", rarity: "mythical" },
     { name: "Venom", rarity: "mythical" },
@@ -338,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Second_Unnamed_Island", displayName: "Unnamed Island", sea: 2 },
   ];
 
-  // ─── 🛠️ リストを描画する共通関数（★詳細ページへのクリック機能を追加） ───
+  // ─── 🛠️ リストを描画する共通関数 ───
   function renderList(list, gridElement, type) {
     if (!gridElement) return;
     gridElement.innerHTML = "";
@@ -348,7 +366,6 @@ document.addEventListener("DOMContentLoaded", () => {
       item.className = `fruit-item rarity-${itemData.rarity}`;
       item.style.cursor = "pointer";
 
-      // 👆 クリックしたら詳細ページ（detail.html）へ移動する処理
       item.addEventListener("click", () => {
         window.location.href = `detail.html?name=${encodeURIComponent(
           itemData.name,
