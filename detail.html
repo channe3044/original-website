@@ -291,7 +291,7 @@
     }
 
     .detail-box h3 {
-      margin: 0 0 10px 0;
+      margin: 0;
       font-size: 1.15rem;
       color: #fff;
       font-weight: 900;
@@ -319,8 +319,8 @@
 
     .showcase-container {
       display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .showcase-img {
@@ -361,30 +361,6 @@
       border-color: #444;
       min-width: 100px;
     }
-    /* 通常 / スキンボタン（灰色スタイル） */
-.skin-btn {
-  background: #2a2a2a;
-  color: #ccc;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.skin-btn:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-
-/* 選択中の状態 */
-.skin-btn.active {
-  background: #444;
-  color: #fff;
-  border-color: #777;
-}
 
     .pro-btn.active {
       background: linear-gradient(to bottom, #fff464, #f6ab12);
@@ -481,38 +457,69 @@
       margin: 0;
       line-height: 1.5;
     }
-.quote-box {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100px;
-  box-sizing: border-box;
-}
 
-.quote-text-en {
-  font-size: 15px;
-  font-style: italic;
-  font-weight: 600;
-  color: #e0e0e0;
-  text-align: center;
-  margin: 10px 0 20px 0;
-  line-height: 1.5;
-}
+    .quote-box {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100px;
+      box-sizing: border-box;
+    }
 
-.quote-label-wrapper {
-  text-align: right;
-  font-size: 13px;
-  color: #ffffff;
-  font-weight: 500;
-}
+    .quote-text-en {
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 600;
+      color: #e0e0e0;
+      text-align: center;
+      margin: 10px 0 20px 0;
+      line-height: 1.5;
+    }
 
-.highlight-yellow {
-  color: #ffcc00;
-}
+    .quote-label-wrapper {
+      text-align: right;
+      font-size: 13px;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* 「すべてのスキン」ボタン用スタイル */
+    .skin-btn {
+      background-color: #333333;
+      color: #ffffff;
+      border: 1px solid #555555;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.2;
+    }
+
+    .skin-btn:hover {
+      background-color: #444444;
+      border-color: #777777;
+    }
+
+    a.skin-btn.skin-all-link {
+      color: #ffffff;
+      background-color: #2a2c35;
+      border-color: #ffaa00;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    a.skin-btn.skin-all-link:hover {
+      background-color: #ffaa00;
+      color: #000000;
+    }
 
     @media (max-width: 600px) {
       .showcase-container {
@@ -696,8 +703,8 @@
           ja: "ロケットを使うと、ユーザーはロケットミサイルを発射してダメージを与えることができます。また、優秀とは言えませんがロケットは飛行能力も兼ね備えています。<br><br>ロケットは、第二世界の<a href='#' class='wiki-link'>???(ドッグハウス)</a>にいる<a href='#' class='wiki-link'>レンロック</a>からも<img src='images/currency/Robux.webp' class='inline-currency-icon'>97で手に入れることができます。第三世界は<a href='#' class='wiki-link'>浮きカメ</a>のマンション付近にレンロックが居ます。ただし、手に入れられるのはフルーツ本体であり、<a href='#' class='wiki-link'>ブロックスフルーツディーラー</a>からは<img src='images/currency/Robux.webp' class='inline-currency-icon'>50で永久版を購入できるため、こちらでの購入をお勧めします。<br><br>ロケットは、ゲーム内で最も安価なフルーツです。この低価格にもかかわらず、ロケットの攻撃力は高く、そして高価なフルーツと比べても攻撃範囲も優れています。そのため、PvPに適しています。手頃な価格なので、pvpにフルーツで迷った時一度だけでも使ってみてはいかがでしょうか？"
         },
         history: {
-          en: "It was implemented in <a href='#' class='wiki-link'>Update 20</a>, replacing the <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> fruit. <a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> had the same price as Rocket.",
-          ja: "<a href='#' class='wiki-link'>アップデート20</a>で<a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>キロ</a>フルーツがロケットに置き換わる形で実装されました。キロはロケットと同じ価格でした。"
+          en: "<a href='#' class='wiki-link'>[Update 20]</a><br><a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>Kilo</a> fruit was replaced by Rocket and added to the game. Kilo had the same price as Rocket.",
+          ja: "<a href='#' class='wiki-link'>[アップデート20]</a><br><a href='detail.html?name=Kilo&type=fruit' class='wiki-link'>キロ</a>フルーツがロケットに置き換わり、実装されました。キロはロケットと同じ価格でした。"
         },
         notes: {
           en: "Rocket C has insane range and AOE, so it's super good for PvP! But to be honest, Kilo was way more fun—I kind of miss it<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(｡･ω･)</span>",
@@ -722,8 +729,8 @@
           ja: "スピンを使うと素早く回転することができ、その動きによって空気が激しく動き、ダメージを与えることができる。<br><br>スピンは、このゲーム内で2 番目に安価なフルーツです。また、プレイヤーたちの間では、最も弱いフルーツの一つと見なされています。<br><br>このフルーツには、攻撃手段が3つしかありません。そのうち、遠距離攻撃が可能なのは1つだけでなので、<a href='detail.html?name=Rocket&type=fruit' class='wiki-link'>ロケット</a>や<a href='detail.html?name=Smoke&type=fruit' class='wiki-link'>スモーク</a>といった他のフルーツの方が、レベル上げやPvPの両方の面ではるかに優れています。"
         },
          history: {
-          en: "<p>Spin was added in <a href='#' class='wiki-link'>Update 15</a>.</p><p>Spin's value dropped significantly in <a href='#' class='wiki-link'>Update 17.3</a>.</p><ul style='margin-top: 8px; padding-left: 20px; color: #aaa;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 180,000 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 7,500</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 380 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 75</div></li></ul><p>Spin was reworked in <a href='#' class='wiki-link'>Update 20</a>, updating its icon and fruit model.</p><p>The C move 'Spinning Bomber' was renamed to 'Air Slasher'.</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Spin_fruit.webp' alt='Old Spin' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin.png';\"><img src='images/changelog/Old_Spin_icon.webp' alt='Old Spin Icon' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin_icon.png';\"></div>",
-          ja: "<p><a href='#' class='wiki-link'>アップデート15</a>でスピンが追加されました。</p><p><a href='#' class='wiki-link'>アップデート17.3</a>でスピンの価値が大幅に下がりました。</p><ul style='margin-top: 8px; padding-left: 20px; color: #aaa;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 180,000 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 7,500</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 380 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 75</div></li></ul><p><a href='#' class='wiki-link'>アップデート20</a>でスピンがリワークされ、アイコンとフルーツモデルが変更されました。</p><p>C技のスピニングボンバーは「エアスラッシャー」という名前に変更されました。</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Spin_fruit.webp' alt='旧スピン' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin.png';\"><img src='images/changelog/Old_Spin_icon.webp' alt='旧スピンアイコン' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin_icon.png';\"></div>"
+          en: "<p><a href='#' class='wiki-link'>[Update 15]</a><br>Spin was added.</p><p><a href='#' class='wiki-link'>[Update 17.3]</a><br>Significantly decreased Spin price.</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 180,000 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 7,500</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 380 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 75</div></li></ul><p><a href='#' class='wiki-link'>[Update 20]</a><br>Spin was reworked, and its icon and fruit model were changed.</p><p>C move Spinning Bomber was renamed to Air Slasher.</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Spin_fruit.webp' alt='Old Spin' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin.png';\"><img src='images/changelog/Old_Spin_icon.webp' alt='Old Spin Icon' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin_icon.png';\"></div>",
+          ja: "<p><a href='#' class='wiki-link'>[アップデート15]</a><br>スピンが追加されました。</p><p><a href='#' class='wiki-link'>[アップデート17.3]</a><br>スピンの価値が大幅に下がりました。</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 180,00 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 7,500</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 380 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 75</div></li></ul><p><a href='#' class='wiki-link'>[アップデート20]</a><br>スピンがリワークされ、アイコンとフルーツモデルが変更されました。</p><p>C技のスピニングボンバーは「エアスラッシャー」という名前に変更されました。</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Spin_fruit.webp' alt='旧スピン' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin.png';\"><img src='images/changelog/Old_Spin_icon.webp' alt='旧スピンアイコン' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin_icon.png';\"></div>"
         },
         notes: {
           en: "I love how the Z move looks and how the C move sounds<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*・ω・)ﾉ</span>",
@@ -748,7 +755,7 @@
           video: "images/videos/Blade_immunity.mp4",
           desc: {
             en: "Completely negates all sword damage, even when the opponent is using Aura.",
-            ja: "相手がオーラ（武装色）を使用している場合でも、剣によるすべてのダメージを完全に無効化します。"
+            ja: "相手が武装色を使用している場合でも、剣によるすべてのダメージを完全に無効化します。"
           }
         },
         description: {
@@ -756,8 +763,8 @@
           ja: "ブレードは、使用者の手足に取り付けることができる鋭い刃を提供します。これにより敵が武装色を付けていても、刃を使って剣によるダメージを無効化します。また、回転する刃を使った攻撃や、刃を回転させて飛行するといった、様々な使い方ができるでしょう。<br><br>ブレードは、スタン攻撃や見聞破壊、高いダメージ力を持っているため、PvPに適しています。何よりも、あらゆる剣攻撃に対してのダメージを完全に無効化するのが強みです。なので、ポータルや剣振りアイス、大仏といった剣を主武器とする相手に対して非常に効果的です。たちまち相手はブチギレるでしょう😂<br><br>ブレードは、あらゆる海域でのレベル上げに適しています。特にファーストシーでは、初心者にとって最適なフルーツです。その理由は、ブレードが剣ダメージが無効であり、遠距離のタップ技を持っているからです。ブレードのタップ技はT-Rexやガス、キツネやドラゴンのものと似ており海王類に対してダメージが入ります。ただし、これらのフルーツとは異なり、ブレードのタップ技を使用してもユーザーは前に移動しないため、水平方向の移動がスムーズに行えます。さらにブレードのタップ技は発動がとても早いです。コストが低く、入手しやすく、入手確率も高いため、ファーストシーでの は最適な果実です。ただし、レベル上げ後半のセカンドシー、サードシーなどの海域では敵の体力が高くなりダメージが低く感じやすくなったり剣を使う敵が減ってくるので使いづらくなっていきます。"
         },
               history: { 
-              en: `<p>Chop was added in <a href='#' class='wiki-link'>Update 1</a>.</p><p>The fruit model for Chop was revamped in <a href='#' class='wiki-link'>Update 20</a>.</p><p>In <a href='#' class='wiki-link'>Update 24</a>, Chop Fruit was renamed to Blade Fruit.<br>An M1 attack was added.<br>The Z move, Tackle, was renamed to Razor Cyclone.<br>The X move, Dance, was renamed to Blade Dance.<br>The C move, Party, was renamed to Saw Shredder.<br>The F move, Helicopter, was renamed to Turbine Flight.</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Chop_icon.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_icon.png';"><img src='images/changelog/Old_Chop_fruit.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_fruit.png';"></div>`, 
-              ja: `<p><a href='#' class='wiki-link'>アップデート1</a>でチョップが追加されました。</p><p><a href='#' class='wiki-link'>アップデート20</a>でチョップのフルーツモデルが変更されました。</p><p><a href='#' class='wiki-link'>アップデート24</a>でチョップフルーツの名前がブレードフルーツに変更されました。<br>タップ技が追加されました。<br>Z技のタックルの名前がレーザーサイクロンに変更されました。<br>X技のダンスの名前がブレードダンスに変更されました。<br>C技のパーティーの名前がソーシュレッダーに変更されました。<br>F技のヘリコプターの名前がタービンフライトに変更されました。</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Chop_icon.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_icon.png';"><img src='images/changelog/Old_Chop_fruit.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_fruit.png';"></div>` },
+              en: `<p><a href='#' class='wiki-link'>[Update 1]</a><br>Chop was added.</p><p><a href='#' class='wiki-link'>[Update 20]</a><br>Chop fruit model changed.</p><p><a href='#' class='wiki-link'>[Update 24]</a><br>Chop fruit was renamed to Blade fruit.<br>Added tap skill.<br>Z move Tackle renamed to Razor Cyclone.<br>X move Dance renamed to Blade Dance.<br>C move Party renamed to Saw Shredder.<br>F move Helicopter renamed to Turbine Flight.</p><p><a href='#' class='wiki-link'>[Update 30]</a><br>Added new <a href="skins.html" class="wiki-link">skins</a> for Blade fruit.</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Chop_icon.webp' alt='Old Chop Icon' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_icon.png';"><img src='images/changelog/Old_Chop_fruit.webp' alt='Old Chop Fruit' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_fruit.png';"></div>`, 
+              ja: `<p><a href='#' class='wiki-link'>[アップデート1]</a><br>チョップが追加されました。</p><p><a href='#' class='wiki-link'>[アップデート20]</a><br>チョップのフルーツモデルが変更されました。</p><p><a href='#' class='wiki-link'>[アップデート24]</a><br>チョップフルーツの名前がブレードフルーツに変更されました。<br>タップ技が追加されました。<br>Z技のタックルの名前がレーザーサイクロンに変更されました。<br>X技のダンスの名前がブレードダンスに変更されました。<br>C技のパーティーの名前がソーシュレッダーに変更されました。<br>F技のヘリコプターの名前がタービンフライトに変更されました。</p><p><a href='#' class='wiki-link'>[アップデート30]</a><br>ブレードフルーツに新しい<a href="skins.html" class="wiki-link">スキン</a>が追加されました。</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Chop_icon.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_icon.png';"><img src='images/changelog/Old_Chop_fruit.webp' alt='旧チョップ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Chop_fruit.png';"></div>` },
         notes: {
           en: "M1s feel so satisfying to use!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*≧ω≦)ﾉ</span>",
           ja: "M1が楽しい!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>ヽ(*≧ω≦)ﾉ</span>"
@@ -781,8 +788,8 @@
           ja: "スプリングを使えば、自分の身体の各部分をバネのように使うことができます。これにより素早く移動することができます。<br><br>Springはバネの他に春という意味があり、ゲームの言語設定を日本語にしているとSpringの翻訳がバネではなく春になります"
         },
         history: {
-          en: "<p>Spring was added in <a href='#' class='wiki-link'>Update 2</a>.</p><p><a href='#' class='wiki-link'>Update 17.3</a> introduced the [ V ] Spring Emperor move.</p><p><a href='#' class='wiki-link'>Update 20</a> revamped the physical model for the Spring fruit.</p><div style=\"margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;\"><img src=\"images/changelog/Old_Spring_fruit.webp\" alt=\"Old Spring Fruit\" style=\"height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;\" onerror=\"this.onerror=null; this.src='images/changelog/Old_Spring_fruit.png';\"></div>",
-          ja: "<p><a href='#' class='wiki-link'>アップデート2</a>でスプリングが追加されました。</p><p><a href='#' class='wiki-link'>アップデート17.3</a>で[ V ]スプリングエンペラーが追加されました</p><p><a href='#' class='wiki-link'>アップデート20</a>でスプリングのフルーツモデルが変更されました。</p><div style=\"margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;\"><img src=\"images/changelog/Old_Spring_fruit.webp\" alt=\"旧スプリング\" style=\"height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;\" onerror=\"this.onerror=null; this.src='images/changelog/Old_Spring_fruit.png';\"></div>"
+          en: "<p><a href='#' class='wiki-link'>[Update 2]</a><br>Spring was added.</p><p><a href='#' class='wiki-link'>[Update 17.3]</a><br>Added [ V ] Spring Emperor.</p><p><a href='#' class='wiki-link'>[Update 20]</a><br>Spring fruit model changed.</p><div style=\"margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;\"><img src=\"images/changelog/Old_Spring_fruit.webp\" alt=\"旧スプリング\" style=\"height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;\" onerror=\"this.onerror=null; this.src='images/changelog/Old_Spring_fruit.png';\"></div>",
+          ja: "<p><a href='#' class='wiki-link'>[アップデート2]</a><br>スプリングが追加されました。</p><p><a href='#' class='wiki-link'>[アップデート17.3]</a><br>[ V ]スプリングエンペラーが追加されました</p><p><a href='#' class='wiki-link'>[アップデート20]</a><br>スプリングのフルーツモデルが変更されました。</p><div style=\"margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;\"><img src=\"images/changelog/Old_Spring_fruit.webp\" alt=\"旧スプリング\" style=\"height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;\" onerror=\"this.onerror=null; this.src='images/changelog/Old_Spring_fruit.png';\"></div>"
         },
         notes: {
           text: {
@@ -797,15 +804,75 @@
       //ボム
       "Bomb": {
         ingameDesc: {
-          en: "Details coming soon.",
-          ja: "詳細は近日公開予定です。"
+          en: "Provides the user with a wide range of explosive attacks.",
+          ja: "使用者に幅広い爆発攻撃を提供する。"
         },
         meta: {
           type: { en: "Natural", ja: "通常系" },
           rarity: { en: "Common", ja: "コモン" },
           m1: { en: "Yes", ja: "あり" },
           money: "80000",
-          robux: "220"
+          robux: "220",
+        },
+        description: {
+          en: "Using the Bomb Fruit allows you to attack using explosions. You can launch attacks with hand-held bombs, plant landmines, or sacrifice your own HP to deal massive damage.",
+          ja: "ボムフルーツを使えば爆発を利用して攻撃できます。手持ちの爆弾を使った攻撃や、地雷の設置、自分の体力を犠牲にしてより大きなダメージを与えることもできます。"
+        },
+        history: {
+          en: "<p><a href='#' class='wiki-link'>[Update 1]</a><br>Bomb was added.</p><p><a href='#' class='wiki-link'>[Update 8]</a><br>Fixed Bomb visuals.</p><p><a href='#' class='wiki-link'>[Update 17.2]</a></p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Lowered cooldown.</div></li></ul><p><a href='#' class='wiki-link'>[Update 17.3]</a><br>Increased Bomb price.</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 5,000 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 80,000</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 60 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 220</div></li></ul><p>All skills were reworked.<br>Z move Snipe renamed to Targeted Bomb.<br>X move Ultimate Explosion renamed to Bomb Grab.<br>C, V, and F moves added.</p><p><a href='#' class='wiki-link'>[Update 20]</a><br>Bomb fruit model changed.</p><p><a href='#' class='wiki-link'>[Update 27.4]</a><br>Bomb fruit reworked.</p><p>Added M1.<br>Completely changed the landmine placement animation/mechanic for C move (tap).</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Increased C move landmine damage.</div></li><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Slightly increased V move hitbox.</div></li></ul><p>Added new <a href='skins.html' class='wiki-link'>skins</a> for Bomb fruit.</p><p><a href='#' class='wiki-link'>[Update 27.5]</a></p><p>Skin-exclusive icons are now displayed.<br>Buffed some of Bomb's skills.</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Increased V move damage by 100%.</div></li><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Halved C move detonation time and increased blast radius by 20%.</div></li></ul><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Bomb_icon.webp' alt='Old Bomb' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;'></div>",
+          ja: "<p><a href='#' class='wiki-link'>[アップデート1]</a><br>ボムが追加されました。</p><p><a href='#' class='wiki-link'>[アップデート8]</a><br> ボムのビジュアルが修正されました。</p><p><a href='#' class='wiki-link'>[アップデート17.2]</a></p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>クールダウンが短縮されました。</div></li></ul><p><a href='#' class='wiki-link'>[アップデート17.3]</a><br>ボムの価格が上昇しました。</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 5,000 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 80,000</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 60 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 220</div></li></ul><p>全ての技がリワークされました。<br>Z技のスナイプの名前がターゲットボムに変更されました。<br>X技のアルティメットエクスプロージョンの名前がボムグラブに変更されました。<br>C技、V技、F技が追加されました。</p><p><a href='#' class='wiki-link'>[アップデート20]</a><br>ボムのフルーツモデルが変更されました。</p><p><a href='#' class='wiki-link'>[アップデート27.4]</a><br>ボムフルーツがリワークされました。</p><p>M1が追加されました<br>C技の短押しの地雷設置の動きが完全に変更されました。</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>C技の地雷のダメージが増加しました。</div></li><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>V技のヒットボックスが少し増加しました。</div></li></ul><p>ボムフルーツに新しい<a href='skins.html' class='wiki-link'>スキン</a>が追加されました。</p><p><a href='#' class='wiki-link'>[アップデート27.5]</a></p><p>スキン専用アイコンが表示されるようになりました。<br>ボムの一部の技が上方修正されました。</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>V技のダメージが100%増加しました。</div></li><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>C技の爆発時間が半分に短縮され、爆発範囲も20%増加しました。</div></li></ul><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Bomb_icon.webp' alt='旧ボム' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;'></div>"
+        },
+        notes: {
+          en: "Adding M1 was nice, but it isn't that strong. Plus, C move's hold feature no longer expands the mine range, and I personally preferred the old V move visuals before the rework—so it's a bit of a downgrade for me. 🙄",
+          ja: "M1が追加されたのはいいけどそこまで強くないしC技の長押しが地雷設置範囲拡大じゃなくなったこととV技の見た目が個人的にリワーク前の方が好きだったから私の中では評価が下がったかもね🙄"
+        }
+      },
+      //スモーク
+      "Smoke": {
+        ingameDesc: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        meta: {
+          type: { en: "Elemental", ja: "ロギア系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "100,000",
+          robux: "250",
+          hasImmunity: true
+        },
+        immunity: {
+          video: "images/videos/Smoke_immunity.mp4",
+          desc: {
+            en: "Grants immunity to normal physical attacks (Fighting Style, Sword, Gun) without Aura. Fruit attacks always deal damage regardless of level. Against regular NPCs, immunity requires your level to be higher than theirs (roughly 2%+ level difference). Bosses and attacks with Aura bypass this immunity.",
+            ja: "武装色のついていない通常の物理攻撃（格闘・剣・銃）の攻撃を無効化します。フルーツ攻撃はレベルに関係なく常にダメージを与えます。 通常のNPCに対して無効化を発動するには、相手より高いレベル（およそ2%以上のレベル差）が必要です。ボスやオーラ付きの攻撃はこの無効化を貫通します。"
+          }
+        },
+        description: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        history: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        notes: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        }
+      },
+      //スパイク
+      "Spike": {
+        ingameDesc: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "-",
+          robux: "-"
         },
         description: {
           en: "Details coming soon.",
@@ -973,8 +1040,6 @@
       instinctText: { en: "Cannot break Instinct.", ja: "見聞色は破壊できません。" },
       showcaseVideo: "images/videos/Blade_M1.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Lime_Blade_M1.mp4",
       showcaseText: {
         en: "Transforms the user's arms into sharp blades and swings them to launch slash attacks. The slashes dissipate after reaching a certain distance. Enemies hit are knocked back slightly.",
         ja: "自分の腕に鋭い刃を作り出し、振り回すことで斬撃を放ちます。斬撃は一定の距離まで届くと消滅します。当たった敵はわずかに後ろにに吹き飛ばされます。"
@@ -989,8 +1054,6 @@
       instinctText: { en: "A direct hit will break the target's Instinct, but it can be dodged if hit by the outer edges.", ja: "技が直撃すると見聞色が破壊されます。端の部分なら回避できます。" },
       showcaseVideo: "images/videos/Blade_Z.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Lime_Blade_Z.mp4",
       showcaseText: {
         en: "Forms blades on the user's arms, then spins and dashes toward the cursor to slash enemies.",
         ja: "自分の腕に刃を形成し、カーソルの方向に向かって回転しながら突進して切りつけます。"
@@ -1006,8 +1069,6 @@
       instinctText: { en: "Can be dodged at the outer edge.", ja: "端の部分なら避けることができます。" },
       showcaseVideo: "images/videos/Blade_X.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Lime_Blade_X.mp4",
       showcaseText: {
         en: "Forms blades on the user's arms and spins them rapidly to release a swirling slash. When the animation ends, hit enemies are launched slightly into the air. Holding down the key allows the skill to be channelled for a longer duration.",
         ja: "自分の腕に刃を形成し、素早く回転させることで渦巻きのような斬撃を放つ。アニメーションが終了すると、当たった敵は空中に少し吹き飛ばされます。長押しすることでより長く技を使用できます。"
@@ -1022,8 +1083,6 @@
       instinctText: { en: "The initial hit breaks Instinct. The X-shaped slashes can be dodged by activating Instinct after the initial hit.", ja: "最初の直撃で見聞色が破壊。X 字型の斬撃は、最初の直撃後に見聞色を発動することで回避できます。" },
       showcaseVideo: "images/videos/Blade_C.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Lime_Blade_C.mp4",
       showcaseText: {
         en: "Rapidly spins the blades on both arms and dashes forward to catch the enemy. Upon contact, inflicts an X-shaped slash on the opponent, briefly immobilizing them.",
         ja: "両腕の刃を素早く回転させ、敵を捕まえて突進します。接触した瞬間、X 字型の切り傷を相手に負わせ、一瞬動けなくする。"
@@ -1040,8 +1099,6 @@
       instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
       showcaseVideo: "images/videos/Blade_F.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Lime_Blade_F.mp4",
       showcaseText: {
         en: "Raises the right arm to create a spinning blade, granting upward momentum to fly. As the user's health decreases, flight speed increases.",
         ja: "右腕を上にあげて回転する刃を作り出し、上向きの推進力を得て飛行します。自身の体力が減少するにつれて、飛行速度が上がります。"
@@ -1059,8 +1116,6 @@
       instinctText: { en: "Breaks Instinct at close range, but can be dodged from a distance or near the edge.", ja: "距離が近いと見聞色を破壊します。少し離れた時や端の部分なら回避できます" },
       showcaseVideo: "images/videos/Spring_Z.mp4",
       hasSkin: false,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Spring_Z.mp4",
       showcaseText: {
         en: "Launches a spring-loaded punch with the right arm toward the cursor, dealing damage and inflicting knockback.",
         ja: "右腕をバネのように使って、カーソルの位置に向かってパンチを放ちます。これにより、敵にダメージを与えて敵を吹き飛ばします。"
@@ -1075,8 +1130,6 @@
       instinctText: { en: "Breaks Instinct on a direct hit. When attacking from directly above, it breaks Instinct reliably, but it is difficult to trigger when landing a straight hit. It can be dodged by keeping your distance or staying around the edge of the attack.", ja: "直撃時は見聞色を破壊します。敵の真上から攻撃した時はうまく見聞色が破壊されますが、まっすぐ当てて破壊することは難しいです。距離を置くか端の部分なら回避できます。" },
       showcaseVideo: "images/videos/Spring_X.mp4",
       hasSkin: false,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Spring_X.mp4",
       showcaseText: {
         en: "Uses the knees like springs to leap toward the cursor, dealing damage and knocking enemies back. Aiming directly at an enemy sends them flying forward, while aiming behind them launches them backward relative to the user.",
         ja: "膝をバネのように使い、カーソルの方向に飛んでいきます。そうすることで、敵にダメージを与えて敵を吹き飛ばすことができます。敵にカーソルを合わせると自分より前に、敵より後ろにカーソルを合わせると自分の後ろに敵は飛びます"
@@ -1091,8 +1144,6 @@
       instinctText: { en: "Can be dodged at the outer edge.", ja: "端の部分では回避できます。" },
       showcaseVideo: "images/videos/Spring_C.mp4",
       hasSkin: false,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Spring_C.mp4",
       showcaseText: {
         en: "Uses the legs like springs to leap exceptionally high into the air before crashing back down. Upon impact, it leaves a small crater, dealing damage and launching enemies into the air.",
         ja: "脚をバネのように使い、かなり高く跳び上がった後に再び下に降ります。落下後は小さなクレーターができ、敵にダメージを与えて敵を空中に吹き飛ばします。"
@@ -1107,8 +1158,6 @@
       instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/videos/Spring_V.mp4",
       hasSkin: false,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Spring_V.mp4",
       showcaseText: {
         en: "Uses the legs like springs to bounce around randomly within a square area, dealing continuous damage to enemies inside.",
         ja: "脚をバネのように使い、正方形の範囲内をランダムに跳ね回りながらダメージを与えます。"
@@ -1124,15 +1173,126 @@
       instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
       showcaseVideo: "images/videos/Spring_F.mp4",
       hasSkin: false,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Spring_F.mp4",
       showcaseText: {
         en: "Uses the legs like springs to leap forward, bouncing off any walls or obstacles hit.",
         ja: "脚をバネのように使って前方に跳びます。壁にぶつかると跳ね返ります。"
       }
     }
   },
-  "Bomb": {
+      //ボム
+   "Bomb": {
+    m1: {
+      title: { en: "Blast Toss ", ja: "ブラストトス" },
+      isHold: true,
+      cooldown: { en: "3 seconds", ja: "3秒" },
+      energy: 5,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_M1.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Holds and throws a small bomb. The bomb explodes upon impact with the ground or after a short delay, dealing damage while knocking back enemies. Holding the key combines surrounding parts into the bomb, making it slightly larger and increasing both its explosion range and damage compared to a quick tap.",
+        ja: "小型の爆弾を手に持ち投げます。この爆弾は地面に接触するか一定時間で爆発し、敵を吹き飛ばしながらダメージを与えます。長押しすると周りの部品を合成し、手に持つ小型爆弾が少し大きくなり、爆発範囲とダメージが増加します。"
+      }
+    },
+    z: {
+      title: { en: "Targeted Bomb", ja: "ターゲットボム" },
+      isHold: false,
+      mastery: 1,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_Z.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Summons a sphere at the cursor's location with a warning indicator showing the explosion area. Surrounding parts combine into the sphere before it detonates, dealing damage and launching enemies upward into the air.",
+        ja: "カーソルの位置に爆破位置を表す警告表示付きの球体を呼び出し、球体の周りの部品を合成させて爆弾が爆発する。この爆発によってダメージが与えられ、相手は上方向に吹き飛ばされます。"
+      }
+    },
+    x: {
+      title: { en: "Bomb Grab", ja: "ボムグラブ" },
+      isHold: false,
+      mastery: 50,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "The initial dash attack can be dodged, but if it hits, the bomb attached to the opponent's head will explode, breaking their Instinct. Additionally, the initial explosion behind the user before the dash has an active hitzone and breaks Instinct on contact.", ja: "最初の突進攻撃は避けられますが、当たった後の相手の頭に設置する爆弾で見聞色を破壊します。突進する前の自分の後ろ側で起こる爆発には判定があり、見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_X.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Explodes behind yourself to dash forward, causing a small explosion and dealing damage upon hitting an opponent. The user then attaches a bomb to the opponent's head, which explodes after 3 seconds, knocking the opponent back toward the user.",
+        ja: "自分の後ろ側を爆破させ突進し、相手に当たると小さな爆発が起こり、ダメージを与えます。ユーザーは相手の頭上に爆弾を設置し、3 秒後に爆発させて相手を自分の方に吹き飛ばします。"
+      }
+    },
+    c: {
+      title: { en: "Land Mines", ja: "ランドマイン" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "11 seconds", ja: "11秒" },
+      energy: 50,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      hasSkin: true,
+      showcases: [
+    {
+      label: { en: "Tap", ja: "短押し" }, 
+      video: "images/videos/Bomb_C.mp4",
+      text: { en: "When tapped, detonates your own body slightly and continuously throws a barrage of small bombs around yourself. The small bombs explode in a circular pattern around the user, dealing damage while knocking back enemies.", ja: "単押しすると、自分の体を少し爆破させ、周りに大量の小型爆弾を連続して投げます。小型爆弾は自分の周囲に円形に爆発し、ダメージを与えると同時に敵を吹き飛ばします。" }
+    },
+    {
+      label: { en: "Hold", ja: "長押し" }, 
+      video: "images/videos/Bomb_holdC.mp4",
+      text: { en: "Holding the key creates chain-detonating landmines that last for approximately 30 seconds before automatically exploding. If an enemy steps on a landmine, it detonates and deals damage. If held in mid-air, it performs the same move as a tap instead.", ja: "長押しすると、連鎖爆発式の地雷が作られます。この地雷は約 30 秒間有効で、時間が経つと自動で爆破します。敵が地雷を踏むと地雷が爆発し、ダメージを与えます。空中で長押しすると、単押しと同じ動きをします。" }
+    },
+    {
+      video: "images/videos/Chain_Bomb_move.mp4",
+      text: { en: "Hitting your own landmines with any Bomb fruit attack will trigger them to explode instantly.", ja: "ボムの各種攻撃を地雷に当てると爆発が発生します。" }
+    },
+  ],
+    },
+    v: {
+      title: { en: "Self Destruct", ja: "セルフディストラクト" },
+      isHold: true,
+      mastery: 125,
+      cooldown: { en: "22.5 seconds", ja: "22.5秒" },
+      energy: 100,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_V.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Transforms your head into a bomb. While holding this bomb, it gradually grows in size, draining up to 25% of your total HP. Releasing the skill or reaching maximum charge triggers an explosion. Both the explosion range and damage scale based on how long the bomb was held. It takes 4 seconds to fully charge the bomb.",
+        ja: "自分の頭を爆弾に変えます。この爆弾を保持している間、サイズがどんどん大きくなり、最大で体力の25％が削られます。この技を解除するか最大まで溜めると、爆弾が爆発します。爆発の範囲とダメージは、爆弾を保持していた時間に応じて変化します。爆弾を最大まで大きくするには4 秒かかります。"
+      }
+    },
+    f: {
+      title: { en: "Explosive Jump", ja: "エクスプロシブジャンプ" },
+      isHold: false,
+      mastery: 25,
+      cooldown: { en: "0.9 seconds", ja: "0.9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      hasSkin: true,
+      showcases: [
+    {
+      video: "images/videos/Bomb_F.mp4",
+      text: { en: "Launches yourself upward by detonating your feet. Starting from the second consecutive use, the skill's UI text turns red and using it will deal self-damage. The self-damage increases with each additional use. The use count resets—returning the UI text to white—upon death or after a certain amount of time has passed.", ja: "足を爆発させることで上方向に飛び上がります。２回目以降、この技のUI 上のテキストが赤色に変わり、ダメージを喰らいます。ダメージは使用回数が増えるごとに大きくなります。死んだ時や一定時間経つとカウントは一回目に戻り、UI 上のテキストが再び白色に戻ります。" }
+    },
+    {
+      video: "images/videos/Bomb_Fmoving.mp4",
+      text: { en: "Walking while using this skill also allows you to move forward.", ja: "この技を使いながら歩くことで、前方に進むこともできる。" }
+    }
+  ],
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    }
+  },
+      //スモーク
+  "Smoke": {
     m1: {
       title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       cooldown: { en: "- seconds", ja: "-秒" },
@@ -1140,9 +1300,7 @@
       instinctBreak: false,
       instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/loading_cat.png",
-      hasSkin: false,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/Lime_Blade_M1.mp4",
+      hasSkin: true,
       showcaseText: {
         en: "Details coming soon.",
         ja: "詳細は近日公開予定です。"
@@ -1157,8 +1315,6 @@
       instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/videos/.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/.mp4",
       showcaseText: {
         en: "Details coming soon.",
         ja: "詳細は近日公開予定です。"
@@ -1173,8 +1329,6 @@
       instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/videos/.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/.mp4",
       showcaseText: {
         en: "Details coming soon.",
         ja: "詳細は近日公開予定です。"
@@ -1189,8 +1343,6 @@
       instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/videos/.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/.mp4",
       showcaseText: {
         en: "Details coming soon.",
         ja: "詳細は近日公開予定です。"
@@ -1205,8 +1357,6 @@
       instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/videos/.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/.mp4",
       showcaseText: {
         en: "Details coming soon.",
         ja: "詳細は近日公開予定です。"
@@ -1221,15 +1371,99 @@
       instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       showcaseVideo: "images/videos/.mp4",
       hasSkin: true,
-      skinName: { en: "Skin", ja: "スキン" },
-      skinVideo: "images/videos/.mp4",
       showcaseText: {
         en: "Details coming soon.",
         ja: "詳細は近日公開予定です。"
       }
     }
   },
-
+     //スパイク
+  "Spike": {
+    m1: {
+      title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      cooldown: { en: "- seconds", ja: "-秒" },
+      energy: 0,
+      instinctBreak: false,
+      instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/loading_cat.png",
+      hasSkin: true,
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    },
+    z: {
+      title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      mastery: 0,
+      cooldown: { en: "- seconds", ja: "-秒" },
+      energy: 0,
+      instinctBreak: true,
+      instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/videos/.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    },
+    x: {
+      title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      mastery: 0,
+      cooldown: { en: "- seconds", ja: "-秒" },
+      energy: 0,
+      instinctBreak: true,
+      instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/videos/.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    },
+    c: {
+      title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      mastery: 0,
+      cooldown: { en: "- seconds", ja: "-秒" },
+      energy: 0,
+      instinctBreak: true,
+      instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/videos/.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    },
+    v: {
+      title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      mastery: 0,
+      cooldown: { en: "- seconds", ja: "-秒" },
+      energy: 0,
+      instinctBreak: true,
+      instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/videos/.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    },
+    f: {
+      title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      mastery: 0,
+      cooldown: { en: "- seconds", ja: "-秒" },
+      energy: 0,
+      instinctBreak: true,
+      instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+      showcaseVideo: "images/videos/.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    }
+  },
+  //追加
     };
 
     // ⚖️ 長所（Pros）と短所（Cons）データ
@@ -1303,12 +1537,12 @@
              en: [
               "Takes no damage from Sword attacks.",
               "Low mastery requirements.",
-              "Very cheap and easy to obtain."
+              "Cheap and easy to obtain."
             ],
             ja: [
               "剣ダメージを喰らわない",
               "必要マスタリーが低い",
-              "非常に安価で手に入れやすい"
+              "安価で手に入れやすい"
             ]
           },
           m1:{ en: ["Fast attacks.","Easy to aim. ","Great for hitting enemies due to its range.","Can hit Sea Beasts","Long range.","Capable of dealing damage to multiple enemies."], ja: ["素早い攻撃","当てやすい","空中で使用すると一時的に浮かぶことができる","海王類を攻撃することができる","射程が長い","複数の敵にダメージを与えることができる"] },
@@ -1326,7 +1560,7 @@
             ],
             ja: [
               "ブレードエッジ、アイストライデント、ライトスピアはフルーツの能力のため攻撃を喰らう",
-              "一部の剣は剣のスタンを喰らう場合がある(ダメージは無効)<br>発見したスタン可能武器:<a href='detail.html?name=Pipe&type=sword' class='wiki-link'>パイプ</a>Z,<a href='detail.html?name=sashi&type=sword' class='wiki-link'>さいし(旧サディ)</a>Z,<a href='detail.html?name=Midnight Blade&type=sword' class='wiki-link'>ミッドナイトブレード</a>Z,<a href='detail.html?name=Rengoku&type=sword' class='wiki-link'>煉獄</a>Z,<a href='detail.html?name=Dragonheart&type=sword' class='wiki-link'>ドラゴンハート</a>Z,<a href='detail.html?name=Dog Blade&type=sword' class='wiki-link'>ドッグブレード</a>Z(追記:ドラゴンハートの動画を入れ忘れたよ！気が向いたら入れます)",
+              "一部の剣は剣のスタンを喰らう場合がある(ダメージは無効)<br>発見したスタン可能武器:<a href='detail.html?name=Pipe&type=sword' class='wiki-link'>パイプ</a>Z,<a href='detail.html?name=sashi&type=sword' class='wiki-link'>さいし(旧サディ)</a>Z,<a href='detail.html?name=Midnight Blade&type=sword' class='wiki-link'>ミッドナイトブレード</a>Z,<a href='detail.html?name=Rengoku&type=sword' class='wiki-link'>煉獄</a>Z,<a href='detail.html?name=Dragonheart&type=sword' class='wiki-link'>ドラゴンハート</a>Z,<a href='detail.html?name=Dog Blade&type=sword' class='wiki-link'>ドッグブレード</a>Z<i>(追記:ドラゴンハートの動画を入れ忘れたよ！気が向いたら入れます)</i>",
             ],
             videos: ["images/videos/Blade_immunity2.mp4","images/videos/Blade_immunitys.mp4"],
           },
@@ -1343,10 +1577,10 @@
               pros: {
           general: {
              en: [
-              "Nothing in particular."
+              "Cheap and easy to obtain."
             ],
             ja: [
-              "特にありません"
+              "安価で手に入れやすい"
             ]
           },
           z: { en: ["Short cooldown."], ja: ["クールダウンが短い"] },
@@ -1373,6 +1607,64 @@
        },
       //ボム
       "Bomb": {
+    pros: {
+      general: {
+        en: [
+          "The hitbox does not accurately align with its VFX. Depending on the situation, it can feel larger or smaller than it looks, making it both a Pro and a Con.",
+          "Large AoE.",
+          "Low cooldowns.",
+          "Cheap and easy to obtain."
+        ],
+        ja: [
+          "ヒットボックスは技のエフェクトと比べると同じようには見えません。ヒットボックスが大きく感じる時もあれば小さく感じる時もあるので長所であり、短所でもあります",
+          "広範囲攻撃",
+          "クールダウンが短い",
+          "安価で手に入れやすい"
+        ]
+      },
+      m1: { en: ["Good AoE."], ja: ["攻撃範囲が優れている"] },
+      z: { en: ["Short cooldown.", "Has a long range."], ja: ["クールダウンが短い", "射程が長い"] },
+      x: { en: ["Features an aim assist function."], ja: ["エイムアシスト機能があります"] },
+      c: { 
+        en: ["When used in tight spaces, it can deal a massive amount of damage. <i>(Tap)</i>", "Deals an insanely high amount of damage against <a href='#' class='wiki-link'>Sea Beasts</a>. <i>(Tap)</i>", "Placed landmines are invisible to enemies. <i>(Hold)</i>"], 
+        ja: ["狭いところで使うととてつもないダメージを与えれる<i>(単押し)</i>", "<a href='#' class='wiki-link'>海王類</a>に対してとんでもない威力を出せる<i>(単押し)</i>", "設置した地雷は敵からは見えません。<i>(長押し)</i>"] 
+      },
+      v: { 
+        en: ["Deals significantly higher damage compared to other Bomb skills and even other Fruits.", "Has a large hitbox. The hitbox becomes exceptionally large when fully charged."], 
+        ja: ["ボムの他の技や他のフルーツに比べてもとんでもなく高いダメージを与える", "ヒットボックスが大きい。最大まで溜めると特に大きい"] 
+      },
+      f: { 
+        en: ["Decent AoE.", "Provides extremely high mobility with very short cooldowns, allowing for rapid use.", "Launches you very high into the air. <i>(Note: The skill was not spammed in this video to achieve this height.)</i>"], 
+        ja: ["そこそこの範囲攻撃", "機動性が非常に高く、クールダウンがとても早いので連発できる", "かなり高く飛べる<i>(この動画は高く飛ぶために連打していません)</i>"],
+        videos: ["images/videos/Bomb_flying_F.mp4"]
+      }
+    }, 
+
+    cons: {
+      general: {
+        en: [
+          "The hitbox does not accurately align with its VFX. Depending on the situation, it can feel larger or smaller than it looks, making it both a Pro and a Con.",
+          "Lacks stun moves.",
+          "You cannot move while holding the skill, as well as during the ending animation after the attack.",
+          "Unlike other Common fruits, it has both an F and a V skill, making its mastery requirements relatively high."
+        ],
+        ja: [
+          "ヒットボックスは技のエフェクトと比べると同じようには見えません。ヒットボックスが大きく感じる時もあれば小さく感じる時もあるので長所であり、短所でもあります",
+          "スタン技がない",
+          "技を構えている時や攻撃終了アニメーション中は動けません",
+          "他のコモンフルーツと違ってFとVがどっちもあるので技の必要マスタリーが高めです"
+        ]
+      },
+      m1: { en: ["Has a longer cooldown compared to other M1 attacks."], ja: ["他のタップ技と比べてクールダウンが長い"] },
+      z: { en: ["Hard to use in air.", "Very small hitbox, making skills hard to hit consistently.", "The sphere and its explosion area warning indicator are visible to enemies."], ja: ["空中では使いにくい", "判定がかなり小さいので当てにくい", "爆破位置を表す警告表示付きの球体は敵も見えます"] },
+      x: { en: ["The range is by no means long.", "Although it has aim assist, the initial dash attack can be dodged with Instinct, making it unreliable as a combo starter."], ja: ["射程は決して長くはない", "- エイムアシスト機能はあるが、最初の突進攻撃はやはり見聞色で回避できるのでコンボ指導には使えない"] },
+      c: { en: ["Individual small bombs deal very little damage and land in awkward, hard-to-hit locations.<i>(Tap)</i>","The mine placement area is far too small.<i>(Hold)</i>","<i>Despite the mines being invisible, the placement animation reveals their location to enemies.</i>"], ja: ["小型爆弾１つのダメージは非常に低く、当てにくい位置に落とされる<i>(単押し)</i>","地雷設置エリアが狭すぎる<i>(長押し)</i>","設置アニメーションで地雷の位置がバレます<i>(長押し)</i>"] },
+      v: { en: ["Drains the user's health quickly.","Moving enemies can easily run away during the skill's charging time."], ja: ["使用者の体力を素早く削る","敵が動いていると溜めている時間で逃げられる"] },
+      f: { en: ["The user will take damage if spammed.","Cannot be controlled in the same way as other movement abilities."], ja: ["連発すると使用者はダメージを受ける","他の移動能力のように操作できない"] }
+    } 
+  }, 
+      //スモーク
+      "Smoke": {
               pros: {
           general: {
              en: [
@@ -1411,9 +1703,8 @@
           v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }, 
           f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
         }, 
-      }
-      //
-
+      },
+    //ここに新しいフルーツの長所と短所を追加することができます
     };
 
     // 🔥 コンボデータベース
@@ -1481,8 +1772,8 @@
             ja: "<a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>X  → バネX → <a href='detail.html?name=Cursed_Dual_Katana&type=sword' class='wiki-link'>おでん</a>Z → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>Z → <a href='detail.html?name=Sharkman_Karate&type=style' class='wiki-link'>シャークマン空手</a>C → バネV" 
           },
           desc: {
-            en: "",
-            ja: "即興で考えたので正直弱いです。気が向いたら改善します"
+            en: "Just came up with this on the fly, so to be honest, it isn't very strong. I'll improve it when I get around to it.",
+            ja: "即興で考えたので正直弱いです。気が向いたら改善します。"
           },
           video: "images/videos/Spring_combo.mp4"
         }
@@ -1491,27 +1782,39 @@
       "Bomb": [
         {
           name: {
-            en: "Details coming soon.", 
-            ja: "詳細は近日公開予定です" 
+            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>,Bomb,<a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>Shark Anchor</a>", 
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>,ボム,<a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>" 
           },
           sequence: {
-            en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。" 
+            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a> C → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>Shark Anchor</a> X → Bomb X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a> Z → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>Shark Anchor</a> Z → Bomb V",
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>X → ボムX →<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>Z → ボムV" 
           },
           desc: {
             en: "Details coming soon.",
-            ja: "詳細は近日公開予定です。"
+            ja: "シャークアンカーZと旧ドラゴンタロンCのコンボを思い出すのは私だけですか?"
           },
-          video: "images/videos/.mp4"
+          video: "images/videos/Bomb_combo.mp4"
         }
       ],
-    };
-
-    const itemTranslations = {
-      "Rocket": { en: "Rocket", ja: "ロケット" },
-      "Spin": { en: "Spin", ja: "スピン" },
-      "Cursed_Dual_Katana": { en: "Cursed Dual Katana", ja: "おでん二刀流" },
-      "Godhuman": { en: "Godhuman", ja: "ゴッドヒューマン" }
+      //スモーク
+      "Smoke": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>,Smoke,<a href='detail.html?name=Gravity_Blade&type=sword' class='wiki-link'>Gravity Blade</a>", 
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>,スモーク,<a href='detail.html?name=Gravity_Blade&type=sword' class='wiki-link'>重力ブレード(旧重力ケイン)</a>" 
+          },
+          sequence: {
+            en: "<a href='detail.html?name=Gravity_Blade&type=sword' class='wiki-link'>Gravity Blade</a>Z → Smoke → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>C",
+            ja: "<a href='detail.html?name=Gravity_Blade&type=sword' class='wiki-link'>重力ブレード</a>Z → スモーク → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>X → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C" 
+          },
+          desc: {
+            en: "Smoke X damage is overpowered.",
+            ja: "スモークXの火力が本当にいかれています"
+          },
+          video: "images/videos/Smoke_combo.mp4"
+        }
+      ],
+      //ここに新しいフルーツのコンボを追加することができます
     };
 
 let currentProConMode = 'pros';
@@ -1537,7 +1840,7 @@ function switchProConTab(type) {
   renderProConSection(itemInfo.name, lang, currentProConMode);
 }
 
-// 🎬 動画・画像（.png/.gif等）自動判定 & 再生ボタンなしループ再生対応版 renderProConSection
+// 🎬 動画・画像（.png/.gif等）自動判定 & 再生ボタンなしループ再生対応版 renderProConSection（全カテゴリ対応）
 function renderProConSection(itemName, lang, mode) {
   const container = document.getElementById('procon-box');
   if (!container) return;
@@ -1568,9 +1871,18 @@ function renderProConSection(itemName, lang, mode) {
     if (!catData) return;
 
     const titleText = cat.title[lang] || cat.title['en'];
-    const items = catData[lang] || catData.en || [];
     
-    // media または videos 配列を取得（どちらのキー名でも動作）
+    // 言語に応じたテキスト配列を取得（catData[lang] が無ければ catData.ja や catData.en を参照）
+    let items = [];
+    if (Array.isArray(catData[lang])) {
+      items = catData[lang];
+    } else if (Array.isArray(catData.ja) && lang === 'ja') {
+      items = catData.ja;
+    } else if (Array.isArray(catData.en)) {
+      items = catData.en;
+    }
+    
+    // media または videos 配列を取得（全カテゴリ共通で対応）
     const mediaList = catData.media || catData.videos || [];
 
     // テキストもメディア（動画・画像）もない場合はスキップ
@@ -1659,32 +1971,6 @@ function renderCombos(itemName, lang) {
   container.innerHTML = html;
 }
 
-function switchShowcaseVideo(btn, videoSrc) {
-  const container = btn.closest('.showcase-container');
-  const video = container.querySelector('video.showcase-video');
-  const img = container.querySelector('img.showcase-video');
-  const fallback = container.querySelector('.video-error-fallback');
-  
-  const buttons = container.querySelectorAll('.skin-btn');
-  buttons.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  const isImage = /\.(png|jpe?g|gif|webp)$/i.test(videoSrc);
-
-  if (isImage && img) {
-    img.src = videoSrc;
-    if (fallback) fallback.style.display = 'none';
-    img.style.display = 'block';
-  } else if (video) {
-    video.setAttribute('data-src', videoSrc);
-    video.src = videoSrc;
-    if (fallback) fallback.style.display = 'none';
-    video.style.display = 'block';
-    video.load();
-    video.play().catch(() => {});
-  }
-}
-
 function toggleMoveDetails(btn) {
   const wrapper = btn.closest('.move-wrapper');
   const detailsContent = wrapper.querySelector('.move-details-content');
@@ -1698,10 +1984,8 @@ function toggleMoveDetails(btn) {
     btn.setAttribute('data-ja', '詳細');
     btn.textContent = currentLang === 'ja' ? '詳細' : 'View';
 
-    const video = wrapper.querySelector('video.showcase-video');
-    if (video) {
-      video.pause();
-    }
+    const videos = wrapper.querySelectorAll('video.showcase-video');
+    videos.forEach(video => video.pause());
   } else {
     detailsContent.classList.add('open');
     btn.classList.add('active');
@@ -1709,8 +1993,8 @@ function toggleMoveDetails(btn) {
     btn.setAttribute('data-ja', '閉じる');
     btn.textContent = currentLang === 'ja' ? '閉じる' : 'Close';
 
-    const video = wrapper.querySelector('video.showcase-video');
-    if (video) {
+    const videos = wrapper.querySelectorAll('video.showcase-video');
+    videos.forEach(video => {
       const dataSrc = video.getAttribute('data-src');
       if (dataSrc && !video.src) {
         video.src = dataSrc;
@@ -1718,7 +2002,7 @@ function toggleMoveDetails(btn) {
       if (video.src) {
         video.play().catch(() => {});
       }
-    }
+    });
   }
 }
 
@@ -1779,32 +2063,58 @@ function renderMovesets(itemName, lang) {
       const masteryText = key === 'm1' ? (lang === 'ja' ? 'タップ技' : 'Left Click') : (lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`);
       const viewBtnText = lang === 'ja' ? '詳細' : 'View';
       const cooldownVal = (typeof move.cooldown === 'object') ? (move.cooldown[lang] || move.cooldown['en']) : (move.cooldown || '-');
-      const showcaseDesc = move.showcaseText ? (move.showcaseText[lang] || move.showcaseText['en']) : '';
       const instinctText = move.instinctText ? (move.instinctText[lang] || move.instinctText['en']) : '';
-      const videoSrc = move.showcaseVideo || '';
-
-      const isImage = /\.(png|jpe?g|gif|webp)$/i.test(videoSrc);
-
-      const mediaHTML = isImage ? `
-        <img src="${videoSrc}" alt="Showcase" class="showcase-video" 
-             style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      ` : `
-        <video data-src="${videoSrc}" preload="none" loop muted playsinline class="showcase-video" 
-               style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
-      `;
 
       const hasSkin = move.hasSkin === true;
-      const defaultLabel = lang === 'ja' ? '通常' : 'Default';
-      const skinLabel = move.skinName ? (move.skinName[lang] || move.skinName['en']) : (lang === 'ja' ? 'スキン' : 'Skin');
+      const allSkinsLabel = lang === 'ja' ? 'すべてのスキン' : 'All Skins';
 
-      const skinButtonsHTML = hasSkin ? `
-        <div class="skin-toggle-group" style="display: flex; gap: 8px; margin-bottom: 10px;">
-          <button type="button" class="skin-btn active" onclick="switchShowcaseVideo(this, '${videoSrc}')">${defaultLabel}</button>
-          <button type="button" class="skin-btn" onclick="switchShowcaseVideo(this, '${move.skinVideo || ''}')">${skinLabel}</button>
-        </div>
+      // hasSkin が true の場合のみ、右上に「すべてのスキン」ボタンを表示
+      const skinAllBtnHTML = hasSkin ? `
+        <a href="skins.html?name=${encodeURIComponent(itemName)}&move=${key}&from=${encodeURIComponent(itemName)}" class="skin-btn skin-all-link" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">${allSkinsLabel}</a>
       ` : '';
+
+      // 🎬 お披露目枠（複数対応）の判定ロジック
+      let showcaseList = [];
+      if (Array.isArray(move.showcases) && move.showcases.length > 0) {
+        showcaseList = move.showcases;
+      } else {
+        showcaseList = [{
+          video: move.showcaseVideo || '',
+          text: move.showcaseText || ''
+        }];
+      }
+
+      // 枠ごとのHTMLを自動生成
+      let showcasesHTML = '';
+      showcaseList.forEach((sc, index) => {
+        const videoSrc = sc.video || '';
+        const descText = sc.text ? (sc.text[lang] || sc.text['en'] || sc.text) : '';
+        const labelText = sc.label ? (sc.label[lang] || sc.label['en'] || '') : '';
+        const isImage = /\.(png|jpe?g|gif|webp)$/i.test(videoSrc);
+
+        const mediaHTML = isImage ? `
+          <img src="${videoSrc}" alt="Showcase" class="showcase-video" 
+               style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        ` : `
+          <video data-src="${videoSrc}" preload="none" loop muted playsinline class="showcase-video" 
+                 style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
+        `;
+
+        showcasesHTML += `
+          <div class="showcase-item" style="${index > 0 ? 'margin-top: 14px; padding-top: 14px; border-top: 1px dashed #333;' : ''}">
+            ${labelText ? `<div style="font-size: 0.9rem; font-weight: bold; color: #ffcc00; margin-bottom: 6px;">[ ${labelText} ]</div>` : ''}
+            <div style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; width: 100%;">
+              ${mediaHTML}
+              <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
+                ${lang === 'ja' ? '動画が見つかりません' : 'Video not found'}
+              </div>
+              <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0; align-self: center;">${descText}</p>
+            </div>
+          </div>
+        `;
+      });
 
       moveWrapper.innerHTML = `
         <div class="move-card">
@@ -1838,16 +2148,12 @@ function renderMovesets(itemName, lang) {
           </div>
 
           <div class="detail-box">
-            <h3>${labels.showcaseTitle}</h3>
-            <div class="showcase-container" style="display: flex; flex-direction: column; gap: 8px;">
-              ${skinButtonsHTML}
-              <div style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; width: 100%;">
-                ${mediaHTML}
-                <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
-                  ${lang === 'ja' ? '動画が見つかりません' : 'Video not found'}
-                </div>
-                <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0;">${showcaseDesc}</p>
-              </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h3 style="margin: 0;">${labels.showcaseTitle}</h3>
+              ${skinAllBtnHTML}
+            </div>
+            <div class="showcase-container" style="display: flex; flex-direction: column;">
+              ${showcasesHTML}
             </div>
           </div>
         </div>
@@ -1928,7 +2234,6 @@ function updateItemDetails(lang) {
           let notesText = '';
           let notesMedia = [];
 
-          // 従来の文字列形式（{ en: "...", ja: "..." }）か、メディア付き形式かを自動判別
           if (data.notes[lang] || data.notes.en) {
             if (typeof data.notes[lang] === 'string' || typeof data.notes.en === 'string') {
               notesText = data.notes[lang] || data.notes.en || '';
@@ -1939,7 +2244,6 @@ function updateItemDetails(lang) {
             }
           }
 
-          // データ構造が { text: { en: "...", ja: "..." }, media: [...] } の場合
           if (data.notes.text) {
             notesText = data.notes.text[lang] || data.notes.text.en || '';
           }
@@ -1949,7 +2253,6 @@ function updateItemDetails(lang) {
 
           let notesHTML = notesText || '-';
 
-          // メディアが存在する場合、テキストの下に動画/画像を追加
           if (notesMedia.length > 0) {
             notesHTML += `<div class="notes-media" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; width: 100%;">`;
             notesMedia.forEach(src => {
@@ -2111,4 +2414,68 @@ window.addEventListener('pageshow', function(e) {
     updateDetailPageLanguage(currentLang);
   }
 });
+// 🔄 URLの変化を検知して0.3秒後に自動リロードする仕組み（スマート・リロード制御）
+let lastUrl = window.location.href;
+let reloadTimer = null;
+
+function checkUrlAndReload() {
+  const currentUrl = window.location.href;
+
+  if (currentUrl !== lastUrl) {
+    lastUrl = currentUrl;
+
+    if (reloadTimer) clearTimeout(reloadTimer);
+
+    const reloadKey = 'reloaded_' + currentUrl;
+    if (!sessionStorage.getItem(reloadKey)) {
+      reloadTimer = setTimeout(() => {
+        sessionStorage.setItem(reloadKey, 'true');
+        window.location.reload();
+      }, 300);
+    }
+  }
+}
+
+// 0.1秒ごとにURLの変化を監視
+setInterval(checkUrlAndReload, 100);
+
+// 🔗 ページ内リンク（.wiki-link）をクリックしたときの処理
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('.wiki-link');
+  if (link) {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+    if (href) {
+      history.replaceState(null, '', href);
+      checkUrlAndReload();
+    }
+  }
+});
+
+// 🔄 戻る・進むボタンを押した時
+window.addEventListener('popstate', function() {
+  checkUrlAndReload();
+});
+
+// 📱 キャッシュからの復元時
+window.addEventListener('pageshow', function() {
+  checkUrlAndReload();
+});
+
+// 🧹 【追加】別のページに移動したり離れたりするタイミングで、リロード履歴のフラグをすべてリセットする
+window.addEventListener('pagehide', function() {
+  // 保存した reloaded_ 系の一時フラグをクリアして、次に巡ってきたときにもう一度リロードできるようにする
+  Object.keys(sessionStorage).forEach(key => {
+    if (key.startsWith('reloaded_')) {
+      sessionStorage.removeItem(key);
+    }
+  });
+});
+
+// 💡 初期化処理
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDetailPage);
+} else {
+  initDetailPage();
+}
 </script>

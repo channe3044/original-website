@@ -500,6 +500,19 @@ footer {
   transition: all 0.2s ease;
 }
 
+/* 黄色文字リンクのスタイル */
+.wiki-link {
+  color: #ffcc00;         /* 黄色 */
+  text-decoration: none;  /* 通常時は下線なし */
+  font-weight: bold;      /* 太字 */
+  transition: color 0.2s;
+}
+
+/* ホバー（カーソルを合わせた時）のスタイル */
+.wiki-link:hover {
+  text-decoration: underline; /* カーソルを合わせると下に線が出る */
+}
+
 /* ────────────────────────────────────────────────────────
    💎 レア度別グラデーション背景 ＆ 枠線
 ──────────────────────────────────────────────────────── */
@@ -541,11 +554,22 @@ footer {
     0 0 12px rgba(189, 31, 31, 0.5) !important;
 }
 
-/* 🥊 Celestial Art（黄色枠）用の設定 */
-.rarity-style-yellow {
-  border-color: #f1c40f !important;
-  background: radial-gradient(circle, rgba(241, 196, 15, 0.3) 0%, rgba(20, 20, 20, 0.8) 100%) !important;
-  box-shadow: 0 0 12px rgba(241, 196, 15, 0.4) !important;
+/* ⭐ プレミアム（Premium / 黄色枠） */
+.rarity-premium {
+  background: radial-gradient(circle, #b8860b 0%, #594105 100%) !important;
+  border: 3px solid #ffd700 !important;
+  box-shadow: 
+    inset 0 0 8px rgba(255, 255, 255, 0.25),
+    0 0 10px rgba(255, 215, 0, 0.4) !important;
+}
+
+/* 🟢 ウルトラ（Ultra / エメラルドグリーン・ファンゲーム・カスタム枠） */
+.rarity-ultra {
+  border: 3px solid #00ff88 !important;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, rgba(20, 20, 20, 0.8) 100%) !important;
+  box-shadow: 
+    inset 0 0 12px rgba(255, 255, 255, 0.3),
+    0 0 15px rgba(0, 255, 136, 0.6) !important;
 }
 
 /* 🖼️ 画像の入れ物 */

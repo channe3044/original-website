@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skins - Blox Fruits Wiki</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.skins-main-content {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.back-btn-detail {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #555;
+  font-weight: bold;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.back-btn-detail:hover {
+  background: #555;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sort-toggle-btn {
+  background: #252525;
+  color: #e2a227;
+  border: 1.5px solid #e2a227;
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 0.88rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.sort-toggle-btn:hover {
+  background: #e2a227;
+  color: #000;
+}
+
+.sort-toggle-btn.active {
+  background: #e2a227;
+  color: #000;
+  box-shadow: 0 0 8px rgba(226, 162, 39, 0.6);
+}
+
+.skin-description-box {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1.5px solid #333;
+  border-left: 4px solid #e2a227;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.skin-description-box p {
+  margin: 0;
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.skin-description-box strong {
+  color: #ffcc00;
+}
+
+/* 🖼️ 画像切り替え時のなめらかなフェード用スタイル */
+.fruit-img-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.fruit-img-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.4s ease-in-out;
+}
+</style>
+</head>
+<body>
+
+<!-- 🔝 ヘッダー -->
+<header>
+<button id="back-btn" class="back-btn" style="display: none;">⬅</button>
+
+<div class="logo">
+<a href="index.html" style="text-decoration: none; color: inherit;">
+<h1>BLOX FRUITS <span>WIKI</span></h1>
+</a>
+</div>
+
+<div class="header-controls">
+<div class="search-container">
+<input type="search" placeholder="Search" class="search-input">
+</div>
+
+<button id="lang-toggle-btn" class="lang-btn">
+<div class="arrow-circle">
+<span class="lang-text en">EN</span>
+<span class="lang-text ja">JA</span>
+</div>
+</button>
+
+<button id="member-btn" class="member-btn">
+<img src="images/flame fruit.png" alt="Members" class="flame-icon">
+</button>
+</div>
+</header>
+
+<!-- 📄 スキン一覧エリア -->
+<main class="skins-main-content">
+  <!-- 💡 Backボタン：直接リンクではなく履歴をスマートに戻る形に変更 -->
+  <a href="#" id="dynamic-back-btn" class="back-btn-detail">← Back</a>
+
+  <!-- 🌐 説明文章エリア -->
+  <div class="skin-description-box">
+    <p class="translatable" 
+       data-en="Welcome to the <strong>Fruit Skin</strong> Collection! Here, you can check out various skins in Blox Fruits. Click on a skin card to view details, or use the sorting buttons to organize them by fruit type."
+       data-ja="<strong>フルーツスキン</strong>コレクションへようこそ！ここではBlox Fruitsの各種スキンを確認できます。スキンカードをクリックして詳細をチェックしたり、並べ替えボタンを使ってフルーツの種類ごとに並べ替えることができます。">
+      Welcome to the <strong>Fruit Skin</strong> Collection! Here, you can check out various skins in Blox Fruits. Click on a skin card to view details, or use the sorting buttons to organize them by fruit type.
+    </p>
+  </div>
+
+  <!-- FRUIT SKIN リスト -->
+  <div class="fruit-list-section">
+    <div class="section-header-row">
+      <div class="list-header" style="margin-bottom: 0;">
+        <h2>FRUIT SKIN LIST</h2>
+      </div>
+      <button id="sort-fruit-skins-btn" class="sort-toggle-btn translatable"
+              data-en="🔄 Sort: Group"
+              data-ja="🔄 並べ替え: フルーツ順"
+              data-en-default="🔄 Sort: Group"
+              data-ja-default="🔄 並べ替え: フルーツ順"
+              data-en-sorted="🔄 Sort: Default"
+              data-ja-sorted="🔄 並べ替え: デフォルト">
+        🔄 Sort: Group
+      </button>
+    </div>
+    <div class="fruit-grid" id="fruit-skin-grid"></div>
+  </div>
+
+  <!-- SWORD SKIN リスト -->
+  <div class="fruit-list-section">
+    <div class="list-header">
+      <h2>SWORD SKIN LIST</h2>
+    </div>
+    <div class="fruit-grid" id="sword-skin-grid"></div>
+  </div>
+
+  <!-- FRUIT MUTATION リスト -->
+  <div class="fruit-list-section">
+    <div class="list-header">
+      <h2>FRUIT MUTATION LIST</h2>
+    </div>
+    <div class="fruit-grid" id="fruit-mutation-grid"></div>
+  </div>
+
+  <!-- AURA SKIN リスト -->
+  <div class="fruit-list-section">
+    <div class="list-header">
+      <h2>AURA SKIN LIST</h2>
+    </div>
+    <div class="fruit-grid" id="aura-skin-grid"></div>
+  </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 🔙 「← Back」ボタンのスマートナビゲーション処理
+  const backBtn = document.getElementById('dynamic-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.history.length > 1 && document.referrer.includes(window.location.hostname)) {
+        history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  }
+
+  // プロフィールボタンの遷移処理
+  const memberBtn = document.getElementById("member-btn");
+  if (memberBtn) {
+    memberBtn.addEventListener("click", () => {
+      window.location.href = "profile.html"; 
+    });
+  }
+
+  // スキンデータ
+  const skinsData = {
+    fruitSkin: [
+      { name: "Bomb", targetName: "Bomb", isDetail: true, base: "Bomb", rarity: "common", img: "images/fruits/Bomb_Fruit.webp" },
+      { name: "Nuclear_Bomb", base: "Bomb", rarity: "common", img: "images/skins/Nuclear_Bomb_Fruit.webp" },
+      { name: "Thermite_Bomb", base: "Bomb", rarity: "common", img: "images/skins/Thermite_Bomb_Fruit.webp" },
+      { name: "Azura_Bomb", base: "Bomb", rarity: "common", img: "images/skins/Azura_Bomb_Fruit.webp" },
+      { name: "Celebration_Bomb", base: "Bomb", rarity: "common", img: "images/skins/Celebration_Bomb_Fruit.webp" },
+      { name: "Eagle", base: "Eagle", isDetail: true, rarity: "common", img: "images/skins/EagleMug.webp" },
+      { name: "Green", targetName: "Dragon", isDetail: true, base: "Dragon", rarity: "common", img1: "images/skins/Dragon_East_Green.webp", img2: "images/skins/Dragon_West_Green.webp" },
+      { name: "Ghost", targetName: "Ghost", isDetail: true, base: "Ghost", rarity: "common", img: "images/fruits/Ghost_Fruit.webp" },
+      { name: "Blue", targetName: "Portal", isDetail: true, base: "Portal", rarity: "common", img: "images/fruits/Portal_Fruit.webp" },
+      { name: "Blue", targetName: "Lightning", isDetail: true, base: "Lightning", rarity: "common", img: "images/fruits/Lightning_Fruit.webp" },
+      { name: "Agony", targetName: "Pain", isDetail: true, base: "Pain", rarity: "common", img: "images/fruits/Pain_Fruit.webp" },
+      { name: "Gravity", targetName: "Gravity", isDetail: true, base: "Gravity", rarity: "common", img: "images/fruits/Gravity_Fruit.webp" },
+      { name: "Diamond", targetName: "Diamond", isDetail: true, base: "Diamond", rarity: "uncommon", img: "images/fruits/Diamond_Fruit.webp" },
+      { name: "Emerald Diamond", base: "Diamond", rarity: "uncommon", img: "images/skins/Emerald_Diamond_Fruit.webp" },
+      { name: "Rose Quartz Diamond", base: "Diamond", rarity: "uncommon", img: "images/skins/Rose_Quartz_Diamond_Fruit.webp" },
+      { name: "Topaz Diamond", base: "Diamond", rarity: "uncommon", img: "images/skins/Topaz_Diamond_Fruit.webp" },
+      { name: "Glacier Eagle", base: "Eagle", rarity: "uncommon", img: "images/skins/Glacier_Eagle_Fruit.webp" },
+      { name: "Requiem Eagle", base: "Eagle", rarity: "uncommon", img: "images/skins/Requiem_Eagle_Fruit.webp" },
+      { name: "Matrix Eagle", base: "Eagle", rarity: "uncommon", img: "images/skins/Matrix_Eagle_Fruit.webp" },
+      { name: "Velvet", base: "Eagle", rarity: "uncommon", img: "images/skins/VelvetMug.webp" },
+      { name: "Orange", base: "Dragon", rarity: "uncommon", img1: "images/skins/Dragon_East_Orange.webp", img2: "images/skins/Dragon_West_Orange.webp" },
+      { name: "Yellow", base: "Dragon", rarity: "uncommon", img1: "images/skins/Dragon_East_Yellow.webp", img2: "images/skins/Dragon_West_Yellow.webp" },
+      { name: "Lime_Blade", base: "Blade", rarity: "rare", img: "images/skins/Lime_Blade_Fruit.webp" },
+      { name: "Falcon", base: "Eagle", rarity: "rare", img: "images/skins/FalconMug.webp" },
+      { name: "Ruby Diamond", base: "Diamond", rarity: "rare", img: "images/skins/Ruby_Diamond_Fruit.webp" },
+      { name: "Scarlet Ghost", base: "Ghost", rarity: "rare", img: "images/skins/Scarlet_Ghost_Fruit.webp" },
+      { name: "Blue", base: "Dragon", rarity: "rare", img1: "images/skins/Dragon_East_Blue.webp", img2: "images/skins/Dragon_West_Blue.webp" },
+      { name: "Red", base: "Dragon", rarity: "rare", img1: "images/skins/Dragon_East_Red.webp", img2: "images/skins/Dragon_West_Red.webp" },
+      { name: "GoldenMoss", base: "Eagle", rarity: "legendary", img: "images/skins/GoldenMossMug.webp" },
+      { name: "BlueSky", base: "Eagle", rarity: "legendary", img: "images/skins/BlueSkyMug.webp" },
+      { name: "Divine", base: "Portal", rarity: "legendary", img: "images/skins/Divine_Portal_Fruit.webp" },
+      { name: "Pink", base: "Portal", rarity: "legendary", img: "images/skins/Pink_Portal_Fruit.png" },
+      { name: "Purple", base: "Lightning", rarity: "legendary", img: "images/skins/Purple_Lightning_Fruit.webp" },
+      { name: "Yellow", base: "Lightning", rarity: "legendary", img: "images/skins/Yellow_Lightning_Fruit.webp" },
+      { name: "Green", base: "Lightning", rarity: "legendary", img: "images/skins/Green_Lightning_Fruit.webp" },
+      { name: "Red", base: "Lightning", rarity: "legendary", img: "images/skins/Red_Lightning_Fruit.webp" },
+      { name: "Sadness", base: "Pain", rarity: "legendary", img: "images/skins/Sadness_Fruit.webp" },
+      { name: "Torment", base: "Pain", rarity: "legendary", img: "images/skins/Torment_Fruit.webp" },
+      { name: "Frustration", base: "Pain", rarity: "legendary", img: "images/skins/Frustration_Fruit.webp" },
+      { name: "Celestial", base: "Pain", rarity: "legendary", img: "images/skins/Celestial_Fruit.webp" },
+      { name: "Super Spirit", base: "Pain", rarity: "legendary", img: "images/skins/Super_Spirit_Pain_Fruit.webp" },
+      { name: "Purple", base: "Dragon", rarity: "legendary", img1: "images/skins/Dragon_East_Purple.webp", img2: "images/skins/Dragon_West_Purple.webp" },
+      { name: "OrangeCreamsicle", base: "Eagle", rarity: "mythical", img: "images/skins/OrangeCreamsicleMug.webp" },
+      { name: "Starlight", base: "Gravity", rarity: "mythical", img: "images/skins/Starlight_Gravity_Fruit.webp" },
+      { name: "TBA", base: "Magnet", rarity: "mythical", img: "images/fruits/Magnet_Fruit.webp" },
+      { name: "Arcsteel", base: "Magnet", rarity: "mythical", img: "images/skins/Arcsteel_Magnet_Fruit.webp" },
+      { name: "Black", base: "Dragon", rarity: "mythical", img1: "images/skins/Dragon_East_Black.webp", img2: "images/skins/Dragon_West_Black.webp" },
+      { name: "Emerald", base: "Dragon", rarity: "mythical", img1: "images/skins/Dragon_East_Emerald.webp", img2: "images/skins/Dragon_West_Emerald.webp" },
+      { name: "Frostbite", base: "Dragon", rarity: "mythical", img1: "images/skins/Dragon_East_Frostbite.webp", img2: "images/skins/Dragon_West_Frostbite.webp" },
+      { name: "Parrot", base: "Eagle", rarity: "premium", img: "images/skins/ParrotMug.webp" },
+      { name: "Ember", base: "Dragon", rarity: "mythical", img1: "images/skins/Ember_Dragon_Fruit_East.webp", img2: "images/skins/Ember_Dragon_Fruit_West.webp" },
+      { name: "Eclipse", base: "Dragon", rarity: "mythical", img1: "images/skins/Dragon_East_Eclipse.webp", img2: "images/skins/Dragon_West_Eclipse.webp" },
+      { name: "Blood Moon", base: "Dragon", rarity: "ultra", img1: "images/skins/Dragon_East_Blood_Moon.webp", img2: "images/skins/Dragon_West_Blood_Moon.webp" },
+      { name: "Phoenix Sky", base: "Dragon", rarity: "ultra", img1: "images/skins/Dragon_East_Phoenix_Sky.webp", img2: "images/skins/Dragon_West_Phoenix_Sky.webp" },
+      { name: "Violet Night", base: "Dragon", rarity: "ultra", img1: "images/skins/Dragon_East_Violet_Night.webp", img2: "images/skins/Dragon_West_Violet_Night.webp" },
+    ],
+    swordSkin: [
+      { name: "Dark", targetName: "Dark_Blade", isDetail: true, itemType: "sword", rarity: "mythical", img: "images/swords/Dark_Blade.webp" },
+      { name: "Slayer", rarity: "mythical", img: "images/sword skins/Slayer_Blade.png" },
+      { name: "Dog", targetName: "Dog_Blade", isDetail: true, itemType: "sword", rarity: "mythical", img: "images/swords/Dog_Blade.webp" },
+      { name: "Rabid", rarity: "mythical", img: "images/sword skins/Rabid_Blade.webp" },
+      { name: "Triple Dark", targetName: "Triple_Dark_Blade", isDetail: true, itemType: "sword", rarity: "mythical", img: "images/swords/Triple_Dark_Blade.webp" },
+      { name: "Triple Slayer", rarity: "mythical", img: "images/skins/Triple_Slayer_Blade.webp" },
+    ],
+    fruitMutation: [
+      { name: "Red", targetName: "Fiend", rarity: "mythical", img: "images/skins/Red_Fiend.webp" },
+      { name: "Runic", targetName: "Fiend", rarity: "mythical", img: "images/skins/Runic.webp" },
+      { name: "Crimson", targetName: "Kitsune", rarity: "mythical", img: "images/skins/Empyrean_Fruit.webp" },
+      { name: "Galaxy", targetName: "Kitsune", rarity: "mythical", img: "images/skins/Galaxy_Kitsune_Fruit.webp" },
+    ],
+    auraSkin: [
+      { name: "Orange Soda", rarity: "rare", img: "images/Aura/Aura_Orange_Soda_Icon.webp" },
+      { name: "Bright Yellow", rarity: "rare", img: "images/Aura/Aura_Bright_Yellow_Icon.webp" },
+      { name: "Yellow Sunshine", rarity: "rare", img: "images/Aura/Aura_Yellow_Sunshine_Icon.webp" },
+      { name: "Slimy Green", rarity: "rare", img: "images/Aura/Aura_Slimy_Green_Icon.webp" },
+      { name: "Green Lizard", rarity: "rare", img: "images/Aura/Aura_Green_Lizard_Icon.webp" },
+      { name: "Blue Jeans", rarity: "rare", img: "images/Aura/Aura_Blue_Jeans_Icon.webp" },
+      { name: "Plump Purple", rarity: "rare", img: "images/Aura/Aura_Plump_Purple_Icon.webp" },
+      { name: "Fiery Rose", rarity: "rare", img: "images/Aura/Aura_Fiery_Rose_Icon.webp" },
+      { name: "Heat Wave", rarity: "rare", img: "images/Aura/Aura_Heat_Wave_Icon.webp" },
+      { name: "Absolute Zero", rarity: "rare", img: "images/Aura/Aura_Absolute_Zero_Icon.webp" },
+      { name: "Snow White", rarity: "legendary", img: "images/Aura/Aura_Snow_White_Icon.webp" },
+      { name: "Pure Red", rarity: "legendary", img: "images/Aura/Aura_Pure_Red_Icon.webp" },
+      { name: "Winter Sky", rarity: "legendary", img: "images/Aura/Aura_Winter_Sky_Icon.webp" },
+      { name: "Aquamarine", rarity: "legendary", img: "images/Aura/Aura_Aquamarine_Icon.webp" },
+      { name: "Light Pink", rarity: "legendary", img: "images/Aura/Aura_Light_Pink_Icon.webp" },
+      { name: "Dragon", rarity: "mythical", img: "images/Aura/Aura_Dragon_Icon.webp" },
+      { name: "Rainbow Saviour", rarity: "mythical", img: "images/Aura/Aura_Rainbow_Saviour_Icon.webp" },
+      { name: "Kitsune", rarity: "mythical", img: "images/Aura/Aura_Kitsune_Icon.webp" },
+      { name: "Oni", rarity: "mythical", img: "images/Aura/Aura_Oni_Icon.webp" },
+      { name: "Celestial", rarity: "mythical", img: "images/Aura/Aura_Celestial_Icon.webp" },
+      { name: "Hacker", rarity: "mythical", img: "images/Aura/Aura_Hacker_Icon.webp" },
+    ]
+  };
+
+  function renderSkinGrid(gridId, items, categoryType = "skin") {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    items.forEach(skin => {
+      const item = document.createElement("div");
+      item.className = `fruit-item rarity-${skin.rarity}`;
+      item.style.cursor = "pointer";
+
+      item.addEventListener("click", () => {
+        const destinationName = skin.targetName || skin.name;
+
+        if (categoryType === "mutation") {
+          window.location.href = `detail.html?name=${encodeURIComponent(destinationName)}&type=fruit`;
+        } else if (categoryType === "aura") {
+          window.location.href = `aura-detail.html?name=${encodeURIComponent(destinationName)}`;
+        } else {
+          const typeParam = skin.itemType || 'fruit';
+          if (skin.isDetail || destinationName === "Bomb" || !destinationName.includes("_")) {
+            window.location.href = `detail.html?name=${encodeURIComponent(destinationName)}&type=${typeParam}`;
+          } else {
+            window.location.href = `skin-detail.html?name=${encodeURIComponent(destinationName)}`;
+          }
+        }
+      });
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "fruit-img-wrapper";
+
+      if (skin.img1 && skin.img2) {
+        // 🌟 2枚の画像がある場合：安全かつ綺麗にフェード切り替えを行う処理
+        const img = document.createElement("img");
+        img.src = skin.img1;
+        img.alt = skin.name;
+        img.className = "fruit-icon";
+        img.style.opacity = "1";
+        img.onerror = () => { img.src = "images/ItemPlaceHolder.webp"; };
+        wrapper.appendChild(img);
+
+        let currentIsFirst = true;
+        setInterval(() => {
+          // 1. 一度完全に透明にする（フェードアウト）
+          img.style.opacity = "0";
+          setTimeout(() => {
+            // 2. 画像のソースを切り替え
+            currentIsFirst = !currentIsFirst;
+            img.src = currentIsFirst ? skin.img1 : skin.img2;
+            // 3. 再び表示する（フェードイン）
+            img.style.opacity = "1";
+          }, 400); // 0.4秒の消える時間を待ってから画像を変える
+        }, 3500); // 3.5秒ごとに切り替え
+
+      } else {
+        // 🖼️ 通常の画像1枚の場合
+        const img = document.createElement("img");
+        img.src = skin.img || skin.img1;
+        img.alt = skin.name;
+        img.className = "fruit-icon";
+        img.onerror = () => {
+          img.src = "images/ItemPlaceHolder.webp";
+        };
+        wrapper.appendChild(img);
+      }
+
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "fruit-name";
+      nameDiv.textContent = skin.name.replace(/_/g, ' ');
+
+      item.appendChild(wrapper);
+      item.appendChild(nameDiv);
+      grid.appendChild(item);
+    });
+  }
+
+  renderSkinGrid("fruit-skin-grid", skinsData.fruitSkin, "skin");
+  renderSkinGrid("sword-skin-grid", skinsData.swordSkin, "skin");
+  renderSkinGrid("fruit-mutation-grid", skinsData.fruitMutation, "mutation");
+  renderSkinGrid("aura-skin-grid", skinsData.auraSkin, "aura");
+
+  // ソート＆言語切り替え
+  let isSortedByName = false;
+  const originalFruitSkins = [...skinsData.fruitSkin];
+  const sortBtn = document.getElementById("sort-fruit-skins-btn");
+  let currentLang = "en";
+  const toggleBtn = document.getElementById("lang-toggle-btn");
+
+  function updateSortButtonText() {
+    if (!sortBtn) return;
+    if (isSortedByName) {
+      const txt = currentLang === "ja" ? sortBtn.getAttribute("data-ja-sorted") : sortBtn.getAttribute("data-en-sorted");
+      sortBtn.textContent = txt;
+    } else {
+      const txt = currentLang === "ja" ? sortBtn.getAttribute("data-ja-default") : sortBtn.getAttribute("data-en-default");
+      sortBtn.textContent = txt;
+    }
+  }
+
+  if (sortBtn) {
+    sortBtn.addEventListener("click", () => {
+      isSortedByName = !isSortedByName;
+      if (isSortedByName) {
+        const baseFirstIndexes = {};
+        skinsData.fruitSkin.forEach((item, index) => {
+          const groupKey = item.base || item.name;
+          if (baseFirstIndexes[groupKey] === undefined) {
+            baseFirstIndexes[groupKey] = index;
+          }
+        });
+
+        const sortedList = [...skinsData.fruitSkin].sort((a, b) => {
+          const groupA = a.base || a.name;
+          const groupB = b.base || b.name;
+
+          const firstIndexA = baseFirstIndexes[groupA];
+          const firstIndexB = baseFirstIndexes[groupB];
+
+          if (firstIndexA !== firstIndexB) {
+            return firstIndexA - firstIndexB;
+          }
+
+          return skinsData.fruitSkin.indexOf(a) - skinsData.fruitSkin.indexOf(b);
+        });
+
+        renderSkinGrid("fruit-skin-grid", sortedList, "skin");
+        sortBtn.classList.add("active");
+      } else {
+        renderSkinGrid("fruit-skin-grid", originalFruitSkins, "skin");
+        sortBtn.classList.remove("active");
+      }
+      updateSortButtonText();
+    });
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      currentLang = currentLang === "en" ? "ja" : "en";
+      toggleBtn.classList.toggle("active", currentLang === "ja");
+
+      document.querySelectorAll(".translatable").forEach((el) => {
+        if (el.id !== "sort-fruit-skins-btn") {
+          const jaText = el.getAttribute("data-ja");
+          const enText = el.getAttribute("data-en");
+          if (currentLang === "ja" && jaText) el.innerHTML = jaText;
+          if (currentLang === "en" && enText) el.innerHTML = enText;
+        }
+      });
+      updateSortButtonText();
+    });
+  }
+});
+</script>
+</body>
+</html>

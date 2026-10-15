@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ─── 🔥 プロフィールボタンの処理（profile.html へ移動） ───
+  // ─── 🔥 プロフィールボタンの処理 ───
   if (profileBtn) {
     profileBtn.style.cursor = "pointer";
 
@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Rubber", rarity: "rare" },
     { name: "Ghost", rarity: "rare" },
     { name: "Magma", rarity: "rare" },
-    { name: "Lime_Blade", rarity: "rare" },
     { name: "Quake", rarity: "legendary" },
     { name: "Buddha", rarity: "legendary" },
     { name: "Love", rarity: "legendary" },
@@ -137,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Dragon_Talon", rarity: "mythical" },
     { name: "Godhuman", rarity: "mythical" },
     { name: "Sanguine_Art", rarity: "mythical" },
-    { name: "Celestial_Art", rarity: "style-yellow" },
+    { name: "Celestial_Art", rarity: "ultra" },
   ];
 
   // ─── ⚔️ ソードリスト ───

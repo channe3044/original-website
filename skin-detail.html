@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Detail - Blox Fruits Wiki</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .detail-container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 24px;
+      background: rgba(20, 20, 20, 0.95);
+      border: 2px solid #e2a227;
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .back-btn-detail {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #555;
+      font-weight: bold;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .back-btn-detail:hover {
+      background: #555;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 2px solid #444;
+      padding-bottom: 20px;
+    }
+
+    .detail-img-wrapper {
+      width: 120px;
+      height: 120px;
+      background: #111;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #666;
+      flex-shrink: 0;
+    }
+
+    .detail-img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .detail-title-info h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+    }
+
+    .meta-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1f1f1f;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 4px 8px 4px 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .meta-label {
+      color: #ccc;
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-value-normal {
+      font-weight: 900;
+      font-size: 0.95rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      color: #eee;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid #555;
+    }
+
+    .price-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .price-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .currency-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+    .inline-currency-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      vertical-align: -2px;
+      margin-right: 2px;
+      margin-left: 2px;
+    }
+
+    .wiki-link {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .wiki-link:hover {
+      text-decoration: underline;
+    }
+
+    .detail-section {
+      margin-top: 30px;
+    }
+
+    .detail-section h2 {
+      border-left: 4px solid #e2a227;
+      padding-left: 10px;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .detail-section p {
+      line-height: 1.7;
+      color: #ddd;
+    }
+
+    .moves-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .move-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .move-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #222222;
+      border: 2px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 12px 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .move-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .move-key {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      min-width: 30px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .move-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .move-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .move-mastery {
+      font-size: 0.85rem;
+      color: #aaaaaa;
+      margin-top: 2px;
+    }
+
+    .move-view-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+      border: 2.5px solid #4d3202;
+      border-bottom: 5.5px solid #362201;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      padding: 6px 18px;
+      text-shadow: 
+        -2px -2px 0 #000,  
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+         2px  3px 0px #000;
+      cursor: pointer;
+      transition: filter 0.1s ease, transform 0.1s ease, background 0.1s ease;
+    }
+
+    .move-view-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .move-view-btn:active {
+      border-bottom: 1.5px solid #362201;
+      transform: translateY(4px);
+    }
+
+    .move-view-btn.active {
+      background: linear-gradient(to bottom, #ff7171 0%, #ff4f4f 45%, #e03232 50%, #b81d1d 100%) !important;
+      border-color: #520b0b !important;
+      border-bottom-color: #380505 !important;
+      animation: pressClick 0.15s ease-out;
+    }
+
+    @keyframes pressClick {
+      0% { transform: translateY(0); border-bottom-width: 5.5px; }
+      50% { transform: translateY(4px); border-bottom-width: 1.5px; }
+      100% { transform: translateY(0); border-bottom-width: 5.5px; }
+    }
+
+    .move-details-content {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeInSlide 0.25s ease-out;
+    }
+
+    .move-details-content.open {
+      display: flex;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-box {
+      background: #181818;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    .detail-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .detail-box h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: #fff;
+      font-weight: 900;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .details-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .highlight-yellow { color: #ffcc00; font-weight: bold; }
+    .highlight-green { color: #2ECC71; font-weight: bold; }
+    .highlight-red { color: #FF4D4D; font-weight: bold; }
+
+    .details-bullet-list {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .showcase-container {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .showcase-img {
+      width: 220px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid #444;
+      flex-shrink: 0;
+    }
+
+    .showcase-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin: 0;
+    }
+
+    a.skin-btn.skin-all-link {
+      display: inline-block;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2a2c35;
+      border: 1px solid #ffaa00;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      line-height: 1.2;
+    }
+
+    a.skin-btn.skin-all-link:hover {
+      background-color: #ffaa00;
+      color: #000000;
+    }
+
+    @media (max-width: 600px) {
+      .showcase-container {
+        flex-direction: column;
+      }
+      .showcase-img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔝 ヘッダー -->
+  <header>
+    <button id="back-btn" class="back-btn" style="display: none;">⬅</button>
+
+    <div class="logo">
+      <a href="skins.html" style="text-decoration: none; color: inherit;">
+        <h1>BLOX FRUITS <span>WIKI</span></h1>
+      </a>
+    </div>
+    
+    <div class="header-controls">
+      <div class="search-container">
+        <input type="search" placeholder="Search" class="search-input">
+      </div>
+
+      <button id="lang-toggle-btn" class="lang-btn">
+        <div class="arrow-circle">
+          <span class="lang-text en">EN</span>
+          <span class="lang-text ja">JA</span>
+        </div>
+      </button>
+
+      <button id="member-btn" class="member-btn">
+        <img src="images/flame fruit.png" alt="Members" class="flame-icon">
+      </button>
+    </div>
+  </header>
+
+  <!-- 📄 メインコンテンツ -->
+  <div class="detail-container">
+    <a href="#" onclick="history.back(); return false;" class="back-btn-detail translatable" data-en="← Back" data-ja="← 戻る">← Back</a>
+
+    <div class="detail-header">
+      <div class="detail-img-wrapper">
+        <img id="detail-img" src="" alt="" class="detail-img">
+      </div>
+      
+      <div class="detail-title-info">
+        <h1 id="detail-name">Loading...</h1>
+
+        <div class="meta-container">
+          <div class="meta-badge">
+            <span class="meta-label translatable" data-en="Type:" data-ja="タイプ:">Type:</span>
+            <span id="meta-type" class="meta-value-normal">-</span>
+          </div>
+
+          <div class="meta-badge">
+            <span class="meta-label translatable" data-en="Rarity:" data-ja="レア度:">Rarity:</span>
+            <span id="meta-rarity" class="meta-value-normal">-</span>
+          </div>
+
+          <div class="meta-badge">
+            <span class="meta-label translatable" data-en="Can M1:" data-ja="タップ技:">Can M1:</span>
+            <span id="meta-m1" class="meta-value-normal">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📄 1. 概要 (Overview) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Overview" data-ja="概要">Overview</h2>
+      <p id="detail-description">
+        Loading details...
+      </p>
+    </div>
+
+    <div id="immunity-section" style="display: none; margin-top: 30px;">
+      <h2 class="section-title translatable" data-en="Immunity Animation" data-ja="攻撃無効化モーション">攻撃無効化モーション</h2>
+      <div class="immunity-container" style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; margin-top: 15px;">
+        <video id="immunity-video" autoplay loop muted playsinline
+               style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; border: 1px solid #333; object-fit: cover;"></video>
+        <p id="immunity-desc" style="flex: 1; min-width: 200px; margin: 0; color: #ddd; line-height: 1.6;"></p>
+      </div>
+    </div>
+
+    <!-- 📄 2. 技一覧 (Movesets) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Movesets" data-ja="技一覧">Movesets</h2>
+      <div id="moves-container" class="moves-container"></div>
+    </div>
+
+    <!-- 📄 3. フルーツアイコン (Fruit Icon) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Fruit Icon" data-ja="フルーツアイコン">Fruit Icon</h2>
+      <p id="detail-history">
+        Loading history...
+      </p>
+    </div>
+
+    <!-- 📄 4. 追記 (Notes) -->
+    <div class="detail-section">
+      <h2 class="translatable" data-en="Notes" data-ja="追記">Notes</h2>
+      <p id="detail-notes">
+        Loading notes...
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+
+  <script src="script.js"></script>
+  <script>
+    // 📖 概要・メタデータ定義
+    const itemOverviewData = {
+      //ライムブレード
+      "Lime_Blade": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "Yes", ja: "あり" },
+          baseFruit: "Blade", 
+         baseFruitName: { en: "Blade Fruit", ja: "ブレードフルーツ" }
+        },
+        description: {
+          en: "Was Obtainable from the <a href='#' class='wiki-link'>Summer 2026 Chromatic Box</a> introduced in <a href='#' class='wiki-link'>Update 30</a>.<br><br>The drop rate for Lime Blade is 33%, and the guaranteed pity requires 4 boxes for a total of <img src='images/currency/Robux.webp' class='inline-currency-icon'>796 (or <img src='images/currency/Robux.webp' class='inline-currency-icon'>774 for the cheapest pity combination).",
+          ja: "<a href='#' class='wiki-link'>アップデート30</a>で実装された<a href='#' class='wiki-link'>Summer 2026 Chromatic Box</a>から入手できます<br><br>ライムブレードの確率は33%で確定枠は合計<img src='images/currency/Robux.webp' class='inline-currency-icon'>796のボックス4つです<i>(最安の確定枠<img src='images/currency/Robux.webp' class='inline-currency-icon'>774)</i>"
+        },
+        iconCompare: {
+  original: {
+    // 1つ目の画像＆名前
+    img1: "images/fruits/Blade_Fruit.webp",
+    name1: { en: "Blade Fruit", ja: "ブレードフルーツ" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Blade.webp", 
+    name2: { en: "Blade Fruit Icon", ja: "ブレードフルーツアイコン" }
+  },
+  skin: {
+    // 1つ目の画像＆名前
+    img1: "images/skins/Lime_Blade_Fruit.webp",
+    name1: { en: "Lime Blade", ja: "ライムブレード" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Lime_Blade.webp", 
+    name2: { en: "Lime Blade Icon", ja: "ライムブレードアイコン" }
+  }
+},
+        notes: {
+          en: "While skins for <a href='detail.html?name=Blade&type=fruit' class='wiki-link'>Blade Fruit</a> and <a href='detail.html?name=Bomb&type=fruit' class='wiki-link'>Bomb</a> are Common, Lime Blade was surprisingly implemented as Rare.",
+          ja: "<a href='detail.html?name=Blade&type=fruit' class='wiki-link'>ブレードフルーツ</a>や<a href='detail.html?name=Bomb&type=fruit' class='wiki-link'>ボムフルーツ</a>の<a href='skins.html' class='wiki-link'>スキン</a>がコモンなのに対してライムブレードはなぜかレアで実装されました"
+        }
+      },
+      //核爆弾
+      "Nuclear_Bomb": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "Yes", ja: "あり" },
+          baseFruit: "Bomb", 
+         baseFruitName: { en: "Bomb Fruit", ja: "ボムフルーツ" }
+        },
+        description: {
+          en: "Was obtainable from the <a href='#' class='wiki-link'>Summer Gacha</a> for <span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span> in <a href='#' class='wiki-link'>Update 27</a>. <i>(No pity system)</i><br><br>It was also obtainable from the <a href='#' class='wiki-link'>Week 5: Summer Box</a> in <a href='#' class='wiki-link'>Update 27.4</a>. <i>(No pity system)</i>",
+          ja: "<a href='#' class='wiki-link'>アップデート27</a>で実装された<a href='#' class='wiki-link'>サマーガチャ</a>で、<span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span>で入手可能でした。<i>(確定枠はありません)</i><br><br><a href='#' class='wiki-link'>アップデート27.4</a>の<a href='#' class='wiki-link'>第5週サマーボックス</a>からも入手可能でした。<i>(確定枠はありません)</i>"
+        },
+        iconCompare: {
+  original: {
+    // 1つ目の画像＆名前
+    img1: "images/fruits/Bomb_Fruit.webp",
+    name1: { en: "Bomb Fruit", ja: "ボムフルーツ" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Bomb.webp", 
+    name2: { en: "Bomb Fruit Icon", ja: "ボムフルーツアイコン" }
+  },
+  skin: {
+    // 1つ目の画像＆名前
+    img1: "images/skins/Nuclear_Bomb_Fruit.webp",
+    name1: { en: "Nuclear Bomb", ja: "ニュークリアボム" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Nuclear_Bomb.webp", 
+    name2: { en: "Nuclear Bomb Icon", ja: "ニュークリアボムアイコン" }
+  }
+},
+        notes: {
+          en: "I don't own this skin, I really want it someday<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(*TｰT)</span>",
+          ja: "このスキン持ってないんだ、いつか絶対にほしいな<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(*TｰT)</span>"
+        }
+      },
+      //テルミット
+      "Thermite_Bomb": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "Yes", ja: "あり" },
+          baseFruit: "Bomb", 
+         baseFruitName: { en: "Bomb Fruit", ja: "ボムフルーツ" }
+        },
+        description: {
+          en: "Was obtainable from the <a href='#' class='wiki-link'>Summer Gacha</a> for <span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span> in <a href='#' class='wiki-link'>Update 27</a>. <i>(No pity system)</i><br><br>It was also obtainable from the <a href='#' class='wiki-link'>Week 5: Summer Box</a> in <a href='#' class='wiki-link'>Update 27.4</a>. <i>(No pity system)</i>",
+          ja: "<a href='#' class='wiki-link'>アップデート27</a>で実装された<a href='#' class='wiki-link'>サマーガチャ</a>で、<span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span>で入手可能でした。<i>(確定枠はありません)</i><br><br><a href='#' class='wiki-link'>アップデート27.4</a>の<a href='#' class='wiki-link'>第5週サマーボックス</a>からも入手可能でした。<i>(確定枠はありません)</i>"
+        },
+         iconCompare: {
+  original: {
+    // 1つ目の画像＆名前
+    img1: "images/fruits/Bomb_Fruit.webp",
+    name1: { en: "Bomb Fruit", ja: "ボムフルーツ" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Bomb.webp", 
+    name2: { en: "Bomb Fruit Icon", ja: "ボムフルーツアイコン" }
+  },
+  skin: {
+    // 1つ目の画像＆名前
+    img1: "images/skins/Thermite_Bomb_Fruit.webp",
+    name1: { en: "Thermite Bomb", ja: "テルミットボム" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Thermite_Bomb.webp", 
+    name2: { en: "Thermite Bomb Icon", ja: "テルミットボムアイコン" }
+  }
+},
+        notes: {
+          en: "I don't own this skin, I really want it someday<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(*TｰT)</span>",
+          ja: "このスキン持ってないんだ、いつか絶対にほしいな<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(*TｰT)</span>"
+        }
+      },
+      //アズラ
+      "Azura_Bomb": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "Yes", ja: "あり" },
+          baseFruit: "Bomb", 
+         baseFruitName: { en: "Bomb Fruit", ja: "ボムフルーツ" }
+        },
+        description: {
+          en: "Was obtainable from the <a href='#' class='wiki-link'>Summer Gacha</a> for <span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span> in <a href='#' class='wiki-link'>Update 27</a>. <i>(No pity system)</i><br><br>It was also obtainable from the <a href='#' class='wiki-link'>Week 5: Summer Box</a> in <a href='#' class='wiki-link'>Update 27.4</a>. <i>(No pity system)</i>",
+          ja: "<a href='#' class='wiki-link'>アップデート27</a>で実装された<a href='#' class='wiki-link'>サマーガチャ</a>で、<span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span>で入手可能でした。<i>(確定枠はありません)</i><br><br><a href='#' class='wiki-link'>アップデート27.4</a>の<a href='#' class='wiki-link'>第5週サマーボックス</a>からも入手可能でした。<i>(確定枠はありません)</i>"
+        },
+        iconCompare: {
+  original: {
+    // 1つ目の画像＆名前
+    img1: "images/fruits/Bomb_Fruit.webp",
+    name1: { en: "Bomb Fruit", ja: "ボムフルーツ" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Bomb.webp", 
+    name2: { en: "Bomb Fruit Icon", ja: "ボムフルーツアイコン" }
+  },
+  skin: {
+    // 1つ目の画像＆名前
+    img1: "images/skins/Azura_Bomb_Fruit.webp",
+    name1: { en: "Azura Bomb", ja: "アズラボム" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Azura_Bomb.webp", 
+    name2: { en: "Azura Bomb Icon", ja: "アズラボムアイコン" }
+  }
+},
+        notes: {
+          en: "I don't own this skin, I really want it someday<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(*TｰT)</span>",
+          ja: "このスキン持ってないんだ、いつか絶対にほしいな<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(*TｰT)</span>"
+        }
+      },
+      //セレブレーション
+      "Celebration_Bomb": {
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "Yes", ja: "あり" },
+          baseFruit: "Bomb", 
+         baseFruitName: { en: "Bomb Fruit", ja: "ボムフルーツ" }
+        },
+        description: {
+          en: "Was obtainable from the <a href='#' class='wiki-link'>Party Gacha</a> implemented in <a href='#' class='wiki-link'>Update 27.5</a> for <span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span>. <i>(No pity system)</i><br><br>It was also obtainable from the <a href='#' class='wiki-link'>Winter 2025 Fruit Box</a>. The chance for Celebration Bomb is 33%, with a guaranteed pity of 4 boxes totaling <img src='images/currency/Robux.webp' class='inline-currency-icon'>796. <i>(Cheapest pity path: <img src='images/currency/Robux.webp' class='inline-currency-icon'>774)</i>",
+          ja: "<a href='#' class='wiki-link'>アップデート27.5</a>で実装された<a href='#' class='wiki-link'>パーティーガチャ</a>で、<span style='display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;'><img src='images/currency/Summer_Token.webp' style='width: 16px; height: 16px; object-fit: contain;'>500</span>で入手可能でした。<i>(確定枠はありません)</i><br><br><a href='#' class='wiki-link'>Winter 2025 Fruit Box</a>からも入手可能でした。セレブレーションボムの確率は33%で確定枠は合計<img src='images/currency/Robux.webp' class='inline-currency-icon'>796のボックス4つです<i>(最安の確定枠<img src='images/currency/Robux.webp' class='inline-currency-icon'>774)</i>"
+        },
+        iconCompare: {
+  original: {
+    // 1つ目の画像＆名前
+    img1: "images/fruits/Bomb_Fruit.webp",
+    name1: { en: "Bomb Fruit", ja: "ボムフルーツ" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Bomb.webp", 
+    name2: { en: "Bomb Fruit Icon", ja: "ボムフルーツアイコン" }
+  },
+  skin: {
+    // 1つ目の画像＆名前
+    img1: "images/skins/Celebration_Bomb_Fruit.webp",
+    name1: { en: "Celebration Bomb", ja: "セレブレーションボム" },
+    // 2つ目の画像＆名前
+    img2: "images/skin icons/Celebration_Bomb.webp", 
+    name2: { en: "Celebration Bomb Icon", ja: "セレブレーションボムアイコン" }
+  }
+},
+        notes: {
+          en: "I love explosion-type color effects because they look so clean.<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(o^-')b </span>",
+          ja: "爆発系のエフェクトは綺麗なので好きです<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(o^-')b </span>"
+        }
+      },
+      //バネ
+      "Spring": {
+        ingameDesc: {
+          en: "Offers spring like movement and bouncing attacks.",
+          ja: "バネのような軽やかな動きと、跳ねるような攻撃を繰り出す。"
+        },
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "60,000",
+          robux: "180"
+        },
+        description: {
+          en: "By using the Spring Fruit, the user can turn parts of their body into springs, allowing for high-speed mobility.<br><br>Since 'Spring' also means the season spring in English, setting the in-game language to Japanese causes 'Spring' to be mistranslated as '春' (the season) instead of 'バネ' (mechanical spring).",
+          ja: "スプリングを使えば、自分の身体の各部分をバネのように使うことができます。これにより素早く移動することができます。<br><br>Springはバネの他に春という意味があり、ゲームの言語設定を日本語にしているとSpringの翻訳がバネではなく春になります"
+        },
+        history: {
+          en: "<p>Spring was added in <a href='#' class='wiki-link'>Update 2</a>.</p><p><a href='#' class='wiki-link'>Update 17.3</a> introduced the [ V ] Spring Emperor move.</p><p><a href='#' class='wiki-link'>Update 20</a> revamped the physical model for the Spring fruit.</p><div style=\"margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;\"><img src=\"images/changelog/Old_Spring_fruit.webp\" alt=\"Old Spring Fruit\" style=\"height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;\" onerror=\"this.onerror=null; this.src='images/changelog/Old_Spring_fruit.png';\"></div>",
+          ja: "<p><a href='#' class='wiki-link'>アップデート2</a>でスプリングが追加されました。</p><p><a href='#' class='wiki-link'>アップデート17.3</a>で[ V ]スプリングエンペラーが追加されました</p><p><a href='#' class='wiki-link'>アップデート20</a>でスプリングのフルーツモデルが変更されました。</p><div style=\"margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;\"><img src=\"images/changelog/Old_Spring_fruit.webp\" alt=\"旧スプリング\" style=\"height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;\" onerror=\"this.onerror=null; this.src='images/changelog/Old_Spring_fruit.png';\"></div>"
+        },
+        notes: {
+          text: {
+            en: "Using the F move in tight spaces is super fun!<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(●・ω・●）</span>",
+            ja: "狭いところでのF技が楽しいのです<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>(●・ω・●）</span>"
+          },
+          media: [
+            "images/videos/Crazy_Spring.mp4"
+          ]
+        }
+      },
+      //ボム
+      "Bomb": {
+        ingameDesc: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "Yes", ja: "あり" },
+          money: "80000",
+          robux: "220"
+        },
+        description: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        history: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        notes: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        }
+      },
+    };
+
+    // 🥑 技データベース
+    const fruitMovesDatabase = {
+      //ライムブレード
+      "Lime_Blade": {
+        m1: {
+      title: { en: "Blade's Edge", ja: "ブレードエッジ" },
+      cooldown: { en: "0.3 seconds", ja: "0.3秒" },
+      energy: 0,
+      instinctBreak: false,
+      instinctText: { en: "Cannot break Instinct.", ja: "見聞色は破壊できません。" },
+      showcaseVideo: "images/videos/Lime_Blade_M1.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_M1.mp4",
+      showcaseText: {
+        en: "Transforms the user's arms into sharp blades and swings them to launch slash attacks. The slashes dissipate after reaching a certain distance. Enemies hit are knocked back slightly.",
+        ja: "自分の腕に鋭い刃を作り出し、振り回すことで斬撃を放ちます。斬撃は一定の距離まで届くと消滅します。当たった敵はわずかに後ろにに吹き飛ばされます。"
+      }
+    },
+    z: {
+      title: { en: "Razor Cyclone", ja: "レイザーサイクロン" },
+      mastery: 1,
+      cooldown: { en: "3.75 seconds", ja: "3.75秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "A direct hit will break the target's Instinct, but it can be dodged if hit by the outer edges.", ja: "技が直撃すると見聞色が破壊されます。端の部分なら回避できます。" },
+      showcaseVideo: "images/videos/Lime_Blade_Z.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_Z.mp4",
+      showcaseText: {
+        en: "Forms blades on the user's arms, then spins and dashes toward the cursor to slash enemies.",
+        ja: "自分の腕に刃を形成し、カーソルの方向に向かって回転しながら突進して切りつけます。"
+      }
+    },
+    x: {
+      title: { en: "Blade Dance", ja: "ブレードダンス" },
+      isHold: true,
+      mastery: 20,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged at the outer edge.", ja: "端の部分なら避けることができます。" },
+      showcaseVideo: "images/videos/Lime_Blade_X.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_X.mp4",
+      showcaseText: {
+        en: "Forms blades on the user's arms and spins them rapidly to release a swirling slash. When the animation ends, hit enemies are launched slightly into the air. Holding down the key allows the skill to be channelled for a longer duration.",
+        ja: "自分の腕に刃を形成し、素早く回転させることで渦巻きのような斬撃を放つ。アニメーションが終了すると、当たった敵は空中に少し吹き飛ばされます。長押しすることでより長く技を使用できます。"
+      }
+    },
+    c: {
+      title: { en: "Saw Shredder", ja: "ソーシュレッダー" },
+      mastery: 50,
+      cooldown: { en: "12 seconds", ja: "12秒" },
+      energy: 35,
+      instinctBreak: true,
+      instinctText: { en: "The initial hit breaks Instinct. The X-shaped slashes can be dodged by activating Instinct after the initial hit.", ja: "最初の直撃で見聞色が破壊。X 字型の斬撃は、最初の直撃後に見聞色を発動することで回避できます。" },
+      showcaseVideo: "images/videos/Lime_Blade_C.mp4",
+      hasSkin: false,
+      skinName: { en: "Skin", ja: "スキン" },
+      skinVideo: "images/videos/Lime_Blade_C.mp4",
+      showcaseText: {
+        en: "Rapidly spins the blades on both arms and dashes forward to catch the enemy. Upon contact, inflicts an X-shaped slash on the opponent, briefly immobilizing them.",
+        ja: "両腕の刃を素早く回転させ、敵を捕まえて突進します。接触した瞬間、X 字型の切り傷を相手に負わせ、一瞬動けなくする。"
+      }
+    },
+    v: null,
+    f: {
+      title: { en: "Turbine Flight", ja: "タービンフライト" },
+      isHold: true,
+      mastery: 80,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 35,
+      instinctBreak: false,
+      instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません。" },
+      showcaseVideo: "images/videos/Lime_Blade_F.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "Raises the right arm to create a spinning blade, granting upward momentum to fly. As the user's health decreases, flight speed increases.",
+        ja: "右腕を上にあげて回転する刃を作り出し、上向きの推進力を得て飛行します。自身の体力が減少するにつれて、飛行速度が上がります。"
+      }
+        }
+      },
+     //核爆弾
+      "Nuclear_Bomb": {
+    m1: {
+      title: { en: "Blast Toss ", ja: "ブラストトス" },
+      isHold: true,
+      cooldown: { en: "3 seconds", ja: "3秒" },
+      energy: 5,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_M.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    z: {
+      title: { en: "Targeted Bomb", ja: "ターゲットボム" },
+      isHold: false,
+      mastery: 1,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    x: {
+      title: { en: "Bomb Grab", ja: "ボムグラブ" },
+      isHold: false,
+      mastery: 50,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "The initial dash attack can be dodged, but if it hits, the bomb attached to the opponent's head will explode, breaking their Instinct. Additionally, the initial explosion behind the user before the dash has an active hitzone and breaks Instinct on contact.", ja: "最初の突進攻撃は避けられますが、当たった後の相手の頭に設置する爆弾で見聞色を破壊します。突進する前の自分の後ろ側で起こる爆発には判定があり、見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    c: {
+      title: { en: "Land Mines", ja: "ランドマイン" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "11 seconds", ja: "11秒" },
+      energy: 50,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    v: {
+      title: { en: "Self Destruct", ja: "セルフディストラクト" },
+      isHold: true,
+      mastery: 125,
+      cooldown: { en: "22.5 seconds", ja: "22.5秒" },
+      energy: 100,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    f: {
+      title: { en: "Explosive Jump", ja: "エクスプロシブジャンプ" },
+      isHold: false,
+      mastery: 25,
+      cooldown: { en: "0.9 seconds", ja: "0.9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    }
+  },
+      //テルミット
+      "Thermite_Bomb": {
+    m1: {
+      title: { en: "Blast Toss ", ja: "ブラストトス" },
+      isHold: true,
+      cooldown: { en: "3 seconds", ja: "3秒" },
+      energy: 5,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_M.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    z: {
+      title: { en: "Targeted Bomb", ja: "ターゲットボム" },
+      isHold: false,
+      mastery: 1,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    x: {
+      title: { en: "Bomb Grab", ja: "ボムグラブ" },
+      isHold: false,
+      mastery: 50,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "The initial dash attack can be dodged, but if it hits, the bomb attached to the opponent's head will explode, breaking their Instinct. Additionally, the initial explosion behind the user before the dash has an active hitzone and breaks Instinct on contact.", ja: "最初の突進攻撃は避けられますが、当たった後の相手の頭に設置する爆弾で見聞色を破壊します。突進する前の自分の後ろ側で起こる爆発には判定があり、見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    c: {
+      title: { en: "Land Mines", ja: "ランドマイン" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "11 seconds", ja: "11秒" },
+      energy: 50,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    v: {
+      title: { en: "Self Destruct", ja: "セルフディストラクト" },
+      isHold: true,
+      mastery: 125,
+      cooldown: { en: "22.5 seconds", ja: "22.5秒" },
+      energy: 100,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    f: {
+      title: { en: "Explosive Jump", ja: "エクスプロシブジャンプ" },
+      isHold: false,
+      mastery: 25,
+      cooldown: { en: "0.9 seconds", ja: "0.9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    }
+  },
+  //アズラ
+  "Azura_Bomb": {
+    m1: {
+      title: { en: "Blast Toss ", ja: "ブラストトス" },
+      isHold: true,
+      cooldown: { en: "3 seconds", ja: "3秒" },
+      energy: 5,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_M.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    z: {
+      title: { en: "Targeted Bomb", ja: "ターゲットボム" },
+      isHold: false,
+      mastery: 1,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 15,
+      instinctBreak: false,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: true,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    x: {
+      title: { en: "Bomb Grab", ja: "ボムグラブ" },
+      isHold: false,
+      mastery: 50,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "The initial dash attack can be dodged, but if it hits, the bomb attached to the opponent's head will explode, breaking their Instinct. Additionally, the initial explosion behind the user before the dash has an active hitzone and breaks Instinct on contact.", ja: "最初の突進攻撃は避けられますが、当たった後の相手の頭に設置する爆弾で見聞色を破壊します。突進する前の自分の後ろ側で起こる爆発には判定があり、見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    c: {
+      title: { en: "Land Mines", ja: "ランドマイン" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "11 seconds", ja: "11秒" },
+      energy: 50,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    v: {
+      title: { en: "Self Destruct", ja: "セルフディストラクト" },
+      isHold: true,
+      mastery: 125,
+      cooldown: { en: "22.5 seconds", ja: "22.5秒" },
+      energy: 100,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    },
+    f: {
+      title: { en: "Explosive Jump", ja: "エクスプロシブジャンプ" },
+      isHold: false,
+      mastery: 25,
+      cooldown: { en: "0.9 seconds", ja: "0.9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/videos/Bomb_.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "I don't own this skin or fruit! If anyone has a video clip to share, it would be a huge help.",
+        ja: "このスキン及びフルーツを持っていません!動画の提供をしてくれると助かります。"
+      }
+    }
+  },
+//セレブレーション
+"Celebration_Bomb": {
+    m1: {
+      title: { en: "Blast Toss ", ja: "ブラストトス" },
+      isHold: true,
+      cooldown: { en: "3 seconds", ja: "3秒" },
+      energy: 5,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/skin videos/Celebration_Bomb_M1.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "Holds and throws a small bomb. The bomb explodes upon impact with the ground or after a short delay, dealing damage while knocking back enemies. Holding the key combines surrounding parts into the bomb, making it slightly larger and increasing both its explosion range and damage compared to a quick tap.",
+        ja: "小型の爆弾を手に持ち投げます。この爆弾は地面に接触するか一定時間で爆発し、敵を吹き飛ばしながらダメージを与えます。長押しすると周りの部品を合成し、手に持つ小型爆弾が少し大きくなり、爆発範囲とダメージが増加します。"
+      }
+    },
+    z: {
+      title: { en: "Targeted Bomb", ja: "ターゲットボム" },
+      isHold: false,
+      mastery: 1,
+      cooldown: { en: "4.5 seconds", ja: "4.5秒" },
+      energy: 15,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      showcaseVideo: "images/skin videos/Celebration_Bomb_Z.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "Summons a sphere at the cursor's location with a warning indicator showing the explosion area. Surrounding parts combine into the sphere before it detonates, dealing damage and launching enemies upward into the air.",
+        ja: "カーソルの位置に爆破位置を表す警告表示付きの球体を呼び出し、球体の周りの部品を合成させて爆弾が爆発する。この爆発によってダメージが与えられ、相手は上方向に吹き飛ばされます。"
+      }
+    },
+    x: {
+      title: { en: "Bomb Grab", ja: "ボムグラブ" },
+      isHold: false,
+      mastery: 50,
+      cooldown: { en: "9 seconds", ja: "9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "The initial dash attack can be dodged, but if it hits, the bomb attached to the opponent's head will explode, breaking their Instinct. Additionally, the initial explosion behind the user before the dash has an active hitzone and breaks Instinct on contact.", ja: "最初の突進攻撃は避けられますが、当たった後の相手の頭に設置する爆弾で見聞色を破壊します。突進する前の自分の後ろ側で起こる爆発には判定があり、見聞色を破壊します。" },
+      showcaseVideo: "images/skin videos/Celebration_Bomb_X.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "Explodes behind yourself to dash forward, causing a small explosion and dealing damage upon hitting an opponent. The user then attaches a bomb to the opponent's head, which explodes after 3 seconds, knocking the opponent back toward the user.",
+        ja: "自分の後ろ側を爆破させ突進し、相手に当たると小さな爆発が起こり、ダメージを与えます。ユーザーは相手の頭上に爆弾を設置し、3 秒後に爆発させて相手を自分の方に吹き飛ばします。"
+      }
+    },
+    c: {
+      title: { en: "Land Mines", ja: "ランドマイン" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "11 seconds", ja: "11秒" },
+      energy: 50,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      hasSkin: false,
+      showcases: [
+    {
+      label: { en: "Tap", ja: "短押し" }, 
+      video: "images/skin videos/Celebration_Bomb_C.mp4",
+      text: { en: "When tapped, detonates your own body slightly and continuously throws a barrage of small bombs around yourself. The small bombs explode in a circular pattern around the user, dealing damage while knocking back enemies.", ja: "単押しすると、自分の体を少し爆破させ、周りに大量の小型爆弾を連続して投げます。小型爆弾は自分の周囲に円形に爆発し、ダメージを与えると同時に敵を吹き飛ばします。" }
+    },
+    {
+      label: { en: "Hold", ja: "長押し" }, 
+      video: "images/skin videos/Celebration_Bomb_holdC.mp4",
+      text: { en: "Holding the key creates chain-detonating landmines that last for approximately 30 seconds before automatically exploding. If an enemy steps on a landmine, it detonates and deals damage. If held in mid-air, it performs the same move as a tap instead.", ja: "長押しすると、連鎖爆発式の地雷が作られます。この地雷は約 30 秒間有効で、時間が経つと自動で爆破します。敵が地雷を踏むと地雷が爆発し、ダメージを与えます。空中で長押しすると、単押しと同じ動きをします。" }
+    },
+    {
+      video: "images/videos/Chain_Bomb_move.mp4",
+      text: { en: "Hitting your own landmines with any Bomb fruit attack will trigger them to explode instantly.", ja: "ボムの各種攻撃を地雷に当てると爆発が発生します。" }
+    },
+  ],
+    },
+    v: {
+      title: { en: "Self Destruct", ja: "セルフディストラクト" },
+      isHold: true,
+      mastery: 125,
+      cooldown: { en: "22.5 seconds", ja: "22.5秒" },
+      energy: 100,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
+      showcaseVideo: "images/skin videos/Celebration_Bomb_V.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "Transforms your head into a bomb. While holding this bomb, it gradually grows in size, draining up to 25% of your total HP. Releasing the skill or reaching maximum charge triggers an explosion. Both the explosion range and damage scale based on how long the bomb was held. It takes 4 seconds to fully charge the bomb.",
+        ja: "自分の頭を爆弾に変えます。この爆弾を保持している間、サイズがどんどん大きくなり、最大で体力の25％が削られます。この技を解除するか最大まで溜めると、爆弾が爆発します。爆発の範囲とダメージは、爆弾を保持していた時間に応じて変化します。爆弾を最大まで大きくするには4 秒かかります。"
+      }
+    },
+    f: {
+      title: { en: "Explosive Jump", ja: "エクスプロシブジャンプ" },
+      isHold: false,
+      mastery: 25,
+      cooldown: { en: "0.9 seconds", ja: "0.9秒" },
+      energy: 25,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      hasSkin: false,
+      showcases: [
+    {
+      video: "images/skin videos/Celebration_Bomb_F.mp4",
+      text: { en: "Launches yourself upward by detonating your feet. Starting from the second consecutive use, the skill's UI text turns red and using it will deal self-damage. The self-damage increases with each additional use. The use count resets—returning the UI text to white—upon death or after a certain amount of time has passed.", ja: "足を爆発させることで上方向に飛び上がります。２回目以降、この技のUI 上のテキストが赤色に変わり、ダメージを喰らいます。ダメージは使用回数が増えるごとに大きくなります。死んだ時や一定時間経つとカウントは一回目に戻り、UI 上のテキストが再び白色に戻ります。" }
+    },
+    {
+      video: "images/skin videos/Celebration_Bomb_Fmove.mp4",
+      text: { en: "Walking while using this skill also allows you to move forward.", ja: "この技を使いながら歩くことで、前方に進むこともできる。" }
+    }
+  ],
+      showcaseText: {
+        en: "Details coming soon.",
+        ja: "詳細は近日公開予定です。"
+      }
+    }
+  },
+    };
+
+
+let currentProConMode = 'pros';
+
+function getItemFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const isSkinPage = window.location.pathname.includes('skin-detail.html');
+  const defaultType = isSkinPage ? 'skin' : 'fruit';
+
+  return {
+    name: params.get('name') || '',
+    type: params.get('type') || defaultType
+  };
+}
+
+function switchProConTab(type) {
+  currentProConMode = type;
+  const prosBtn = document.getElementById('pros-btn');
+  const consBtn = document.getElementById('cons-btn');
+  if (prosBtn) prosBtn.classList.toggle('active', type === 'pros');
+  if (consBtn) consBtn.classList.toggle('active', type === 'cons');
+
+  const lang = localStorage.getItem('selectedLang') || 'en';
+  const itemInfo = getItemFromUrl();
+
+  renderProConSection(itemInfo.name, lang, currentProConMode);
+}
+
+// 🎬 動画・画像（.png/.gif等）自動判定 & 再生ボタンなしループ再生対応版 renderProConSection
+function renderProConSection(itemName, lang, mode) {
+  const container = document.getElementById('procon-box');
+  if (!container) return;
+
+  const db = (typeof proConDatabase !== 'undefined') ? proConDatabase : {};
+  const data = db[itemName];
+
+  if (!data || !data[mode]) {
+    container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
+    return;
+  }
+
+  const currentData = data[mode];
+  const categories = [
+    { key: 'general', title: { en: 'General', ja: '全般' } },
+    { key: 'm1', title: { en: 'M1', ja: 'M1' } },
+    { key: 'z', title: { en: 'Z Move', ja: 'Z 技' } },
+    { key: 'x', title: { en: 'X Move', ja: 'X 技' } },
+    { key: 'c', title: { en: 'C Move', ja: 'C 技' } },
+    { key: 'v', title: { en: 'V Move', ja: 'V 技' } },
+    { key: 'f', title: { en: 'F Move', ja: 'F 技' } }
+  ];
+
+  let html = '';
+
+  categories.forEach(cat => {
+    const catData = currentData[cat.key];
+    if (!catData) return;
+
+    const titleText = cat.title[lang] || cat.title['en'];
+    const items = catData[lang] || catData.en || [];
+    const mediaList = catData.media || catData.videos || [];
+
+    if (items.length === 0 && mediaList.length === 0) return;
+
+    html += `<div class="procon-category" style="margin-bottom: 20px;">`;
+    html += `<div class="procon-category-title">${titleText}</div>`;
+
+    if (items.length > 0) {
+      html += `<ul class="procon-list">`;
+      items.forEach(item => {
+        html += `<li>${item}</li>`;
+      });
+      html += `</ul>`;
+    }
+
+    if (mediaList.length > 0) {
+      html += `<div class="procon-videos" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; width: 100%;">`;
+      mediaList.forEach(src => {
+        const isImage = /\.(png|jpe?g|gif|webp)$/i.test(src);
+
+        if (isImage) {
+          html += `
+            <img src="${src}" alt="Media" 
+                 style="flex: 1 1 280px; max-width: 320px; width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid #444; background: #000; object-fit: cover;"
+                 onerror="this.style.display='none';">
+          `;
+        } else {
+          html += `
+            <video src="${src}" autoplay loop muted playsinline 
+                   style="flex: 1 1 280px; max-width: 320px; width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid #444; background: #000; object-fit: cover;"
+                   onerror="this.style.display='none';">
+            </video>
+          `;
+        }
+      });
+      html += `</div>`;
+    }
+
+    html += `</div>`;
+  });
+
+  container.innerHTML = html || `<p style="color: #888; padding: 10px;">${lang === 'ja' ? 'データがありません' : 'No data available'}</p>`;
+}
+
+function renderCombos(itemName, lang) {
+  const container = document.getElementById('combo-box');
+  if (!container) return;
+
+  const combos = (typeof comboDatabase !== 'undefined') ? comboDatabase[itemName] : null;
+  if (!combos || combos.length === 0) {
+    container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '登録されているコンボはありません' : 'No combos registered'}</p>`;
+    return;
+  }
+
+  let html = '';
+  combos.forEach(c => {
+    const title = (c.name && c.name[lang]) ? c.name[lang] : (c.name ? c.name['en'] : '');
+    const desc = (c.desc && c.desc[lang]) ? c.desc[lang] : (c.desc ? c.desc['en'] : '');
+    
+    const seqText = (typeof c.sequence === 'object')
+      ? (c.sequence[lang] || c.sequence['en'])
+      : c.sequence;
+
+    const videoHTML = c.video ? `
+      <div style="margin-top: 12px; border-radius: 6px; overflow: hidden; border: 1px solid #333;">
+        <video src="${c.video}" controls autoplay loop muted playsinline style="width: 100%; max-height: 360px; display: block; background: #000; object-fit: cover;" onerror="this.parentElement.style.display='none';"></video>
+      </div>
+    ` : '';
+
+    html += `
+      <div class="combo-card">
+        <div class="combo-title">${title}</div>
+        <div class="combo-sequence">${seqText}</div>
+        <p class="combo-desc">${desc}</p>
+        ${videoHTML}
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+function toggleMoveDetails(btn) {
+  const wrapper = btn.closest('.move-wrapper');
+  const detailsContent = wrapper.querySelector('.move-details-content');
+  const isOpen = detailsContent.classList.contains('open');
+  const currentLang = localStorage.getItem('selectedLang') || 'en';
+
+  if (isOpen) {
+    detailsContent.classList.remove('open');
+    btn.classList.remove('active');
+    btn.setAttribute('data-en', 'View');
+    btn.setAttribute('data-ja', '詳細');
+    btn.textContent = currentLang === 'ja' ? '詳細' : 'View';
+
+    const videos = wrapper.querySelectorAll('video.showcase-video');
+    videos.forEach(video => video.pause());
+  } else {
+    detailsContent.classList.add('open');
+    btn.classList.add('active');
+    btn.setAttribute('data-en', 'Close');
+    btn.setAttribute('data-ja', '閉じる');
+    btn.textContent = currentLang === 'ja' ? '閉じる' : 'Close';
+
+    const videos = wrapper.querySelectorAll('video.showcase-video');
+    videos.forEach(video => {
+      const dataSrc = video.getAttribute('data-src');
+      if (dataSrc && !video.src) {
+        video.src = dataSrc;
+      }
+      if (video.src) {
+        video.play().catch(() => {});
+      }
+    });
+  }
+}
+
+function renderMovesets(itemName, lang) {
+  const container = document.getElementById('moves-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const movesDb = (typeof fruitMovesDatabase !== 'undefined') ? fruitMovesDatabase : {};
+  const itemData = movesDb[itemName];
+
+  if (!itemData) {
+    container.innerHTML = `<p style="color: #888; padding: 10px;">${lang === 'ja' ? '技データが登録されていません' : 'No moves registered'}</p>`;
+    return;
+  }
+
+  const labels = {
+    cooldown: lang === 'ja' ? 'クールダウン' : 'Cooldown',
+    energy: lang === 'ja' ? 'エネルギー' : 'Energy',
+    breaksInstinct: lang === 'ja' ? '見聞色破壊' : 'Breaks enemy Instinct',
+    instinctLabel: lang === 'ja' ? '見聞色' : 'Breaks Instinct',
+    detailsTitle: lang === 'ja' ? '詳細' : 'Details',
+    showcaseTitle: lang === 'ja' ? '技のお披露目' : 'Showcase'
+  };
+
+  const keys = [];
+  if (itemData.m1) {
+    keys.push('m1');
+  }
+  keys.push('z', 'x', 'c', 'v', 'f');
+
+  keys.forEach(key => {
+    const move = itemData[key];
+    const keyUpper = key === 'm1' ? 'M1' : key.toUpperCase();
+    const moveWrapper = document.createElement('div');
+    moveWrapper.className = 'move-wrapper';
+
+    if (move) {
+      const isHold = move.isHold || false;
+      const holdBadgeText = lang === 'ja' ? '長押し' : 'HOLD';
+      const holdBadgeHTML = isHold ? `
+        <span style="
+          background: linear-gradient(135deg, #ff9d00, #ff4500);
+          color: #fff;
+          font-size: 11px;
+          font-weight: bold;
+          padding: 2px 6px;
+          border-radius: 4px;
+          margin-left: 8px;
+          letter-spacing: 0.5px;
+          box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
+          display: inline-block;
+          vertical-align: middle;
+        ">${holdBadgeText}</span>
+      ` : '';
+
+      const title = (move.title && move.title[lang]) ? move.title[lang] : (move.title ? move.title['en'] : keyUpper);
+      const masteryText = key === 'm1' ? (lang === 'ja' ? 'タップ技' : 'Left Click') : (lang === 'ja' ? `熟練度 ${move.mastery || 0}` : `Mastery ${move.mastery || 0}`);
+      const viewBtnText = lang === 'ja' ? '詳細' : 'View';
+      const cooldownVal = (typeof move.cooldown === 'object') ? (move.cooldown[lang] || move.cooldown['en']) : (move.cooldown || '-');
+      const instinctText = move.instinctText ? (move.instinctText[lang] || move.instinctText['en']) : '';
+
+      const hasSkin = move.hasSkin === true;
+      const allSkinsLabel = lang === 'ja' ? 'すべてのスキン' : 'All Skins';
+
+      const skinAllBtnHTML = hasSkin ? `
+        <a href="skins.html?name=${encodeURIComponent(itemName)}&move=${key}" class="skin-btn skin-all-link" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">${allSkinsLabel}</a>
+      ` : '';
+
+      // 🎬 複数のお披露目枠（showcases）の判定・生成ロジック
+      let showcaseList = [];
+      if (Array.isArray(move.showcases) && move.showcases.length > 0) {
+        showcaseList = move.showcases;
+      } else {
+        showcaseList = [{
+          video: move.showcaseVideo || '',
+          text: move.showcaseText || ''
+        }];
+      }
+
+      let showcasesHTML = '';
+      showcaseList.forEach((sc, index) => {
+        const videoSrc = sc.video || '';
+        const descText = sc.text ? (sc.text[lang] || sc.text['en'] || sc.text) : '';
+        const labelText = sc.label ? (sc.label[lang] || sc.label['en'] || '') : '';
+        const isImage = /\.(png|jpe?g|gif|webp)$/i.test(videoSrc);
+
+        const mediaHTML = isImage ? `
+          <img src="${videoSrc}" alt="Showcase" class="showcase-video" 
+               style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        ` : `
+          <video data-src="${videoSrc}" preload="none" loop muted playsinline class="showcase-video" 
+                 style="width: 100%; max-width: 320px; height: auto; aspect-ratio: 16/9; background: #000; border-radius: 6px; object-fit: cover;"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
+        `;
+
+        showcasesHTML += `
+          <div class="showcase-item" style="${index > 0 ? 'margin-top: 14px; padding-top: 14px; border-top: 1px dashed #333;' : ''}">
+            ${labelText ? `<div style="font-size: 0.9rem; font-weight: bold; color: #ffcc00; margin-bottom: 6px;">[ ${labelText} ]</div>` : ''}
+            <div style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; width: 100%;">
+              ${mediaHTML}
+              <div class="video-error-fallback" style="display: none; width: 100%; max-width: 320px; aspect-ratio: 16/9; background: #1a1a1a; border: 1px dashed #555; border-radius: 6px; align-items: center; justify-content: center; color: #888; font-size: 13px;">
+                ${lang === 'ja' ? '動画が見つかりません' : 'Video not found'}
+              </div>
+              <p class="showcase-text" style="flex: 1; min-width: 200px; margin: 0; align-self: center;">${descText}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      moveWrapper.innerHTML = `
+        <div class="move-card">
+          <div class="move-left">
+            <div class="move-key">${keyUpper}</div>
+            <div class="move-info">
+              <div class="move-title" style="display: flex; align-items: center;">
+                ${title} ${holdBadgeHTML}
+              </div>
+              <div class="move-mastery">${masteryText}</div>
+            </div>
+          </div>
+          <button class="move-view-btn" data-en="View" data-ja="詳細" onclick="toggleMoveDetails(this)">${viewBtnText}</button>
+        </div>
+
+        <div class="move-details-content">
+          <div class="detail-box">
+            <h3>${labels.detailsTitle}</h3>
+            <div class="details-info-list">
+              <div>${labels.cooldown}: ${cooldownVal}</div>
+              <div><span class="highlight-yellow">${labels.energy}:</span> ${move.energy || '-'}</div>
+              ${move.instinctBreak !== undefined ? `
+                <div><span class="highlight-yellow">${labels.breaksInstinct}:</span> 
+                  <span class="${move.instinctBreak ? 'highlight-green' : 'highlight-red'}">${move.instinctBreak ? '✔' : '✖'}</span>
+                </div>` : ''}
+              ${instinctText ? `
+                <ul class="details-bullet-list">
+                  <li><span class="highlight-yellow">${labels.instinctLabel}:</span>${instinctText}</li>
+                </ul>` : ''}
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h3 style="margin: 0;">${labels.showcaseTitle}</h3>
+              ${skinAllBtnHTML}
+            </div>
+            <div class="showcase-container" style="display: flex; flex-direction: column;">
+              ${showcasesHTML}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      const noneTitle = lang === 'ja' ? 'なし' : 'None';
+      
+      moveWrapper.innerHTML = `
+        <div class="move-card" style="opacity: 0.6;">
+          <div class="move-left">
+            <div class="move-key" style="color: #888;">${keyUpper}</div>
+            <div class="move-info">
+              <div class="move-title" style="color: #aaa;">${noneTitle}</div>
+              <div class="move-mastery" style="color: #666;">-</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    container.appendChild(moveWrapper);
+  });
+}
+
+function updateItemDetails(lang) {
+  try {
+    const itemInfo = typeof getItemFromUrl === 'function' ? getItemFromUrl() : { name: '', type: '' };
+    const itemName = itemInfo.name || '';
+    const itemType = itemInfo.type || '';
+
+    const nameEl = document.getElementById('detail-name');
+    if (nameEl) {
+      if (typeof itemTranslations !== 'undefined' && itemTranslations[itemName] && itemTranslations[itemName][lang]) {
+        nameEl.textContent = itemTranslations[itemName][lang];
+      } else if (itemName) {
+        nameEl.textContent = itemName.replace(/_/g, ' ');
+      } else {
+        nameEl.textContent = 'Unknown';
+      }
+    }
+
+    const ingameSec = document.getElementById('ingame-desc-section');
+    const ingameText = document.getElementById('ingame-desc');
+    const overviewDb = (typeof itemOverviewData !== 'undefined') ? itemOverviewData : {};
+    const data = overviewDb[itemName];
+
+    if (data && data.ingameDesc && ingameSec) {
+      ingameSec.style.display = 'block';
+      if (ingameText) {
+        ingameText.textContent = (data.ingameDesc[lang]) ? data.ingameDesc[lang] : (data.ingameDesc.en || '');
+      }
+    } else if (ingameSec) {
+      ingameSec.style.display = 'none';
+    }
+
+    const metaTypeEl = document.getElementById('meta-type');
+    const metaRarityEl = document.getElementById('meta-rarity');
+    const metaM1El = document.getElementById('meta-m1');
+    const priceMoneyEl = document.getElementById('price-money');
+    const priceRobuxEl = document.getElementById('price-robux');
+    const descEl = document.getElementById('detail-description');
+    const historyEl = document.getElementById('detail-history');
+    const notesEl = document.getElementById('detail-notes');
+
+    if (data && data.meta) {
+      if (metaTypeEl) metaTypeEl.textContent = (data.meta.type && data.meta.type[lang]) ? data.meta.type[lang] : (data.meta.type ? data.meta.type['en'] : '-');
+      if (metaRarityEl) metaRarityEl.textContent = (data.meta.rarity && data.meta.rarity[lang]) ? data.meta.rarity[lang] : (data.meta.rarity ? data.meta.rarity['en'] : '-');
+      if (metaM1El) metaM1El.textContent = (data.meta.m1 && data.meta.m1[lang]) ? data.meta.m1[lang] : (data.meta.m1 ? data.meta.m1['en'] : '-');
+      if (priceMoneyEl) priceMoneyEl.textContent = data.meta.money || '-';
+      if (priceRobuxEl) priceRobuxEl.textContent = data.meta.robux || '-';
+
+      // 🔗 バッジ枠の下に改行して「元のフルーツ」のリンクを表示
+      let baseFruitEl = document.getElementById('base-fruit-info');
+      if (!baseFruitEl) {
+        const badgesContainer = metaTypeEl ? (metaTypeEl.closest('.meta-badges, .detail-meta-list, .detail-meta') || metaTypeEl.parentElement.parentElement) : null;
+        if (badgesContainer) {
+          baseFruitEl = document.createElement('div');
+          baseFruitEl.id = 'base-fruit-info';
+          baseFruitEl.style.cssText = 'width: 100%; margin-top: 10px; font-size: 0.95rem; color: #ddd; clear: both; display: block;';
+          
+          if (badgesContainer.nextSibling) {
+            badgesContainer.parentNode.insertBefore(baseFruitEl, badgesContainer.nextSibling);
+          } else {
+            badgesContainer.parentNode.appendChild(baseFruitEl);
+          }
+        }
+      }
+
+      if (baseFruitEl) {
+        if (data.meta.baseFruit) {
+          const fruitKey = data.meta.baseFruit;
+          const fruitNameObj = data.meta.baseFruitName || { en: fruitKey, ja: fruitKey };
+          const displayFruitName = fruitNameObj[lang] || fruitNameObj.en || fruitKey;
+          const labelPrefix = lang === 'ja' ? '元のフルーツ: ' : 'Original Fruit: ';
+
+          baseFruitEl.style.display = 'block';
+          baseFruitEl.innerHTML = `${labelPrefix}<a href="detail.html?name=${encodeURIComponent(fruitKey)}&type=fruit" class="wiki-link">${displayFruitName}</a>`;
+        } else {
+          baseFruitEl.style.display = 'none';
+        }
+      }
+
+      if (descEl) descEl.innerHTML = (data.description && data.description[lang]) ? data.description[lang] : (data.description ? data.description['en'] : '-');
+      
+      // 🔄 フルーツアイコン比較セクション（1つのカードに上下2つの画像を配置できる縦長デザイン）
+      if (historyEl) {
+        if (data.iconCompare) {
+          const orig = data.iconCompare.original;
+          const skn = data.iconCompare.skin;
+
+          const origName1 = (orig.name1 && orig.name1[lang]) ? orig.name1[lang] : (orig.name1 ? orig.name1.en : (orig.name ? orig.name[lang] || orig.name.en : ''));
+          const sknName1 = (skn.name1 && skn.name1[lang]) ? skn.name1[lang] : (skn.name1 ? skn.name1.en : (skn.name ? skn.name[lang] || skn.name.en : ''));
+
+          const origImg1 = orig.img1 || orig.img || '';
+          const sknImg1 = skn.img1 || skn.img || '';
+
+          const origImg2 = orig.img2 || '';
+          const origName2 = (orig.name2 && orig.name2[lang]) ? orig.name2[lang] : (orig.name2 ? orig.name2.en : '');
+
+          const sknImg2 = skn.img2 || '';
+          const sknName2 = (skn.name2 && skn.name2[lang]) ? skn.name2[lang] : (skn.name2 ? skn.name2.en : '');
+
+          // 2つ目の画像が存在するかどうか
+          const hasSecondOrig = origImg2 !== '';
+          const hasSecondSkn = sknImg2 !== '';
+
+          historyEl.innerHTML = `
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
+              <!-- オリジナル側カード -->
+              <div style="text-align: center; background: rgba(30,30,30,0.6); border: 1.5px solid #444; border-radius: 10px; padding: 14px; width: 170px;">
+                <div style="font-size: 0.9rem; color: #aaa; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 6px;">${lang === 'ja' ? 'オリジナル' : 'Original'}</div>
+                
+                <!-- 1つ目の画像・名前 -->
+                <div>
+                  <div style="width: 100px; height: 100px; margin: 0 auto; background: #000; border: 1px solid #555; border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img src="${origImg1}" alt="${origName1}" style="width: 90%; height: 90%; object-fit: contain;" onerror="this.src='images/ItemPlaceHolder.webp';">
+                  </div>
+                  <div style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-top: 6px; margin-bottom: ${hasSecondOrig ? '14px' : '0'}; word-break: break-all;">${origName1}</div>
+                </div>
+
+                <!-- 2つ目の画像・名前（指定がある場合のみ表示） -->
+                ${hasSecondOrig ? `
+                  <div style="border-top: 1px dashed #444; padding-top: 10px;">
+                    <div style="width: 100px; height: 100px; margin: 0 auto; background: #000; border: 1px solid #555; border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <img src="${origImg2}" alt="${origName2}" style="width: 90%; height: 90%; object-fit: contain;" onerror="this.src='images/ItemPlaceHolder.webp';">
+                    </div>
+                    <div style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-top: 6px; word-break: break-all;">${origName2}</div>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- スキン側カード -->
+              <div style="text-align: center; background: rgba(30,30,30,0.6); border: 1.5px solid #e2a227; border-radius: 10px; padding: 14px; width: 170px; box-shadow: 0 0 10px rgba(226,162,39,0.2);">
+                <div style="font-size: 0.9rem; color: #e2a227; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #553a10; padding-bottom: 6px;">${lang === 'ja' ? 'スキン' : 'Skin'}</div>
+                
+                <!-- 1つ目の画像・名前 -->
+                <div>
+                  <div style="width: 100px; height: 100px; margin: 0 auto; background: #000; border: 1px solid #e2a227; border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img src="${sknImg1}" alt="${sknName1}" style="width: 90%; height: 90%; object-fit: contain;" onerror="this.src='images/ItemPlaceHolder.webp';">
+                  </div>
+                  <div style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-top: 6px; margin-bottom: ${hasSecondSkn ? '14px' : '0'}; word-break: break-all;">${sknName1}</div>
+                </div>
+
+                <!-- 2つ目の画像・名前（指定がある場合のみ表示） -->
+                ${hasSecondSkn ? `
+                  <div style="border-top: 1px dashed #553a10; padding-top: 10px;">
+                    <div style="width: 100px; height: 100px; margin: 0 auto; background: #000; border: 1px solid #e2a227; border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                      <img src="${sknImg2}" alt="${sknName2}" style="width: 90%; height: 90%; object-fit: contain;" onerror="this.src='images/ItemPlaceHolder.webp';">
+                    </div>
+                    <div style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-top: 6px; word-break: break-all;">${sknName2}</div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        } else {
+          historyEl.innerHTML = (data.history && data.history[lang]) ? data.history[lang] : (data.history ? data.history['en'] : '-');
+        }
+      }
+      
+      if (notesEl) {
+        if (data.notes) {
+          let notesText = '';
+          let notesMedia = [];
+
+          if (data.notes[lang] || data.notes.en) {
+            if (typeof data.notes[lang] === 'string' || typeof data.notes.en === 'string') {
+              notesText = data.notes[lang] || data.notes.en || '';
+            } else if (typeof data.notes[lang] === 'object' || typeof data.notes.en === 'object') {
+              const langObj = data.notes[lang] || data.notes.en || {};
+              notesText = langObj.text || '';
+              notesMedia = langObj.media || langObj.videos || [];
+            }
+          }
+
+          if (data.notes.text) {
+            notesText = data.notes.text[lang] || data.notes.text.en || '';
+          }
+          if (data.notes.media || data.notes.videos) {
+            notesMedia = data.notes.media || data.notes.videos || [];
+          }
+
+          let notesHTML = notesText || '-';
+
+          if (notesMedia.length > 0) {
+            notesHTML += `<div class="notes-media" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; width: 100%;">`;
+            notesMedia.forEach(src => {
+              const isImage = /\.(png|jpe?g|gif|webp)$/i.test(src);
+              if (isImage) {
+                notesHTML += `
+                  <img src="${src}" alt="Note media" 
+                       style="flex: 1 1 280px; max-width: 320px; width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid #444; background: #000; object-fit: cover;"
+                       onerror="this.style.display='none';">
+                `;
+              } else {
+                notesHTML += `
+                  <video src="${src}" autoplay loop muted playsinline 
+                         style="flex: 1 1 280px; max-width: 320px; width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid #444; background: #000; object-fit: cover;"
+                         onerror="this.style.display='none';">
+                  </video>
+                `;
+              }
+            });
+            notesHTML += `</div>`;
+          }
+
+          notesEl.innerHTML = notesHTML;
+        } else {
+          notesEl.innerHTML = '-';
+        }
+      }
+
+      const immunitySec = document.getElementById('immunity-section');
+      const immunityVideo = document.getElementById('immunity-video');
+      const immunityDesc = document.getElementById('immunity-desc');
+
+      if (data.meta.hasImmunity && data.immunity && immunitySec) {
+        immunitySec.style.display = 'block';
+        if (immunityVideo) immunityVideo.src = data.immunity.video || '';
+        if (immunityDesc) {
+          immunityDesc.textContent = (data.immunity.desc && data.immunity.desc[lang]) 
+            ? data.immunity.desc[lang] 
+            : (data.immunity.desc ? data.immunity.desc.en : '');
+        }
+      } else if (immunitySec) {
+        immunitySec.style.display = 'none';
+      }
+    } else {
+      if (metaTypeEl) metaTypeEl.textContent = itemType ? itemType.toUpperCase() : '-';
+      if (metaRarityEl) metaRarityEl.textContent = '-';
+      if (metaM1El) metaM1El.textContent = '-';
+      if (priceMoneyEl) priceMoneyEl.textContent = '-';
+      if (priceRobuxEl) priceRobuxEl.textContent = '-';
+
+      const baseFruitEl = document.getElementById('base-fruit-info');
+      if (baseFruitEl) baseFruitEl.style.display = 'none';
+
+      if (descEl) descEl.innerHTML = lang === 'ja' ? '詳細情報は準備中です。' : 'Details coming soon.';
+      if (historyEl) historyEl.innerHTML = '-';
+      if (notesEl) notesEl.innerHTML = '-';
+
+      const immunitySec = document.getElementById('immunity-section');
+      if (immunitySec) immunitySec.style.display = 'none';
+    }
+
+    const imgEl = document.getElementById('detail-img');
+    if (imgEl && itemName) {
+      const imageName = itemName.replace(/ /g, '_');
+
+      let folder = 'fruits';
+      let suffix = '_Fruit.webp';
+
+      if (itemType === 'skin') { folder = 'skins'; suffix = '_Fruit.webp'; }
+      else if (itemType === 'style') { folder = 'styles'; suffix = '.webp'; }
+      else if (itemType === 'sword') { folder = 'swords'; suffix = '.webp'; }
+      else if (itemType === 'gun') { folder = 'guns'; suffix = '.webp'; }
+      else if (itemType === 'gear') { folder = 'gears'; suffix = '.webp'; }
+      else if (itemType === 'rod') { folder = 'rods'; suffix = '.webp'; }
+
+      imgEl.src = `images/${folder}/${imageName}${suffix}`;
+      imgEl.onerror = () => {
+        if (imgEl.src.endsWith('.webp')) {
+          imgEl.src = imgEl.src.replace('.webp', '.png');
+        } else {
+          imgEl.src = 'images/ItemPlaceHolder.webp';
+        }
+      };
+    }
+  } catch (err) {
+    console.error("updateItemDetails error:", err);
+  }
+}
+
+function updateDetailPageLanguage(lang) {
+  try {
+    localStorage.setItem('selectedLang', lang);
+
+    const translatableElements = document.querySelectorAll('.translatable');
+    translatableElements.forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) {
+        el.innerHTML = text;
+      }
+    });
+
+    updateItemDetails(lang);
+
+    const itemInfo = typeof getItemFromUrl === 'function' ? getItemFromUrl() : { name: '', type: '' };
+    if (typeof renderMovesets === 'function') renderMovesets(itemInfo.name, lang);
+    if (typeof renderProConSection === 'function') renderProConSection(itemInfo.name, lang, typeof currentProConMode !== 'undefined' ? currentProConMode : 'pros');
+    if (typeof renderCombos === 'function') renderCombos(itemInfo.name, lang);
+  } catch (err) {
+    console.error("updateDetailPageLanguage error:", err);
+  }
+}
+
+function initDetailPage() {
+  try {
+    const initialLang = localStorage.getItem('selectedLang') || 'en';
+
+    window.applyLanguage = function(lang) {
+      updateDetailPageLanguage(lang);
+    };
+
+    updateDetailPageLanguage(initialLang);
+
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) {
+      langBtn.onclick = (e) => {
+        e.stopPropagation();
+        const current = localStorage.getItem('selectedLang') || 'en';
+        const nextLang = current === 'en' ? 'ja' : 'en';
+        updateDetailPageLanguage(nextLang);
+      };
+    }
+  } catch (err) {
+    console.error("Detail page init error:", err);
+  }
+}
+
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('.wiki-link');
+  if (link) {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+    if (href) {
+      history.pushState(null, '', href);
+      const currentLang = localStorage.getItem('selectedLang') || 'en';
+      updateDetailPageLanguage(currentLang);
+      window.scrollTo(0, 0);
+    }
+  }
+});
+
+window.addEventListener('popstate', function() {
+  const currentLang = localStorage.getItem('selectedLang') || 'en';
+  updateDetailPageLanguage(currentLang);
+});
+
+// 🚀 データベース（itemOverviewData）が確実に読み込まれるまで待ってから初期化を実行
+function checkDatabaseAndInit() {
+  let attempts = 0;
+  const timer = setInterval(() => {
+    attempts++;
+    if (typeof itemOverviewData !== 'undefined' || attempts > 20) {
+      clearInterval(timer);
+      initDetailPage();
+    }
+  }, 50);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', checkDatabaseAndInit);
+} else {
+  checkDatabaseAndInit();
+}
+
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) {
+    const currentLang = localStorage.getItem('selectedLang') || 'en';
+    updateDetailPageLanguage(currentLang);
+  }
+});
+
+// 🔄 スキン詳細ページ用：URLの変化を検知して0.3秒後に自動リロードする仕組み
+let lastSkinUrl = window.location.href;
+let skinReloadTimer = null;
+
+function checkSkinUrlAndReload() {
+  const currentUrl = window.location.href;
+
+  if (currentUrl !== lastSkinUrl) {
+    lastSkinUrl = currentUrl;
+
+    if (skinReloadTimer) clearTimeout(skinReloadTimer);
+
+    const reloadKey = 'reloaded_skindetail_' + currentUrl;
+    if (!sessionStorage.getItem(reloadKey)) {
+      skinReloadTimer = setTimeout(() => {
+        sessionStorage.setItem(reloadKey, 'true');
+        window.location.reload();
+      }, 300);
+    }
+  }
+}
+
+// 0.1秒ごとにURLの変化を監視
+setInterval(checkSkinUrlAndReload, 100);
+
+// 🔗 ページ内リンクのクリック処理（履歴の二重防止）
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a');
+  if (link && link.getAttribute('href')) {
+    const href = link.getAttribute('href');
+    if (!href.startsWith('http') || href.includes(window.location.hostname)) {
+      e.preventDefault();
+      history.replaceState(null, '', href);
+      checkSkinUrlAndReload();
+    }
+  }
+});
+
+// 🔄 戻る・進むボタンを押した時
+window.addEventListener('popstate', function() {
+  checkSkinUrlAndReload();
+});
+
+// 📱 キャッシュからの復元時
+window.addEventListener('pageshow', function() {
+  checkSkinUrlAndReload();
+});
+
+// 🧹 ページを離れるときにリロードフラグを掃除
+window.addEventListener('pagehide', function() {
+  Object.keys(sessionStorage).forEach(key => {
+    if (key.startsWith('reloaded_skindetail_')) {
+      sessionStorage.removeItem(key);
+    }
+  });
+});
+</script>

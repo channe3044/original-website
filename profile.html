@@ -1,31 +1,250 @@
-<!--
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Profile - Blox Fruits Wiki</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Impact', 'Arial Black', 'Segoe UI', sans-serif;
+      background-color: #12131a;
+      color: #f1f1f1;
+      scroll-behavior: smooth;
+    }
+
+    /* ─── ヘッダー ─── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #1a1c24;
+      border-bottom: 3px solid #ffaa00;
+      position: relative;
+    }
+
+    /* ⬅ 戻るボタンのスタイル */
+    .back-btn {
+      background: none;
+      border: none;
+      color: #ffaa00;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      margin-right: 15px;
+      transition: transform 0.1s ease, color 0.1s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-btn:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .back-btn:active {
+      transform: scale(0.9);
+    }
+
+    .logo h1 {
+      font-size: 22px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .logo h1 span {
+      color: #ffaa00;
+    }
+
+    /* 🔍 コントロールエリア */
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* 🌟 日/英 切り替え立体ボタン */
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+      border: 2px solid #4d3202;
+      border-bottom: 5px solid #362201;
+      border-radius: 6px;        
+      cursor: pointer;
+      transition: all 0.1s ease;
+      width: 54px;               
+      height: 54px;
+      padding: 2px;
+      overflow: hidden;
+    }
+
+    .lang-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .lang-btn:active {
+      border-bottom-width: 1px;  
+      transform: translateY(4px);
+    }
+
+    /* 🌐 言語切替えアイコン画像（110%表示） */
+    .lang-icon {
+      width: 110%;
+      height: 110%;
+      object-fit: contain;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* 🌟 メラメラの実 自己紹介立体ボタン */
+    .member-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #fff464 0%, #fcd32d 45%, #f6ab12 50%, #e28e04 100%);
+      border: 2px solid #4d3202; 
+      border-bottom: 5px solid #362201; 
+      border-radius: 6px;        
+      cursor: pointer;
+      transition: all 0.1s ease;
+      width: 54px;               
+      height: 54px;
+      padding: 2px;
+    }
+
+    .member-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .member-btn:active {
+      border-bottom-width: 1px;  
+      transform: translateY(4px); 
+    }
+
+    /* 🍎 メラメラの実アイコン（150%に揃えました） */
+    .flame-icon {
+      width: 150%;                
+      height: 150%;               
+      object-fit: contain;       
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); 
+    }
+
+    /* 🔍 検索窓のスタイル */
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      background-color: #1a1c24;  
+      border: 1px solid #2d303f;  
+      border-radius: 8px;        
+      padding: 8px 12px 8px 36px; 
+      color: #fff;
+      font-size: 15px;
+      width: 250px;               
+      outline: none;              
+      transition: all 0.2s ease;
+
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 10px center; 
+      background-size: 18px;            
+    }
+
+    .search-input::placeholder {
+      color: #8e8e93;             
+      opacity: 1;
+    }
+
+    .search-input:focus {
+      background-color: #232631;  
+      border-color: #ffaa00;      
+      box-shadow: 0 0 8px rgba(255, 170, 0, 0.4); 
+    }
+
+    /* ─── メインコンテンツ枠 ─── */
+    .detail-container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 24px;
+      background: rgba(20, 20, 20, 0.95);
+      border: 2px solid #e2a227;
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .back-btn-detail {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #555;
+      font-weight: bold;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .back-btn-detail:hover {
+      background: #555;
+    }
+
+    .profile-role-badge {
+      display: inline-block;
+      background-color: #ff3b30;
+      color: #fff;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .profile-info {
+      line-height: 2;
+      color: #f1f1f1;
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+
+    .profile-info p {
+      margin: 8px 0;
+    }
+  </style>
 </head>
 <body>
-<!--
-  <!-- ─── 🧭 ヘッダー ─── -->
-  <header class="header">
+
+  <!-- 🧭 ヘッダー -->
+  <header>
     <div class="logo">
       <a href="index.html" style="text-decoration: none; color: inherit;">
         <h1>BLOX FRUITS <span>WIKI</span></h1>
       </a>
     </div>
-<!--
+
     <div class="header-controls">
       <div class="search-container">
         <input type="text" class="search-input" placeholder="Search..." disabled>
       </div>
 
+      <!-- 画像化した言語切替えボタン -->
       <button id="lang-btn" class="lang-btn">
-        <div class="arrow-circle"></div>
-        <span class="lang-text en">EN</span>
-        <span class="lang-text ja">JA</span>
+        <img src="images/translation_button.png" alt="Language Switch" class="lang-icon">
       </button>
 
       <button class="member-btn">
@@ -34,27 +253,20 @@
     </div>
   </header>
 
-  <!-- ─── 👤 メインコンテンツ ─── -->
-  <main style="max-width: 800px; margin: 30px auto; padding: 0 20px;">
-    
-    <a href="index.html" style="display: inline-block; background-color: #333333; color: #ffffff; text-decoration: none; padding: 8px 18px; border-radius: 8px; font-weight: bold; margin-bottom: 20px; border: 1px solid #555555; font-size: 1rem;">← Back</a>
+  <!-- 📦 メインコンテンツ枠 -->
+  <main class="detail-container">
+    <a href="index.html" class="back-btn-detail">← Back</a>
 
-    <div style="background-color: #1a1c24; border: 2px solid #ffaa00; border-radius: 10px; padding: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
-      <h2 style="border-left: 5px solid #ffaa00; padding-left: 12px; font-size: 1.6rem; margin-top: 0; color: #fff;">👤 My Profile</h2>
+    <div>
+      <span class="profile-role-badge">Captain</span>
+      <h1 style="font-size: 2.2rem; margin: 0 0 20px 0; color: #fff;">Channe3044</h1>
       
-      <div style="margin-top: 20px;">
-        <span style="display: inline-block; background-color: #ff3b30; color: #fff; font-weight: bold; padding: 3px 10px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 10px;">Captain</span>
-        
-        <h1 style="font-size: 2.2rem; margin: 0 0 20px 0; color: #fff;">Your Name</h1>
-        
-        <div style="line-height: 2; color: #f1f1f1; font-size: 1.1rem;">
-          <p style="margin: 8px 0;"><strong>【Level】</strong> 3000 (MAX)</p>
-          <p style="margin: 8px 0;"><strong>【my favorite weapon】</strong> katana </p>
-          <p style="margin: 8px 0;"><strong>【message】</strong> Four horns solve everything🐉</p>
-        </div>
+      <div class="profile-info">
+        <p><strong>【Level】</strong> 3000 (MAX)</p>
+        <p><strong>【my favorite weapon】</strong> katana</p>
+        <p><strong>【message】</strong> Four horns solve everything🐉</p>
       </div>
     </div>
-
   </main>
 
   <script src="script.js"></script>
