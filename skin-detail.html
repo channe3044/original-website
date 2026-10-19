@@ -1729,6 +1729,7 @@ function updateItemDetails(lang) {
 
     const imgEl = document.getElementById('detail-img');
     if (imgEl && itemName) {
+      // スペースをアンダースコアに置換
       const imageName = itemName.replace(/ /g, '_');
 
       let folder = 'fruits';
@@ -1741,12 +1742,14 @@ function updateItemDetails(lang) {
       else if (itemType === 'gear') { folder = 'gears'; suffix = '.webp'; }
       else if (itemType === 'rod') { folder = 'rods'; suffix = '.webp'; }
 
-      imgEl.src = `images/${folder}/${imageName}${suffix}`;
+      // 💡 先頭に必ず「/」をつけて、公開サーバーでも確実にルートから画像を探せるようにする
+      imgEl.src = `/images/${folder}/${imageName}${suffix}`;
+      
       imgEl.onerror = () => {
         if (imgEl.src.endsWith('.webp')) {
           imgEl.src = imgEl.src.replace('.webp', '.png');
         } else {
-          imgEl.src = 'images/ItemPlaceHolder.webp';
+          imgEl.src = '/images/ItemPlaceHolder.webp';
         }
       };
     }
