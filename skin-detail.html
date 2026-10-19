@@ -1145,7 +1145,8 @@ let currentProConMode = 'pros';
 
 function getItemFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  const isSkinPage = window.location.pathname.includes('skin-detail.html');
+  const isSkinPage = window.location.pathname.includes('skin-detail');
+
   const defaultType = isSkinPage ? 'skin' : 'fruit';
 
   return {
