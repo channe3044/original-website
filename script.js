@@ -104,6 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Sound", rarity: "legendary" },
     { name: "Phoenix", rarity: "legendary" },
     { name: "Pain", rarity: "legendary" },
+    { name: "Portal", rarity: "legendary" },
+    { name: "Lightning", rarity: "legendary" },
     { name: "Blizzard", rarity: "legendary" },
     { name: "Gravity", rarity: "mythical" },
     { name: "Mammoth", rarity: "mythical" },
