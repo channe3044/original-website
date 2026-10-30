@@ -367,11 +367,34 @@ document.addEventListener("DOMContentLoaded", () => {
       item.className = `fruit-item rarity-${itemData.rarity}`;
       item.style.cursor = "pointer";
 
-      item.addEventListener("click", () => {
-        window.location.href = `detail.html?name=${encodeURIComponent(
-          itemData.name,
-        )}&type=${type}`;
-      });
+            item.addEventListener("click", () => {
+              // 🗂️ フルーツはレア度ごと
+              const pageByRarity = {
+                common: "detail.html",
+                uncommon: "uncommon.html",
+                // rare: "rare.html",
+                // legendary: "legendary.html",
+                // mythical: "mythical.html",
+                // premium: "premium.html",
+                // ultra: "ultra.html"
+              };
+
+              // 🗂️ フルーツ以外は種類ごと(ページを作ったらコメントを外す)
+              const pageByType = {
+                // style: "style.html",
+                // sword: "sword.html",
+                // gun: "gun.html",
+                // gear: "gear.html",
+                // rod: "rod.html"
+              };
+
+              const page =
+                type === "fruit"
+                  ? pageByRarity[itemData.rarity] || "detail.html"
+                  : pageByType[type] || "detail.html";
+
+              window.location.href = `${page}?name=${encodeURIComponent(itemData.name)}&type=${type}`;
+            });
 
       const wrapper = document.createElement("div");
       wrapper.className = "fruit-img-wrapper";

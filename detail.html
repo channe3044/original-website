@@ -556,8 +556,8 @@
         </div>
       </button>
 
-      <button id="member-btn" class="member-btn">
-        <img src="images/flame fruit.png" alt="Members" class="flame-icon">
+      <button id="member-btn" class="member-btn" onclick="location.href='members.html'">
+      <img src="images/flame fruit.png" alt="Members" class="flame-icon">
       </button>
     </div>
   </header>
@@ -741,7 +741,7 @@
       "Blade": {
         ingameDesc: {
           en: "Grants the user a body of blades, offering immunity to sword attacks and sharp striking abilities.",
-          ja: "使用者を刃の体へと変化させ、剣撃に対する免疫（無効化能力）と、鋭い打撃能力を付与する。"
+          ja: "プレイヤーを刃の体へと変化させ、剣撃に対する免疫（無効化能力）と、鋭い打撃能力を付与する。"
         },
         meta: {
           type: { en: "Natural", ja: "通常系" },
@@ -805,7 +805,7 @@
       "Bomb": {
         ingameDesc: {
           en: "Provides the user with a wide range of explosive attacks.",
-          ja: "使用者に幅広い爆発攻撃を提供する。"
+          ja: "プレイヤーに幅広い爆発攻撃を提供する。"
         },
         meta: {
           type: { en: "Natural", ja: "通常系" },
@@ -863,6 +863,37 @@
       },
       //スパイク
       "Spike": {
+        ingameDesc: {
+          en: "Grants the user sharp spikes on their body, full of offensive attacks skills.",
+          ja: "プレイヤーの身体に鋭い棘を付与し、攻撃力に優れた数々の攻撃技を備える。"
+        },
+        meta: {
+          type: { en: "Natural", ja: "通常系" },
+          rarity: { en: "Common", ja: "コモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "180,000",
+          robux: "380"
+        },
+        description: {
+          en: "Allows the user to transform their body into spikes, dealing damage to close-range and long-range enemies.",
+          ja: "プレイヤーは体をトゲに変えて、近距離や遠距離の敵にダメージを与えることができます。"
+        },
+        history: {
+          en: "Details coming soon.",
+          ja: "<p><a href='#' class='wiki-link'>[アップデート1]</a><br>スパイクが追加されました。</p><p><a href='#' class='wiki-link'>[アップデート2]</a></li><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ]技のダメージが増加しました。</div></li></ul></p><p><a href='#' class='wiki-link'>[アップデート17.2]</a></p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>クールダウンが短縮されました。</div></li></ul><p><a href='#' class='wiki-link'>[アップデート17.3]</a><br>スパイクの価格が上昇しました。</p><ul style='margin-top: 8px; padding-left: 0; list-style: none;'><li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 7,500 -> <img src='images/currency/Money.webp' style='width: 16px; height: 16px; object-fit: contain;'> 180,000</div></li><li><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 75 -> <img src='images/currency/Robux.webp' style='width: 16px; height: 16px; object-fit: contain;'> 380</div></li></ul><p>全ての技がリワークされ、新しい技が追加されました。<br>[ Z ]技のラッシュの名前がスパイクサモンに変更されました。<br>[ X ]技のスパイキーボールの名前がワールウィンドに変更されました。<br>[ C ]技と[ V ]技が追加されました。</p><p><a href='#' class='wiki-link'>[アップデート20]</a><br>スパイクのフルーツモデルが変更されました。</p><p><a href='#' class='wiki-link'>[アップデート24]</a><br>スパイクフルーツのアイコンが変更されました。</p><div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'><img src='images/changelog/Old_Spike_fruit.webp' alt='旧スパイク' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin.png';\"><img src='images/changelog/Old_Spike_icon.webp' alt='旧スパイクアイコン' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror=\"this.onerror=null; this.src='images/changelog/Old_Spin_icon.png';\"></div>"
+        },
+        notes: {
+          text: {
+            en: "This is the strongest combo.🤧",
+            ja: "これは最強のコンボです🤧"
+          },
+          media: [
+            "images/videos/Spike_Combo.mp4"
+          ]
+        }
+      },
+      //フレイム
+      "Flame": {
         ingameDesc: {
           en: "Details coming soon.",
           ja: "詳細は近日公開予定です。"
@@ -1344,6 +1375,7 @@
     v:null,
     f: {
       title: { en: "Smoke Bomber", ja: "スモークボンバー" },
+      isHold: true,
       mastery: 10,
       cooldown: { en: "4.5 seconds", ja: "4.5秒" },
       energy: 50,
@@ -1359,6 +1391,83 @@
   },
      //スパイク
   "Spike": {
+    z: {
+      title: { en: "Spike Summon", ja: "スパイクサモン" },
+      isHold: true,
+      mastery: 1,
+      cooldown: { en: "6 seconds", ja: "6秒" },
+      energy: 20,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      hasSkin: false,
+      showcases: [
+    {
+      label: { en: "Tap", ja: "短押し" }, 
+      video: "images/videos/Spike_Z.mp4",
+      text: { en: "Tapping summons a single spike from the ground at the cursor's position, knocking hit enemies into the air.", ja: "単押しすると、カーソルの位置に地面から一本のトゲを召喚し、当たった敵を空中に放り上げます。" }
+    },
+    {
+      label: { en: "Hold", ja: "長押し" }, 
+      video: "images/videos/Spike_holdZ.mp4",
+      text: { en: "Holding the move makes the spike grow larger and summons more small spikes around it. A maximum of 6 spikes can be summoned with this move.", ja: "長押しするとスパイクは大きくなり、周囲に小さなスパイクがさらに多く召喚されます。この技で召喚できる最大のスパイクの数は6個です。" }
+    },
+  ],
+    },
+    x: {
+      title: { en: "Whirlwind", ja: "ワールウィンド" },
+      isHold: true,
+      mastery: 25,
+      cooldown: { en: "10.5 seconds", ja: "10.5秒" },
+      energy: 35,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge. Always breaks Instinct once caught in the attack.", ja: "端の部分では回避できます。攻撃に巻き込まれると必ず見聞色を破ります。" },
+      showcaseVideo: "images/videos/Spike_X.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "The user rotates their arms and slowly ascends, dealing damage and stunning anyone caught in the attack. The longer the move is held, the more damage it deals, the larger its hitbox becomes, and the longer its duration lasts. Tapping the move results in a duration of 1.5 seconds, while holding it allows for up to 3 seconds of activation.",
+        ja: "プレイヤーは腕を回転させてゆっくりと上昇し、攻撃に巻き込まれた者にダメージを与えてスタンさせます。長押しすればするほど与えるダメージは大きくなり、技のヒットボックスも大きくなり、技の持続時間も長くなります。単押ししたときの技の持続時間は1.5秒で、最大3秒間技を継続できます。"
+      }
+    },
+    c: {
+      title: { en: "Spiky Ball", ja: "スパイキーボール" },
+      mastery: 50,
+      cooldown: { en: "13.5 seconds", ja: "13.5秒" },
+      energy: 50,
+      instinctBreak: true,
+      instinctText: { en: "Breaks Instinct no matter what.", ja: "必ず見聞色を破壊します。" },
+      showcaseVideo: "images/videos/Spike_C.mp4",
+      hasSkin: false,
+      showcaseText: {
+        en: "The user transforms into a spiky ball and rolls toward the cursor, dragging along hit enemies while keeping them stunned. This move lasts for 3 seconds.",
+        ja: "プレイヤーはトゲトゲボールに変形し、カーソルの方向に転がり始め、触れた敵をスタンさせて転がりながら引っ張り進めます。この技の持続時間は3秒です。"
+      }
+    },
+    v: {
+      title: { en: "Spike Barrage", ja: "スパイクバラージ" },
+      isHold: true,
+      mastery: 75,
+      cooldown: { en: "12 seconds", ja: "12秒" },
+      energy: 40,
+      instinctBreak: true,
+      instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
+      hasSkin: false,
+      showcases: [
+    {
+      label: { en: "Tap", ja: "短押し" }, 
+      video: "images/videos/Spike_V.mp4",
+      text: { en: "The user summons a row of 4 spikes in the direction they are facing, with each spike growing larger than the last.", ja: "使用者は自分が向いている方向に並んだトゲを召喚し、それぞれが前のトゲよりも大きくなっています。能力を長く保持するほど、ダメージやスパイクの数は増加します。この技をタップすると4本のスパイクが召喚されます。" }
+    },
+    {
+      label: { en: "Hold", ja: "長押し" }, 
+      video: "images/videos/Spike_holdV.mp4",
+      text: { en: "Holding the move increases its damage and the number of spikes. It can be charged for up to 3 seconds, summoning 7 spikes.", ja: "技を長押しすればダメージやスパイクの量が増えます。最大3秒間押し続けることができて、7本のスパイクを召喚します。" }
+    },
+  ],
+    },
+    f:null
+  },
+  //フレイム
+  "Flame": {
     m1: {
       title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
       cooldown: { en: "- seconds", ja: "-秒" },
@@ -1443,7 +1552,6 @@
       }
     }
   },
-  //追加
     };
 
     // ⚖️ 長所（Pros）と短所（Cons）データ
@@ -1678,19 +1786,52 @@
           f: { en: ["Very slow movement speed."], ja: ["移動速度が非常に遅い"] }
         }, 
       },
-    //スパイク
+      //スパイク
     "Spike": {
+              pros: {
+          general: {
+             en: [
+              "Cheap and easy to obtain.",
+              "All moves can break Instinct."
+            ],
+            ja: [
+              "安価で手に入れやすい",
+              "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["Good AoE.<i>(Hold)</i>"], ja: ["広い攻撃範囲<i>(長押し)</i>"] },
+          x: { en: ["Good stun moves."], ja: ["良いスタン技"] },
+          c: { en: ["Good AoE."], ja: ["良い範囲攻撃"] },
+          v: { en: ["Significantly shorter [ V ] move cooldown compared to other fruits."], ja: ["他のフルーツと比べて[ V ]技のクールダウンが大幅に短い"] }, 
+        },
+        cons: {
+          general: {
+            en: [
+              "Most moves require holding to deal maximum damage.",
+            ],
+            ja: [
+              "ほとんどの技は長押ししないと最大ダメージが出ない"
+            ]
+          },
+          z: { en: ["Very small AoE.<i>(Tap)</i>"], ja: ["攻撃範囲が小さい<i>(単押し)</i>"] },
+          x: { en: ["Unable to move for a certain duration after activation."], ja: ["発動から一定時間動けなくなる"] },
+          c: { en: ["Long cooldown.","The ball rolls very slowly.","Cannot be canceled once started."], ja: ["クールダウンが長い","ボールの転がる速度はとても遅い","発動するとキャンセルできない"] },
+          v: { en: ["Lower [ V ] move damage compared to other fruits. "], ja: ["他のフルーツと比べて[ V ]技のダメージが低い"] }, 
+        }, 
+      },
+      //フレイム
+      "Flame": {
               pros: {
           general: {
              en: [
               "Details coming soon.",
               "Details coming soon.",
-              "Details coming soon."
+              "All moves can break Instinct."
             ],
             ja: [
               "詳細は近日公開予定です。",
               "詳細は近日公開予定です。",
-              "詳細は近日公開予定です。"
+              "すべての技が見聞色を破壊する"
             ]
           },
           z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
@@ -1804,7 +1945,7 @@
             ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>X → ボムX →<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>Z → ボムV" 
           },
           desc: {
-            en: "Details coming soon.",
+            en: "Am I the only one who remembers the combination of Shark Anchor Z and Old Dragon Talon C?",
             ja: "シャークアンカーZと旧ドラゴンタロンCのコンボを思い出すのは私だけですか?"
           },
           video: "https://youtu.be/Q0FTtnGimIE"
@@ -1826,6 +1967,42 @@
             ja: "スモークXの火力が本当にいかれています"
           },
           video: "https://youtu.be/SBMLsVDy3Dw"
+        }
+      ],
+       //スパイク
+      "Spike": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a>,Spike,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>", 
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>,スパイク,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>トリエント</a>" 
+          },
+          sequence: {
+            en: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a> C → <a href='detail.html?name=Spikey Trident&type=sword' class='wiki-link'>Spikey Trident</a> X → Spike X → Spike Z → Spike C → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>Godhuman</a> X",
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C  → <a href='detail.html?name=Spikey Trident&type=sword' class='wiki-link'>トリエント</a>X → スパイクX → スパイクZ → スパイクC → <a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>X" 
+          },
+          desc: {
+            en: "スパイクはみんなが思っているよりも強いです",
+            ja: "Spike is stronger than most people think."
+          },
+          video: "https://youtu.be/1TFXR2mI1l4"
+        }
+      ],
+       //フレイム
+      "Flame": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>,Flame,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>", 
+            ja: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>電気爪</a>,フレイム,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>トリエント</a>" 
+          },
+          sequence: {
+            en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>C → FlameC → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>X → <a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>X → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>Z → FlameZ",
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>X → フレイムX →<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>Z → フレイムV" 
+          },
+          desc: {
+            en: "Details coming soon.",
+            ja: "Details coming soon."
+          },
+          video: "https://youtu.be/TBcgS7824mQ"
         }
       ],
       //ここに新しいフルーツのコンボを追加することができます

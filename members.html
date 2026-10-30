@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member List - Blox Fruits Wiki</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #12131a;
+  color: #f1f1f1;
+}
+
+.list-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px; /* index の .section-container と同じ */
+}
+
+/* 🎗️ index の .wiki-title-bar と同じ見た目 */
+.list-title-banner {
+  background: #f1c40f;
+  color: #000;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  padding: 10px 0;
+  border: 4px solid #000;
+  border-radius: 6px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 0px #000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.member-card {
+  background: #1a1c24;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+  border-color: #ffaa00;
+  box-shadow: 0 6px 16px rgba(255, 170, 0, 0.3);
+}
+
+.member-img-box {
+  width: 140px;
+  height: 140px;
+  background: #111;
+  border-radius: 8px;
+  border: 2px solid #444;
+  overflow: hidden;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-role {
+  background-color: #ff3b30;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.member-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 4px 0;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.member-level {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.back-btn-detail {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #555;
+  font-weight: bold;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.back-btn-detail:hover {
+  background: #555;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+<a href="index.html" style="text-decoration: none; color: inherit;">
+<h1>BLOX FRUITS <span>WIKI</span></h1>
+</a>
+</div>
+
+<div class="header-controls">
+<div class="search-container">
+<input type="search" placeholder="Search" class="search-input">
+</div>
+
+<button id="lang-toggle-btn" class="lang-btn">
+<div class="arrow-circle">
+<span class="lang-text en">EN</span>
+<span class="lang-text ja">JA</span>
+</div>
+</button>
+
+<button id="member-btn" class="member-btn" onclick="location.href='members.html'">
+<img src="images/flame fruit.png" alt="Members" class="flame-icon">
+</button>
+</div>
+</header>
+
+<main class="list-container">
+  <a href="#" id="dynamic-back-btn" class="back-btn-detail">← Back</a>
+  <div class="list-title-banner">MEMBER LIST</div>
+  <div class="members-grid" id="members-grid"></div>
+</main>
+
+<script>
+(function () {
+  const profilesData = {
+    "Channe3044": {
+      role: "Captain",
+      name: "Channe3044",
+      level: "3000 (MAX)",
+      avatarArt: "images/avatar/channeAr.jpeg"
+    },
+    "WIFI": {
+      role: "Captain",
+      name: "WIFI",
+      level: "2800 (MAX)",
+      avatarArt: "images/avatar/334.png"
+    }
+  };
+
+  // 🧱 カードを描画する関数(何度呼んでも作り直すだけで重複しない)
+  function renderMembers() {
+    const gridContainer = document.getElementById('members-grid');
+    if (!gridContainer) return;
+    gridContainer.innerHTML = '';
+
+    for (const key in profilesData) {
+      const member = profilesData[key];
+
+      const card = document.createElement('a');
+      card.href = `profile.html?name=${key}`;
+      card.className = 'member-card';
+
+      const roleHTML = (member.role && member.role !== '')
+        ? `<span class="member-role">${member.role}</span>`
+        : '';
+
+      card.innerHTML = `
+        <div class="member-img-box">
+          <img src="${member.avatarArt || 'images/avatar/0028.png'}" class="member-img" alt="${member.name}" onerror="this.src='images/avatar/0028.png';">
+        </div>
+        ${roleHTML}
+        <div class="member-name">${member.name}</div>
+        <div class="member-level">Level: ${member.level}</div>
+      `;
+
+      gridContainer.appendChild(card);
+    }
+  }
+
+  renderMembers();
+
+  // 🔄 「戻る」で復元されたときは、リロードせずカードを描き直す
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) renderMembers();
+  });
+
+  // 🔙 「← Back」ボタン:一個前のページへ戻る
+  document.querySelectorAll('.back-btn-detail').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.history.length > 1) {
+        history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+  });
+})();
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

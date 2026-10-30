@@ -11,8 +11,9 @@ body {
   padding: 0;
 }
 
+/* 💡 index.html の .section-container と同じ 1000px に統一 */
 .skins-main-content {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 0 20px;
 }
@@ -38,7 +39,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* 📱 狭い画面でボタンが折り返せるように */
+  gap: 10px;
   margin-bottom: 12px;
+}
+
+.list-header h2 {
+  font-size: 1.5rem;
 }
 
 .sort-toggle-btn {
@@ -89,23 +96,57 @@ body {
   color: #ffcc00;
 }
 
-/* 🖼️ 画像切り替え時のなめらかなフェード用スタイル */
-.fruit-img-wrapper {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  overflow: hidden;
+/* 🖼️ フェード切り替え用:index と同じサイズ(72px)のまま opacity だけ追加 */
+.fruit-icon {
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.4s ease-in-out;
 }
 
-.fruit-img-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: opacity 0.4s ease-in-out;
+/* ────────────────────────────────
+   📱 スマホ対応(style.css の3列指定に加えてサイズも縮小)
+──────────────────────────────── */
+@media (max-width: 600px) {
+  .skins-main-content {
+    padding: 0 10px;
+  }
+
+  .skin-description-box {
+    padding: 12px 14px;
+  }
+
+  .list-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .sort-toggle-btn {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  .fruit-grid {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .fruit-item {
+    height: 105px;
+    padding: 6px;
+  }
+
+  .fruit-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .fruit-name {
+    font-size: 10px;
+    padding: 2px 6px;
+    bottom: 5px;
+    right: 5px;
+    max-width: calc(100% - 10px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 長い名前は「…」で省略 */
+  }
 }
 </style>
 </head>
@@ -133,7 +174,7 @@ body {
 </div>
 </button>
 
-<button id="member-btn" class="member-btn">
+<button id="member-btn" class="member-btn" onclick="location.href='members.html'">
 <img src="images/flame fruit.png" alt="Members" class="flame-icon">
 </button>
 </div>
@@ -216,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const memberBtn = document.getElementById("member-btn");
   if (memberBtn) {
     memberBtn.addEventListener("click", () => {
-      window.location.href = "profile.html"; 
+      window.location.href = "members.html"; 
     });
   }
 
@@ -253,17 +294,17 @@ document.addEventListener("DOMContentLoaded", () => {
       { name: "Red", base: "Dragon", rarity: "rare", img1: "images/skins/Dragon_East_Red.webp", img2: "images/skins/Dragon_West_Red.webp" },
       { name: "GoldenMoss", base: "Eagle", rarity: "legendary", img: "images/skins/GoldenMossMug.webp" },
       { name: "BlueSky", base: "Eagle", rarity: "legendary", img: "images/skins/BlueSkyMug.webp" },
-      { name: "Divine", base: "Portal", rarity: "legendary", img: "images/skins/Divine_Portal_Fruit.webp" },
-      { name: "Pink", base: "Portal", rarity: "legendary", img: "images/skins/Pink_Portal_Fruit.png" },
-      { name: "Purple", base: "Lightning", rarity: "legendary", img: "images/skins/Purple_Lightning_Fruit.webp" },
-      { name: "Yellow", base: "Lightning", rarity: "legendary", img: "images/skins/Yellow_Lightning_Fruit.webp" },
-      { name: "Green", base: "Lightning", rarity: "legendary", img: "images/skins/Green_Lightning_Fruit.webp" },
-      { name: "Red", base: "Lightning", rarity: "legendary", img: "images/skins/Red_Lightning_Fruit.webp" },
-      { name: "Sadness", base: "Pain", rarity: "legendary", img: "images/skins/Sadness_Fruit.webp" },
-      { name: "Torment", base: "Pain", rarity: "legendary", img: "images/skins/Torment_Fruit.webp" },
-      { name: "Frustration", base: "Pain", rarity: "legendary", img: "images/skins/Frustration_Fruit.webp" },
-      { name: "Celestial", base: "Pain", rarity: "legendary", img: "images/skins/Celestial_Fruit.webp" },
-      { name: "Super Spirit", base: "Pain", rarity: "legendary", img: "images/skins/Super_Spirit_Pain_Fruit.webp" },
+      { name: "Divine_Portal", base: "Portal", rarity: "legendary", img: "images/skins/Divine_Portal_Fruit.webp" },
+      { name: "Pink_Portal", base: "Portal", rarity: "legendary", img: "images/skins/Pink_Portal_Fruit.png" },
+      { name: "Purple_Lightning", base: "Lightning", rarity: "legendary", img: "images/skins/Purple_Lightning_Fruit.webp" },
+      { name: "Yellow_Lightning", base: "Lightning", rarity: "legendary", img: "images/skins/Yellow_Lightning_Fruit.webp" },
+      { name: "Green_Lightning", base: "Lightning", rarity: "legendary", img: "images/skins/Green_Lightning_Fruit.webp" },
+      { name: "Red_Lightning", base: "Lightning", rarity: "legendary", img: "images/skins/Red_Lightning_Fruit.webp" },
+      { name: "Sadness_Pain", base: "Pain", rarity: "legendary", img: "images/skins/Sadness_Pain_Fruit.webp" },
+      { name: "Torment_Pain", base: "Pain", rarity: "legendary", img: "images/skins/Torment_Pain_Fruit.webp" },
+      { name: "Frustration_Pain", base: "Pain", rarity: "legendary", img: "images/skins/Frustration_Pain_Fruit.webp" },
+      { name: "Celestial_Pain", base: "Pain", rarity: "legendary", img: "images/skins/Celestial_Pain_Fruit.webp" },
+      { name: "Super_Spirit_Pain", base: "Pain", rarity: "legendary", img: "images/skins/Super_Spirit_Pain_Fruit.webp" },
       { name: "Purple", base: "Dragon", rarity: "legendary", img1: "images/skins/Dragon_East_Purple.webp", img2: "images/skins/Dragon_West_Purple.webp" },
       { name: "OrangeCreamsicle", base: "Eagle", rarity: "mythical", img: "images/skins/OrangeCreamsicleMug.webp" },
       { name: "Starlight", base: "Gravity", rarity: "mythical", img: "images/skins/Starlight_Gravity_Fruit.webp" },
@@ -319,10 +360,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   };
 
+    // ⏱️ 2枚切り替えスキン用のタイマーをグリッドごとに管理(再描画時に止める)
+  const fadeTimers = {};
+
   function renderSkinGrid(gridId, items, categoryType = "skin") {
     const grid = document.getElementById(gridId);
     if (!grid) return;
     grid.innerHTML = "";
+
+    // 前回の描画で動いていたタイマーを停止
+    if (fadeTimers[gridId]) {
+      fadeTimers[gridId].forEach(t => clearInterval(t));
+    }
+    fadeTimers[gridId] = [];
 
     items.forEach(skin => {
       const item = document.createElement("div");
@@ -350,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wrapper.className = "fruit-img-wrapper";
 
       if (skin.img1 && skin.img2) {
-        // 🌟 2枚の画像がある場合：安全かつ綺麗にフェード切り替えを行う処理
+        // 🌟 2枚の画像がある場合:フェードで切り替え
         const img = document.createElement("img");
         img.src = skin.img1;
         img.alt = skin.name;
@@ -360,17 +410,15 @@ document.addEventListener("DOMContentLoaded", () => {
         wrapper.appendChild(img);
 
         let currentIsFirst = true;
-        setInterval(() => {
-          // 1. 一度完全に透明にする（フェードアウト）
+        const timer = setInterval(() => {
           img.style.opacity = "0";
           setTimeout(() => {
-            // 2. 画像のソースを切り替え
             currentIsFirst = !currentIsFirst;
             img.src = currentIsFirst ? skin.img1 : skin.img2;
-            // 3. 再び表示する（フェードイン）
             img.style.opacity = "1";
-          }, 400); // 0.4秒の消える時間を待ってから画像を変える
-        }, 3500); // 3.5秒ごとに切り替え
+          }, 400);
+        }, 3500);
+        fadeTimers[gridId].push(timer);
 
       } else {
         // 🖼️ 通常の画像1枚の場合
