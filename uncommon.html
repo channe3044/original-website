@@ -6,6 +6,62 @@
   <title>Item Detail - Blox Fruits Wiki</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    .moves-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;   /* 📱 狭い画面ではボタンが見出しの下に回ります */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.moves-header-row h2 { margin-bottom: 0; }
+.awaken-btn-group { margin: 0; }
+
+    /* ⚡ 未覚醒 / 覚醒ボタン */
+.awaken-btn-group { display: flex; gap: 10px; margin: 0 0 14px; }
+.awaken-btn {
+  padding: 6px 18px; font-weight: bold; font-size: 1rem; border-radius: 6px;
+  cursor: pointer; background: #2b2b2b; color: #ccc; border: 2px solid #444; transition: all 0.2s;
+}
+#unawakened-btn.active { background: linear-gradient(to bottom, #d4d4d4, #888); color: #000; border-color: #fff; }
+#awakened-btn.active { background: linear-gradient(to bottom, #fff464, #f6ab12); color: #000; border-color: #ffe600; box-shadow: 0 0 8px rgba(255,230,0,0.4); }
+
+/* ✨ 覚醒演出 */
+.awaken-overlay {
+  position: fixed; inset: 0; z-index: 9999; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0); transition: background 0.8s ease;
+  --awaken-color: #ff9d2e;
+}
+.awaken-overlay.show { background: rgba(0,0,0,0.88); }
+.awaken-fruit {
+  position: relative; z-index: 2; width: min(60vw, 260px); height: auto;
+  opacity: 0; transform: translateY(80px) scale(0.5);
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.awaken-overlay.show .awaken-fruit { opacity: 1; transform: translateY(0) scale(1); }
+.awaken-aura {
+  position: absolute; z-index: 1; width: min(90vw, 520px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--awaken-color) 60%, white) 0%,
+    color-mix(in srgb, var(--awaken-color) 55%, transparent) 35%,
+    transparent 70%);
+  opacity: 0; transform: scale(0.3);
+}
+.awaken-overlay.power .awaken-aura { animation: awakenAura 2.5s ease-in forwards; }
+.awaken-overlay.power .awaken-fruit { animation: awakenFloat 2.4s ease-in-out infinite, awakenGlow 2.5s ease-in forwards; }
+@keyframes awakenAura { 0% { opacity: 0; transform: scale(0.3); } 30% { opacity: 0.9; } 100% { opacity: 1; transform: scale(1.6); } }
+@keyframes awakenFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-12px) scale(1.04); } }
+@keyframes awakenGlow {
+  from { filter: drop-shadow(0 0 4px var(--awaken-color)) brightness(1); }
+  to   { filter: drop-shadow(0 0 40px var(--awaken-color)) brightness(1.6); }
+}
+.awaken-flash { position: absolute; inset: 0; z-index: 3; background: #fff; opacity: 0; pointer-events: none; }
+.awaken-overlay.flash .awaken-flash { opacity: 1; transition: opacity 0.6s ease-in; }
+.awaken-overlay.done { background: transparent; transition: none; }
+.awaken-overlay.done .awaken-fruit, .awaken-overlay.done .awaken-aura { display: none; }
+.awaken-overlay.done .awaken-flash { opacity: 0; transition: opacity 0.9s ease-out; }
+
     body {
       margin: 0;
       padding: 0;
@@ -521,6 +577,49 @@
       color: #000000;
     }
 
+    /* 🔮 覚醒セクション（小さな縦の表） */
+.awakening-table {
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+.awakening-table td {
+  border: 1px solid #4a4a4a;
+  padding: 6px 12px;
+}
+.awakening-key {
+  background: #4a4a4a;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.15rem;
+  text-align: center;
+  min-width: 52px;
+  text-shadow: 1px 1px 2px #000;
+}
+.awakening-val {
+  background: #151510;
+  color: #b78cff;
+  font-weight: 900;
+  font-size: 1.05rem;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px #000;
+}
+.awakening-val img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: -3px;
+  margin-right: 6px;
+}
+.awakening-table tr.total .awakening-key {
+  background: #6b4f12;
+  color: #ffcc00;
+  font-size: 0.95rem;
+}
+.awakening-table tr.total .awakening-val {
+  background: #2a2412;
+  color: #ffcc00;
+}
+
     @media (max-width: 600px) {
       .showcase-container {
         flex-direction: column;
@@ -637,9 +736,24 @@
     </div>
   </div>
 
-    <!-- 📄 2. 技一覧 (Movesets) -->
+   <!-- 🔮 覚醒 (Awakening) ← ここに置く -->
+    <div class="detail-section" id="awakening-section" style="display: none;">
+      <h2 class="translatable" data-en="Awakening" data-ja="覚醒">Awakening</h2>
+      <p id="awakening-desc"></p>
+      <div id="awakening-costs"></div>
+    </div>
+
+     <!-- 📄 2. 技一覧 (Movesets) -->
     <div class="detail-section">
-      <h2 class="translatable" data-en="Movesets" data-ja="技一覧">Movesets</h2>
+      <div class="moves-header-row">
+        <h2 class="translatable" data-en="Movesets" data-ja="技一覧">Movesets</h2>
+
+        <div id="awaken-btn-group" class="awaken-btn-group" style="display: none;">
+          <button id="unawakened-btn" class="awaken-btn active translatable" data-en="Unawakened" data-ja="未覚醒" onclick="switchAwaken('normal')">Unawakened</button>
+          <button id="awakened-btn" class="awaken-btn translatable" data-en="Awakened" data-ja="覚醒" onclick="switchAwaken('awakened')">Awakened</button>
+        </div>
+      </div>
+
       <div id="moves-container" class="moves-container"></div>
     </div>
 
@@ -688,15 +802,77 @@
       //フレイム
       "Flame": {
         ingameDesc: {
-          en: "Details coming soon.",
-          ja: "詳細は近日公開予定です。"
+          en: "Enables the user to control and create fire, forcing enemies to steer clear of the player if they do not want to burn.",
+          ja: "使用者が火を生成して操り、燃えたくなければ離れざるを得ない。"
         },
-        meta: {
+                meta: {
           type: { en: "Elemental", ja: "エレメンタル系" },
           rarity: { en: "Uncommon", ja: "アンコモン" },
           m1: { en: "No", ja: "なし" },
-          money: "-",
-          robux: "-"
+          money: "250,000",
+          robux: "550",
+          hasImmunity: true,        
+          hasAwakening: true,
+          awakenColor: "#ff5a1f"
+        },
+        immunity: {  
+          video: "images/videos/Blade_immunity.mp4",
+          desc: {
+            en: "Grants immunity to normal physical attacks (Fighting Style, Sword, Gun) without Aura. Fruit attacks always deal damage regardless of level. Against regular NPCs, immunity requires your level to be higher than theirs (roughly 2%+ level difference). Bosses and attacks with Aura bypass this immunity.",
+            ja: "武装色のついていない通常の物理攻撃（格闘・剣・銃）の攻撃を無効化します。フルーツ攻撃はレベルに関係なく常にダメージを与えます。 通常のNPCに対して無効化を発動するには、相手より高いレベル（およそ2%以上のレベル差）が必要です。ボスやオーラ付きの攻撃はこの無効化を貫通します。"
+          }
+        },
+        awakening: {
+           desc: {
+            en: "The Flame Fist <p><a href='#' class='wiki-link'>title</a></p> will be granted upon awakening one move of the Flame Fruit.",
+            ja: "フレイムフルーツの技を一つ覚醒させるとThe Flame Fistの<p><a href='#' class='wiki-link'>称号</a>を手に入れます。"
+          },
+          // 画像の並び順（Z → F → X → C → V）で表示されます
+            costs: { z: 500, f: 2000, x: 3000, c: 4000, v: 5000 }
+        },
+        description: {
+          en: "The Flame Fruit grants the user the ability to become and manipulate fire, enabling the use of scorching attacks.",
+          ja: "フレイムを使うと自らが炎となって炎を操ることができます。これにより灼熱の攻撃を繰り出すことができます。"
+        },
+        history: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        notes: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        }
+      },
+      //ここに新しいフルーツを追加
+      "Ice": {
+        ingameDesc: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+                meta: {
+          type: { en: "Elemental", ja: "エレメンタル系" },
+          rarity: { en: "Uncommon", ja: "アンコモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "250,000",
+          robux: "550",
+          hasImmunity: true,        
+          hasAwakening: true,
+          awakenColor: "#00d4ff"
+        },
+        immunity: {  
+          video: "images/videos/Blade_immunity.mp4",
+          desc: {
+            en: "Completely negates all sword damage, even when the opponent is using Aura.",
+            ja: "相手が武装色を使用している場合でも、剣によるすべてのダメージを完全に無効化します。"
+          }
+        },
+        awakening: {
+           desc: {
+            en: "Details coming soon.",
+            ja: "詳細は近日公開予定です。"
+          },
+          // 画像の並び順（Z → F → X → C → V）で表示されます
+            costs: { z: 500, f: 2000, x: 3000, c: 4000, v: 5000 }
         },
         description: {
           en: "Details coming soon.",
@@ -711,13 +887,182 @@
           ja: "詳細は近日公開予定です。"
         }
       },
-      //ここに新しいフルーツを追加(Flameをコピーして書き換える)
+      //ここに新しいフルーツを追加
+      "name": {
+        ingameDesc: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+                meta: {
+          type: { en: "Elemental", ja: "エレメンタル系" },
+          rarity: { en: "Uncommon", ja: "アンコモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "250,000",
+          robux: "550",
+          hasImmunity: true,        
+          hasAwakening: true,
+          awakenColor: "#ff5a1f"
+        },
+        immunity: {  
+          video: "images/videos/Blade_immunity.mp4",
+          desc: {
+            en: "Completely negates all sword damage, even when the opponent is using Aura.",
+            ja: "相手が武装色を使用している場合でも、剣によるすべてのダメージを完全に無効化します。"
+          }
+        },
+        awakening: {
+           desc: {
+            en: "Details coming soon.",
+            ja: "詳細は近日公開予定です。"
+          },
+          // 画像の並び順（Z → F → X → C → V）で表示されます
+            costs: { z: 500, f: 2000, x: 3000, c: 4000, v: 5000 }
+        },
+        description: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        history: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        notes: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        }
+      },
     };
 
     // 🥑 技データベース
     const fruitMovesDatabase = {
       //フレイム
       "Flame": {
+        z: {
+          title: { en: "Fire Bullets", ja: "ファイアバレット" },
+          mastery: 1,
+          cooldown: { en: "7.5 seconds", ja: "7.5秒" },
+          energy: 15,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        x: {
+          title: { en: "Burning Blast", ja: "バーニングブラスト" },
+          mastery: 25,
+          cooldown: { en: "10.5 seconds", ja: "10.5秒" },
+          energy: 25,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Fire Column", ja: "ファイアコラム" },
+          mastery: 50,
+          cooldown: { en: "15 seconds", ja: "15秒" },
+          energy: 35,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        v: {
+          title: { en: "Flame Destroyer", ja: "フレイムデストロイヤー" },
+          mastery: 100,
+          cooldown: { en: "27 seconds", ja: "27秒" },
+          energy: 50,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        f: {
+          title: { en: "Fire Flight", ja: "ファイアフライト" },
+          mastery: 10,
+          cooldown: { en: "15 seconds", ja: "15秒" },
+          energy: 100,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        }
+      },
+      //ここに新しいフルーツを追加
+      "Ice": {
+        m1: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: false,
+          instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/loading_cat.png",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        z: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        x: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        v: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        f: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        }
+      },
+      //ここに新しいフルーツを追加
+      "name": {
         m1: {
           title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
           cooldown: { en: "- seconds", ja: "-秒" },
@@ -785,7 +1130,203 @@
         }
       },
     };
-
+    // 🥑 覚醒技データベー ス
+    const awakenedMovesDatabase = {
+    //フレイム
+      "Flame": {
+        z: {
+          title: { en: "Blue Fire Bullets", ja: "ブルーファイアバレット" },
+          mastery: 1,
+          cooldown: { en: "7.5 seconds", ja: "7.5秒" },
+          energy: 15,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        x: {
+          title: { en: "Prominence Burst", ja: "プロミネンスバースト" },
+          mastery: 25,
+          cooldown: { en: "10.5 seconds", ja: "10.5秒" },
+          energy: 25,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Flaming Vortex", ja: "フレーミングボルテックス" },
+          mastery: 50,
+          cooldown: { en: "15 seconds", ja: "15秒" },
+          energy: 35,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        v: {
+          title: { en: "Hell's Core", ja: "ヘルズコア" },
+          mastery: 100,
+          cooldown: { en: "27 seconds", ja: "27秒" },
+          energy: 50,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        f: {
+          title: { en: "Rocket Flight", ja: "ロケットフライト" },
+          mastery: 10,
+          cooldown: { en: "15 seconds", ja: "15秒" },
+          energy: 100,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        }
+      },
+      //ここに新しいフルーツを追加
+      "Ice": {
+        m1: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: false,
+          instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/loading_cat.png",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        z: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        x: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        v: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        f: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        }
+      },
+      //ここに新しいフルーツを追加
+      "name": {
+        m1: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: false,
+          instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/loading_cat.png",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        z: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        x: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        v: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        f: {
+          title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          mastery: 0,
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/.mp4",
+          hasSkin: true,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        }
+      },
+    };
     // ⚖️ 長所（Pros）と短所（Cons）データ
     const proConDatabase = {
       //フレイム
@@ -855,6 +1396,57 @@
     };
 
 let currentProConMode = 'pros';
+
+// ⚡ 覚醒の状態(ページを開き直すとリセット = 演出は1回きり)
+let awakenMode = 'normal';
+let awakenPlayed = false;
+let awakenBusy = false;
+
+function setAwakenMode(mode) {
+  awakenMode = mode;
+  document.getElementById('unawakened-btn')?.classList.toggle('active', mode === 'normal');
+  document.getElementById('awakened-btn')?.classList.toggle('active', mode === 'awakened');
+  const lang = localStorage.getItem('selectedLang') || 'en';
+  renderMovesets(getItemFromUrl().name, lang);
+}
+
+function switchAwaken(mode) {
+  if (awakenBusy || mode === awakenMode) return;
+  if (mode === 'awakened' && !awakenPlayed) {
+    awakenPlayed = true;                       // 2回目以降は演出なしで即切り替え
+    playAwakenAnimation(() => setAwakenMode('awakened'));
+  } else {
+    setAwakenMode(mode);                       // 未覚醒に戻すときも演出なし
+  }
+}
+
+function playAwakenAnimation(onSwitch) {
+  awakenBusy = true;
+  const src = document.getElementById('detail-img').src;
+  const ov = document.createElement('div');
+  ov.className = 'awaken-overlay';
+  ov.innerHTML = `<div class="awaken-aura"></div><img class="awaken-fruit" src="${src}" alt=""><div class="awaken-flash"></div>`;
+  const info = (typeof itemOverviewData !== 'undefined') ? itemOverviewData[getItemFromUrl().name] : null;
+  const color = info && info.meta && info.meta.awakenColor;
+  if (color) ov.style.setProperty('--awaken-color', color);
+  document.body.appendChild(ov);
+
+  requestAnimationFrame(() => ov.classList.add('show'));   // 暗転 + 画像が浮き出る
+  setTimeout(() => ov.classList.add('power'), 1200);       // 覚醒オーラ(2.5秒)
+  setTimeout(() => ov.classList.add('flash'), 3700);       // 画面が白くなる
+  setTimeout(() => { onSwitch(); ov.classList.add('done'); }, 4300); // 真っ白な間に技を切り替え
+  setTimeout(() => { ov.remove(); awakenBusy = false; }, 5300);
+}
+
+// 「戻る」で復元されたときは、未覚醒に戻して演出も再び見られるようにする
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) {
+    awakenPlayed = false;
+    awakenBusy = false;
+    document.querySelector('.awaken-overlay')?.remove();
+    setAwakenMode('normal');
+  }
+});
 
 function getItemFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -1074,7 +1666,8 @@ function renderMovesets(itemName, lang) {
   if (!container) return;
   container.innerHTML = '';
 
-  const movesDb = (typeof fruitMovesDatabase !== 'undefined') ? fruitMovesDatabase : {};
+    const normalDb = (typeof fruitMovesDatabase !== 'undefined') ? fruitMovesDatabase : {};
+  const movesDb = (awakenMode === 'awakened' && typeof awakenedMovesDatabase !== 'undefined') ? awakenedMovesDatabase : normalDb;
   const itemData = movesDb[itemName];
 
   if (!itemData) {
@@ -1259,6 +1852,10 @@ function updateItemDetails(lang) {
     const ingameText = document.getElementById('ingame-desc');
     const overviewDb = (typeof itemOverviewData !== 'undefined') ? itemOverviewData : {};
     const data = overviewDb[itemName];
+        const awakenGroup = document.getElementById('awaken-btn-group');
+    const canAwaken = !!(data && data.meta && data.meta.hasAwakening);
+    if (awakenGroup) awakenGroup.style.display = canAwaken ? 'flex' : 'none';
+    if (!canAwaken) awakenMode = 'normal';
 
     if (data && data.ingameDesc && ingameSec) {
       ingameSec.style.display = 'block';
@@ -1394,6 +1991,45 @@ function updateItemDetails(lang) {
     console.error("updateItemDetails error:", err);
   }
 }
+// 🔮 覚醒セクションの描画
+function renderAwakening(itemName, lang) {
+  const sec = document.getElementById('awakening-section');
+  if (!sec) return;
+
+  const db = (typeof itemOverviewData !== 'undefined') ? itemOverviewData : {};
+  const data = db[itemName];
+  const aw = data && data.awakening;
+
+  if (!(data && data.meta && data.meta.hasAwakening && aw && aw.costs)) {
+    sec.style.display = 'none';
+    return;
+  }
+  sec.style.display = 'block';
+
+  const descEl = document.getElementById('awakening-desc');
+  if (descEl) descEl.innerHTML = aw.desc ? (aw.desc[lang] || aw.desc.en || '') : '';
+
+  const icon = `<img src="images/currency/Fragment.webp" alt="Fragment">`;
+  const costs = aw.costs;
+  const total = Object.values(costs).reduce((sum, n) => sum + n, 0);
+
+  let rows = '';
+  Object.keys(costs).forEach(key => {
+    rows += `
+      <tr>
+        <td class="awakening-key">${key.toUpperCase()}</td>
+        <td class="awakening-val">${icon}${costs[key].toLocaleString()}</td>
+      </tr>`;
+  });
+  rows += `
+    <tr class="total">
+      <td class="awakening-key">${lang === 'ja' ? '合計' : 'Total'}</td>
+      <td class="awakening-val">${icon}${total.toLocaleString()}</td>
+    </tr>`;
+
+  const listEl = document.getElementById('awakening-costs');
+  if (listEl) listEl.innerHTML = `<table class="awakening-table">${rows}</table>`;
+}
 
 function updateDetailPageLanguage(lang) {
   try {
@@ -1411,6 +2047,7 @@ function updateDetailPageLanguage(lang) {
 
     const itemInfo = typeof getItemFromUrl === 'function' ? getItemFromUrl() : { name: '', type: '' };
     if (typeof renderMovesets === 'function') renderMovesets(itemInfo.name, lang);
+    if (typeof renderAwakening === 'function') renderAwakening(itemInfo.name, lang);
     if (typeof renderProConSection === 'function') renderProConSection(itemInfo.name, lang, typeof currentProConMode !== 'undefined' ? currentProConMode : 'pros');
     if (typeof renderCombos === 'function') renderCombos(itemInfo.name, lang);
   } catch (err) {
