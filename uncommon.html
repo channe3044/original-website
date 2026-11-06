@@ -943,10 +943,10 @@
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 15,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user fires multiple flaming bullets in the direction of the cursor.", ja: "カーソル方向に複数の炎の弾丸を飛ばします。" }
         },
         x: {
           title: { en: "Burning Blast", ja: "バーニングブラスト" },
@@ -954,10 +954,10 @@
           cooldown: { en: "10.5 seconds", ja: "10.5秒" },
           energy: 25,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user fires a flame bullet in the direction of the cursor, causing an explosion upon landing.", ja: "手から炎の弾をカーソルの方向に発射し、着地時に爆発を引き起こします。" }
         },
         c: {
           title: { en: "Fire Column", ja: "ファイアコラム" },
@@ -965,32 +965,49 @@
           cooldown: { en: "15 seconds", ja: "15秒" },
           energy: 35,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Only the first hit breaks Instinct. Subsequent hits can be dodged.", ja: "最初の一撃だけが見聞色を破壊します。最初の一撃の後は回避できます。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user slams the ground to spawn a pillar of fire, dealing damage while knocking targets upward.", ja: "地面を叩きつけて、炎の柱を出現させ、押し上げながらダメージを与えます。" }
         },
-        v: {
+         v: {
           title: { en: "Flame Destroyer", ja: "フレイムデストロイヤー" },
+          isHold: true,
           mastery: 100,
           cooldown: { en: "27 seconds", ja: "27秒" },
           energy: 50,
           instinctBreak: true,
           instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
-          showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcases: [
+            {
+              label: { en: "Tap", ja: "短押し" },
+              video: "images/videos/Spike_V.mp4",
+              text: { en: "The user creates and throws a massive fireball that explodes upon hitting the ground or reaching maximum range, dealing damage to enemies within the radius.", ja: "大きな火の球を作り投げ、地面に当たるか最大射程に達すると爆発し、半径内の敵にダメージを与えます。" }
+            },
+            {
+              label: { en: "Hold", ja: "長押し" },
+              video: "images/videos/Spike_holdV.mp4",
+              text: { en: "Fully holding the move will increase the size and damage, although aiming at the same location as the tapped version will result in a shorter travel.", ja: "技を長押しするとサイズとダメージが増加します。タップした時と同じ位置を狙うと移動距離が短くなります。" }
+            },
+            {
+              label: { en: "Maximum travel distance", ja: "最大移動距離" },
+              video: "images/videos/Spike_releaseV.mp4",
+            },
+          ]
         },
+      
         f: {
           title: { en: "Fire Flight", ja: "ファイアフライト" },
+          isHold: true,
           mastery: 10,
           cooldown: { en: "15 seconds", ja: "15秒" },
           energy: 100,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "No offensive capability.", ja: "攻撃能力はありません。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user emits flames from their legs to fly.", ja: "脚から炎を出して飛びます。" }
         }
       },
       //ここに新しいフルーツを追加
@@ -1140,10 +1157,10 @@
           cooldown: { en: "7.5 seconds", ja: "7.5秒" },
           energy: 15,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user fires seven blue flame bullets forward that spread out and travel toward the cursor. Enemies hit are stunned for a few seconds. This move features an auto-aim mechanic, which becomes less effective over longer distances.", ja: "7つ青い炎の玉を前に放ち、広がってカーソルへと進みます。敵に当たると数秒間スタン状態になります。オートエイム機能がついていますが、遠くに飛ぶほどその機能は薄れます。" }
         },
         x: {
           title: { en: "Prominence Burst", ja: "プロミネンスバースト" },
@@ -1151,10 +1168,10 @@
           cooldown: { en: "10.5 seconds", ja: "10.5秒" },
           energy: 25,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user fires a linear pillar of fire from their hands toward the cursor, which explodes upon touching the ground, dealing damage and knocking back nearby enemies. After the explosion, a trail of fire remains for 5 seconds, dealing continuous damage. No fire trail is created if the explosion does not occur, such as when used in mid-air.", ja: "手からカーソル方向に直線状の火柱を放ち、地面に触れると爆発してダメージを与えて近くの敵を吹き飛ばします。爆発後は炎の跡が5秒間残り、ダメージを与えます。爆発が発生しない空中などでは炎の跡は残りません。" }
         },
         c: {
           title: { en: "Flaming Vortex", ja: "フレーミングボルテックス" },
@@ -1162,24 +1179,40 @@
           cooldown: { en: "15 seconds", ja: "15秒" },
           energy: 35,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Only the first hit breaks Instinct. Subsequent hits can be dodged.", ja: "最初の一撃だけが見聞色を破壊します。最初の一撃の後は回避できます。" },
           showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user creates a fire vortex, launching themselves and nearby enemies into the air. Using this move on the ground leaves a fire trail for 5 seconds that deals damage, while no trail is left when used in mid-air.", ja: "炎の渦を描いて自分自身と近くの敵を空中に放り上げます。地面の上で使うと炎の跡が５秒間残り、ダメージを与えます。空中では炎の跡は残りません。" }
         },
         v: {
           title: { en: "Hell's Core", ja: "ヘルズコア" },
+          isHold: true,
           mastery: 100,
           cooldown: { en: "27 seconds", ja: "27秒" },
           energy: 50,
           instinctBreak: true,
           instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
-          showcaseVideo: "images/videos/.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcases: [
+            {
+              label: { en: "Tap", ja: "短押し" },
+              video: "images/videos/Spike_V.mp4",
+              text: { en: "The user creates and throws a massive fireball that explodes upon hitting the ground or reaching maximum range, dealing damage to enemies within the area. Using this move on the ground leaves a trail of fire for 5 seconds that deals damage. No fire trail is created when used in mid-air.", ja: "巨大な火の球を作り投げ、地面に当たるか最大射程に達すると爆発し、範囲内の敵にダメージを与えます。地面の上で使うと炎の跡が５秒間残り、ダメージを与えます。空中では炎の跡は残りません。" }
+            },
+            {
+              label: { en: "Hold", ja: "長押し" },
+              video: "images/videos/Spike_holdV.mp4",
+              text: { en: "Holding the move increases its radius and damage, while also enlarging the fire trail.", ja: "長押しすると範囲とダメージが上がり、炎の跡も大きくなります。" }
+            },
+            {
+              label: { en: "Maximum travel distance", ja: "最大移動距離" },
+              video: "images/videos/Spike_releaseV.mp4",
+            },
+          ]
         },
         f: {
           title: { en: "Rocket Flight", ja: "ロケットフライト" },
+          isHold: true,
           mastery: 10,
           cooldown: { en: "15 seconds", ja: "15秒" },
           energy: 100,
