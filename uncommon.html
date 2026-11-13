@@ -803,7 +803,7 @@
       "Flame": {
         ingameDesc: {
           en: "Enables the user to control and create fire, forcing enemies to steer clear of the player if they do not want to burn.",
-          ja: "使用者が火を生成して操り、燃えたくなければ離れざるを得ない。"
+          ja: "使用者が火を生成して操る。燃えたくなければ離れざるを得ない。"
         },
                 meta: {
           type: { en: "Elemental", ja: "エレメンタル系" },
@@ -816,7 +816,7 @@
           awakenColor: "#ff5a1f"
         },
         immunity: {  
-          video: "images/videos/Blade_immunity.mp4",
+          video: "images/videos/Flame_Immunity.mp4",
           desc: {
             en: "Grants immunity to normal physical attacks (Fighting Style, Sword, Gun) without Aura. Fruit attacks always deal damage regardless of level. Against regular NPCs, immunity requires your level to be higher than theirs (roughly 2%+ level difference). Bosses and attacks with Aura bypass this immunity.",
             ja: "武装色のついていない通常の物理攻撃（格闘・剣・銃）の攻撃を無効化します。フルーツ攻撃はレベルに関係なく常にダメージを与えます。 通常のNPCに対して無効化を発動するには、相手より高いレベル（およそ2%以上のレベル差）が必要です。ボスやオーラ付きの攻撃はこの無効化を貫通します。"
@@ -824,8 +824,8 @@
         },
         awakening: {
            desc: {
-            en: "The Flame Fist <p><a href='#' class='wiki-link'>title</a></p> will be granted upon awakening one move of the Flame Fruit.",
-            ja: "フレイムフルーツの技を一つ覚醒させるとThe Flame Fistの<p><a href='#' class='wiki-link'>称号</a>を手に入れます。"
+            en: "The Flame Fist <a href='#' class='wiki-link'>title</a> will be granted upon awakening one move of the Flame Fruit.",
+            ja: "フレイムフルーツの技を一つ覚醒させるとThe Flame Fistの<a href='#' class='wiki-link'>称号</a>を手に入れます。"
           },
           // 画像の並び順（Z → F → X → C → V）で表示されます
             costs: { z: 500, f: 2000, x: 3000, c: 4000, v: 5000 }
@@ -834,16 +834,151 @@
           en: "The Flame Fruit grants the user the ability to become and manipulate fire, enabling the use of scorching attacks.",
           ja: "フレイムを使うと自らが炎となって炎を操ることができます。これにより灼熱の攻撃を繰り出すことができます。"
         },
-        history: {
-          en: "Details coming soon.",
-          ja: "詳細は近日公開予定です。"
+                history: {
+                    en: `
+<p><a href='#' class='wiki-link'>[Update 1]</a><br>Flame was added.</p>
+
+<p><a href='#' class='wiki-link'>[Update 5]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Sped up the startup of some of Flame's moves.</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[Update 6]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ] move Burning Blast was remade.</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[Update 8]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>Flame's visual effects were enhanced.</div></li>
+</ul>
+<p>Added particle effects.</p>
+
+<p><a href='#' class='wiki-link'>[Update 11]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Added awakening for Flame.</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[Update 17.2]</a><br>Slightly buffed the moves of awakened Flame.</p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ] move Blue Fire Bullets now deals more damage, and its size grows as it travels.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ F ] move Rocket Flight now has a stronger initial boost.</div></li>
+</ul>
+<p>Changed the sound effect of the awakened [ X ] move.</p>
+
+<p><a href='#' class='wiki-link'>[Update 17.3]</a><br>Revamped the visuals of Flame, both unawakened and awakened.<br>Removed the double explosion from the [ X ] move.<br>Improved the damage of the fire trails.<br>Most 3D assets were replaced with VFX.</p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>Increased the damage of all moves.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ] move travel speed greatly increased.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ] move aim assist improved.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ] move base damage increased.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ] move beam speed increased.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ C ] move now launches the user higher.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ] move hitbox enlarged.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>Removed the burn effect from the [ Z ] move.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ] move range and stun duration slightly decreased.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ] move cooldown increased.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ] move travel speed greatly decreased.</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[Update 17.3.5]</a><br>Blue Fire Bullets was reworked.</p>
+
+<p><a href='#' class='wiki-link'>[Update 20]</a><br>Flame fruit model changed.</p>
+
+<p><a href='#' class='wiki-link'>[Update 24]</a><br>Flame fruit icon changed.</p>
+
+<p><a href='#' class='wiki-link'>[Update 26]</a><br>Flame fruit model changed.<br>Flame's visuals were enhanced.</p>
+
+<p><a href='#' class='wiki-link'>[Update 29.6]</a><br>Buffed Flame, both unawakened and awakened.</p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ] move travel speed increased by 40%.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ] move maximum hold time reduced by 30%.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ] move travel speed increased by 30%.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ F ] move cooldown reduced by 20%.</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>Fixed a bug where the [ F ] move could launch the user forward.</div></li>
+</ul>
+
+<div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'>
+  <img src='images/changelog/Old_Flame_Fruit.webp' alt='Old Flame Fruit' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Flame_Fruit.png';">
+  <img src='images/changelog/Old_Flame_icon.webp' alt='Old Flame Icon' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Flame_icon.png';">
+  <img src='images/changelog/Flame_Fruit_(Old).webp' alt='Old Flame Fruit (Old)' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Flame_Fruit_(Old).png';">
+</div>
+`,
+          ja: `
+<p><a href='#' class='wiki-link'>[アップデート1]</a><br>フレイムが追加されました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート5]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>フレイムのいくつかの技の発動が早くなりました。</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[アップデート6]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ]技のバーニングブラストはリメイクされました。</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[アップデート8]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>フレイムのビジュアルエフェクトが強化されました。</div></li>
+</ul>
+<p>パーティクルエフェクトが追加されました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート11]</a></p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>フレイムに覚醒が追加されました。</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[アップデート17.2]</a><br>覚醒したフレイムの技がわずかに強化されました。</p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ]技のブルーファイアバレットのダメージが増加しました。さらに移動するにつれてサイズも大きくなります。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ F ]技のロケットフライトの初期ブーストが強化されました。</div></li>
+</ul>
+<p>覚醒後の[ X ]技の効果音が変更されました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート17.3]</a><br>覚醒前、覚醒後のフレイムのビジュアルが新しくなりました。<br>[ X ]技の同時に２回の爆発が発生する仕様を削除しました。<br>炎の跡のダメージが改善されました。<br>ほとんどの3Dアセット(立体的な物など)はVFX(エフェクトなど)に置き換えられました。</p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>すべての技のダメージが増加しました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ]技の移動速度がかなり速くなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ]技のエイムが強くなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ]技の基礎ダメージが上がりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ]技のビームが速くなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ C ]技はさらに高く上昇するようになりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ]技のヒットボックスが大きくなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ Z ]技の燃焼効果がなくなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ]技の射程とスタン時間がわずかに短くなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ]技のクールタイムが伸びました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Nerf.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ]技の移動速度がかなり遅くなりました。</div></li>
+</ul>
+
+<p><a href='#' class='wiki-link'>[アップデート17.3.5]</a><br>[ Z ]技のブルーファイアバレットはリワークされました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート20]</a><br>フレイムのフルーツモデルが変更されました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート24]</a><br>フレイムのフルーツアイコンが変更されました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート26]</a><br>フレイムのフルーツモデルが変更されました。<br>フレイムの見た目が強化されました。</p>
+
+<p><a href='#' class='wiki-link'>[アップデート29.6]</a><br>覚醒前、覚醒後のフレイムが強化されました。</p>
+<ul style='margin-top: 8px; padding-left: 0; list-style: none;'>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ X ]技の移動速度が40%速くなりました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ]技の最大長押し時間が30%短縮されました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ V ]技の移動速度が30%増加しました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/upgrade.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ F ]技のクールダウンが20%短縮されました。</div></li>
+  <li style='margin-bottom: 4px;'><div style='display: inline-flex; align-items: center; gap: 4px;'><img src='images/grade/Neutral.webp' style='width: 16px; height: 16px; object-fit: contain;'>[ F ]技の前方に投げ飛ばされるバグが修正されました。</div></li>
+</ul>
+<div style='margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;'>
+  <img src='images/changelog/Old_Flame_Fruit.webp' alt='旧フレイムフルーツ' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Flame_Fruit.png';">
+  <img src='images/changelog/Old_Flame_icon.webp' alt='旧フレイムアイコン' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Old_Flame_icon.png';">
+  <img src='images/changelog/Flame_Fruit_(Old).webp' alt='旧フレイムフルーツ(Old)' style='height: 80px; width: auto; border-radius: 6px; border: 1px solid #333;' onerror="this.onerror=null; this.src='images/changelog/Flame_Fruit_(Old).png';">
+</div>
+`
         },
         notes: {
-          en: "Details coming soon.",
-          ja: "詳細は近日公開予定です。"
+          en: "I love launching upward with the [ C ] move<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>∩･д･∩</span>",
+          ja: "[ C ]技で上に飛ぶのが好きです<span style='font-family: Arial, \"Hiragino Kaku Gothic ProN\", Meiryo, sans-serif !important; font-weight: normal !important; display: inline-block;'>∩･д･∩</span>"
         }
       },
-      //ここに新しいフルーツを追加
+      //アイス
       "Ice": {
         ingameDesc: {
           en: "Details coming soon.",
@@ -944,7 +1079,7 @@
           energy: 15,
           instinctBreak: true,
           instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_Z.mp4",
           hasSkin: false,
           showcaseText: { en: "The user fires multiple flaming bullets in the direction of the cursor.", ja: "カーソル方向に複数の炎の弾丸を飛ばします。" }
         },
@@ -955,7 +1090,7 @@
           energy: 25,
           instinctBreak: true,
           instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_X.mp4",
           hasSkin: false,
           showcaseText: { en: "The user fires a flame bullet in the direction of the cursor, causing an explosion upon landing.", ja: "手から炎の弾をカーソルの方向に発射し、着地時に爆発を引き起こします。" }
         },
@@ -966,7 +1101,7 @@
           energy: 35,
           instinctBreak: true,
           instinctText: { en: "Only the first hit breaks Instinct. Subsequent hits can be dodged.", ja: "最初の一撃だけが見聞色を破壊します。最初の一撃の後は回避できます。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_C.mp4",
           hasSkin: false,
           showcaseText: { en: "The user slams the ground to spawn a pillar of fire, dealing damage while knocking targets upward.", ja: "地面を叩きつけて、炎の柱を出現させ、押し上げながらダメージを与えます。" }
         },
@@ -977,22 +1112,22 @@
           cooldown: { en: "27 seconds", ja: "27秒" },
           energy: 50,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Only the initial hit breaks Instinct. Can be dodged after the initial hit.", ja: "最初の一撃だけが見聞色を壊します。最初の一撃の後は回避可能です。" },
           hasSkin: false,
           showcases: [
             {
               label: { en: "Tap", ja: "短押し" },
-              video: "images/videos/Spike_V.mp4",
+              video: "images/videos/Flame_V.mp4",
               text: { en: "The user creates and throws a massive fireball that explodes upon hitting the ground or reaching maximum range, dealing damage to enemies within the radius.", ja: "大きな火の球を作り投げ、地面に当たるか最大射程に達すると爆発し、半径内の敵にダメージを与えます。" }
             },
             {
               label: { en: "Hold", ja: "長押し" },
-              video: "images/videos/Spike_holdV.mp4",
+              video: "images/videos/Flame_HoldV.mp4",
               text: { en: "Fully holding the move will increase the size and damage, although aiming at the same location as the tapped version will result in a shorter travel.", ja: "技を長押しするとサイズとダメージが増加します。タップした時と同じ位置を狙うと移動距離が短くなります。" }
             },
             {
               label: { en: "Maximum travel distance", ja: "最大移動距離" },
-              video: "images/videos/Spike_releaseV.mp4",
+              video: "images/videos/Flame_releaseV.mp4",
             },
           ]
         },
@@ -1005,12 +1140,12 @@
           energy: 100,
           instinctBreak: true,
           instinctText: { en: "No offensive capability.", ja: "攻撃能力はありません。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_F.mp4",
           hasSkin: false,
           showcaseText: { en: "The user emits flames from their legs to fly.", ja: "脚から炎を出して飛びます。" }
         }
       },
-      //ここに新しいフルーツを追加
+      //アイス
       "Ice": {
         m1: {
           title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
@@ -1158,7 +1293,7 @@
           energy: 15,
           instinctBreak: true,
           instinctText: { en: "Can be dodged on the edge.", ja: "端の部分では回避できます。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_AwakeZ.mp4",
           hasSkin: false,
           showcaseText: { en: "The user fires seven blue flame bullets forward that spread out and travel toward the cursor. Enemies hit are stunned for a few seconds. This move features an auto-aim mechanic, which becomes less effective over longer distances.", ja: "7つ青い炎の玉を前に放ち、広がってカーソルへと進みます。敵に当たると数秒間スタン状態になります。オートエイム機能がついていますが、遠くに飛ぶほどその機能は薄れます。" }
         },
@@ -1169,7 +1304,7 @@
           energy: 25,
           instinctBreak: true,
           instinctText: { en: "Breaks Instinct.", ja: "見聞色を破壊します。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_AwakeX.mp4",
           hasSkin: false,
           showcaseText: { en: "The user fires a linear pillar of fire from their hands toward the cursor, which explodes upon touching the ground, dealing damage and knocking back nearby enemies. After the explosion, a trail of fire remains for 5 seconds, dealing continuous damage. No fire trail is created if the explosion does not occur, such as when used in mid-air.", ja: "手からカーソル方向に直線状の火柱を放ち、地面に触れると爆発してダメージを与えて近くの敵を吹き飛ばします。爆発後は炎の跡が5秒間残り、ダメージを与えます。爆発が発生しない空中などでは炎の跡は残りません。" }
         },
@@ -1180,7 +1315,7 @@
           energy: 35,
           instinctBreak: true,
           instinctText: { en: "Only the first hit breaks Instinct. Subsequent hits can be dodged.", ja: "最初の一撃だけが見聞色を破壊します。最初の一撃の後は回避できます。" },
-          showcaseVideo: "images/videos/.mp4",
+          showcaseVideo: "images/videos/Flame_AwakeC.mp4",
           hasSkin: false,
           showcaseText: { en: "The user creates a fire vortex, launching themselves and nearby enemies into the air. Using this move on the ground leaves a fire trail for 5 seconds that deals damage, while no trail is left when used in mid-air.", ja: "炎の渦を描いて自分自身と近くの敵を空中に放り上げます。地面の上で使うと炎の跡が５秒間残り、ダメージを与えます。空中では炎の跡は残りません。" }
         },
@@ -1191,22 +1326,22 @@
           cooldown: { en: "27 seconds", ja: "27秒" },
           energy: 50,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          instinctText: { en: "Only the initial hit breaks Instinct. Can be dodged after the initial hit, though the fire trail breaks Instinct when used on the ground.", ja: "最初の一撃だけが見聞色を壊します。最初の一撃の後は回避可能ですが、地上の場合炎の跡で見聞色が破壊されます。" },
           hasSkin: false,
           showcases: [
             {
               label: { en: "Tap", ja: "短押し" },
-              video: "images/videos/Spike_V.mp4",
+              video: "images/videos/Flame_AwakeV.mp4",
               text: { en: "The user creates and throws a massive fireball that explodes upon hitting the ground or reaching maximum range, dealing damage to enemies within the area. Using this move on the ground leaves a trail of fire for 5 seconds that deals damage. No fire trail is created when used in mid-air.", ja: "巨大な火の球を作り投げ、地面に当たるか最大射程に達すると爆発し、範囲内の敵にダメージを与えます。地面の上で使うと炎の跡が５秒間残り、ダメージを与えます。空中では炎の跡は残りません。" }
             },
             {
               label: { en: "Hold", ja: "長押し" },
-              video: "images/videos/Spike_holdV.mp4",
+              video: "images/videos/Flame_AwakeHoldV.mp4",
               text: { en: "Holding the move increases its radius and damage, while also enlarging the fire trail.", ja: "長押しすると範囲とダメージが上がり、炎の跡も大きくなります。" }
             },
             {
               label: { en: "Maximum travel distance", ja: "最大移動距離" },
-              video: "images/videos/Spike_releaseV.mp4",
+              video: "images/videos/Flame_AwakereleaseV.mp4",
             },
           ]
         },
@@ -1217,10 +1352,10 @@
           cooldown: { en: "15 seconds", ja: "15秒" },
           energy: 100,
           instinctBreak: true,
-          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
-          showcaseVideo: "images/videos/.mp4",
+          instinctText: { en: "No offensive capability.", ja: "攻撃性能はありません" },
+          showcaseVideo: "images/videos/Flame_AwakeF.mp4",
           hasSkin: false,
-          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+          showcaseText: { en: "The user emits flames from their legs to fly.", ja: "脚から炎を出して飛びます。" }
         }
       },
       //ここに新しいフルーツを追加
@@ -1367,13 +1502,91 @@
         pros: {
           general: {
             en: [
+              "Low mastery requirements.",
+              "All moves can break Instinct."
+            ],
+            ja: [
+              "必要マスタリーが低い",
+              "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["High damage."], ja: ["高いダメージ"] },
+          x: { en: ["Good AoE."], ja: ["広い攻撃範囲"] },
+          c: { en: ["Good AoE."], ja: ["広い攻撃範囲"] },
+          v: { en: ["Large AoE."], ja: ["とても広い攻撃範囲"] },
+          f: { en: ["・_・"], ja: ["・_・"] }
+        },
+        cons: {
+          general: {
+            en: [
+              "High knockback."
+            ],
+            ja: [
+              "ノックバックが大きい",
+            ]
+          },
+          z: { en: ["Bad AoE."], ja: ["狭い攻撃範囲"] },
+          x: { en: ["Slow projectile speed, making it difficult to hit moving targets.","Bad range.","Slow attack speed.","High knockback."], ja: ["弾丸の移動速度が遅いため、動いている敵に当てにくい","射程が短い","攻撃速度が遅い","ノックバックが大きい"] },
+          c: { en: ["User is immobilized until the move ends."], ja: ["技が終わるまで動けません"] },
+          v: { en: ["Bad range.","Slow travel speed.","Long start-up."], ja: ["射程が短い","移動速度が遅い","技が打てるまでが遅い"] },
+          f: { en: ["Slower cooldown compared to other flight moves.","Quite slow"], ja: ["他の飛行技と比べてクールダウンが遅い","かなり遅い"] }
+        }
+      },
+
+     //アイス
+      "Ice": {
+        pros: {
+          general: {
+            en: [
               "Details coming soon.",
-              "Details coming soon.",
+              "Low mastery requirements.",
               "All moves can break Instinct."
             ],
             ja: [
               "詳細は近日公開予定です。",
+              "必要マスタリーが低い",
+              "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        },
+        cons: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Details coming soon.",
+              "Details coming soon."
+            ],
+            ja: [
               "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        }
+      },
+
+       //ネーム
+      "name": {
+        pros: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Low mastery requirements.",
+              "All moves can break Instinct."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "必要マスタリーが低い",
               "すべての技が見聞色を破壊する"
             ]
           },
@@ -1405,10 +1618,151 @@
       },
     };
 
+        // ⚖️ 覚醒後の長所（Pros）と短所（Cons）データ
+    const awakenedProConDatabase = {
+      //フレイム
+      "Flame": {
+        pros: {
+          general: { en: ["Large AoE and range.","High damage."], ja: ["広い範囲攻撃と射程","高いダメージ"] },
+          z: { en: ["Extremely long range.","Good AoE.","Features an auto-aim mechanic."], ja: ["超長射程","広い範囲攻撃","オートエイム機能が備わっている"] },
+          x: { en: ["High range.","Large AoE.","Slight stun. "], ja: ["長射程","広い範囲攻撃","少しのスタン"] },
+          c: { en: ["Slight stun."], ja: ["少しのスタン"] },
+          v: { en: ["Extremely long range.","Very high damage.","Massive AoE.<i>(Hold)</i>"], ja: ["超長射程","高いダメージ","超広範囲攻撃<i>(長押し)</i>"] },
+          f: { en: ["Decent speed."], ja: ["まずまずのスピード"] }
+        },
+        cons: {
+          general: { en: ["High knockback."], ja: ["ノックバックが大きい"] },
+          z: { en: ["The auto-aim feature weakens the further the projectiles travel."], ja: ["オートエイム機能は弾丸が遠くまで飛ぶほど弱くなる"] },
+          x: { en: ["Smaller hitbox the further away the target is."], ja: ["ターゲットが遠いほどヒットボックスが小さい"] },
+          c: { en: ["Has no noticeable flaws."], ja: ["目立った欠点はない"] },
+          v: { en: ["Need to be charged to deal the full damage."], ja: ["最大ダメージを与えるにはチャージが必要"] },
+          f: { en: ["Speed scales with the user's health, meaning that the lower their health is, the slower the flight will go.","Slower cooldown compared to other flight moves."], ja: ["速度はユーザーの体力に応じて調整されるので、体力が低いほど飛行速度は遅くなる","他の飛行技と比べてクールダウンが遅い"] }
+        }
+      },
+      //ここに新しいフルーツを追加
+       //アイス
+      "Ice": {
+        pros: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Low mastery requirements.",
+              "All moves can break Instinct."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "必要マスタリーが低い",
+              "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        },
+        cons: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Details coming soon.",
+              "Details coming soon."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        }
+      },
+        //ネーム
+      "name": {
+        pros: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Low mastery requirements.",
+              "All moves can break Instinct."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "必要マスタリーが低い",
+              "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        },
+        cons: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Details coming soon.",
+              "Details coming soon."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        }
+      },
+    };
     // 🔥 コンボデータベース
     const comboDatabase = {
       //フレイム
       "Flame": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>,Flame,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>",
+            ja: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>電気爪</a>,フレイム,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>トリエント</a>"
+          },
+          sequence: {
+            en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>C → FlameC → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>X → <a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>X → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>Z → FlameZ",
+            ja: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>電気爪</a>C → フレイムC → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>電気爪</a>X → <a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>トリエント</a>X → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>電気爪</a>Z → フレイムZ"
+          },
+          desc: {
+            en: "Details coming soon.",
+            ja: "Details coming soon."
+          },
+          video: "https://youtu.be/TBcgS7824mQ"
+        }
+      ],
+      //アイス
+      "Ice": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>Dragon Talon</a>,Ice",
+            ja: "<a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>ドラゴンタロン</a>,アイス"
+          },
+          sequence: {
+            en: "IceV → IceC → IceZ → <a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>Dragon Talon</a>M1 → <a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>Dragon Talon</a>M1 → <a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>Dragon Talon</a>Z",
+            ja: "アイスV → アイスC → アイスZ → <a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>ドラゴンタロン</a>M1 → <a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>ドラゴンタロン</a>M1 → <a href='detail.html?name=Dragon_Talon&type=style' class='wiki-link'>ドラゴンタロン</a>Z"
+          },
+          desc: {
+            en: "Details coming soon.",
+            ja: "Details coming soon."
+          },
+          video: "https://youtu.be/I08UUXLiYZM"
+        }
+      ],
+      //name
+      "あ": [
         {
           name: {
             en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>,Flame,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>",
@@ -1507,7 +1861,9 @@ function renderProConSection(itemName, lang, mode) {
   const container = document.getElementById('procon-box');
   if (!container) return;
 
-  const db = (typeof proConDatabase !== 'undefined') ? proConDatabase : {};
+    const normalDb = (typeof proConDatabase !== 'undefined') ? proConDatabase : {};
+  const awakenDb = (typeof awakenedProConDatabase !== 'undefined') ? awakenedProConDatabase : {};
+  const db = (awakenMode === 'awakened' && awakenDb[itemName]) ? awakenDb : normalDb;
   const data = db[itemName];
 
   if (!data || !data[mode]) {
@@ -2086,6 +2442,14 @@ function updateDetailPageLanguage(lang) {
   } catch (err) {
     console.error("updateDetailPageLanguage error:", err);
   }
+}
+function setAwakenMode(mode) {
+  awakenMode = mode;
+  document.getElementById('unawakened-btn')?.classList.toggle('active', mode === 'normal');
+  document.getElementById('awakened-btn')?.classList.toggle('active', mode === 'awakened');
+  const lang = localStorage.getItem('selectedLang') || 'en';
+  renderMovesets(getItemFromUrl().name, lang);
+  renderProConSection(getItemFromUrl().name, lang, currentProConMode);   // ← 追加
 }
 
 function initDetailPage() {
