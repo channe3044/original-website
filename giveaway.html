@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giveaway - Blox Fruits Wiki</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ─── 🎁 giveaway.html 専用 ─── */
+[hidden] {
+  display: none !important;
+}
+
+.giveaway-page {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 24px;
+  background: rgba(20, 20, 20, 0.95);
+  border: 2px solid #e2a227;
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.giveaway-page h1 {
+  margin-bottom: 16px;
+}
+
+.giveaway-page h2 {
+  border-left: 4px solid #e2a227;
+  padding-left: 10px;
+  margin: 28px 0 12px;
+  font-size: 1.3rem;
+}
+
+.giveaway-page p,
+.giveaway-page li {
+  line-height: 1.8;
+  color: #ddd;
+}
+
+.giveaway-page ul {
+  margin-left: 22px;
+}
+
+.back-btn-detail {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #555;
+  font-weight: bold;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.back-btn-detail:hover {
+  background: #555;
+}
+
+.form-frame {
+  width: 100%;
+  height: 900px;
+  border: 0;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* ─── ⏳ 開始前メッセージ ─── */
+.notyet-box {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 16px;
+  background: #181818;
+  border: 2px dashed #e2a227;
+  border-radius: 8px;
+}
+
+.notyet-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffcc00 !important;
+  margin-bottom: 10px;
+}
+
+/* ─── 🔚 終了メッセージ ─── */
+.ended-box {
+  text-align: center;
+  padding: 30px 20px;
+  margin: 16px 0;
+  background: #1f1414;
+  border: 2px dashed #ff4d4d;
+  border-radius: 8px;
+}
+
+.ended-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ff4d4d !important;
+  margin-bottom: 8px;
+}
+
+/* ─── 🎁 景品カード ─── */
+.prize-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.prize-card {
+  width: 130px;
+  padding: 10px 8px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.prize-card img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.prize-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2px 8px;
+  border-radius: 8px;
+  line-height: 1.4;
+}
+
+.bonus-title {
+  margin: 22px 0 12px;
+  font-size: 1.1rem;
+  color: #ffcc00;
+}
+
+.prize-goal {
+  font-size: 12px;
+  font-weight: 900;
+  color: #000;
+  background: linear-gradient(to bottom, #fff464, #f6ab12);
+  border: 2px solid #4d3202;
+  border-radius: 6px;
+  padding: 1px 8px;
+}
+
+/* ─── 🎬 動画リンク ─── */
+.video-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.video-card {
+  flex: 1 1 240px;
+  max-width: 360px;
+  display: block;
+  text-decoration: none;
+  background: #181818;
+  border: 2px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-3px);
+  border-color: #ffe552;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 229, 82, 0.4);
+}
+
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 20px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.video-card-title {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ─── 🤫 秘密のメッセージ ─── */
+.secret-box {
+  background: #181818;
+  border: 2px dashed #e2a227;
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.secret-box p {
+  margin-bottom: 14px;
+}
+
+.secret-box strong {
+  color: #ffcc00;
+}
+
+.secret-box .secret-reveal {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px dashed #555;
+}
+
+.before-after {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.before-after figure {
+  flex: 1 1 0;
+  max-width: 200px;
+  margin: 0;
+  text-align: center;
+}
+
+.before-after img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #444;
+  border-radius: 6px;
+  background: #000;
+  display: block;
+}
+
+.before-after figcaption {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #ccc;
+}
+</style>
+</head>
+<body>
+
+<!-- 🔝 ヘッダー -->
+<header>
+  <button id="back-btn" class="back-btn" style="display: none;">⬅</button>
+
+  <div class="logo">
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <h1>BLOX FRUITS <span>WIKI</span></h1>
+    </a>
+  </div>
+
+  <div class="header-controls">
+    <div class="search-container">
+      <input type="search" placeholder="Search" class="search-input">
+    </div>
+
+    <button id="lang-toggle-btn" class="lang-btn">
+      <div class="arrow-circle">
+        <span class="lang-text en">EN</span>
+        <span class="lang-text ja">JA</span>
+      </div>
+    </button>
+
+    <button id="member-btn" class="member-btn" onclick="location.href='members.html'">
+      <img src="images/flame fruit.png" alt="Members" class="flame-icon">
+    </button>
+  </div>
+</header>
+
+<!-- 🎁 メインコンテンツ -->
+<!-- ⏰ 応募の開始・終了時刻はここだけ変更（形: 年-月-日T時:分:秒+09:00 ／ +09:00 は日本時間） -->
+<main class="giveaway-page" id="giveaway-root"
+      data-start="2026-11-25T09:00:00+09:00"
+      data-end="2026-12-05T23:59:59+09:00">
+
+  <a href="index.html" class="back-btn-detail translatable" data-en="← Back" data-ja="← 戻る">← Back</a>
+
+  <h1 class="translatable" data-en="🎁 Giveaway Event" data-ja="🎁 ギフト企画">🎁 Giveaway Event</h1>
+
+  <!-- ⏳ 開始前に表示するメッセージ -->
+  <div id="giveaway-notyet" class="notyet-box" hidden>
+    <p class="notyet-title translatable"
+       data-en="Coming soon!"
+       data-ja="まだ始まっていません！">Coming soon!</p>
+    <p class="translatable"
+       data-en="The giveaway hasn't started yet. Please come back later!"
+       data-ja="ギフト企画は準備中です。開始までもうしばらくお待ちください！">The giveaway hasn't started yet. Please come back later!</p>
+    <p id="notyet-time"></p>
+  </div>
+
+  <!-- 🎁 開始後に表示する中身 -->
+  <div id="giveaway-content" hidden>
+
+    <!-- 🔚 終了後に表示するメッセージ -->
+    <div id="giveaway-ended" class="ended-box" hidden>
+      <p class="ended-title translatable"
+         data-en="This giveaway has ended."
+         data-ja="ギフト企画は終了しました。">This giveaway has ended.</p>
+      <p class="translatable"
+         data-en="Thank you to everyone who entered! Winners will be announced on our Discord server."
+         data-ja="ご応募ありがとうございました！当選者はDiscordサーバーで発表します。">Thank you to everyone who entered! Winners will be announced on our Discord server.</p>
+    </div>
+
+    <h2 class="translatable" data-en="Overview" data-ja="概要">Overview</h2>
+
+    <p class="translatable"
+       data-en="Thank you for helping me reach 304 subscribers! 🎉"
+       data-ja="チャンネル登録者数304人達成をサポートしてくれてありがとうございます！🎉">Thank you for helping me reach 304 subscribers! 🎉</p>
+
+    <p class="translatable"
+       data-en="This giveaway was decided through my PvP challenge:<br>If I lose, I gift the Permanent Fruit to a viewer."
+       data-ja="今回のプレゼント企画は、PvPチャレンジの結果によって決まりました。<br>もし私が負けたら、視聴者の方に「永続フルーツ」をプレゼントするという企画です！">This giveaway was decided through my PvP challenge:<br>If I lose, I gift the Permanent Fruit to a viewer.</p>
+
+    <p class="translatable"
+       data-en="The giveaway prizes are:"
+       data-ja="プレゼントのラインナップはこちら：">The giveaway prizes are:</p>
+    <ul>
+      <li class="translatable" data-en="Permanent Quake" data-ja="永久 地震">Permanent Quake</li>
+      <li class="translatable" data-en="Permanent Light" data-ja="永久 ライト">Permanent Light</li>
+      <li class="translatable" data-en="Permanent Dough" data-ja="永続 餅">Permanent Dough</li>
+      <li class="translatable" data-en="Permanent Gas" data-ja="永続 ガス">Permanent Gas</li>
+    </ul>
+
+    <p class="translatable"
+       data-en="Bonus Rewards"
+       data-ja="さらに、ボーナス報酬も用意しました！">Bonus Rewards</p>
+    <ul>
+      <li class="translatable" data-en="304 Likes → Dark Blade" data-ja="「いいね」304件達成 → ダークブレード">304 Likes → Dark Blade</li>
+      <li class="translatable" data-en="3044 Likes → Permanent Dragon" data-ja="「いいね」3044件達成 → 永久 ドラゴン">3044 Likes → Permanent Dragon</li>
+    </ul>
+
+    <p class="translatable"
+       data-en="Good luck, and thank you for supporting the channel!"
+       data-ja="皆さん、ぜひ参加してくださいね！いつも応援ありがとうございます！">Good luck, and thank you for supporting the channel!</p>
+
+    <!-- 🎬 ギフト企画動画 -->
+    <h3 class="bonus-title translatable" data-en="🎬 Watch the Giveaway Video!" data-ja="🎬 ギフト企画動画はこちら！">🎬 Watch the Giveaway Video!</h3>
+    <div class="video-links">
+      <a href="https://youtu.be/0aNzsHWWEtY?si=bPisxVB-r0e4qGKn" target="_blank" rel="noopener noreferrer" class="video-card">
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/0aNzsHWWEtY/hqdefault.jpg" alt="Video 1"
+               onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+          <span class="play-icon">▶</span>
+        </div>
+        <div class="video-card-title translatable" data-en="Video 1" data-ja="動画1">Video 1</div>
+      </a>
+
+      <a href="https://youtu.be/xvZK_EHuYUs" target="_blank" rel="noopener noreferrer" class="video-card">
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/xvZK_EHuYUs/hqdefault.jpg" alt="Video 2"
+               onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+          <span class="play-icon">▶</span>
+        </div>
+        <div class="video-card-title translatable" data-en="Video 2" data-ja="動画2">Video 2</div>
+      </a>
+    </div>
+
+    <!-- 🎁 景品 -->
+    <h2 class="translatable" data-en="Prizes" data-ja="賞品">Prizes</h2>
+
+    <div class="prize-grid">
+      <div class="prize-card rarity-legendary">
+        <img src="images/fruits/Quake_Fruit.webp" alt="Quake" onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+        <div class="prize-name translatable" data-en="Quake" data-ja="地震">Quake</div>
+      </div>
+
+      <div class="prize-card rarity-rare">
+        <img src="images/fruits/Light_Fruit.webp" alt="Light" onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+        <div class="prize-name translatable" data-en="Light" data-ja="ライト">Light</div>
+      </div>
+
+      <div class="prize-card rarity-mythical">
+        <img src="images/fruits/Dough_Fruit.webp" alt="Dough" onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+        <div class="prize-name translatable" data-en="Dough" data-ja="餅">Dough</div>
+      </div>
+
+      <div class="prize-card rarity-mythical">
+        <img src="images/fruits/Gas_Fruit.webp" alt="Gas" onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+        <div class="prize-name translatable" data-en="Gas" data-ja="ガス">Gas</div>
+      </div>
+    </div>
+
+    <h3 class="bonus-title translatable" data-en="👍 Bonus Prizes (Like Goals)" data-ja="👍 追加景品（高評価達成で追加）">👍 Bonus Prizes (Like Goals)</h3>
+
+    <div class="prize-grid">
+      <div class="prize-card rarity-mythical">
+        <div class="prize-goal translatable" data-en="👍 304 likes" data-ja="👍 高評価304">👍 304 likes</div>
+        <img src="images/swords/Dark_Blade.webp" alt="Dark Blade" onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+        <div class="prize-name translatable" data-en="Dark Blade" data-ja="ダークブレード">Dark Blade</div>
+      </div>
+
+      <div class="prize-card rarity-mythical">
+        <div class="prize-goal translatable" data-en="👍 3044 likes" data-ja="👍 高評価3044">👍 3044 likes</div>
+        <img src="images/fruits/Dragon_Fruit.webp" alt="Dragon" onerror="this.onerror=null;this.src='images/ItemPlaceHolder.webp';">
+        <div class="prize-name translatable" data-en="Dragon" data-ja="ドラゴン">Dragon</div>
+      </div>
+    </div>
+
+    <!-- 📝 応募方法 -->
+    <h2 class="translatable" data-en="How to Enter" data-ja="応募方法">How to Enter</h2>
+    <ul>
+      <li class="translatable" data-en="Fill in the form below and submit it." data-ja="下のフォームに必要事項を入力して送信してください">Fill in the form below and submit it.</li>
+    </ul>
+
+    <!-- ⏰ 応募期間（時刻はスクリプトが自動で表示します） -->
+    <h2 class="translatable" data-en="Period & Drawing" data-ja="応募期間・抽選">Period & Drawing</h2>
+    <p id="period-text"></p>
+    <p class="translatable"
+       data-en="Winners will be announced on our Discord server."
+       data-ja="発表: Discordサーバーで告知します">Winners will be announced on our Discord server.</p>
+
+    <!-- 📋 応募フォーム（開始後〜終了前だけ表示・読み込み） -->
+    <div id="entry-section">
+      <h2 class="translatable" data-en="Entry Form" data-ja="応募フォーム">Entry Form</h2>
+      <iframe id="entry-frame" class="form-frame"
+              data-src="https://docs.google.com/forms/d/e/1FAIpQLSfGJZzlxfIkNjG2cRPZmKy7zhRHSOb6M8p7QuSChO6Z_p86KQ/viewform?embedded=true">
+        Loading…
+      </iframe>
+    </div>
+
+    <!-- 🤫 秘密の管理者メッセージ -->
+    <h2 class="translatable" data-en="🤫 Secret Message from the Secret Admin(?)" data-ja="🤫 秘密の管理者(?)からの秘密のメッセージ">🤫 Secret Message from the Secret Admin(?)</h2>
+    <div class="secret-box">
+
+      <p class="translatable"
+         data-en="Hello everyone! I'm ks_34, the admin(?) of the creator. Thank you so much for filling out this form! Even though the previous question says &quot;(※Does NOT change your giveaway chances lol)&quot;, in the creator's brain, the moment you opened this form and answered the survey, their &quot;favorite fan filter&quot; activated and their affection for you broke the limit!"
+         data-ja="みなさんこんにちは。運営(主)の管理者(?)のks_34です。このフォームを記入してくれたあなた、ありがとうございます！ 「当選確率は変わりません(笑)」とありますが、これを読んでいる主の脳内では、このフォームを開いてアンケートに答えてくれた時点ですでに推しフィルターが発動し、好感度が上限突破しています。">Hello everyone! I'm ks_34, the admin(?) of the creator. Thank you so much for filling out this form! Even though the previous question says "(※Does NOT change your giveaway chances lol)", in the creator's brain, the moment you opened this form and answered the survey, their "favorite fan filter" activated and their affection for you broke the limit!</p>
+
+      <p class="translatable"
+         data-en="Being here with us to witness this milestone of 304 YouTube subscribers makes you this channel's greatest treasure and biggest motivation!"
+         data-ja="Youtubeのチャンネル登録者数304人という記念すべき瞬間に立ち会ってくれてるあなたの存在こそが、このチャンネルの最大の宝物であり、一番の原動力です！">Being here with us to witness this milestone of 304 YouTube subscribers makes you this channel's greatest treasure and biggest motivation!</p>
+
+      <p class="translatable"
+         data-en="Even while totally beat up by a cold, the creator is hard at work typing away in both English and Japanese to build the website for you all (while occasionally worrying about their allowance). Please watch over their adorable efforts warmly!"
+         data-ja="風邪でボロボロになりながらも、みんなのために英語と日本語を駆使してWebサイトをピコピコ作っている主の努力（と、時々お小遣いの心配をしながら頑張っている健気さ）を、どうか温かい目で包み込んでやってください。">Even while totally beat up by a cold, the creator is hard at work typing away in both English and Japanese to build the website for you all (while occasionally worrying about their allowance). Please watch over their adorable efforts warmly!</p>
+
+      <p class="translatable"
+         data-en="Now, anyone who answers all the questions and hits that submit button will automatically receive the right to call themselves an &quot;OG member&quot; in the future (※100% unofficially certified by me). Please continue to support this super cool—yet sometimes sleepy—creator! 🔥💤"
+         data-ja="さあ、全問回答して送信ボタンを押したあなたには、将来的に「初期からの古参メンバー」を名乗る権利がもれなく付与されます（※私の勝手な認定です）。 引き続き、最高にクールで、時々お眠りモードなこの主をよろしくお願いします！🔥💤">Now, anyone who answers all the questions and hits that submit button will automatically receive the right to call themselves an "OG member" in the future (※100% unofficially certified by me). Please continue to support this super cool—yet sometimes sleepy—creator! 🔥💤</p>
+
+      <p class="translatable secret-reveal"
+         data-en="And here's a little secret just for you who read all the way to the end... The winner will be decided by a spinning wheel, and if you change your Roblox <strong>Display Name</strong> (not your @username) to add <strong>&quot;3044&quot;</strong> at the end of your name, you'll get <strong>2x entries</strong>!!"
+         data-ja="最後まで読んでくれたあなたにここだけの秘密を教えます…<br>当選者はルーレットで決められるのですが、<strong>表示名</strong>(@から始まる名前ではない方)を変更して名前の後ろに<strong>3044</strong>をつけることで<strong>２倍エントリー</strong>されます！">And here's a little secret just for you who read all the way to the end... The winner will be decided by a spinning wheel, and if you change your Roblox <strong>Display Name</strong> (not your @username) to add <strong>"3044"</strong> at the end of your name, you'll get <strong>2x entries</strong>!!</p>
+
+      <div class="before-after">
+        <figure>
+          <img src="images/WIFI.png" alt="Before">
+          <figcaption class="translatable" data-en="Before" data-ja="変更前">Before</figcaption>
+        </figure>
+        <figure>
+          <img src="images/WIFI3044.png" alt="After">
+          <figcaption class="translatable" data-en="After" data-ja="変更後">After</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Made with ❤️ by channe</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  const root = document.getElementById('giveaway-root');
+  const content = document.getElementById('giveaway-content');
+  const notYet = document.getElementById('giveaway-notyet');
+  const notYetTime = document.getElementById('notyet-time');
+  const periodEl = document.getElementById('period-text');
+  const frame = document.getElementById('entry-frame');
+  const btn = document.getElementById('lang-toggle-btn');
+  const endedBox = document.getElementById('giveaway-ended');
+  const entrySection = document.getElementById('entry-section');
+  if (!root || !content || !notYet) return;
+
+  const start = new Date(root.dataset.start);
+  const end = new Date(root.dataset.end);
+  if (isNaN(start) || isNaN(end)) { content.hidden = false; return; } // 日時の書き間違い時は表示する
+
+  const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const isJa = () => btn && btn.classList.contains('active'); // script.jsが日本語時にactiveを付ける
+
+  function fmt(d, tz) {
+    return new Intl.DateTimeFormat(isJa() ? 'ja-JP' : 'en-US', {
+      year: 'numeric', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', timeZoneName: 'short',
+      ...(tz ? { timeZone: tz } : {})
+    }).format(d);
+  }
+
+  function render() {
+    const ja = isJa();
+    const now = new Date();
+    const opened = now >= start;
+    const isEnded = now > end;
+
+    notYet.hidden = opened;
+    content.hidden = !opened;
+
+    // 終了後: 終了メッセージを表示して、応募フォームは隠す
+    if (endedBox) endedBox.hidden = !isEnded;
+    if (entrySection) entrySection.hidden = isEnded;
+
+    // フォームは開始後・終了前だけ読み込む
+    if (opened && !isEnded && frame && !frame.getAttribute('src')) {
+      frame.src = frame.dataset.src;
+    }
+
+    // 開始前: 開始時刻を表示
+    let startHtml = (ja ? '開始(あなたの時間): ' : 'Starts (your local time): ') + fmt(start);
+    if (userTz !== 'Asia/Tokyo') {
+      startHtml += '<br>' + (ja ? '日本時間: ' : 'Japan time: ') + fmt(start, 'Asia/Tokyo');
+    }
+    notYetTime.innerHTML = startHtml;
+
+    // 開始後: 応募期間と状態を表示
+    if (periodEl) {
+      let html = (ja ? '期間(あなたの時間): ' : 'Period (your local time): ') + fmt(start) + ' 〜 ' + fmt(end);
+      if (userTz !== 'Asia/Tokyo') {
+        html += '<br>' + (ja ? '日本時間: ' : 'Japan time: ') + fmt(start, 'Asia/Tokyo') + ' 〜 ' + fmt(end, 'Asia/Tokyo');
+      }
+      const status = !isEnded ? (ja ? '受付中' : 'Open now') : (ja ? '終了しました' : 'Ended');
+      periodEl.innerHTML = html + '<br><strong>' + status + '</strong>';
+    }
+  }
+
+  render();
+  setInterval(render, 10000); // ページを開いたまま開始・終了の時刻を迎えても自動で切り替わる
+  if (btn) btn.addEventListener('click', () => setTimeout(render, 0));
+})();
+</script>
+</body>
+</html>

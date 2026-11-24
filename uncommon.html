@@ -981,15 +981,15 @@
       //アイス
       "Ice": {
         ingameDesc: {
-          en: "Details coming soon.",
-          ja: "詳細は近日公開予定です。"
+          en: "Allows the user to manipulate ice, freezing their foes in place.",
+          ja: "氷を操り、敵をその場に凍らせることができる。"
         },
                 meta: {
           type: { en: "Elemental", ja: "エレメンタル系" },
           rarity: { en: "Uncommon", ja: "アンコモン" },
-          m1: { en: "No", ja: "なし" },
-          money: "250,000",
-          robux: "550",
+          m1: { en: "Yes", ja: "あり" },
+          money: "350,000",
+          robux: "750",
           hasImmunity: true,        
           hasAwakening: true,
           awakenColor: "#00d4ff"
@@ -997,8 +997,52 @@
         immunity: {  
           video: "images/videos/Blade_immunity.mp4",
           desc: {
-            en: "Completely negates all sword damage, even when the opponent is using Aura.",
-            ja: "相手が武装色を使用している場合でも、剣によるすべてのダメージを完全に無効化します。"
+            en: "Grants immunity to normal physical attacks (Fighting Style, Sword, Gun) without Aura. Fruit attacks always deal damage regardless of level. Against regular NPCs, immunity requires your level to be higher than theirs (roughly 2%+ level difference). Bosses and attacks with Aura bypass this immunity.",
+            ja: "武装色のついていない通常の物理攻撃（格闘・剣・銃）の攻撃を無効化します。フルーツ攻撃はレベルに関係なく常にダメージを与えます。 通常のNPCに対して無効化を発動するには、相手より高いレベル（およそ2%以上のレベル差）が必要です。ボスやオーラ付きの攻撃はこの無効化を貫通します。"
+          }
+        },
+        awakening: {
+           desc: {
+            en: "The Ice Queen and The Ice King <a href='#' class='wiki-link'>titles</a> will be granted upon awakening one move of the Ice Fruit.",
+            ja: "アイスフルーツの技を一つ覚醒させるとThe Ice QueenとThe Ice Kingの<a href='#' class='wiki-link'>称号</a>を手に入れます。"
+          },
+          // 画像の並び順（Z → F → X → C → V）で表示されます
+            costs: { z: 500, f: 2000, x: 3000, c: 4000, v: 5000 }
+        },
+        description: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        history: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+        notes: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        }
+      },
+      //サンド
+      "Sand": {
+        ingameDesc: {
+          en: "Details coming soon.",
+          ja: "詳細は近日公開予定です。"
+        },
+                meta: {
+          type: { en: "Elemental", ja: "エレメンタル系" },
+          rarity: { en: "Uncommon", ja: "アンコモン" },
+          m1: { en: "No", ja: "なし" },
+          money: "420,000",
+          robux: "850",
+          hasImmunity: true,        
+          hasAwakening: true,
+          awakenColor: "#ff5a1f"
+        },
+        immunity: {  
+          video: "images/videos/Blade_immunity.mp4",
+          desc: {
+            en: "Details coming soon.",
+            ja: "詳細は近日公開予定です。"
           }
         },
         awakening: {
@@ -1147,6 +1191,71 @@
       },
       //アイス
       "Ice": {
+        m1: {
+          title: { en: "Normal Attack", ja: "通常攻撃" },
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: false,
+          instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_M1.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        z: {
+          title: { en: "Ice Spears", ja: "アイススピア" },
+          mastery: 1,
+          cooldown: { en: "9 seconds", ja: "9秒" },
+          energy: 15,
+          instinctBreak: false,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          hasSkin: false,
+          showcases: [
+            {
+              video: "images/videos/Ice_Z.mp4",
+              text: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+            },
+            {
+              label: { en: "Maximum travel distance", ja: "最大移動距離" },
+              video: "images/videos/Ice_releaseZ.mp4",
+            }
+          ]
+        },
+        x: {
+          title: { en: "Ice Surge", ja: "アイスサージ" },
+          mastery: 25,
+          cooldown: { en: "14 seconds", ja: "14秒" },
+          energy: 25,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_X.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Ice Bird", ja: "アイスバード" },
+          mastery: 50,
+          cooldown: { en: "15 seconds", ja: "15秒" },
+          energy: 35,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_C.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        v: {
+          title: { en: "Glacial Epoch", ja: "グレイシャルエポック" },
+          mastery: 100,
+          cooldown: { en: "26 seconds", ja: "26秒" },
+          energy: 50,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_V.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+      },
+      //サンド
+      "Sand": {
         m1: {
           title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
           cooldown: { en: "- seconds", ja: "-秒" },
@@ -1358,8 +1467,84 @@
           showcaseText: { en: "The user emits flames from their legs to fly.", ja: "脚から炎を出して飛びます。" }
         }
       },
-      //ここに新しいフルーツを追加
+      //アイス
       "Ice": {
+        m1: {
+          title: { en: "Normal Attack", ja: "通常攻撃" },
+          cooldown: { en: "- seconds", ja: "-秒" },
+          energy: 0,
+          instinctBreak: false,
+          instinctText: { en: "Cannot break Instinct.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_M1.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        z: {
+          title: { en: "Cold Storm", ja: "コールドストーム" },
+          mastery: 1,
+          cooldown: { en: "9 seconds", ja: "9秒" },
+          energy: 15,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_AwakenZ.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        x: {
+          title: { en: "Glacial Surge", ja: "グレイシャルサージ" },
+          mastery: 14,
+          cooldown: { en: "14 seconds", ja: "14秒" },
+          energy: 25,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_AwakenX.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        c: {
+          title: { en: "Frozen Dragon", ja: "フローズンドラゴン" },
+          mastery: 50,
+          cooldown: { en: "15 seconds", ja: "15秒" },
+          energy: 35,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          hasSkin: false,
+          showcases: [
+            {
+              video: "images/videos/Ice_AwakenC.mp4",
+              text: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+            },
+            {
+              label: { en: "Maximum travel distance", ja: "最大移動距離" },
+              video: "images/videos/Ice_AwakenreleaseC.mp4",
+            }
+          ]
+        },
+        v: {
+          title: { en: "Absolute Zero", ja: "アブソリュートゼロ" },
+          mastery: 100,
+          cooldown: { en: "26 seconds", ja: "26秒" },
+          energy: 50,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_AwakenV.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        },
+        f: {
+          title: { en: "Ice Skating", ja: "アイススケート" },
+          mastery: 0,
+          cooldown: { en: "7 seconds", ja: "7秒" },
+          energy: 30,
+          instinctBreak: true,
+          instinctText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
+          showcaseVideo: "images/videos/Ice_AwakenF.mp4",
+          hasSkin: false,
+          showcaseText: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" }
+        }
+      },
+      //サンド
+      "Sand": {
         m1: {
           title: { en: "Details coming soon.", ja: "詳細は近日公開予定です。" },
           cooldown: { en: "- seconds", ja: "-秒" },
@@ -1575,7 +1760,48 @@
         }
       },
 
-       //ネーム
+       //サンド
+      "Sand": {
+        pros: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Low mastery requirements.",
+              "All moves can break Instinct."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "必要マスタリーが低い",
+              "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        },
+        cons: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Details coming soon.",
+              "Details coming soon."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        }
+      },
+      //ネーム
       "name": {
         pros: {
           general: {
@@ -1639,7 +1865,6 @@
           f: { en: ["Speed scales with the user's health, meaning that the lower their health is, the slower the flight will go.","Slower cooldown compared to other flight moves."], ja: ["速度はユーザーの体力に応じて調整されるので、体力が低いほど飛行速度は遅くなる","他の飛行技と比べてクールダウンが遅い"] }
         }
       },
-      //ここに新しいフルーツを追加
        //アイス
       "Ice": {
         pros: {
@@ -1681,8 +1906,8 @@
           f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
         }
       },
-        //ネーム
-      "name": {
+        //サンド
+      "Sand": {
         pros: {
           general: {
             en: [
@@ -1694,6 +1919,47 @@
               "詳細は近日公開予定です。",
               "必要マスタリーが低い",
               "すべての技が見聞色を破壊する"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        },
+        cons: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Details coming soon.",
+              "Details coming soon."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。"
+            ]
+          },
+          z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          x: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          c: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          v: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
+          f: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] }
+        }
+      },
+      //ネーム
+      "name": {
+        pros: {
+          general: {
+            en: [
+              "Details coming soon.",
+              "Details coming soon.",
+              "Details coming soon."
+            ],
+            ja: [
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。",
+              "詳細は近日公開予定です。"
             ]
           },
           z: { en: ["Details coming soon."], ja: ["詳細は近日公開予定です。"] },
@@ -1761,8 +2027,26 @@
           video: "https://youtu.be/I08UUXLiYZM"
         }
       ],
-      //name
-      "あ": [
+      //サンド
+      "Sand": [
+        {
+          name: {
+            en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>,Flame,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>",
+            ja: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>電気爪</a>,フレイム,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>トリエント</a>"
+          },
+          sequence: {
+            en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>C → FlameC → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>X → <a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>X → <a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>Z → FlameZ",
+            ja: "<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>C  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>X → フレイムX →<a href='detail.html?name=Godhuman&type=style' class='wiki-link'>ゴッドヒューマン</a>Z  → <a href='detail.html?name=Shark_Anchor&type=sword' class='wiki-link'>シャークアンカー</a>Z → フレイムV"
+          },
+          desc: {
+            en: "Details coming soon.",
+            ja: "Details coming soon."
+          },
+          video: ""
+        }
+      ],
+      //ここに新しいフルーツのコンボを追加することができます
+      "name": [
         {
           name: {
             en: "<a href='detail.html?name=Electric_Claw&type=style' class='wiki-link'>Electric Claw</a>,Flame,<a href='detail.html?name=Spikey_Trident&type=sword' class='wiki-link'>Spikey Trident</a>",
@@ -1779,7 +2063,6 @@
           video: "https://youtu.be/TBcgS7824mQ"
         }
       ],
-      //ここに新しいフルーツのコンボを追加することができます
     };
 
 let currentProConMode = 'pros';
